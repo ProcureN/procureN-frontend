@@ -190,11 +190,12 @@ const EnquiryManage = () => {
         <td className=' border-x border-black'>
           {(page - 1) * limit + index + 1}
         </td>
-        <td className=' whitespace-nowrap border border-black px-1  text-center md:py-2  '>
+        {/* <td className=' whitespace-nowrap border border-black px-1  text-center md:py-2  '>
           {item.date}
-        </td>
+        </td> */}
         <td className=' border border-black px-1  text-center md:py-2  '>
-          {item.time}
+          {item.time} <br />
+          {item.date}
         </td>
 
         <td className=' border-y border-black px-1  text-center md:py-2  '>
@@ -203,10 +204,12 @@ const EnquiryManage = () => {
         <td className=' border-x border-gray-400 px-1 font-medium'>
           {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
         </td>
-        <td className=' border-x border-gray-400 px-1 '>{item.contact}</td>
-        <td className=' border-x border-gray-400 px-1'>
-          {item.alternativeNumber}
+        <td className=' border-x border-gray-400 px-1 '>
+          {item.contact} <br /> {item.alternativeNumber}
         </td>
+        {/* <td className=' border-x border-gray-400 px-1'>
+          {item.alternativeNumber}
+        </td> */}
         <td className=' border-x border-gray-400 px-1 '>{item.email}</td>
         <td className=' border-x border-gray-400 px-1 '>{item.quantity}</td>
         <td className='border-x border-gray-400 px-1 '>{item.state}</td>
@@ -224,20 +227,42 @@ const EnquiryManage = () => {
         <td className='  border-x border-gray-400 px-1'>
           {item.shippingPincode}
         </td>
-        <td
-          className={` border-x  border-gray-400 px-1 font-medium ${
-            item.status === 'Approved'
-              ? 'text-green-500 '
-              : item.status === 'Pending'
-              ? 'text-orange-300'
-              : 'text-red-500'
-          }`}
-        >
-          {item.status}
+        <td className={` border-x  border-gray-400 px-1 font-medium `}>
+          <span
+            className={`${
+              item.status === 'Approved'
+                ? 'text-green-500 '
+                : item.status === 'Pending'
+                ? 'text-orange-300'
+                : 'text-red-500'
+            }`}
+          >
+            {item.status}
+          </span>
+          <br />
+          <span
+            className={` text-sm italic  ${
+              item.status === 'Approved' && item.deliveryStatus === 'delivered'
+                ? 'visible text-green-600 '
+                : item.status === 'Approved' &&
+                  item.deliveryStatus === 'inTransit'
+                ? 'visible text-orange-600'
+                : item.status === 'Approved' &&
+                  item.deliveryStatus === 'processing'
+                ? 'visible text-blue-600'
+                : item.status === 'Approved' &&
+                  item.deliveryStatus === 'shipped' ?
+                  'visible text-amber-700':"hidden"
+            }`}
+          >
+            {item.deliveryStatus.charAt(0).toUpperCase() +
+              item.deliveryStatus.slice(1)}
+          </span>
         </td>
-        <td className=' border-x border-gray-400 px-1'>
-          {item.deliveryStatus}
-        </td>
+        {/* <td className=' border-x border-gray-400 px-1'>
+          {item.deliveryStatus.charAt(0).toUpperCase() +
+            item.deliveryStatus.slice(1)}
+        </td> */}
         <td
           onClick={() => {
             setVal(item);
@@ -312,15 +337,15 @@ const EnquiryManage = () => {
                     <th className='border-x border-black py-1 md:py-2'>
                       Sr. No.
                     </th>
-                    <th className='border-x border-gray-400 '>Date</th>
+                    {/* <th className='border-x border-gray-400 '>Date</th> */}
                     <th className='border-x border-gray-400 '>Time</th>
 
                     <th className='border-x border-gray-400 '>Product Name</th>
                     <th className='border-x border-gray-400 '>Name</th>
                     <th className='border-x border-gray-400 '>Phone</th>
-                    <th className='border-x border-gray-400 '>
+                    {/* <th className='border-x border-gray-400 '>
                       Alternative No
-                    </th>
+                    </th> */}
                     <th className='border-x border-gray-400 '>Email</th>
                     <th className='border-x border-gray-400 '>Quantity</th>
                     <th className='border-x border-gray-400 '>State</th>
@@ -330,10 +355,15 @@ const EnquiryManage = () => {
                     <th className='border-x border-gray-400 '>
                       Shipping Pincode
                     </th>
-                    <th className='border-x border-gray-400 '>Status</th>
                     <th className='border-x border-gray-400 '>
-                      Delivery Status
+                      Status <br />
+                      <span className='text-sm font-normal'>
+                        Delivery Status
+                      </span>
                     </th>
+                    {/* <th className='border-x border-gray-400 '>
+                      Delivery Status
+                    </th> */}
                     <th
                       className='col-span-2 border-x border-gray-400'
                       colSpan='2'
@@ -389,7 +419,7 @@ const EnquiryManage = () => {
             visible={showMyModal2}
             Values={val}
             setSub={setSub}
-            deletePopup = "enquiry"
+            deletePopup='enquiry'
           />
         </div>
       )}

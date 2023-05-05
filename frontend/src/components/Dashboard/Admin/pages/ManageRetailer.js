@@ -246,7 +246,7 @@ const ManageRetailer = () => {
               <PdfData fileName='Reatilers Data' bdy={bdy} wid={widths} />
             </div>
             <div className='my-auto bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-2xl font-semibold  text-transparent'>
-            Reatilers Data
+            Retailers Data
             </div>
             <div className='rounded-lg  p-0.5 text-sm   lg:p-2'>
               Data per page: <span className='text-lg'>{limit}</span>

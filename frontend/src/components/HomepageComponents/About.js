@@ -11,8 +11,8 @@ const About = () => {
 
   return (
     <div id='about'>
-      <section className=' container mx-auto -mt-4'>
-        <div className='container mx-auto flex flex-col justify-center px-5  pt-20 md:pt-24'>
+      <section className=' container mx-auto -mt-12'>
+        <div className='container mx-auto   px-5  pt-20 md:pt-24'>
           {/* <img
             className="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded"
             alt="hero"
@@ -27,7 +27,7 @@ const About = () => {
               <div className=' -mt-0.5 mb-3 h-1 w-28 rounded-full bg-indigo-600 '></div>
             </div> */}
             <div data-aos='fade-up' data-aos-delay='0' data-aos-duration='1500'>
-              <span className=' justify-center text-center md:text-lg lg:text-xl '>
+              <span className='    md:text-lg  '>
                 At{' '}
                 <span className=' bg-gradient-to-bl from-[#5c67f5] to-[#cb67ac] bg-clip-text font-medium text-transparent '>
                   ProcureN!
@@ -51,7 +51,7 @@ const About = () => {
               </span>
               {open ? (
                 <>
-                  <span className='mb-4 justify-center text-center md:text-lg lg:text-xl '>
+                  <span className='mb-4 justify-center text-center md:text-lg  '>
                     At{' '}
                     <span className=' bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] bg-clip-text font-medium text-transparent '>
                       ProcureN

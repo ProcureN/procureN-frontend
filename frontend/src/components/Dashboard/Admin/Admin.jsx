@@ -9,8 +9,8 @@ import {
 } from 'react-icons/ai';
 import { FaHome, FaHandsHelping } from 'react-icons/fa';
 
-import { MdPrecisionManufacturing } from 'react-icons/md';
-import { BsShop } from 'react-icons/bs';
+// import { MdPrecisionManufacturing } from 'react-icons/md';
+// import { BsShop } from 'react-icons/bs';
 
 import MainContent from './MainContent';
 
@@ -24,24 +24,24 @@ const AdminLinks = [
     Head: 'ACTION',
     subLinks: [
       {
-        name: 'Proposal Enquiries',
+        name: 'Vendor Enquiries',
         link: '/admin',
         logo: [<FaHandsHelping />],
       },
       {
-        name: 'Enquiry Management',
+        name: 'Management',
         link: '/admin',
         logo: [<AiOutlineFileSearch />],
       },
-      { name: 'Manage Retailer', link: '/admin', logo: [<BsShop />] },
-      {
-        name: 'Manage Manufacturer',
-        link: '/admin',
-        logo: [<MdPrecisionManufacturing />],
-      },
+      // { name: 'Manage Retailer', link: '/admin', logo: [<BsShop />] },
+      // {
+      //   name: 'Manage Manufacturer',
+      //   link: '/admin',
+      //   logo: [<MdPrecisionManufacturing />],
+      // },
 
       {
-        name: 'Manage Products',
+        name: 'Product Management',
         link: '/admin',
         logo: [<AiOutlineShoppingCart />],
       },
@@ -51,7 +51,7 @@ const AdminLinks = [
     Head: 'USERS',
     subLinks: [
       {
-        name: 'Manage Users',
+        name: 'Vendor Management',
         link: '/admin',
         logo: [<AiOutlineUsergroupAdd />],
       },
@@ -72,7 +72,7 @@ const Admin = () => {
         </div>
       )}
       <div className='flex w-full flex-col'>
-        <div className=' mx-2 mt-1 flex items-center  justify-between rounded-xl bg-gradient-to-tr from-blue-500 to-pink-200 px-10 py-4 shadow-md '>
+        <div className=' mx-2 mt-1 flex items-center  justify-between rounded-xl border px-10 py-4 shadow-md '>
           <div className='text-3xl' onClick={() => setOpen(!open)}>
             {open ? <AiOutlineMenuUnfold /> : <AiOutlineMenuFold />}
           </div>

@@ -5,8 +5,8 @@ import ManageProducts from './pages/ManageProducts';
 import HomePage from './pages/HomePage';
 import ManageUser from './pages/ManageUser';
 import FeedbackForm from './pages/ContactForm';
-import ManageManufacture from './pages/ManageManufacture';
-import ManageRetailer from './pages/ManageRetailer';
+// import ManageManufacture from './pages/ManageManufacture';
+// import ManageRetailer from './pages/ManageRetailer';
 
 function MainContent({ selectedItem }) {
   useEffect(() => {
@@ -24,18 +24,21 @@ function MainContent({ selectedItem }) {
     <div>
       {selectedItem === 'Home Page' ? (
         <HomePage />
-      ) : selectedItem === 'Proposal Enquiries' ? (
+      ) : selectedItem === 'Vendor Enquiries' ? (
         <FeedbackForm />
-      ) : selectedItem === 'Enquiry Management' ? (
+      ) : selectedItem === 'Management' ? (
         <EnquiryManage />
-      ) : selectedItem === 'Manage Retailer' ? (
-        <ManageRetailer />
-      ) : selectedItem === 'Manage Manufacturer' ? (
-        <ManageManufacture />
-      ) : selectedItem === 'Manage Products' ? (
+      ) 
+      // : selectedItem === 'Manage Retailer' ? (
+      //   <ManageRetailer />
+      // ) 
+      // : selectedItem === 'Manage Manufacturer' ? (
+      //   <ManageManufacture />
+      // ) 
+      : selectedItem === 'Product Management' ? (
         <ManageProducts />
       ) : (
-        selectedItem === 'Manage Users' && <ManageUser />
+        selectedItem === 'Vendor Management' && <ManageUser />
       )}
     </div>
   );

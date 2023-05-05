@@ -50,10 +50,10 @@ const Products = () => {
   return (
     <>
       <div
-        className='container mx-auto  -mt-20 px-5 pt-20 md:pt-24'
+        className='container mx-auto -mt-12 md:-mt-24 px-5 pt-20 md:pt-24'
         id='inventory'
       >
-        <div className='mb-8 flex w-full flex-col text-center'>
+        <div className=' flex w-full flex-col text-center'>
           <h1 className='title-font mb-2 text-3xl  font-medium uppercase text-[#5c67f5] sm:text-4xl'>
             OUR INVENTORY
           </h1>
@@ -82,16 +82,17 @@ const Products = () => {
             {allProducts.map((items, i) => (
               <div className='container ' key={i}>
                 <SwiperSlide key={i + 1}>
+                <div className='h-4 md:h-8 '></div>
                   <div
                     key={i + 1}
-                    className='flex flex-col items-center overflow-hidden rounded-lg border-2 text-center text-lg '
+                    className='flex flex-col hover:scale-110 bg-white  duration-300 items-center  rounded-lg border-2 text-center text-lg '
                   >
-                    <div key={i + 1} className='overflow-hidden'>
+                    <div key={i + 1} >
                       <img
                         src={items.image}
                         alt={items.desciption}
                         srcSet=''
-                        className='w-56 hover:scale-110 '
+                        className='w-56 '
                       />
                     </div>
                     <hr />

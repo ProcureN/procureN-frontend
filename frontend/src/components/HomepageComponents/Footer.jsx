@@ -131,9 +131,12 @@ const Footer = () => {
                   >
                     info@procuren.in
                   </a>
-                  <a className='hover:opacity-75' href='tel:+91 9399399391'>
+                  {/* <a className='hover:opacity-75' href='tel:+91 9399399391'>
                     9399399391
-                  </a>
+                  </a> */}
+                  <span className='hover:opacity-75' >
+                    123456789
+                  </span>
                 </nav>
               </div>
               {/* <div>

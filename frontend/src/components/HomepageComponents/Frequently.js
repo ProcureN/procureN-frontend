@@ -38,7 +38,7 @@ const Frequently = () => {
 
   return (
     <div>
-      <section className='  container  mx-auto -mt-4 px-2'>
+      <section className='  container  mx-auto -mt-12 px-2'>
         <div
           className={`container mx-auto flex   flex-wrap pt-20 ${
             activeIndex && 'md:pb-36 lg:pb-32 2xl:pb-0 '

@@ -309,8 +309,8 @@ const ManageProducts = () => {
               className={`h-[80vh] overflow-x-scroll xl:overflow-x-hidden `}
             >
               <table className='whitespace-nowrap border  border-black shadow-xl xl:whitespace-normal'>
-                <thead>
-                  <tr className='border-y border-black bg-indigo-100  p-1 md:p-2 '>
+                <thead className=''>
+                  <tr className='border-y border-black bg-fix bg-indigo-100  p-1 md:p-2 '>
                     <th className='border-x border-black py-1 md:py-2'>
                       Sr. No.
                     </th>

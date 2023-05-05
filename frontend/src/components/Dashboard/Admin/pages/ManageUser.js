@@ -175,19 +175,18 @@ const ManageUser = () => {
     return (
       <tr
         key={index}
-        className={`  border-y border-black p-1 text-center md:py-2 ${
-          index % 2 === 0 && 'bg-slate-200 '
-        } hover:bg-indigo-200 `}
+        className={`  border-y border-black p-1 text-center hover:bg-indigo-100  md:py-2 `}
       >
         <td className=' border-x border-black'>
           {(page - 1) * limit + index + 1}
         </td>
         <td className=' whitespace-nowrap border border-black px-1  text-center md:py-2  '>
+          {item.time} <br />
           {item.date}
         </td>
-        <td className=' border border-black px-1  text-center md:py-2  '>
+        {/* <td className=' border border-black px-1  text-center md:py-2  '>
           {item.time}
-        </td>
+        </td> */}
 
         <td className=' border border-black px-1  text-center font-medium  md:py-2 '>
           {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
@@ -250,7 +249,7 @@ const ManageUser = () => {
               <PdfData fileName='All Users Data' bdy={bdy} wid={widths} />
             </div>
             <div className='my-auto bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-2xl font-semibold  text-transparent'>
-              Customers Data
+              Vendors Data
             </div>
             <div className='rounded-lg  p-0.5 text-sm   lg:p-2'>
               Data per page: <span className='text-lg'>{limit}</span>
@@ -277,13 +276,13 @@ const ManageUser = () => {
             <section
               className={`h-[80vh] overflow-x-scroll xl:overflow-x-hidden `}
             >
-              <table className=' border border-black shadow-xl'>
+              <table className=' border border-black '>
                 <thead>
                   <tr className='border-y border-black bg-indigo-100  p-1 md:p-2 '>
                     <th className='border-x border-black py-1 md:py-2'>
                       Sr. No.
                     </th>
-                    <th className='border-x border-gray-400 '>Date</th>
+                    {/* <th className='border-x border-gray-400 '>Date</th> */}
                     <th className='border-x border-gray-400 '>Time</th>
 
                     <th className='border-x border-gray-400'>Name</th>
@@ -350,7 +349,7 @@ const ManageUser = () => {
             visible={showMyModal2}
             Values={val}
             setSub={setSub}
-            deletePopup = "user"
+            deletePopup='user'
           />
         </div>
       )}
