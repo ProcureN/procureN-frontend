@@ -34,7 +34,7 @@ export default function Header({ setShowMyModal }) {
   return (
     <div
       className={`${
-        color && 'border-b bg-[white] duration-75'
+        color && 'border-b bg-[white] duration-150'
       } fixed   isolate z-10 w-full`}
     >
       <>
@@ -50,7 +50,7 @@ export default function Header({ setShowMyModal }) {
                   : 'text-white'
               } md:w-auto`}
             >
-              <a href='#hero'  id='logoForHeader'>
+              <a href='#hero' id='logoForHeader'>
                 <img
                   src={color ? logo2 : logo}
                   alt='logo'
@@ -79,14 +79,16 @@ export default function Header({ setShowMyModal }) {
                       onClick={() => setSelectedItem(i)}
                     >
                       <li
-                        className={`from-[#5c67f5] to-[#cb67ac] hover:font-bold ${
+                        className={`from-[#5c67f5] to-[#cb67ac]  ${
                           selectedItem === i
-                            ? 'border-b-2'
+                            ? `{ border-b-2 font-semibold ${
+                                color ? 'bg-gradient-to-tr text-transparent':'text-white'
+                              } }`
                             : 'hover:border-b-2 '
                         }  bg-clip-text ${
                           color
-                            ? 'border-indigo-500 hover:bg-gradient-to-tr hover:text-transparent '
-                            : 'hover:text-orange-300'
+                            ? 'border-indigo-500 hover:bg-gradient-to-tr hover:font-bold hover:text-transparent'
+                            : 'hover:text-yellow-300'
                         }  `}
                       >
                         {item.name}
