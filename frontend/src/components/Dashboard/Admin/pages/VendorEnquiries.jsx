@@ -168,11 +168,9 @@ const VendorEnquiries = () => {
   function TableRow({ item, index }) {
     return (
       <tr
-        key={index}
-        className={`  border-y border-black p-1 text-center md:py-2 ${
-          index % 2 === 0 && 'bg-slate-200 '
-        } hover:bg-indigo-200 `}
-      >
+      key={index}
+      className={`  border-y border-black p-1 text-center hover:bg-indigo-100  md:py-2 `}
+    >
         <td className=' border-x border-black'>
           {(page - 1) * limit + index + 1}
         </td>

@@ -180,9 +180,7 @@ const Management = () => {
     return (
       <tr
         key={index}
-        className={`  border-y border-black p-1 text-center md:py-2 ${
-          index % 2 === 0 && 'bg-slate-200 '
-        } hover:bg-indigo-200 `}
+        className={`  border-y border-black p-1 text-center hover:bg-indigo-100  md:py-2 `}
       >
         <td className=' border-x border-black'>
           {(page - 1) * limit + index + 1}
@@ -307,11 +305,13 @@ const Management = () => {
             <div className='rounded-lg p-0.5 text-sm lg:p-2'>
               Rows per page:
               <select
-                className='mx-1 cursor-pointer rounded-lg border p-1 text-lg hover:shadow-lg shadow-indigo-300 '
+                className='mx-1 cursor-pointer rounded-lg border p-1 text-lg shadow-indigo-300 hover:shadow-lg '
                 value={limit}
                 onChange={handleLimitChange}
               >
-                <option c value={10}>10</option>
+                <option c value={10}>
+                  10
+                </option>
                 <option value={20}>20</option>
                 <option value={50}>50</option>
                 <option value={100}>100</option>
@@ -322,7 +322,7 @@ const Management = () => {
             <section
               className={`h-[80vh] overflow-x-scroll xl:overflow-x-hidden `}
             >
-              <table className=' border border-black shadow-xl mx-auto'>
+              <table className=' mx-auto border border-black shadow-xl'>
                 <thead>
                   <tr className='border-y border-black bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] p-1 font-normal  text-white md:p-2 '>
                     <th className='border-x border-black py-1 md:py-2'>
