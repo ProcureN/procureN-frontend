@@ -375,7 +375,7 @@ const ViewAllProducts = () => {
               Products Data
             </div>
             <div className='rounded-lg  p-0.5 text-sm   lg:p-2'>
-              Data per page: <span className='text-lg'>{limit}</span>
+              Rows per page: <span className='text-lg'>{limit}</span>
               <button
                 // disabled={totalPages >= page  }
                 onClick={handleLimitPlus}

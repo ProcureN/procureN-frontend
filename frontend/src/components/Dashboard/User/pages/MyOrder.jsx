@@ -50,7 +50,7 @@ const MyOrder = () => {
         setData(res.data.data);
         setTotalPages(Math.ceil(res.data.count / limit));
       } catch (err) {
-        console.log(err)
+        console.log(err);
         setError(err);
       } finally {
         setLoading(false);
@@ -170,12 +170,11 @@ const MyOrder = () => {
           className='mx-auto mt-16 animate-spin text-indigo-600'
         />
       ) : error ? (
-
         'Error ~ Something went wrong :)'
       ) : (
         <div className='overflow-y-none  '>
           <div className='my-2 flex justify-between md:mr-4 '>
-            <div className='flex items-center mx-2'>
+            <div className='mx-2 flex items-center'>
               {/* <ExcelData data={data} fileName='Enquiries' /> */}
               <PdfData fileName='Enquiries' bdy={bdy} wid={widths} />
             </div>
@@ -183,7 +182,7 @@ const MyOrder = () => {
               Your Enquiries
             </div>
             <div className='rounded-lg  p-0.5 text-sm   lg:p-2'>
-              Data per page: <span className='text-lg'>{limit}</span>
+              Rows per page: <span className='text-lg'>{limit}</span>
               <button
                 // disabled={totalPages >= page  }
                 onClick={handleLimitPlus}
@@ -205,12 +204,14 @@ const MyOrder = () => {
           </div>
           {data.length > 0 ? (
             <section
-              className={`h-[80vh] overflow-x-scroll xl:overflow-x-hidden container mx-auto `}
+              className={`container mx-auto h-[80vh] overflow-x-scroll xl:overflow-x-hidden `}
             >
-              <table className=' border border-black shadow-xl mx-auto'>
+              <table className=' mx-auto border border-black shadow-xl'>
                 <thead>
                   <tr className='border-y border-black bg-indigo-100  p-1 md:p-2 '>
-                    <th className='border-x border-black py-1 md:py-2 '>Sr. No.</th>
+                    <th className='border-x border-black py-1 md:py-2 '>
+                      Sr. No.
+                    </th>
                     <th className=' border-x border-gray-400 '>Product Name</th>
                     <th className=' border-x border-gray-400 '>Quantity</th>
                     <th className=' border-x border-gray-400 '>Name</th>
@@ -218,8 +219,12 @@ const MyOrder = () => {
                     <th className=' border-x border-gray-400 '>Phone Number</th>
                     <th className=' border-x border-gray-400 '>City</th>
                     <th className=' border-x border-gray-400 '>State</th>
-                    <th className=' border-x border-gray-400 '>Billing Address</th>
-                    <th className=' border-x border-gray-400 '>Shipping Pincode</th>
+                    <th className=' border-x border-gray-400 '>
+                      Billing Address
+                    </th>
+                    <th className=' border-x border-gray-400 '>
+                      Shipping Pincode
+                    </th>
                     <th className=' border-x border-gray-400 '>Status</th>
                     {/* <th className=' md:p-2 p-1 border '>_id</th> */}
                   </tr>
@@ -227,11 +232,11 @@ const MyOrder = () => {
                 <tbody>
                   {data.map((item, index) => (
                     <tr
-                    key={index}
-                    className={`  border-y border-black p-1 text-center md:py-2 ${
-                      index % 2 === 0 && 'bg-slate-200 '
-                    } hover:bg-indigo-200 `}
-                  >
+                      key={index}
+                      className={`  border-y border-black p-1 text-center md:py-2 ${
+                        index % 2 === 0 && 'bg-slate-200 '
+                      } hover:bg-indigo-200 `}
+                    >
                       <td className='border-x border-gray-400 p-1 '>
                         {index + 1}
                       </td>
@@ -264,18 +269,16 @@ const MyOrder = () => {
                       </td>
 
                       <td
-                       className={` border-x  border-gray-400 px-1 font-medium ${
-                        item.status === 'Approved'
-                          ? 'text-green-500 '
-                          : item.status === 'Pending'
-                          ? 'text-orange-300'
-                          : 'text-red-500'
-                      }`}
+                        className={` border-x  border-gray-400 px-1 font-medium ${
+                          item.status === 'Approved'
+                            ? 'text-green-500 '
+                            : item.status === 'Pending'
+                            ? 'text-orange-300'
+                            : 'text-red-500'
+                        }`}
                       >
                         {item.status}
                       </td>
-
-                     
                     </tr>
                   ))}
                 </tbody>

@@ -62,7 +62,6 @@ const ManageRetailer = () => {
         setTotalPages(Math.ceil(res.data.count / limit)); // calculate total number of pages
       } catch (err) {
         setError(err);
-        
       } finally {
         setLoading(false);
       }
@@ -246,10 +245,10 @@ const ManageRetailer = () => {
               <PdfData fileName='Reatilers Data' bdy={bdy} wid={widths} />
             </div>
             <div className='my-auto bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-2xl font-semibold  text-transparent'>
-            Retailers Data
+              Retailers Data
             </div>
             <div className='rounded-lg  p-0.5 text-sm   lg:p-2'>
-              Data per page: <span className='text-lg'>{limit}</span>
+              Rows per page: <span className='text-lg'>{limit}</span>
               <button
                 // disabled={totalPages >= page  }
                 onClick={handleLimitPlus}
@@ -314,7 +313,7 @@ const ManageRetailer = () => {
             {totalPages > 1 && (
               <div className='my-2 flex '>
                 <button
-                  className={`  mr-4 rounded-md border border-gray-400 px-2 hover:bg-indigo-400 hover:text-white ${
+                  className={`  mr-4 rounded-md border border-gray-400 px-2 hover:bg-[#5c67f5] hover:text-white ${
                     page === 1 && 'cursor-not-allowed opacity-50'
                   }`}
                   onClick={() => setPage(page - 1)}
@@ -324,7 +323,7 @@ const ManageRetailer = () => {
                 </button>
                 <div className=' '>{renderPagination()}</div>
                 <button
-                  className={`  ml-2 rounded-md border border-gray-400 px-2 hover:bg-indigo-400 hover:text-white ${
+                  className={`  ml-2 rounded-md border border-gray-400 px-2 hover:bg-[#5c67f5] hover:text-white ${
                     page === totalPages && 'cursor-not-allowed opacity-50'
                   } `}
                   onClick={() => setPage(page + 1)}
@@ -346,7 +345,7 @@ const ManageRetailer = () => {
             visible={showMyModal2}
             Values={val}
             setSub={setSub}
-            deletePopup = "user"
+            deletePopup='user'
           />
         </div>
       )}

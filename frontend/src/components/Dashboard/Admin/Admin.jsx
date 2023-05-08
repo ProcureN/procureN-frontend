@@ -67,7 +67,7 @@ const Admin = () => {
   return (
     <div className=' flex w-full '>
       {open && (
-        <div className=' duration-1000 ease-linear '>
+        <div className=' duration-1000 ease-linear bg-white '>
           <Sidebar links={AdminLinks} setInputValue={setInputValue} />
         </div>
       )}

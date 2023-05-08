@@ -170,12 +170,9 @@ const ProductsManagement = () => {
     return <ul className='flex'>{pageNumbers}</ul>;
   };
 
-  const handleLimitPlus = async () => {
-    setLimit(limit + 10);
-    console.log(page);
-  };
-  const handleLimitMinus = async () => {
-    setLimit(limit - 10);
+  const handleLimitChange = (event) => {
+    const newLimit = parseInt(event.target.value);
+    setLimit(newLimit);
   };
 
   const handleOnClose = () => setShowMyModal(false);
@@ -185,18 +182,14 @@ const ProductsManagement = () => {
     return (
       <tr
         key={index}
-        className={` whitespace-nowrap border-y  border-black p-1 text-center md:py-2 xl:whitespace-normal ${
-          index % 2 === 0 && 'bg-slate-200 '
-        } hover:bg-indigo-200 `}
+        className={` whitespace-nowrap border-y  border-black p-1 text-center hover:bg-indigo-100 md:py-2  xl:whitespace-normal `}
       >
         <td className=' border-x border-black'>
           {(page - 1) * limit + index + 1}
         </td>
         <td className=' border border-black px-1  text-center md:py-2  '>
+          {item.time} <br />
           {item.date}
-        </td>
-        <td className=' border border-black px-1  text-center md:py-2  '>
-          {item.time}
         </td>
         <td className=' border-y border-black px-1  text-center md:py-2  '>
           {item.productName}
@@ -227,19 +220,38 @@ const ProductsManagement = () => {
         <td className='  border-x border-gray-400 px-1'>
           {item.shippingCharges}
         </td>
-        <td
-          className={` border-x  border-gray-400 px-1 font-medium ${
-            item.status === 'Approved'
-              ? 'text-green-500 '
-              : item.status === 'Pending'
-              ? 'text-orange-300'
-              : 'text-red-500'
-          }`}
-        >
-          {item.status}
-        </td>
-        <td className=' border-x border-gray-400 px-1'>
-          {item.deliveryStatus}
+        <td className={` border-x  border-gray-400 px-1 font-medium `}>
+          <span
+            className={`${
+              item.status === 'Approved'
+                ? 'text-green-500 '
+                : item.status === 'Pending'
+                ? 'text-orange-300'
+                : 'text-red-500'
+            }`}
+          >
+            {item.status}
+          </span>
+          <br />
+          <span
+            className={` text-sm italic  ${
+              item.status === 'Approved' && item.deliveryStatus === 'delivered'
+                ? 'visible text-green-600 '
+                : item.status === 'Approved' &&
+                  item.deliveryStatus === 'inTransit'
+                ? 'visible text-orange-600'
+                : item.status === 'Approved' &&
+                  item.deliveryStatus === 'processing'
+                ? 'visible text-blue-600'
+                : item.status === 'Approved' &&
+                  item.deliveryStatus === 'shipped'
+                ? 'visible text-amber-700'
+                : 'hidden'
+            }`}
+          >
+            {item.deliveryStatus.charAt(0).toUpperCase() +
+              item.deliveryStatus.slice(1)}
+          </span>
         </td>
         <td
           onClick={() => {
@@ -283,39 +295,32 @@ const ProductsManagement = () => {
             <div className='my-auto bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-2xl font-semibold  text-transparent'>
               Products Data
             </div>
-            <div className='rounded-lg  p-0.5 text-sm   lg:p-2'>
-              Data per page: <span className='text-lg'>{limit}</span>
-              <button
-                // disabled={totalPages >= page  }
-                onClick={handleLimitPlus}
-                className={`text-md mx-1 cursor-pointer  rounded-lg bg-indigo-300 p-1  shadow-lg shadow-indigo-300  lg:px-2 lg:text-lg xl:text-xl ${
-                  totalPages === 1 ? 'hidden' : 'visible bg-indigo-300'
-                }`}
+            <div className='rounded-lg p-0.5 text-sm lg:p-2'>
+              Rows per page:
+              <select
+                className='mx-1 cursor-pointer rounded-lg border p-1 text-lg shadow-indigo-300 hover:shadow-lg '
+                value={limit}
+                onChange={handleLimitChange}
               >
-                &#43;
-              </button>
-              <button
-                onClick={handleLimitMinus}
-                className={`text-md mx-1 ml-2 cursor-pointer rounded-lg p-1 shadow-lg   shadow-indigo-300 lg:mx-2 lg:px-2 lg:text-lg xl:text-xl ${
-                  limit <= 10 ? 'hidden' : 'visible bg-indigo-300'
-                }`}
-              >
-                &minus;
-              </button>
+                <option value={10}>10</option>
+                <option value={20}>20</option>
+                <option value={50}>50</option>
+                <option value={100}>100</option>
+              </select>
             </div>
           </div>
           {data.length > 0 ? (
             <section
               className={`h-[80vh] overflow-x-scroll xl:overflow-x-hidden `}
             >
-              <table className='whitespace-nowrap border  border-black shadow-xl xl:whitespace-normal'>
+              <table className='mx-auto  border  border-black shadow-xl xl:whitespace-normal'>
                 <thead className=''>
-                  <tr className='border-y border-black bg-fix bg-indigo-100  p-1 md:p-2 '>
+                  <tr className='border-y border-black bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] p-1 font-normal  text-white md:p-2 '>
                     <th className='border-x border-black py-1 md:py-2'>
                       Sr. No.
                     </th>
-                    <th className='border-x border-gray-400 '>Date</th>
                     <th className='border-x border-gray-400 '>Time</th>
+                    {/* <th className='border-x border-gray-400 '>Date</th> */}
                     <th className='border-x border-gray-400 '>Product Name</th>
                     <th className='border-x border-gray-400 '>
                       Manufacturer Name
@@ -333,9 +338,11 @@ const ProductsManagement = () => {
                     <th className='border-x border-gray-400 '>
                       Shipping Charges
                     </th>
-                    <th className='border-x border-gray-400 '>Status</th>
                     <th className='border-x border-gray-400 '>
-                      Delivery Status
+                      Status <br />
+                      <span className='text-sm font-normal'>
+                        Delivery Status
+                      </span>
                     </th>
                     <th
                       className='col-span-2 border-x border-gray-400'
@@ -360,7 +367,7 @@ const ProductsManagement = () => {
             {totalPages > 1 && (
               <div className='my-2 flex '>
                 <button
-                  className={`  mr-4 rounded-md border border-gray-400 px-2 hover:bg-indigo-400 hover:text-white ${
+                  className={`  mr-4 rounded-md border border-gray-400 px-2 hover:bg-[#5c67f5] hover:text-white ${
                     page === 1 && 'cursor-not-allowed opacity-50'
                   }`}
                   onClick={() => setPage(page - 1)}
@@ -370,7 +377,7 @@ const ProductsManagement = () => {
                 </button>
                 <div className=' '>{renderPagination()}</div>
                 <button
-                  className={`  ml-2 rounded-md border border-gray-400 px-2 hover:bg-indigo-400 hover:text-white ${
+                  className={`  ml-2 rounded-md border border-gray-400 px-2 hover:bg-[#5c67f5] hover:text-white ${
                     page === totalPages && 'cursor-not-allowed opacity-50'
                   } `}
                   onClick={() => setPage(page + 1)}

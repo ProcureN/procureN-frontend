@@ -73,8 +73,6 @@ const ManageManufacture = () => {
     setPage(pageNumber);
   };
 
-
-
   let widths = ['4%', '20%', '40%', '20%'];
   let bdy = [
     ['No', 'Name', 'email', 'role'],
@@ -250,7 +248,7 @@ const ManageManufacture = () => {
               Manufacturers Data
             </div>
             <div className='rounded-lg  p-0.5 text-sm   lg:p-2'>
-              Data per page: <span className='text-lg'>{limit}</span>
+              Rows per page: <span className='text-lg'>{limit}</span>
               <button
                 // disabled={totalPages >= page  }
                 onClick={handleLimitPlus}
@@ -347,7 +345,7 @@ const ManageManufacture = () => {
             visible={showMyModal2}
             Values={val}
             setSub={setSub}
-            deletePopup = "user"
+            deletePopup='user'
           />
         </div>
       )}

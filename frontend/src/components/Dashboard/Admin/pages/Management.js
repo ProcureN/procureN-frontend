@@ -160,12 +160,9 @@ const Management = () => {
     return <ul className='flex'>{pageNumbers}</ul>;
   };
 
-  const handleLimitPlus = async () => {
-    setLimit(limit + 10);
-    console.log(page);
-  };
-  const handleLimitMinus = async () => {
-    setLimit(limit - 10);
+  const handleLimitChange = (event) => {
+    const newLimit = parseInt(event.target.value);
+    setLimit(newLimit);
   };
 
   const handleOnClose = () => setShowMyModal(false);
@@ -251,8 +248,9 @@ const Management = () => {
                   item.deliveryStatus === 'processing'
                 ? 'visible text-blue-600'
                 : item.status === 'Approved' &&
-                  item.deliveryStatus === 'shipped' ?
-                  'visible text-amber-700':"hidden"
+                  item.deliveryStatus === 'shipped'
+                ? 'visible text-amber-700'
+                : 'hidden'
             }`}
           >
             {item.deliveryStatus.charAt(0).toUpperCase() +
@@ -304,36 +302,29 @@ const Management = () => {
               <PdfData fileName='Enquiry Form Data' bdy={bdy} wid={widths} />
             </div>
             <div className='my-auto bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-2xl font-semibold  text-transparent'>
-              Retailer Enquiry Data
+              Retailer Enquiries Data
             </div>
-            <div className='rounded-lg  p-0.5 text-sm   lg:p-2'>
-              Data per page: <span className='text-lg'>{limit}</span>
-              <button
-                // disabled={totalPages >= page  }
-                onClick={handleLimitPlus}
-                className={`text-md mx-1 cursor-pointer  rounded-lg bg-indigo-300 p-1  shadow-lg shadow-indigo-300  lg:px-2 lg:text-lg xl:text-xl ${
-                  totalPages === 1 ? 'hidden' : 'visible bg-indigo-300'
-                }`}
+            <div className='rounded-lg p-0.5 text-sm lg:p-2'>
+              Rows per page:
+              <select
+                className='mx-1 cursor-pointer rounded-lg border p-1 text-lg hover:shadow-lg shadow-indigo-300 '
+                value={limit}
+                onChange={handleLimitChange}
               >
-                &#43;
-              </button>
-              <button
-                onClick={handleLimitMinus}
-                className={`text-md mx-1 ml-2 cursor-pointer rounded-lg p-1 shadow-lg   shadow-indigo-300 lg:mx-2 lg:px-2 lg:text-lg xl:text-xl ${
-                  limit <= 10 ? 'hidden' : 'visible bg-indigo-300'
-                }`}
-              >
-                &minus;
-              </button>
+                <option c value={10}>10</option>
+                <option value={20}>20</option>
+                <option value={50}>50</option>
+                <option value={100}>100</option>
+              </select>
             </div>
           </div>
           {data.length > 0 ? (
             <section
               className={`h-[80vh] overflow-x-scroll xl:overflow-x-hidden `}
             >
-              <table className=' border border-black shadow-xl'>
+              <table className=' border border-black shadow-xl mx-auto'>
                 <thead>
-                  <tr className='border-y border-black bg-indigo-100  p-1 md:p-2 '>
+                  <tr className='border-y border-black bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] p-1 font-normal  text-white md:p-2 '>
                     <th className='border-x border-black py-1 md:py-2'>
                       Sr. No.
                     </th>
@@ -387,7 +378,7 @@ const Management = () => {
             {totalPages > 1 && (
               <div className='my-2 flex '>
                 <button
-                  className={`  mr-4 rounded-md border border-gray-400 px-2 hover:bg-indigo-400 hover:text-white ${
+                  className={`  mr-4 rounded-md border border-gray-400 px-2 hover:bg-[#5c67f5] hover:text-white ${
                     page === 1 && 'cursor-not-allowed opacity-50'
                   }`}
                   onClick={() => setPage(page - 1)}
@@ -397,7 +388,7 @@ const Management = () => {
                 </button>
                 <div className=' '>{renderPagination()}</div>
                 <button
-                  className={`  ml-2 rounded-md border border-gray-400 px-2 hover:bg-indigo-400 hover:text-white ${
+                  className={`  ml-2 rounded-md border border-gray-400 px-2 hover:bg-[#5c67f5] hover:text-white ${
                     page === totalPages && 'cursor-not-allowed opacity-50'
                   } `}
                   onClick={() => setPage(page + 1)}
