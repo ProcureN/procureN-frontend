@@ -113,7 +113,7 @@ const AddProduct = () => {
                     className='select w-full max-w-xs rounded-md border-2 bg-slate-100 p-2 '
                     name='productName'
                     id='productName'
-                    placeholder='Enter your product name.'
+                    placeholder='Enter your product name'
                   />
                   <ErrorMessage
                     name='productName'
@@ -173,7 +173,7 @@ const AddProduct = () => {
                     type='text'
                     name='manufacturerName'
                     id='manufacturerName'
-                    placeholder='Manufacturer Name'
+                    placeholder='Manufacturer name'
                   />
                   <ErrorMessage
                     name='manufacturerName'
@@ -193,7 +193,7 @@ const AddProduct = () => {
                     type='number'
                     name='priceBeforeDiscount'
                     id='priceBeforeDiscount'
-                    placeholder='Enter the Price '
+                    placeholder='Enter the price '
                   />
                   <ErrorMessage
                     name='priceBeforeDiscount'
@@ -213,7 +213,7 @@ const AddProduct = () => {
                     type='number'
                     name='price'
                     id='price'
-                    placeholder='Enter the price with discount. '
+                    placeholder='Enter the price with discount '
                   />
                   <ErrorMessage
                     name='price'
@@ -233,7 +233,7 @@ const AddProduct = () => {
                     type='number'
                     name='withGST'
                     id='withGST'
-                    placeholder='Enter the Price with GST'
+                    placeholder='Enter the price with GST'
                   />
                   <ErrorMessage
                     name='withGST'
@@ -253,7 +253,7 @@ const AddProduct = () => {
                     type='number'
                     name='shippingCharges'
                     id='shippingCharges'
-                    placeholder='Enter the Shipping Charges '
+                    placeholder='Enter the shipping charges '
                   />
                   <ErrorMessage
                     name='shippingCharges'
@@ -273,7 +273,7 @@ const AddProduct = () => {
                     type='text'
                     name='sizeUnit'
                     id='sizeUnit'
-                    placeholder='Enter your sizeUnit'
+                    placeholder='Enter your size unit'
                   />
                   <ErrorMessage
                     name='sizeUnit'

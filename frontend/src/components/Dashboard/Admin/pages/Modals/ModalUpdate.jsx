@@ -190,7 +190,7 @@ const ModalUpdate = ({ visible, onClose, initialValues, setSub }) => {
                     type='text'
                     name='otherProduct'
                     id='otherProduct'
-                    placeholder='Enter Other Product Name'
+                    placeholder='Enter other product name'
                   />
                   <ErrorMessage
                     name='otherProduct'
@@ -251,7 +251,7 @@ const ModalUpdate = ({ visible, onClose, initialValues, setSub }) => {
                     type='text'
                     name='email'
                     id='email'
-                    placeholder='Enter your email address.'
+                    placeholder='Enter your email address'
                   />
                   <ErrorMessage
                     name='email'
@@ -271,7 +271,7 @@ const ModalUpdate = ({ visible, onClose, initialValues, setSub }) => {
                     type='text'
                     name='contact'
                     id='contact'
-                    placeholder='Enter your phone number.'
+                    placeholder='Enter your phone number'
                   />
                   <ErrorMessage
                     name='contact'
@@ -313,7 +313,7 @@ const ModalUpdate = ({ visible, onClose, initialValues, setSub }) => {
                     type='text'
                     name='city'
                     id='city'
-                    placeholder='Enter your city name. '
+                    placeholder='Enter your city name'
                   />
 
                   <ErrorMessage
@@ -384,7 +384,7 @@ const ModalUpdate = ({ visible, onClose, initialValues, setSub }) => {
                     type='text'
                     name='shippingPincode'
                     id='shippingPincode'
-                    placeholder='Enter your city pincode.'
+                    placeholder='Enter your city pincode'
                   />
                   <ErrorMessage
                     name='shippingPincode'

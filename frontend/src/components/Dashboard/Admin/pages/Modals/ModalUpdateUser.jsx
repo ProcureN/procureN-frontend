@@ -200,7 +200,7 @@ const ModalUpdateUser = ({ visible, onClose, initialValues, setSub }) => {
                     type='text'
                     name='company'
                     id='company'
-                    placeholder='Company Name'
+                    placeholder='Company name'
                   />
                   <ErrorMessage
                     name='company'
@@ -243,7 +243,7 @@ const ModalUpdateUser = ({ visible, onClose, initialValues, setSub }) => {
                     type='text'
                     name='jobTitle'
                     id='jobTitle'
-                    placeholder='Job Title'
+                    placeholder='Job title'
                   />
                   <ErrorMessage
                     name='jobTitle'
@@ -264,7 +264,7 @@ const ModalUpdateUser = ({ visible, onClose, initialValues, setSub }) => {
                     type='text'
                     name='city'
                     id='city'
-                    placeholder='Enter your city name.'
+                    placeholder='Enter your city name'
                   />
                   <ErrorMessage
                     name='city'

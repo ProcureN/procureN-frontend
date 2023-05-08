@@ -100,7 +100,7 @@ const PasswordRest = () => {
                     type={showPassword ? 'text' : 'password'}
                     name='password'
                     id='password'
-                    placeholder='Enter your password here.'
+                    placeholder='Enter your password here'
                   />
                   <div
                     onClick={() => setShowPassword(!showPassword)}
@@ -134,7 +134,7 @@ const PasswordRest = () => {
                     type='password'
                     name='passwordConfirm'
                     id='passwordConfirm'
-                    placeholder='Enter your password here.'
+                    placeholder='Enter your password here'
                   />
                   {/* <div
                     onClick={() => setShowPassword(!showPassword)}

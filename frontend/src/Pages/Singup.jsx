@@ -213,7 +213,7 @@ const Signup = () => {
                     type='email'
                     name='email'
                     id='email'
-                    placeholder='@email'
+                    placeholder='Email'
                   />
 
                   <ErrorMessage
@@ -237,7 +237,7 @@ const Signup = () => {
                       type={showPassword ? 'text' : 'password'}
                       name='password'
                       id='password'
-                      placeholder='password'
+                      placeholder='Password'
                     />
                     <div
                       onClick={() => setShowPassword(!showPassword)}
@@ -270,7 +270,7 @@ const Signup = () => {
                     type='password'
                     name='passwordConfirm'
                     id='confirm'
-                    placeholder='confirm password'
+                    placeholder='Confirm password'
                   />
 
                   <ErrorMessage
@@ -313,7 +313,7 @@ const Signup = () => {
                     type='text'
                     name='company'
                     id='company'
-                    placeholder='Company Name'
+                    placeholder='Company name'
                   />
                   <ErrorMessage
                     name='company'
@@ -358,7 +358,7 @@ const Signup = () => {
                     type='text'
                     name='jobTitle'
                     id='jobTitle'
-                    placeholder='Job Title'
+                    placeholder='Job title'
                   />
                   <ErrorMessage
                     name='jobTitle'
@@ -380,7 +380,7 @@ const Signup = () => {
                     type='text'
                     name='city'
                     id='city'
-                    placeholder='Enter your city name.'
+                    placeholder='City name'
                   />
                   <ErrorMessage
                     name='city'

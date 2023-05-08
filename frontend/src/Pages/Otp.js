@@ -96,7 +96,7 @@ const Otp = () => {
                       type='text'
                       name='email'
                       id='email'
-                      placeholder='Enter your email here.'
+                      placeholder='Enter your email here'
                     />
                     <ErrorMessage
                       name='email'
@@ -118,7 +118,7 @@ const Otp = () => {
                       type='number'
                       name='otp'
                       id='otp'
-                      placeholder='Enter your OTP here.'
+                      placeholder='Enter your OTP here'
                     />
                     {/* <ErrorMessage
                       name='otp'
@@ -191,7 +191,7 @@ const Otp = () => {
                       type='text'
                       name='email'
                       id='email'
-                      placeholder='Enter your email here.'
+                      placeholder='Enter your email here'
                     />
                     <ErrorMessage
                       name='email'

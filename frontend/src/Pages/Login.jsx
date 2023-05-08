@@ -100,7 +100,7 @@ const Login = () => {
                   type='text'
                   name='email'
                   id='email'
-                  placeholder='Enter your email here.'
+                  placeholder='Enter your email here'
                 />
               </div>
               <div className='mt-2'>
@@ -124,7 +124,7 @@ const Login = () => {
                     type={showPassword ? 'text' : 'password'}
                     name='password'
                     id='password'
-                    placeholder='Enter your password here.'
+                    placeholder='Enter your password here'
                   />
                   <div
                     onClick={() => setShowPassword(!showPassword)}
