@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FiEdit2 } from 'react-icons/fi';
-import { AiOutlineDelete } from 'react-icons/ai';
+import { AiFillDelete } from 'react-icons/ai';
 import axios from 'axios';
 import { CgSpinner } from 'react-icons/cg';
 import ExcelData from '../../ExcelData';
@@ -207,6 +207,7 @@ const Management = () => {
         </td> */}
         <td className=' border-x border-gray-400 px-1 '>{item.email}</td>
         <td className=' border-x border-gray-400 px-1 '>{item.quantity}</td>
+        <td className='border-x border-gray-400 px-1 '>{item.city}</td>
         <td className='border-x border-gray-400 px-1 '>{item.state}</td>
         <td className='w-[15%]  border-x border-gray-400 px-1 '>
           {isExpanded ? item.billingAddress : truncatedAddress}
@@ -277,7 +278,7 @@ const Management = () => {
             // handleDelete(item._id);
           }}
         >
-          <AiOutlineDelete />
+          <AiFillDelete />
         </td>
       </tr>
     );
@@ -339,6 +340,7 @@ const Management = () => {
                     </th> */}
                     <th className='border-x border-gray-400 '>Email</th>
                     <th className='border-x border-gray-400 '>Quantity</th>
+                    <th className='border-x border-gray-400 '>City</th>
                     <th className='border-x border-gray-400 '>State</th>
                     <th className='border-x border-gray-400 '>
                       Billing Address

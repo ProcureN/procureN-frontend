@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FiEdit2 } from 'react-icons/fi';
-import { AiOutlineDelete } from 'react-icons/ai';
+import { AiFillDelete } from 'react-icons/ai';
 
 import axios from 'axios';
 import { CgSpinner } from 'react-icons/cg';
@@ -222,7 +222,7 @@ const ManageManufacture = () => {
             // handleDelete(item._id);
           }}
         >
-          <AiOutlineDelete />
+          <AiFillDelete />
         </td>
       </tr>
     );

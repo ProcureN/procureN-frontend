@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FiEdit2 } from 'react-icons/fi';
-import { AiOutlineDelete } from 'react-icons/ai';
+import { AiFillDelete } from 'react-icons/ai';
 
 import axios from 'axios';
 import { CgSpinner } from 'react-icons/cg';
@@ -161,8 +161,6 @@ const VendorManagement = () => {
     return <ul className='flex'>{pageNumbers}</ul>;
   };
 
-
-
   const handleLimitChange = (event) => {
     const newLimit = parseInt(event.target.value);
     setLimit(newLimit);
@@ -218,7 +216,7 @@ const VendorManagement = () => {
           <FiEdit2 />
         </td>
         <td
-          className='cursor-pointer border-x border-gray-400 px-1 text-orange-600 hover:text-red-600 '
+          className='cursor-pointer border-x border-gray-400 px-1 text-xl text-orange-600 hover:text-red-600 '
           onClick={() => {
             setVal(item);
             setShowMyModal2(true);
@@ -226,7 +224,7 @@ const VendorManagement = () => {
             // handleDelete(item._id);
           }}
         >
-          <AiOutlineDelete />
+          <AiFillDelete />
         </td>
       </tr>
     );
@@ -254,11 +252,13 @@ const VendorManagement = () => {
             <div className='rounded-lg p-0.5 text-sm lg:p-2'>
               Rows per page:
               <select
-                className='mx-1 cursor-pointer rounded-lg border p-1 text-lg hover:shadow-lg shadow-indigo-300 '
+                className='mx-1 cursor-pointer rounded-lg border p-1 text-lg shadow-indigo-300 hover:shadow-lg '
                 value={limit}
                 onChange={handleLimitChange}
               >
-                <option c value={10}>10</option>
+                <option c value={10}>
+                  10
+                </option>
                 <option value={20}>20</option>
                 <option value={50}>50</option>
                 <option value={100}>100</option>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AiOutlineDelete } from 'react-icons/ai';
+import { AiFillDelete } from 'react-icons/ai';
 
 import axios from 'axios';
 import { CgSpinner } from 'react-icons/cg';
@@ -168,9 +168,9 @@ const VendorEnquiries = () => {
   function TableRow({ item, index }) {
     return (
       <tr
-      key={index}
-      className={`  border-y border-black p-1 text-center hover:bg-indigo-100  md:py-2 `}
-    >
+        key={index}
+        className={`  border-y border-black p-1 text-center hover:bg-indigo-100  md:py-2 `}
+      >
         <td className=' border-x border-black'>
           {(page - 1) * limit + index + 1}
         </td>
@@ -194,13 +194,13 @@ const VendorEnquiries = () => {
 
         <td className=' border-x border-gray-400 px-1 '>{item.message}</td>
         <td
-          className=' cursor-pointer   text-orange-600 hover:text-red-600 '
+          className=' cursor-pointer text-xl  text-orange-600 hover:text-red-600 '
           onClick={() => {
             setVal(item);
             setShowMyModal2(true);
           }}
         >
-          <AiOutlineDelete className='mx-auto' />
+          <AiFillDelete className='mx-auto' />
         </td>
       </tr>
     );
@@ -229,7 +229,7 @@ const VendorEnquiries = () => {
             <div className='rounded-lg p-0.5 text-sm lg:p-2'>
               Rows per page:
               <select
-                className='mx-1 cursor-pointer rounded-lg border p-1 text-lg hover:shadow-lg shadow-indigo-300 '
+                className='mx-1 cursor-pointer rounded-lg border p-1 text-lg shadow-indigo-300 hover:shadow-lg '
                 value={limit}
                 onChange={handleLimitChange}
               >
@@ -272,7 +272,29 @@ const VendorEnquiries = () => {
           )}
 
           <div className='flex justify-center'>
-            {totalPages > 1 && renderPagination()}
+            {totalPages > 1 && (
+              <div className='my-2 flex '>
+                <button
+                  className={`  mr-4 rounded-md border border-gray-400 px-2 hover:bg-[#5c67f5] hover:text-white ${
+                    page === 1 && 'cursor-not-allowed opacity-50'
+                  }`}
+                  onClick={() => setPage(page - 1)}
+                  disabled={page === 1}
+                >
+                  Prev
+                </button>
+                <div className=' '>{renderPagination()}</div>
+                <button
+                  className={`  ml-2 rounded-md border border-gray-400 px-2 hover:bg-[#5c67f5] hover:text-white ${
+                    page === totalPages && 'cursor-not-allowed opacity-50'
+                  } `}
+                  onClick={() => setPage(page + 1)}
+                  disabled={page === totalPages}
+                >
+                  Next
+                </button>
+              </div>
+            )}
           </div>
           <ModalDelete
             onClose={handleOnClose2}

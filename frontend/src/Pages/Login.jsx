@@ -19,6 +19,8 @@ const LoginSchema = Yup.object().shape({
 
 const Login = () => {
   let history = useNavigate();
+  const [loading, setLoading] = useState(false);
+
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -41,6 +43,7 @@ const Login = () => {
           }}
           validationSchema={LoginSchema}
           onSubmit={async (values, { setSubmitting }) => {
+            setLoading(true);
             await axios
               .post(
                 'https://procuren-backend.onrender.com/login',
@@ -49,6 +52,7 @@ const Login = () => {
                 values
               )
               .then((response) => {
+                setLoading(false); 
                 localStorage.removeItem('token');
                 localStorage.removeItem('customerID');
                 localStorage.removeItem('role');
@@ -65,6 +69,7 @@ const Login = () => {
                 setSubmitting(false);
               })
               .catch((error) => {
+                setLoading(false); 
                 if (error.response.data.message === 'you are not verified') {
                   alert('please verify your mail');
                   history('/otp/signup');
@@ -152,7 +157,7 @@ const Login = () => {
                 type='submit'
                 disabled={isSubmitting}
               >
-                Login
+                {loading ? 'login...' : 'Login'}
               </button>
               <div className='mb-4  flex flex-wrap justify-between '>
                 <div className='mr-4 '>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FiEdit2 } from 'react-icons/fi';
-import { AiOutlineDelete } from 'react-icons/ai';
+import { AiFillDelete } from 'react-icons/ai';
 import axios from 'axios';
 import { CgSpinner } from 'react-icons/cg';
 import ExcelData from '../../ExcelData';
@@ -263,7 +263,7 @@ const ProductsManagement = () => {
           <FiEdit2 />
         </td>
         <td
-          className='cursor-pointer border-x border-gray-400 px-1 text-orange-600 hover:text-red-600 '
+          className='cursor-pointer border-x border-gray-400 px-1 text-xl text-orange-600 hover:text-red-600 '
           onClick={() => {
             setVal(item);
             setShowMyModal2(true);
@@ -271,7 +271,7 @@ const ProductsManagement = () => {
             // handleDelete(item._id);
           }}
         >
-          <AiOutlineDelete />
+          <AiFillDelete />
         </td>
       </tr>
     );
@@ -295,18 +295,21 @@ const ProductsManagement = () => {
             <div className='my-auto bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-2xl font-semibold  text-transparent'>
               Products Data
             </div>
-            <div className='rounded-lg p-0.5 text-sm lg:p-2'>
-              Rows per page:
-              <select
-                className='mx-1 cursor-pointer rounded-lg border p-1 text-lg shadow-indigo-300 hover:shadow-lg '
-                value={limit}
-                onChange={handleLimitChange}
-              >
-                <option value={10}>10</option>
-                <option value={20}>20</option>
-                <option value={50}>50</option>
-                <option value={100}>100</option>
-              </select>
+            <div className='flex '>
+                <button className='flex justify-center items-center bg-[#5c67f5] text-white m-1 px-2 rounded-xl'>Add product</button>
+              <div className='rounded-lg p-0.5 text-sm lg:p-2'>
+                Rows per page:
+                <select
+                  className='mx-1 cursor-pointer rounded-lg border p-1 text-lg shadow-indigo-300 hover:shadow-lg '
+                  value={limit}
+                  onChange={handleLimitChange}
+                >
+                  <option value={10}>10</option>
+                  <option value={20}>20</option>
+                  <option value={50}>50</option>
+                  <option value={100}>100</option>
+                </select>
+              </div>
             </div>
           </div>
           {data.length > 0 ? (
