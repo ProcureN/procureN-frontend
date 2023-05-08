@@ -8,6 +8,7 @@ import PdfData from '../../PdfData';
 
 import ModalUpdateProduct from './Modals/ModalUpdateProduct';
 import ModalDelete from './Modals/ModalDelete';
+import ModalAddProduct from './Modals/ModalAddProduct';
 
 const ProductsManagement = () => {
   const [loading, setLoading] = useState(false);
@@ -20,6 +21,7 @@ const ProductsManagement = () => {
   const [btn, setBtn] = useState(6);
   const [showMyModal, setShowMyModal] = useState(false);
   const [showMyModal2, setShowMyModal2] = useState(false);
+  const [showMyModal3, setShowMyModal3] = useState(false);
   const [sub, setSub] = useState(false);
   const [val, setVal] = useState({});
 
@@ -177,6 +179,7 @@ const ProductsManagement = () => {
 
   const handleOnClose = () => setShowMyModal(false);
   const handleOnClose2 = () => setShowMyModal2(false);
+  const handleOnClose3 = () => setShowMyModal3(false);
 
   function TableRow({ item, index }) {
     return (
@@ -235,7 +238,7 @@ const ProductsManagement = () => {
           <br />
           <span
             className={` text-sm italic  ${
-              item.status === 'Approved' && item.deliveryStatus === 'delivered'
+              item.status === 'Approved' && item.deliveryStatus === 'Delivered'
                 ? 'visible text-green-600 '
                 : item.status === 'Approved' &&
                   item.deliveryStatus === 'inTransit'
@@ -296,7 +299,12 @@ const ProductsManagement = () => {
               Products Data
             </div>
             <div className='flex '>
-                <button className='flex justify-center items-center bg-[#5c67f5] text-white m-1 px-2 rounded-xl'>Add product</button>
+              <button
+                onClick={() => setShowMyModal3(true)}
+                className='m-1 flex items-center justify-center rounded-xl bg-[#5c67f5] px-2 text-white'
+              >
+                Add product
+              </button>
               <div className='rounded-lg p-0.5 text-sm lg:p-2'>
                 Rows per page:
                 <select
@@ -391,6 +399,11 @@ const ProductsManagement = () => {
               </div>
             )}
           </div>
+          <ModalAddProduct
+            onClose={handleOnClose3}
+            visible={showMyModal3}
+            setSub={setSub}
+          />
           <ModalUpdateProduct
             onClose={handleOnClose}
             visible={showMyModal}

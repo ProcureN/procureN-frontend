@@ -37,6 +37,7 @@ const AddProduct = () => {
   useEffect(() => {
     setCustomerID(localStorage.getItem('customerID'));
   }, []);
+
   const initialValues = {
     productName: '',
     category: '',
@@ -61,7 +62,7 @@ const AddProduct = () => {
           initialValues={initialValues}
           validationSchema={productSchema}
           onSubmit={(values, { setSubmitting, resetForm }) => {
-            console.log(customerID);
+    
             const token = localStorage.getItem('token');
             setLoading(true);
             axios
