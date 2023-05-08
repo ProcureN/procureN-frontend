@@ -50,7 +50,7 @@ const ManufacturerDashboard = () => {
           </div>
         )}
         <div className='flex w-full flex-col'>
-          <div className=' m-2 flex items-center justify-between  rounded-xl bg-gradient-to-bl from-blue-500 to-pink-200 px-10 py-4 shadow-md '>
+        <div className=' mx-2 mt-1 flex items-center  justify-between rounded-xl border px-10 py-4 shadow-md '>
             <div className='text-3xl' onClick={() => setOpen(!open)}>
               {open ? <AiOutlineMenuUnfold /> : <AiOutlineMenuFold />}
             </div>

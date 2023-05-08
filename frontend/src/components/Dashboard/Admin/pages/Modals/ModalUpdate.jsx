@@ -7,24 +7,24 @@ const phoneRegExp = /^(\+91-|\+91|0)?\d{10}$/;
 const pincodeRegExp = /^[0-9]{6}$/;
 
 const SignupSchema = Yup.object().shape({
-  productName: Yup.string().required('Information is required.*'),
+  productName: Yup.string().required('Information is required*'),
   otherProduct: Yup.string(),
   quantity: Yup.string(),
-  name: Yup.string().required('Information is required.*'),
+  name: Yup.string().required('Information is required*'),
   contact: Yup.string()
     .matches(phoneRegExp, 'Invalid phone number')
-    .required('Information is required.*'),
+    .required('Information is required*'),
   alternativeNumber: Yup.string().matches(phoneRegExp, 'Invalid phone number'),
   email: Yup.string()
     .email('Invalid email address')
-    .required('Information is required.*'),
+    .required('Information is required*'),
   password: Yup.string(),
-  state: Yup.string().required('Information is required.*'),
-  city: Yup.string().required('Information is required.*'),
-  billingAddress: Yup.string().required('Information is required.*'),
+  state: Yup.string().required('Information is required*'),
+  city: Yup.string().required('Information is required*'),
+  billingAddress: Yup.string().required('Information is required*'),
   shippingPincode: Yup.string()
     .matches(pincodeRegExp, 'Invalid Pincode')
-    .required('Information is required.*'),
+    .required('Information is required*'),
 });
 
 const ModalUpdate = ({ visible, onClose, initialValues, setSub }) => {
@@ -69,11 +69,9 @@ const ModalUpdate = ({ visible, onClose, initialValues, setSub }) => {
 
   const [loading, setLoading] = useState(false);
 
-
   const [product, setProduct] = useState([]);
 
   useEffect(() => {
-
     axios
       .get(`https://procuren-backend.onrender.com/getproductnames`)
       .then((response) => {
@@ -117,7 +115,7 @@ const ModalUpdate = ({ visible, onClose, initialValues, setSub }) => {
           validationSchema={SignupSchema}
           onSubmit={(values, { setSubmitting }) => {
             const token = localStorage.getItem('token');
-            values = { ...values,  };
+            values = { ...values };
             setLoading(true);
 
             axios
@@ -152,7 +150,7 @@ const ModalUpdate = ({ visible, onClose, initialValues, setSub }) => {
               </h1>
 
               <div className='grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 '>
-              <div>
+                <div>
                   <label
                     className='text-md block font-semibold text-gray-800'
                     htmlFor='productName'

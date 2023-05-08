@@ -237,7 +237,7 @@ const Management = () => {
           <br />
           <span
             className={` text-sm italic  ${
-              item.status === 'Approved' && item.deliveryStatus === 'delivered'
+              item.status === 'Approved' && item.deliveryStatus === 'Delivered'
                 ? 'visible text-green-600 '
                 : item.status === 'Approved' &&
                   item.deliveryStatus === 'inTransit'

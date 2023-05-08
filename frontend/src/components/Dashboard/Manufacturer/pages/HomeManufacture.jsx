@@ -55,7 +55,7 @@ const HomeManufacture = ({ setProfile }) => {
           </span>
           <div className='flex justify-center '>
             <div className='mx-10 grid lg:grid-cols-2 lg:gap-14'>
-              <div className='col-span-1  mt-2  h-36 w-36 rounded-xl bg-indigo-50   p-4 text-xl  shadow-lg'>
+              <div className='col-span-1  mt-2  h-36 w-36 rounded-xl   p-4 text-xl  shadow-lg'>
                 <span className='text-green-500'>Approved Products</span>
                 <div className='h-0.5 w-full bg-indigo-500'></div>
                 <div className='text-3xl  font-bold text-gray-600'>
@@ -67,7 +67,7 @@ const HomeManufacture = ({ setProfile }) => {
                   />
                 </div>
               </div>
-              <div className='col-span-1  mt-2     h-36 w-36 rounded-xl bg-indigo-50   p-4 text-xl  shadow-lg'>
+              <div className='col-span-1  mt-2     h-36 w-36 rounded-xl   p-4 text-xl  shadow-lg'>
                 <span className='text-orange-400'>Pending Products</span>
                 <div className='h-0.5 w-full bg-indigo-500'></div>
                 <div className='text-3xl  font-bold text-gray-600'>
@@ -79,7 +79,7 @@ const HomeManufacture = ({ setProfile }) => {
                   />
                 </div>
               </div>
-              <div className=' col-span-1 mt-2     h-36 w-36 rounded-xl bg-indigo-50   p-4 text-xl  shadow-lg'>
+              <div className=' col-span-1 mt-2     h-36 w-36 rounded-xl   p-4 text-xl  shadow-lg'>
                 <span className='text-red-600'>Rejected Products</span>
                 <div className='h-0.5 w-full bg-indigo-500'></div>
                 <div className='text-3xl  font-bold text-gray-600'>
@@ -91,7 +91,7 @@ const HomeManufacture = ({ setProfile }) => {
                   />
                 </div>
               </div>
-              <div className='col-span-1 mt-2   h-36 w-36 rounded-xl bg-indigo-50   p-4 text-xl  shadow-lg'>
+              <div className='col-span-1 mt-2   h-36 w-36 rounded-xl   p-4 text-xl  shadow-lg'>
                 <span className=''>Total Products</span>
                 <div className='h-0.5 w-full bg-indigo-500'></div>
                 <div className='text-3xl  font-bold text-gray-600'>

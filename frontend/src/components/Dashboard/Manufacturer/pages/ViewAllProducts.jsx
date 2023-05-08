@@ -296,9 +296,7 @@ const ViewAllProducts = () => {
     return (
       <tr
         key={index}
-        className={` whitespace-nowrap border-y  border-black p-1 text-center md:py-2 xl:whitespace-normal ${
-          index % 2 === 0 && 'bg-slate-200 '
-        } hover:bg-indigo-200 `}
+        className={` whitespace-nowrap border-y  border-black p-1 text-center hover:bg-indigo-200 md:py-2  xl:whitespace-normal `}
       >
         <td className=' border-x border-black'>
           {(page - 1) * limit + index + 1}
@@ -401,7 +399,8 @@ const ViewAllProducts = () => {
             >
               <table className='whitespace-nowrap border  border-black shadow-xl xl:whitespace-normal'>
                 <thead>
-                  <tr className='border-y border-black bg-indigo-100  p-1 md:p-2 '>
+                  <tr className='border-y border-black bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] p-1 font-normal  text-white md:p-2 '>
+                    {' '}
                     <th className='border-x border-black py-1 md:py-2'>
                       Sr. No.
                     </th>

@@ -19,7 +19,7 @@ const proposelSchema = Yup.object().shape({
   phone: Yup.string()
     .matches(phoneRegExp, 'Invalid phone number')
     .required('Phone number is required.*'),
-  subject: Yup.string().required('Information is required.*'),
+  subject: Yup.string().required('Information is required*'),
   message: Yup.string(),
 });
 

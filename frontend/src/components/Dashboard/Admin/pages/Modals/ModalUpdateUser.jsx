@@ -7,18 +7,18 @@ import axios from 'axios';
 // const phoneRegExp = /^(\+91-|\+91|0)?\d{10}$/;
 
 const SignupSchema = Yup.object().shape({
-  name: Yup.string().required('Information is required.*'),
-  city: Yup.string().required('Information is required.*'),
-  state: Yup.string().required('Information is required.*'),
-  company: Yup.string().required('Information is required.*'),
-  jobTitle: Yup.string().required('Information is required.*'),
-  selectRole: Yup.string().required('Information is required.*'),
+  name: Yup.string().required('Information is required*'),
+  city: Yup.string().required('Information is required*'),
+  state: Yup.string().required('Information is required*'),
+  company: Yup.string().required('Information is required*'),
+  jobTitle: Yup.string().required('Information is required*'),
+  selectRole: Yup.string().required('Information is required*'),
   // phone: Yup.string()
   //   .matches(phoneRegExp, 'Invalid phone number')
-  //   .required('Information is required.*'),
+  //   .required('Information is required*'),
   // email: Yup.string()
   //   .email('Invalid email address')
-  //   .required('Information is required.*'),
+  //   .required('Information is required*'),
 });
 
 const ModalUpdateUser = ({ visible, onClose, initialValues, setSub }) => {
@@ -180,7 +180,7 @@ const ModalUpdateUser = ({ visible, onClose, initialValues, setSub }) => {
                     name='phone'
                     id='phone'
                     disabled
-                    placeholder={ initialValues.phone}
+                    placeholder={initialValues.phone}
                   />
                   {/* <ErrorMessage
                     name='phone'

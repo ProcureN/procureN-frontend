@@ -17,15 +17,15 @@ const passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,16}$/;
 const emailReg = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
 const SignupSchema = Yup.object().shape({
-  name: Yup.string().required('Information is required.*'),
-  city: Yup.string().required('Information is required.*'),
-  state: Yup.string().required('Information is required.*'),
-  company: Yup.string().required('Information is required.*'),
-  jobTitle: Yup.string().required('Information is required.*'),
-  selectRole: Yup.string().required('Information is required.*'),
+  name: Yup.string().required('Information is required*'),
+  city: Yup.string().required('Information is required*'),
+  state: Yup.string().required('Information is required*'),
+  company: Yup.string().required('Information is required*'),
+  jobTitle: Yup.string().required('Information is required*'),
+  selectRole: Yup.string().required('Information is required*'),
   phone: Yup.string()
     .matches(phoneRegex, 'Invalid phone number')
-    .required('Information is required.*')
+    .required('Information is required*')
     .test(
       'is-unique',
       'This phone number is already taken',
@@ -47,7 +47,7 @@ const SignupSchema = Yup.object().shape({
   email: Yup.string()
     .email('Invalid email address')
     .matches(emailReg, 'mail is not valid')
-    .required('Information is required.*')
+    .required('Information is required*')
     .test(
       'is-unique',
       'This email address is already taken',
@@ -69,9 +69,9 @@ const SignupSchema = Yup.object().shape({
   password: Yup.string()
     .matches(passwordRegex, '8-16 chars, uppercase, symbol. Ex: P@ssword123')
 
-    .required('Information is required.*'),
+    .required('Information is required*'),
   passwordConfirm: Yup.string()
-    .required('Information is required.*')
+    .required('Information is required*')
     .oneOf([Yup.ref('password'), null], 'Passwords must match'),
 });
 

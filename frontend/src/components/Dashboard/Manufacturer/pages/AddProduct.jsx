@@ -4,18 +4,18 @@ import * as Yup from 'yup';
 import axios from 'axios';
 
 const productSchema = Yup.object().shape({
-  productName: Yup.string().required('Information is required.*'),
-  category: Yup.string().required('Information is required.*'),
-  subCategory: Yup.string().required('Information is required.*'),
-  manufacturerName: Yup.string().required('Information is required.*'),
-  priceBeforeDiscount: Yup.number().required('Information is required.*'),
-  price: Yup.number().required('Information is required.*'),
-  withGST: Yup.number().required('Information is required.*'),
-  description: Yup.string().required('Information is required.*'),
-  shippingCharges: Yup.number().required('Information is required.*'),
-  sizeUnit: Yup.string().required('Information is required.*'),
-  productQuantity: Yup.string().required('Information is required.*'),
-  availability: Yup.string().required('Information is required.*'),
+  productName: Yup.string().required('Information is required*'),
+  category: Yup.string().required('Information is required*'),
+  subCategory: Yup.string().required('Information is required*'),
+  manufacturerName: Yup.string().required('Information is required*'),
+  priceBeforeDiscount: Yup.number().required('Information is required*'),
+  price: Yup.number().required('Information is required*'),
+  withGST: Yup.number().required('Information is required*'),
+  description: Yup.string().required('Information is required*'),
+  shippingCharges: Yup.number().required('Information is required*'),
+  sizeUnit: Yup.string().required('Information is required*'),
+  productQuantity: Yup.string().required('Information is required*'),
+  availability: Yup.string().required('Information is required*'),
   // selectImage1: Yup.mixed()
   // .required('Image is required')
   // .test('fileType', 'Only PNG and JPEG images are allowed', (value) => {
@@ -416,18 +416,18 @@ export default AddProduct;
 // const customerID = localStorage.getItem('customerID');
 
 // const SignupSchema = Yup.object().shape({
-//   productName: Yup.string().required('Information is required.*'),
-//   category: Yup.string().required('Information is required.*'),
-//   subCategory: Yup.string().required('Information is required.*'),
-//   manufacturer: Yup.string().required('Information is required.*'),
-//   priceBeforeDiscount: Yup.number().required('Information is required.*'),
-//   price: Yup.number().required('Information is required.*'),
-//   withGST: Yup.number().required('Information is required.*'),
-//   description: Yup.string().required('Information is required.*'),
-//   shippingCharges: Yup.number().required('Information is required.*'),
-//   sizeUnit: Yup.string().required('Information is required.*'),
-//   productQuantity: Yup.string().required('Information is required.*'),
-//   availability: Yup.string().required('Information is required.*'),
+//   productName: Yup.string().required('Information is required*'),
+//   category: Yup.string().required('Information is required*'),
+//   subCategory: Yup.string().required('Information is required*'),
+//   manufacturer: Yup.string().required('Information is required*'),
+//   priceBeforeDiscount: Yup.number().required('Information is required*'),
+//   price: Yup.number().required('Information is required*'),
+//   withGST: Yup.number().required('Information is required*'),
+//   description: Yup.string().required('Information is required*'),
+//   shippingCharges: Yup.number().required('Information is required*'),
+//   sizeUnit: Yup.string().required('Information is required*'),
+//   productQuantity: Yup.string().required('Information is required*'),
+//   availability: Yup.string().required('Information is required*'),
 //   selectImage1: Yup.mixed()
 //     .required('Image is required')
 //     .test('fileType', 'Only PNG and JPEG images are allowed', (value) => {

@@ -7,24 +7,24 @@ const phoneRegExp = /^(\+91-|\+91|0)?\d{10}$/;
 const pincodeRegExp = /^[0-9]{6}$/;
 
 const SignupSchema = Yup.object().shape({
-  productName: Yup.string().required('Information is required.*'),
+  productName: Yup.string().required('Information is required*'),
   otherProduct: Yup.string(),
-  quantity: Yup.string().required('Information is required.*'),
-  name: Yup.string().required('Information is required.*'),
+  quantity: Yup.string().required('Information is required*'),
+  name: Yup.string().required('Information is required*'),
   contact: Yup.string()
     .matches(phoneRegExp, 'Invalid phone number')
-    .required('Information is required.*'),
+    .required('Information is required*'),
   alternativeNumber: Yup.string().matches(phoneRegExp, 'Invalid phone number'),
   email: Yup.string()
     .email('Invalid email address')
-    .required('Information is required.*'),
+    .required('Information is required*'),
   password: Yup.string(),
-  state: Yup.string().required('Information is required.*'),
-  city: Yup.string().required('Information is required.*'),
-  billingAddress: Yup.string().required('Information is required.*'),
+  state: Yup.string().required('Information is required*'),
+  city: Yup.string().required('Information is required*'),
+  billingAddress: Yup.string().required('Information is required*'),
   shippingPincode: Yup.string()
     .matches(pincodeRegExp, 'Invalid Pincode')
-    .required('Information is required.*'),
+    .required('Information is required*'),
 });
 
 const Enquiry = () => {
@@ -79,7 +79,6 @@ const Enquiry = () => {
       .get(`https://procuren-backend.onrender.com/getproductnames`)
       //  .get(`http://localhost:3001/getproductnames`)
       .then((response) => {
-      
         setProduct(response.data.data);
       })
       .catch((error) => {
@@ -389,7 +388,7 @@ const Enquiry = () => {
 
               <div className='flex justify-center'>
                 <button
-                  className='mt-6  mb-4 flex rounded-lg bg-gradient-to-tl from-blue-600 to-pink-500 px-4 py-2 font-sans text-lg font-semibold tracking-wide text-white shadow-xl shadow-indigo-200'
+                  className='mb-4  mt-6 flex rounded-lg bg-gradient-to-tl from-blue-600 to-pink-500 px-4 py-2 font-sans text-lg font-semibold tracking-wide text-white shadow-xl shadow-indigo-200'
                   type='submit'
                   disabled={isSubmitting}
                 >

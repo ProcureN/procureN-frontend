@@ -49,14 +49,14 @@ const HomePage = ({ setProfile }) => {
       ) : error ? (
         'Error'
       ) : (
-        <div className=''>
+        <div>
           <span className='text-md px-2'>
             Welcome back to your dashboard! We're glad to see you again.
           </span>
           <div className='flex justify-center '>
             <div className=' flex  rounded-xl  p-2'>
               <div className='mx-2'>
-                <div className='  mt-2  h-36 w-36 rounded-xl bg-indigo-50   p-4 text-xl  shadow-lg'>
+                <div className='  mt-2  h-36 w-36 rounded-xl    p-4 text-xl  shadow-lg'>
                   <span className='text-blue-500'>Total Manufacturer</span>
                   <div className='h-0.5 w-full bg-indigo-500'></div>
                   <div className='text-3xl  font-bold text-gray-600'>
@@ -68,7 +68,7 @@ const HomePage = ({ setProfile }) => {
                     />
                   </div>
                 </div>
-                <div className='  mt-2     h-36 w-36 rounded-xl bg-indigo-50   p-4 text-xl  shadow-lg'>
+                <div className='  mt-2     h-36 w-36 rounded-xl   p-4 text-xl  shadow-lg'>
                   <span className='text-green-500'>Total Retailer</span>
                   <div className='h-0.5 w-full bg-indigo-500'></div>
                   <div className='text-3xl  font-bold text-gray-600'>
@@ -80,7 +80,7 @@ const HomePage = ({ setProfile }) => {
                     />
                   </div>
                 </div>
-                <div className=' mt-2   h-36 w-36 rounded-xl bg-indigo-50   p-4 text-xl  shadow-lg'>
+                <div className=' mt-2   h-36 w-36 rounded-xl   p-4 text-xl  shadow-lg'>
                   <span className=''>Total Users</span>
                   <div className='h-0.5 w-full bg-indigo-500'></div>
                   <div className='text-3xl  font-bold text-gray-600'>
@@ -94,7 +94,7 @@ const HomePage = ({ setProfile }) => {
                 </div>
               </div>
               <div>
-                <div className='  mt-2   h-36 w-36 rounded-xl bg-indigo-50   p-4 text-xl  shadow-lg'>
+                <div className='  mt-2   h-36 w-36 rounded-xl   p-4 text-xl  shadow-lg'>
                   <span className='text-blue-500'>Total Manufacturer</span>
                   <div className='h-0.5 w-full bg-indigo-500'></div>
                   <div className='text-3xl  font-bold text-gray-600'>
@@ -106,7 +106,7 @@ const HomePage = ({ setProfile }) => {
                     />
                   </div>
                 </div>
-                <div className='  mt-2     h-36 w-36 rounded-xl bg-indigo-50   p-4 text-xl  shadow-lg'>
+                <div className='  mt-2     h-36 w-36 rounded-xl   p-4 text-xl  shadow-lg'>
                   <span className='text-green-500'>Total Retailer</span>
                   <div className='h-0.5 w-full bg-indigo-500'></div>
                   <div className='text-3xl  font-bold text-gray-600'>
@@ -118,7 +118,7 @@ const HomePage = ({ setProfile }) => {
                     />
                   </div>
                 </div>
-                <div className=' mt-2   h-36 w-36 rounded-xl bg-indigo-50   p-4 text-xl  shadow-lg'>
+                <div className=' mt-2   h-36 w-36 rounded-xl   p-4 text-xl  shadow-lg'>
                   <span className=''>Total Users</span>
                   <div className='h-0.5 w-full bg-indigo-500'></div>
                   <div className='text-3xl  font-bold text-gray-600'>
