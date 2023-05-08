@@ -9,7 +9,7 @@ import PdfData from '../../PdfData';
 import ModalUpdateProduct from './Modals/ModalUpdateProduct';
 import ModalDelete from './Modals/ModalDelete';
 
-const ManageProducts = () => {
+const ProductsManagement = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
@@ -277,8 +277,8 @@ const ManageProducts = () => {
         <div className='overflow-y-none  '>
           <div className='my-2 flex justify-between md:mr-4 '>
             <div className='flex items-center'>
-              <ExcelData data={data} fileName='Enquiry Form Data' />
-              <PdfData fileName='Enquiry Form Data' bdy={bdy} wid={widths} />
+              <ExcelData data={data} fileName='Products Data' />
+              <PdfData fileName='Products Data' bdy={bdy} wid={widths} />
             </div>
             <div className='my-auto bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-2xl font-semibold  text-transparent'>
               Products Data
@@ -400,4 +400,4 @@ const ManageProducts = () => {
   );
 };
 
-export default ManageProducts;
+export default ProductsManagement;

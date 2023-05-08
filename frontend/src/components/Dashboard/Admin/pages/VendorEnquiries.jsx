@@ -7,7 +7,7 @@ import ExcelData from '../../ExcelData';
 import PdfData from '../../PdfData';
 import ModalDelete from './Modals/ModalDelete';
 
-const FeedbackForm = () => {
+const VendorEnquiries = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
@@ -224,11 +224,11 @@ const FeedbackForm = () => {
           {/* <div>{JSON.stringify(data)}</div> */}
           <div className='my-2 flex justify-between md:mr-4 '>
             <div className='flex items-center'>
-              <ExcelData data={data} fileName='Homepage Data' />
-              <PdfData fileName='Homepage Data' bdy={bdy} wid={widths} />
+              <ExcelData data={data} fileName='Vendor Enquiries' />
+              <PdfData fileName='Vendor Enquiries' bdy={bdy} wid={widths} />
             </div>
             <div className='my-auto bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-2xl font-semibold  text-transparent'>
-              Homepage Enquiries
+            Vendor Enquiries
             </div>
             <div className='rounded-lg  p-0.5 text-sm   lg:p-2'>
               Data per page: <span className='text-lg'>{limit}</span>
@@ -298,4 +298,4 @@ const FeedbackForm = () => {
   );
 };
 
-export default FeedbackForm;
+export default VendorEnquiries;

@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
-import EnquiryManage from './pages/EnquiryManage';
 
-import ManageProducts from './pages/ManageProducts';
+//Routes component imported
+import Management from './pages/Management';
+import ProductsManagement from './pages/ProductsManagement';
 import HomePage from './pages/HomePage';
-import ManageUser from './pages/ManageUser';
-import FeedbackForm from './pages/ContactForm';
+import VendorManagement from './pages/VendorManagement';
+import VendorEnquiries from './pages/VendorEnquiries';
 // import ManageManufacture from './pages/ManageManufacture';
 // import ManageRetailer from './pages/ManageRetailer';
 
@@ -25,9 +26,9 @@ function MainContent({ selectedItem }) {
       {selectedItem === 'Home Page' ? (
         <HomePage />
       ) : selectedItem === 'Vendor Enquiries' ? (
-        <FeedbackForm />
+        <VendorEnquiries />
       ) : selectedItem === 'Management' ? (
-        <EnquiryManage />
+        <Management />
       ) 
       // : selectedItem === 'Manage Retailer' ? (
       //   <ManageRetailer />
@@ -36,9 +37,9 @@ function MainContent({ selectedItem }) {
       //   <ManageManufacture />
       // ) 
       : selectedItem === 'Product Management' ? (
-        <ManageProducts />
+        <ProductsManagement />
       ) : (
-        selectedItem === 'Vendor Management' && <ManageUser />
+        selectedItem === 'Vendor Management' && <VendorManagement />
       )}
     </div>
   );

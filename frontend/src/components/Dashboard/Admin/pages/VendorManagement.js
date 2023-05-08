@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { FiEdit2 } from 'react-icons/fi';
 import { AiOutlineDelete } from 'react-icons/ai';
+
 import axios from 'axios';
 import { CgSpinner } from 'react-icons/cg';
 import ExcelData from '../../ExcelData';
 import PdfData from '../../PdfData';
-import ModalUpdate from './Modals/ModalUpdate';
+import ModalUpdateUser from './Modals/ModalUpdateUser';
 import ModalDelete from './Modals/ModalDelete';
 
-const EnquiryManage = () => {
+const VendorManagement = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
@@ -18,9 +19,9 @@ const EnquiryManage = () => {
   const [screenSize, setScreenSize] = useState(undefined);
   const [btn, setBtn] = useState(6);
   const [showMyModal, setShowMyModal] = useState(false);
-  const [showMyModal2, setShowMyModal2] = useState(false);
   const [sub, setSub] = useState(false);
   const [val, setVal] = useState({});
+  const [showMyModal2, setShowMyModal2] = useState(false);
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
@@ -42,17 +43,17 @@ const EnquiryManage = () => {
         setLoading(true);
         const token = localStorage.getItem('token');
         if (!token) {
-          window.location.href = '/login'; // Redirect to login page if token not found
+          window.location.href = '/login';
           return;
         }
         const res = await axios.get(
-          `https://procuren-backend.onrender.com/getenquiries/${page}/${limit}`,
-          // `http://localhost:3001/getenquiries/${page}/${limit}`,
+          `https://procuren-backend.onrender.com/getAllDetails/${page}/${limit}`,
+          // `http://localhost:3001/getAllDetails/${page}/${limit}`,
+
           {
-            headers: { Authorization: `Bearer ${token}` }, // Send token in Authorization header
+            headers: { Authorization: `Bearer ${token}` },
           }
         );
-
         setData(res.data.data);
         setSub(false);
         setTotalPages(Math.ceil(res.data.count / limit)); // calculate total number of pages
@@ -69,17 +70,17 @@ const EnquiryManage = () => {
     setPage(pageNumber);
   };
 
-  let widths = ['4%', '20%', '10%', '20%', '36%', '15%'];
+  let widths = ['4%', '10%', '40%', '15%'];
   let bdy = [
-    ['No', 'Product Name', 'Name', 'Contact', 'Email', 'State'],
+    ['No', 'Name', 'email', 'role'],
 
     ...data.map((item, index) => [
       index + 1,
-      item.productName,
       item.name,
-      item.contact,
       item.email,
-      item.state,
+      // item.company,
+      item.selectRole,
+      // item.phone,
     ]),
   ];
 
@@ -162,7 +163,6 @@ const EnquiryManage = () => {
 
   const handleLimitPlus = async () => {
     setLimit(limit + 10);
-    console.log(page);
   };
   const handleLimitMinus = async () => {
     setLimit(limit - 10);
@@ -172,97 +172,42 @@ const EnquiryManage = () => {
   const handleOnClose2 = () => setShowMyModal2(false);
 
   function TableRow({ item, index }) {
-    const [isExpanded, setIsExpanded] = useState(false);
-
-    function handleToggleExpand() {
-      setIsExpanded(!isExpanded);
-    }
-
-    const truncatedAddress = item.billingAddress.substring(0, 25);
-
     return (
       <tr
         key={index}
-        className={`  border-y border-black p-1 text-center md:py-2 ${
-          index % 2 === 0 && 'bg-slate-200 '
-        } hover:bg-indigo-200 `}
+        className={`  border-y border-black p-1 text-center hover:bg-indigo-100  md:py-2 `}
       >
         <td className=' border-x border-black'>
           {(page - 1) * limit + index + 1}
         </td>
-        {/* <td className=' whitespace-nowrap border border-black px-1  text-center md:py-2  '>
-          {item.date}
-        </td> */}
-        <td className=' border border-black px-1  text-center md:py-2  '>
+        <td className=' whitespace-nowrap border border-black px-1  text-center md:py-2  '>
           {item.time} <br />
           {item.date}
         </td>
+        {/* <td className=' border border-black px-1  text-center md:py-2  '>
+          {item.time}
+        </td> */}
 
-        <td className=' border-y border-black px-1  text-center md:py-2  '>
-          {item.productName}
-        </td>
-        <td className=' border-x border-gray-400 px-1 font-medium'>
+        <td className=' border border-black px-1  text-center font-medium  md:py-2 '>
           {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
         </td>
-        <td className=' border-x border-gray-400 px-1 '>
-          {item.contact} <br /> {item.alternativeNumber}
+        <td className=' border-y border-black px-1  text-center md:py-2  '>
+          {item.email}
         </td>
-        {/* <td className=' border-x border-gray-400 px-1'>
-          {item.alternativeNumber}
-        </td> */}
-        <td className=' border-x border-gray-400 px-1 '>{item.email}</td>
-        <td className=' border-x border-gray-400 px-1 '>{item.quantity}</td>
+        <td className=' border-x border-gray-400 px-1 '>{item.company}</td>
+        <td className=' border-x border-gray-400 px-1 '> {item.jobTitle}</td>
+        <td
+          className={`border-x border-gray-400 px-1 font-medium ${
+            item.selectRole === 'Retailer'
+              ? ' text-green-700 '
+              : ' text-cyan-700'
+          }`}
+        >
+          {item.selectRole}
+        </td>
+        <td className=' border-x border-gray-400 px-1 '>{item.phone}</td>
+        <td className=' border-x border-gray-400 px-1 '>{item.city}</td>
         <td className='border-x border-gray-400 px-1 '>{item.state}</td>
-        <td className='w-[15%]  border-x border-gray-400 px-1 '>
-          {isExpanded ? item.billingAddress : truncatedAddress}
-          {item.billingAddress.length > 25 && (
-            <button
-              className='whitespace-pre text-sm font-semibold text-indigo-500'
-              onClick={handleToggleExpand}
-            >
-              {isExpanded ? ' show less' : '   ....'}
-            </button>
-          )}
-        </td>
-        <td className='  border-x border-gray-400 px-1'>
-          {item.shippingPincode}
-        </td>
-        <td className={` border-x  border-gray-400 px-1 font-medium `}>
-          <span
-            className={`${
-              item.status === 'Approved'
-                ? 'text-green-500 '
-                : item.status === 'Pending'
-                ? 'text-orange-300'
-                : 'text-red-500'
-            }`}
-          >
-            {item.status}
-          </span>
-          <br />
-          <span
-            className={` text-sm italic  ${
-              item.status === 'Approved' && item.deliveryStatus === 'delivered'
-                ? 'visible text-green-600 '
-                : item.status === 'Approved' &&
-                  item.deliveryStatus === 'inTransit'
-                ? 'visible text-orange-600'
-                : item.status === 'Approved' &&
-                  item.deliveryStatus === 'processing'
-                ? 'visible text-blue-600'
-                : item.status === 'Approved' &&
-                  item.deliveryStatus === 'shipped' ?
-                  'visible text-amber-700':"hidden"
-            }`}
-          >
-            {item.deliveryStatus.charAt(0).toUpperCase() +
-              item.deliveryStatus.slice(1)}
-          </span>
-        </td>
-        {/* <td className=' border-x border-gray-400 px-1'>
-          {item.deliveryStatus.charAt(0).toUpperCase() +
-            item.deliveryStatus.slice(1)}
-        </td> */}
         <td
           onClick={() => {
             setVal(item);
@@ -297,14 +242,14 @@ const EnquiryManage = () => {
       ) : error ? (
         'Error ~ Something went wrong :)'
       ) : (
-        <div className='overflow-y-none  '>
+        <div className='overflow-y-none overflow-x-scroll md:overflow-x-hidden'>
           <div className='my-2 flex justify-between md:mr-4 '>
             <div className='flex items-center'>
-              <ExcelData data={data} fileName='Enquiry Form Data' />
-              <PdfData fileName='Enquiry Form Data' bdy={bdy} wid={widths} />
+              <ExcelData data={data} fileName='Vendors Data' />
+              <PdfData fileName='Vendors Data' bdy={bdy} wid={widths} />
             </div>
             <div className='my-auto bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-2xl font-semibold  text-transparent'>
-              Retailer Enquiry Data
+              Vendors Data
             </div>
             <div className='rounded-lg  p-0.5 text-sm   lg:p-2'>
               Data per page: <span className='text-lg'>{limit}</span>
@@ -331,7 +276,7 @@ const EnquiryManage = () => {
             <section
               className={`h-[80vh] overflow-x-scroll xl:overflow-x-hidden `}
             >
-              <table className=' border border-black shadow-xl'>
+              <table className=' border border-black '>
                 <thead>
                   <tr className='border-y border-black bg-indigo-100  p-1 md:p-2 '>
                     <th className='border-x border-black py-1 md:py-2'>
@@ -340,30 +285,15 @@ const EnquiryManage = () => {
                     {/* <th className='border-x border-gray-400 '>Date</th> */}
                     <th className='border-x border-gray-400 '>Time</th>
 
-                    <th className='border-x border-gray-400 '>Product Name</th>
-                    <th className='border-x border-gray-400 '>Name</th>
-                    <th className='border-x border-gray-400 '>Phone</th>
-                    {/* <th className='border-x border-gray-400 '>
-                      Alternative No
-                    </th> */}
-                    <th className='border-x border-gray-400 '>Email</th>
-                    <th className='border-x border-gray-400 '>Quantity</th>
-                    <th className='border-x border-gray-400 '>State</th>
-                    <th className='border-x border-gray-400 '>
-                      Billing Address
-                    </th>
-                    <th className='border-x border-gray-400 '>
-                      Shipping Pincode
-                    </th>
-                    <th className='border-x border-gray-400 '>
-                      Status <br />
-                      <span className='text-sm font-normal'>
-                        Delivery Status
-                      </span>
-                    </th>
-                    {/* <th className='border-x border-gray-400 '>
-                      Delivery Status
-                    </th> */}
+                    <th className='border-x border-gray-400'>Name</th>
+                    <th className='border-x border-gray-400'>Email</th>
+                    <th className='border-x border-gray-400'>Company</th>
+                    <th className='border-x border-gray-400'>Job Title</th>
+                    <th className='border-x border-gray-400'>Role</th>
+                    <th className='border-x border-gray-400'>Phone No</th>
+                    <th className='border-x border-gray-400'>City</th>
+                    <th className='border-x border-gray-400'>State</th>
+
                     <th
                       className='col-span-2 border-x border-gray-400'
                       colSpan='2'
@@ -408,7 +338,7 @@ const EnquiryManage = () => {
               </div>
             )}
           </div>
-          <ModalUpdate
+          <ModalUpdateUser
             onClose={handleOnClose}
             visible={showMyModal}
             initialValues={val}
@@ -419,7 +349,7 @@ const EnquiryManage = () => {
             visible={showMyModal2}
             Values={val}
             setSub={setSub}
-            deletePopup='enquiry'
+            deletePopup='user'
           />
         </div>
       )}
@@ -427,4 +357,4 @@ const EnquiryManage = () => {
   );
 };
 
-export default EnquiryManage;
+export default VendorManagement;
