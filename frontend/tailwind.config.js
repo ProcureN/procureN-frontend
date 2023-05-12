@@ -8,7 +8,7 @@ module.exports = {
         type: 'type 2.7s ease-out .8s infinite alternate both',
         'type-second': 'type-second 2.7s ease-out .8s infinite alternate both',
         cursor: 'cursor .6s linear infinite alternate',
-        shake: "shake 0.1s ease-in-out 0s 4"
+        shake: "shake 0.2s ease-in-out 0s 2"
       },
       keyframes: {
         type: {

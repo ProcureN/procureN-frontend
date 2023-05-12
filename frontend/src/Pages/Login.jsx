@@ -31,7 +31,7 @@ const Login = () => {
   useEffect(()=>{
     const timer = setTimeout(() => {
       setShake(false)
-    }, 3000);
+    }, 2000);
 
     return () => {
       clearTimeout(timer);
