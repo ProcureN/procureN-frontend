@@ -100,12 +100,11 @@ const ModalTrack = ({ visible, onClose }) => {
       onClick={handleOnClose}
       className='fixed inset-0 z-20  flex items-center justify-center bg-black bg-opacity-25 backdrop-blur-sm'
     >
-      <div className=' rounded-lg bg-indigo-100 p-2'>
+      <div className=' w-full rounded-lg bg-white p-2 sm:w-[500px]'>
         <div
           onClick={onClose}
-          className='m-2 flex cursor-pointer items-center justify-end text-2xl text-red-600'
+          className='mx-2 my-1 flex cursor-pointer items-center justify-end text-3xl text-red-600'
         >
-          <span className='pr-1 text-lg'>Close</span>
           <AiOutlineCloseCircle />
         </div>
         <Formik
@@ -140,25 +139,26 @@ const ModalTrack = ({ visible, onClose }) => {
         >
           {({ isSubmitting }) => (
             <Form className=' min-w-full   p-2 py-4   md:px-10'>
-              <h1 className='mb-4 bg-gradient-to-tl   from-blue-600 to-pink-500 bg-clip-text  font-sans text-2xl font-semibold text-transparent'>
-                Track product or enquiry status
+              <h1 className='mb-6 bg-gradient-to-tl from-blue-600  to-pink-500 bg-clip-text text-center  font-sans text-2xl font-semibold text-transparent'>
+                TRACKING
               </h1>
-              <div className='mb-6 h-0.5 rounded-full  bg-gradient-to-tl from-blue-600 to-pink-500 ' />
+              {/* <div className='mb-6 h-0.5 rounded-full w-1/2 mx-auto bg-gradient-to-tl from-blue-600 to-pink-500 ' /> */}
 
               <div className=''>
                 <div>
-                  <label
+                  {/* <label
                     className='text-md mb-4 block  text-gray-800'
                     htmlFor='trackingID'
                   >
                     Enter your tracking id below.
-                  </label>
+                  </label> */}
                   <Field
-                    className='w-full rounded-lg bg-gray-100 px-4 py-2 shadow-xl focus:outline-none'
+                    className='w-full rounded-lg  border-2 bg-gray-100 px-4 py-2 focus:outline-none'
                     type='number'
                     name='trackingID'
                     id='trackingID'
-                    placeholder='eg. 123456789101112'
+                    placeholder='Enter your tracking id below.'
+                    // placeholder='eg. 123456789101112'
                   />
                   <ErrorMessage
                     name='trackingID'
@@ -192,7 +192,7 @@ const ModalTrack = ({ visible, onClose }) => {
               )}
               <div className='text-center'>
                 <button
-                  className='mt-6 rounded-full border shadow-lg   hover:border-gray-500   bg-indigo-300  from-[#5c67f5]  to-[#cb67ac] p-2 px-8 font-sans text-lg text-white duration-500 hover:bg-gradient-to-tl   hover:bg-clip-text    hover:text-transparent    '
+                  className={`mt-6 inline-flex  rounded-full border-2 border-white bg-gradient-to-tr   from-[#5c67f5] to-[#cb67ac] px-5 py-2 text-lg text-white duration-500  hover:border-[#5c67f5] hover:bg-white hover:from-white hover:text-[#5c67f5] focus:outline-none lg:px-8 `}
                   type='submit'
                   disabled={isSubmitting}
                 >

@@ -71,7 +71,7 @@ export default function Header({ setShowMyModal }) {
                 }  md:flex`}
               >
                 {navigation.map((item, i) => (
-                  //
+                  
                   <div className='relative'>
                     <a
                       key={i}
@@ -110,6 +110,7 @@ export default function Header({ setShowMyModal }) {
                         className={`inline-flex rounded-full  border-2 bg-white ${
                           color ? '  border-[#5c67f5]' : 'border-[white]'
                         }  from-[#5c67f5] to-[#cb67ac] px-2 py-1 text-lg text-[#5c67f5]  duration-500 hover:bg-gradient-to-tr  hover:text-white focus:outline-none lg:px-4`}
+                        // className={` inline-flex  rounded-full border-2  hover:border-[#5c67f5]   bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] px-2 py-1 text-lg text-white  duration-500 hover:bg-white hover:from-white hover:text-[#5c67f5] focus:outline-none lg:px-4 `}
                       >
                         Login
                       </button>

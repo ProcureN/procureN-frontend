@@ -5,14 +5,14 @@ const Footer = () => {
   return (
     <div>
       <footer className='border-t'>
-        <div className='mx-auto max-w-screen-xl px-4 pb-2 pt-8 sm:px-6 lg:px-8'>
+        <div className='mx-auto max-w-screen-xl px-4 pt-8 sm:px-6 md:pb-2 lg:px-8'>
           <div className='grid grid-cols-1  lg:grid-cols-3'>
             <div className='mx-auto  '>
               <img src={logo} className=' h-24  sm:h-20' alt='logo' />
               {/* <span className="max-w-xs mt-4 text-sm text-gray-600">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, accusantium.
         </span> */}
-              <div className='mt-8 mb-2 flex space-x-6 text-gray-600'>
+              <div className='mb-2 mt-8 flex justify-center space-x-6 text-gray-600'>
                 <a
                   className='hover:opacity-75'
                   href
@@ -73,7 +73,7 @@ const Footer = () => {
                   </svg>
                 </a>
               </div>
-              <span className=' mt-8 text-center text-xs text-gray-800'>
+              <span className=' mt-8 hidden text-center text-xs text-gray-800 md:block'>
                 © 2023 ProcureN. All rights reserved
               </span>
             </div>
@@ -119,8 +119,8 @@ const Footer = () => {
                 </nav>
               </div>
 
-              <div>
-                <span className='text-center font-medium underline underline-offset-4 md:text-left'>
+              <div className='text-center md:text-left'>
+                <span className=' font-medium underline underline-offset-4 '>
                   Company
                 </span>
                 <nav className='mt-2 flex flex-col space-y-2 text-center text-sm text-gray-500 md:text-left'>
@@ -170,6 +170,9 @@ const Footer = () => {
             </div>
           </div>
         </div>
+        <span className=' mt-8 block text-center text-xs text-gray-800 md:hidden'>
+          © 2023 ProcureN. All rights reserved
+        </span>
       </footer>
     </div>
   );

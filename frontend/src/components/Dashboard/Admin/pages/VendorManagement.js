@@ -178,9 +178,10 @@ const VendorManagement = () => {
         <td className=' border-x border-black'>
           {(page - 1) * limit + index + 1}
         </td>
-        <td className=' whitespace-nowrap border border-black px-1  text-center md:py-2  '>
-          {item.time} <br />
+        <td className='text-sm whitespace-nowrap  border border-black px-1  text-center md:py-2  '>
           {item.date}
+          <br />
+          {item.time}
         </td>
         {/* <td className=' border border-black px-1  text-center md:py-2  '>
           {item.time}

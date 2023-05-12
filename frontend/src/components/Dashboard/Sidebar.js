@@ -18,8 +18,7 @@ const Sidebar = ({ links, setInputValue }) => {
     localStorage.removeItem('token');
     localStorage.removeItem('customerID');
     localStorage.removeItem('role');
-    alert('Succefully logout');
-    history('/login');
+    history('/');
   };
 
   return (

@@ -188,9 +188,10 @@ const Management = () => {
         {/* <td className=' whitespace-nowrap border border-black px-1  text-center md:py-2  '>
           {item.date}
         </td> */}
-        <td className=' border border-black px-1  text-center md:py-2  '>
-          {item.time} <br />
+        <td className=' border border-black px-1 text-sm whitespace-nowrap  text-center md:py-2  '>
           {item.date}
+          <br />
+          {item.time}
         </td>
 
         <td className=' border-y border-black px-1  text-center md:py-2  '>

@@ -1,19 +1,18 @@
-import React, {  useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-
 
 const productSchema = Yup.object().shape({
   productName: Yup.string().required('Information is required*'),
   category: Yup.string().required('Information is required*'),
   subCategory: Yup.string().required('Information is required*'),
   manufacturerName: Yup.string().required('Information is required*'),
-  priceBeforeDiscount: Yup.number().required('Information is required*'),
+  // priceBeforeDiscount: Yup.number().required('Information is required*'),
   price: Yup.number().required('Information is required*'),
-  withGST: Yup.number().required('Information is required*'),
+  // withGST: Yup.number().required('Information is required*'),
   description: Yup.string().required('Information is required*'),
-  shippingCharges: Yup.number().required('Information is required*'),
+  // shippingCharges: Yup.number().required('Information is required*'),
   sizeUnit: Yup.string().required('Information is required*'),
   productQuantity: Yup.string().required('Information is required*'),
   availability: Yup.string().required('Information is required*'),
@@ -30,7 +29,6 @@ const productSchema = Yup.object().shape({
 });
 
 const ModalAddProduct = ({ visible, onClose, setSub }) => {
-
   useEffect(() => {
     setCustomerID(localStorage.getItem('customerID'));
   }, []);
@@ -48,11 +46,11 @@ const ModalAddProduct = ({ visible, onClose, setSub }) => {
     category: '',
     subCategory: '',
     manufacturerName: '',
-    priceBeforeDiscount: '',
+
     price: '',
-    withGST: '',
+
     description: '',
-    shippingCharges: '',
+
     sizeUnit: '',
     productQuantity: '',
     availability: 'Yes',
@@ -66,13 +64,11 @@ const ModalAddProduct = ({ visible, onClose, setSub }) => {
       // onClick={handleOnClose}
       className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-25 backdrop-blur-sm'
     >
-      <div className=' rounded bg-indigo-100 p-2'>
+      <div className=' rounded-2xl bg-white p-2'>
         <Formik
           initialValues={initialValues}
           validationSchema={productSchema}
           onSubmit={(values, { setSubmitting, resetForm }) => {
-           
-
             const token = localStorage.getItem('token');
             setLoading(true);
             axios
@@ -87,12 +83,11 @@ const ModalAddProduct = ({ visible, onClose, setSub }) => {
               .then((response) => {
                 setSub(true);
                 resetForm({ values: initialValues });
-
+                onClose()
                 setLoading(false);
 
                 if (response.data.status === true) {
-                  setLoading(false);
-                  alert('Product added successfully.');
+                  setLoading(false)
                 } else {
                   // setError(error.message);
                   setLoading(false);
@@ -103,7 +98,8 @@ const ModalAddProduct = ({ visible, onClose, setSub }) => {
                 // setError(error.message);
                 setSub(true);
                 setLoading(false);
-                alert(`${error.response.data.message}`);
+                console.log(error.response.data.message)
+                // alert(`${error.response.data.message}`);
                 setSubmitting(false);
               });
           }}
@@ -111,7 +107,7 @@ const ModalAddProduct = ({ visible, onClose, setSub }) => {
           {({ isSubmitting }) => (
             <Form className=' px-10 py-10'>
               <h1 className='mb-10 bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-2xl font-bold text-transparent lg:text-3xl xl:text-4xl'>
-                Update Product
+                Add Product
               </h1>
 
               <div className='grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 '>
@@ -130,6 +126,26 @@ const ModalAddProduct = ({ visible, onClose, setSub }) => {
                   />
                   <ErrorMessage
                     name='productName'
+                    component='div'
+                    className='text-red-700'
+                  />
+                </div>
+                <div>
+                  <label
+                    className='text-md flex  font-semibold text-gray-800'
+                    htmlFor='description'
+                  >
+                    Description
+                  </label>
+                  <Field
+                    className='w-full rounded-lg border bg-slate-100 px-4 py-2 focus:outline-none'
+                    type='text'
+                    name='description'
+                    id='description'
+                    placeholder='Description of your product '
+                  />
+                  <ErrorMessage
+                    name='description'
                     component='div'
                     className='text-red-700'
                   />
@@ -194,26 +210,7 @@ const ModalAddProduct = ({ visible, onClose, setSub }) => {
                     className=' text-red-700'
                   />
                 </div>
-                <div>
-                  <label
-                    className='text-md block font-semibold text-gray-800'
-                    htmlFor='priceBeforeDiscount'
-                  >
-                    Price Before Discount
-                  </label>
-                  <Field
-                    className='w-full rounded-lg border bg-slate-100 px-4 py-2 focus:outline-none'
-                    type='number'
-                    name='priceBeforeDiscount'
-                    id='priceBeforeDiscount'
-                    placeholder='Enter the price '
-                  />
-                  <ErrorMessage
-                    name='priceBeforeDiscount'
-                    component='div'
-                    className=' text-red-700'
-                  />
-                </div>
+               
                 <div>
                   <label
                     className='text-md block font-semibold text-gray-800'
@@ -234,46 +231,7 @@ const ModalAddProduct = ({ visible, onClose, setSub }) => {
                     className=' text-red-700'
                   />
                 </div>
-                <div>
-                  <label
-                    className='text-md block font-semibold text-gray-800'
-                    htmlFor='withGST'
-                  >
-                    Price with GST
-                  </label>
-                  <Field
-                    className='w-full rounded-lg border bg-slate-100 px-4 py-2 focus:outline-none'
-                    type='number'
-                    name='withGST'
-                    id='withGST'
-                    placeholder='Enter the price with GST'
-                  />
-                  <ErrorMessage
-                    name='withGST'
-                    component='div'
-                    className=' text-red-700'
-                  />
-                </div>
-                <div>
-                  <label
-                    className='text-md block font-semibold text-gray-800'
-                    htmlFor='shippingCharges'
-                  >
-                    Delivery Charges
-                  </label>
-                  <Field
-                    className='w-full rounded-lg border bg-slate-100 px-4 py-2 focus:outline-none'
-                    type='number'
-                    name='shippingCharges'
-                    id='shippingCharges'
-                    placeholder='Enter the shipping charges '
-                  />
-                  <ErrorMessage
-                    name='shippingCharges'
-                    component='div'
-                    className=' text-red-700'
-                  />
-                </div>
+              
                 <div className=''>
                   <label
                     className='text-md block font-semibold text-gray-800'
@@ -347,11 +305,11 @@ const ModalAddProduct = ({ visible, onClose, setSub }) => {
                   </label>
                   <Field
                     as='select'
-                    className='w-full rounded-lg  px-4 py-2  shadow-xl focus:outline-none '
+                    className='w-full border rounded-lg  px-4 py-2  focus:outline-none '
                     name='availability'
                     id='availability'
                   >
-                    <option  value='Yes'>Yes</option>
+                    <option value='Yes'>Yes</option>
                     <option value='No'>No</option>
                   </Field>
                   <ErrorMessage
@@ -360,106 +318,10 @@ const ModalAddProduct = ({ visible, onClose, setSub }) => {
                     className='text-red-700'
                   />
                 </div>
-                <div>
-                  <label
-                    className='text-md flex  font-semibold text-gray-800'
-                    htmlFor='description'
-                  >
-                    Description
-                  </label>
-                  <Field
-                    className='w-full rounded-lg border bg-slate-100 px-4 py-2 focus:outline-none'
-                    type='text'
-                    name='description'
-                    id='description'
-                    placeholder='Description of your product '
-                  />
-                  <ErrorMessage
-                    name='description'
-                    component='div'
-                    className='text-red-700'
-                  />
-                </div>
-                <div>
-                  <label
-                    className='text-md block font-semibold text-gray-800'
-                    htmlFor='status'
-                  >
-                    Update Status
-                  </label>
-                  <Field
-                    as='select'
-                    className='w-full rounded-lg  px-4 py-2  shadow-xl focus:outline-none '
-                    name='status'
-                    id='status'
-                  >
-                    <option className='text-sm text-gray-500' disabled></option>
-                    <option value='Pending'>Pending</option>
-                    <option value='Approved'>Approved</option>
-                    <option value='Rejected'>Rejected</option>
-                  </Field>
-                </div>
-                <div>
-                  <label
-                    className='text-md block font-semibold text-gray-800'
-                    htmlFor='deliveryStatus'
-                  >
-                    Update Delivery Status
-                  </label>
-                  <Field
-                    as='select'
-                    className='w-full rounded-lg  px-4 py-2  shadow-xl focus:outline-none '
-                    name='deliveryStatus'
-                    id='deliveryStatus'
-                  >
-                    <option className='text-sm text-gray-500' disabled></option>
-                    <option value='processing'>Processing</option>
-                    <option value='shipped'>Shipped</option>
-                    <option value='inTransit'>in Transit</option>
-                    <option value='delivered'>Delivered</option>
-                  </Field>
-                </div>
-                {/* <div>
-                  <label
-                    className='text-gray-800 font-semibold  text-md '
-                    htmlFor='selectImage1'
-                  >
-                    Image1
-                  </label>
-                  <Field
-                    className='w-full border px-4 py-2 rounded-lg focus:outline-none bg-slate-100'
-                    type='text'
-                    name='selectImage1'
-                    id='selectImage1'
-                    placeholder='selectImage1'
-                  />
-                  <ErrorMessage
-                    name='selectImage1'
-                    component='div'
-                    className='text-red-700'
-                  />
-                </div>
-                <div>
-                  <label
-                    className='text-gray-800 font-semibold  text-md flex'
-                    htmlFor='selectImage2'
-                  >
-                    Image 2
-                    <div className='text-gray-400 text-sm'>( ~optional )</div>
-                  </label>
-                  <Field
-                    className='w-full border px-4 py-2 rounded-lg focus:outline-none bg-slate-100'
-                    type='text'
-                    name='selectImage1'
-                    id='selectImage1'
-                    placeholder='Image 2'
-                  />
-                  <ErrorMessage
-                    name='selectImage2'
-                    component='div'
-                    className='text-red-700'
-                  />
-                </div> */}
+                
+               
+              
+               
               </div>
 
               <div className='flex justify-center'>
@@ -468,7 +330,7 @@ const ModalAddProduct = ({ visible, onClose, setSub }) => {
                   type='submit'
                   disabled={isSubmitting}
                 >
-                  {loading ? 'Loading...' : 'Update Product'}
+                  {loading ? 'Adding' : 'Add Product'}
                 </button>
               </div>
               <div className='flex justify-end'>

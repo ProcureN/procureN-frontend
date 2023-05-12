@@ -15,7 +15,7 @@ const Services = () => {
 
   return (
     <div id='service'>
-      <section className=' body-font container mx-auto -mt-16 overflow-hidden'>
+      <section className=' body-font container mx-auto -mt-16 -pb-4 overflow-hidden'>
         <div className='container mx-auto   pb-12 pt-20 md:pt-24'>
           <div
             data-aos='fade-up'
@@ -87,7 +87,7 @@ const Services = () => {
                   </div>
                 </div>
                 <div className='flex h-full flex-col justify-between'>
-                  <span className=' justify-center  text-center tracking-tighter md:text-lg'>
+                  <span className=' justify-center pb-2  text-center tracking-tighter md:text-lg'>
                     ProcureN handles your full procure-to-pay process, from
                     requisition to invoice payment, and gives you complete
                     visibility of your purchase order's progress. Track your
@@ -118,7 +118,7 @@ const Services = () => {
                 </div>
                 <div className='flex h-full flex-col justify-between'>
                   <div>
-                    <h3 className='px-1 text-center md:text-lg'>
+                    <h3 className='px-1 pb-2 text-center md:text-lg'>
                       Track the status of your requisitions from submission to
                       invoice with ProcureN's multi-stage approval tracking
                       mechanism. You'll know exactly where your orders are in
@@ -150,7 +150,7 @@ const Services = () => {
                 </div>
                 <div className='flex h-full flex-col justify-between'>
                   <div>
-                    <h3 className='px-1 text-center md:text-lg '>
+                    <h3 className='px-1 pb-2 text-center md:text-lg '>
                       Get insights, automate processes, and control your
                       business operations with ProcureN's Sales Management/ERP
                       Dashboard. Integrated to data from accounting,

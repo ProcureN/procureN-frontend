@@ -11,8 +11,9 @@ import HowItWorks from '../components/HomepageComponents/HowItWorks';
 import Products from '../components/HomepageComponents/Products';
 import Proposel from '../components/HomepageComponents/Proposel';
 import Services from '../components/HomepageComponents/Services';
-import Track from '../components/HomepageComponents/Track';
+
 import ModalTrack from '../components/Dashboard/Admin/pages/Modals/ModalTrack';
+import Tracking from '../components/HomepageComponents/Tracking';
 
 const Main = () => {
   const [showMyModal, setShowMyModal] = useState(false);
@@ -27,8 +28,9 @@ const Main = () => {
       <Hero setShowMyModal={setShowMyModal} />
       <About />
       <Services />
-      <Track setShowMyModal2={setShowMyModal2} />
 
+      {/* <Track setShowMyModal2={setShowMyModal2} /> */}
+      <Tracking setShowMyModal2={setShowMyModal2} />
       <HowItWorks />
       <Products />
       <Frequently />
