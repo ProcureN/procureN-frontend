@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import LoginPage from '../assets/Login.jpg';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
@@ -7,6 +7,7 @@ import axios from 'axios';
 // import Header2 from '../components/HomepageComponents/Header2';
 
 // import { FiUserPlus } from 'react-icons/fi';
+
 // import { FcGoogle } from 'react-icons/fc';
 // import { BsFacebook } from 'react-icons/bs';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
@@ -23,8 +24,19 @@ const LoginSchema = Yup.object().shape({
 const Login = () => {
   let history = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [shake, setShake] = useState(false);
 
   const [showPassword, setShowPassword] = useState(false);
+
+  useEffect(()=>{
+    const timer = setTimeout(() => {
+      setShake(false)
+    }, 3000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  },[shake])
 
   return (
     <>
@@ -34,7 +46,7 @@ const Login = () => {
         style={{ backgroundImage: `url(${LoginPage})` }}
       >
         <div className='absolute inset-0 bg-black opacity-50'></div>
-        <div className=' z-20   m-2  w-[400px] shadow-2xl '>
+        <div className= {`z-20 m-2  w-[400px] ${shake && "animate-shake"}  shadow-2xl `}>
           {/* <div className=' z-20   m-2 w-full shadow-2xl sm:w-4/5 md:w-1/2 lg:w-1/2 xl:w-1/3 2xl:w-1/4  '> */}
           <Formik
             initialValues={{
@@ -73,7 +85,10 @@ const Login = () => {
                   if (error.response.data.message === 'you are not verified') {
                     alert('please verify your mail');
                     history('/otp/signup');
-                  } else alert(`${error.response.data.message}`);
+                  } else {
+                    setShake(true)
+                  };
+
                   setSubmitting(false);
                 });
             }}
@@ -104,7 +119,7 @@ const Login = () => {
                     <ErrorMessage
                       name='email'
                       component='div'
-                      className='text-center text-red-800'
+                      className='-mt-2 text-center text-red-800'
                     />
                   </div>
                   <Field
@@ -127,7 +142,7 @@ const Login = () => {
                     <ErrorMessage
                       name='password'
                       component='div'
-                      className='text-center text-red-800'
+                      className='-mt-4 text-center text-red-800'
                     />
                   </div>
                   <div className='flex items-center'>
@@ -165,22 +180,28 @@ const Login = () => {
                   type='submit'
                   disabled={isSubmitting}
                 >
-                  {loading ? 'Signing' : 'Sign in'}
+                  {loading ? 'Sign in...' : 'Sign in'}
                 </button>
                 {/* <span>or Sign in with</span>
-                <div className='flex justify-around mt-3 mb-6'>
-                  <Link to='/'  className='flex  justify-center gap-3 items-center rounded-lg py-[5px] border w-2/5'>
+                <div className='mb-6 mt-3 flex justify-around'>
+                  <Link
+                    to='/'
+                    className='flex  w-2/5 items-center justify-center gap-3 rounded-lg border py-[5px]'
+                  >
                     <FcGoogle className='text-2xl' />
-                   <span>Google</span>
+                    <span>Google</span>
                   </Link>
-                  <Link to='/' className='flex justify-center gap-3 py-[5px] rounded-lg items-center w-2/5 border'>
-                    <BsFacebook className='text-blue-500 text-2xl' />
-                   <span>Facebook</span>
+                  <Link
+                    to='/'
+                    className='flex w-2/5 items-center justify-center gap-3 rounded-lg border py-[5px]'
+                  >
+                    <BsFacebook className='text-2xl text-blue-500' />
+                    <span>Facebook</span>
                   </Link>
                 </div> */}
                 <Link to='/signup'>
-                  Don't have an account -{' '}
-                  <span to='/signup' className='font-medium'>
+                  Don't have an account? -{' '}
+                  <span to='/signup' className='font-medium text-[#5c67f5]'>
                     Sign up
                   </span>
                 </Link>
@@ -210,6 +231,9 @@ const Login = () => {
                     </Link>
                   </div>
                 </div> */}
+                <div className='-mb-3 mt-4 text-[12px] '>
+                  © 2023 ProcureN. All rights reserved{' '}
+                </div>
               </Form>
             )}
           </Formik>
