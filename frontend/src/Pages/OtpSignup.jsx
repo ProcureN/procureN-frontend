@@ -21,7 +21,7 @@ const LoginSchema = Yup.object().shape({
   password: Yup.string().required('Password is required'),
 });
 
-const Login = () => {
+const OtpSignup = () => {
   let history = useNavigate();
   const [loading, setLoading] = useState(false);
   const [shake, setShake] = useState(false);
@@ -243,4 +243,6 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default OtpSignup;
+
+

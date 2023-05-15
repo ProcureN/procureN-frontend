@@ -7,10 +7,8 @@ import Otp from './Pages/Otp';
 import Singup from './Pages/Singup';
 import UserDashboard from './components/Dashboard/User/UserDashboard';
 import ManufacturerDashboard from './components/Dashboard/Manufacturer/ManufacturerDashboard';
-import PasswordRest from './Pages/PasswordRest';
 
-import SignupPage2 from './Pages/SignupPage2';
-import SignupPage1 from './Pages/SignupPage1';
+import RestPassword from './Pages/RestPassword';
 
 function App() {
   return (
@@ -20,17 +18,11 @@ function App() {
           <Route exact path='/' element={<Main />} />
           <Route exact path='/login' element={<Login />} />
           <Route exact path='/signup' element={<Singup />} />
-          <Route exact path='/signup2' element={<SignupPage1 />} />
-          <Route exact path='/signup3' element={<SignupPage2 />} />
-          <Route exact path='/resetpass/:email' element={<PasswordRest />} />
+          <Route exact path='/resetpass/:email' element={<RestPassword />} />
           <Route exact path={`/otp/:path`} element={<Otp />} />
           <Route exact path='/admin' element={<Admin />} />
           <Route exact path='/Retailer' element={<UserDashboard />} />
-          <Route
-            exact
-            path='/manufacturer'
-            element={<ManufacturerDashboard />}
-          />
+          <Route exact path='/manufacturer' element={<ManufacturerDashboard />} />
         </Routes>
       </Router>
     </div>

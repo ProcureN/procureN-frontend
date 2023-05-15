@@ -13,7 +13,7 @@ const Signup = () => {
         className=' flex h-screen w-full items-center justify-center  bg-cover '
         style={{ backgroundImage: `url(${LoginPage})` }}
       >
-        <div className='absolute inset-0 h-full bg-black opacity-50'></div>
+        {/* <div className='absolute inset-0 h-full bg-black opacity-50'></div> */}
 
         <div className={`z-20 m-2  w-[400px]   shadow-2xl  `}>
           {next ? (
