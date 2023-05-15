@@ -4,7 +4,7 @@ import LoginPage from '../assets/Login.jpg';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-// import Header2 from '../components/HomepageComponents/Header2';
+
 
 // import { FiUserPlus } from 'react-icons/fi';
 
@@ -40,7 +40,7 @@ const Login = () => {
 
   return (
     <>
-      {/* <Header2 /> */}
+
       <div
         className='  flex h-screen w-full items-center justify-center  bg-cover '
         style={{ backgroundImage: `url(${LoginPage})` }}

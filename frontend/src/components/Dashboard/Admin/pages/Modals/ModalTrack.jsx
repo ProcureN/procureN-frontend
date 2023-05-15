@@ -1,74 +1,4 @@
-// import React, { useEffect } from 'react';
 
-// const ModalTrack = ({ visible, onClose }) => {
-//   const handleOnClose = (e) => {
-//     if (e.target.id === 'container') onClose();
-//   };
-//   useEffect(() => {
-//     const timer = setTimeout(() => {
-//       onClose();
-//     }, 3000);
-
-//     return () => {
-//       clearTimeout(timer);
-//     };
-//   }, [onClose]);
-
-//   if (!visible) return null;
-//   return (
-//     <div
-//       id='container'
-//       onClick={handleOnClose}
-
-//       className='fixed  inset-0 flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm'
-//     >
-//       <div className=' md:w-2/3 p-1 overflow-hidden' >
-//        HIIIII
-
-//          <div className='flex justify-around text-center'>
-//           Salman
-//           <button
-//         onClick={onClose}
-//         className='mt-4 hover:bg-red-500 rounded-full border px-4 py-1 lg:px-8 lg:py-2  text-lg text-white md:text-xl'
-//       >
-//         Close
-//       </button>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ModalTrack;
-
-// import React from 'react';
-
-// const ModalTrack = ({ visible, onClose }) => {
-//   const handleOnClose = (e) => {
-//     if (e.target.id === 'container') onClose();
-//   };
-//   if (!visible) return null;
-//   return (
-//     <div
-//       id='container'
-//       onClick={handleOnClose}
-//       className='fixed inset-0 z-20 flex flex-col items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm'
-//     >
-//       <div className=' overflow-hidden m-1  lg:w-2/3 xl:h-2/3'>
-
-//       </div>
-
-//       <button
-//         onClick={onClose}
-//         className='mt-4 rounded-full border px-4 py-1 lg:px-8 lg:py-2  text-lg text-white md:text-xl'
-//       >
-//         Close
-//       </button>
-//     </div>
-//   );
-// };
-
-// export default ModalTrack;
 
 import React, { useState } from 'react';
 
@@ -157,7 +87,7 @@ const ModalTrack = ({ visible, onClose }) => {
                     type='number'
                     name='trackingID'
                     id='trackingID'
-                    placeholder='Enter your tracking id below.'
+                    placeholder='Enter your tracking id'
                     // placeholder='eg. 123456789101112'
                   />
                   <ErrorMessage
