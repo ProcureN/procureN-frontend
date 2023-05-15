@@ -35,7 +35,7 @@ const HomePage = () => {
           </div>
           <div className='col-span-2 '>
             <PieCh />
-            <div className='flex justify-around'>
+            <div className='flex justify-center gap-1'>
               <div className='flex items-center justify-center'>
                 <div className='mx-1 h-2 w-2 rounded-full bg-[#5c67f5]'></div>{' '}
                 <span className='text-[#5c67f5]'>Manufacturer</span>

@@ -53,14 +53,14 @@ const Hero = ({ setShowMyModal }) => {
           >
             <div className='md:pr-16 lg:pr-24 '>
               <span className='relative whitespace-nowrap '>
-                <h1 className=' group-hover:animate-type-reverse text-brand-accent  inline-flex h-20 animate-type overflow-x-hidden  whitespace-nowrap pb-2 pt-2 font-serif text-3xl font-medium text-white will-change-transform sm:text-4xl  md:text-5xl '>
+                <h1 className=' group-hover:animate-type-reverse text-brand-accent  inline-flex h-20 animate-type overflow-x-hidden  whitespace-nowrap pb-2 pt-2  text-3xl font-medium text-white will-change-transform sm:text-4xl  lg:text-5xl '>
                   Leading Procurement
                 </h1>
                 <span className='-mb-2  box-border inline-block h-10 w-1 animate-cursor bg-white will-change-transform md:-mb-4 md:h-16'></span>
               </span>
               <div className='relative h-20 whitespace-nowrap '>
                 {showComponent && (
-                  <h1 className=' group-hover:animate-type-reverse text-brand-accent  inline-flex h-20 animate-type-second overflow-x-hidden  whitespace-nowrap   font-serif text-3xl font-medium text-white will-change-transform sm:text-4xl  md:text-5xl'>
+                  <h1 className=' group-hover:animate-type-reverse text-brand-accent  inline-flex h-20 animate-type-second overflow-x-hidden  whitespace-nowrap   text-3xl font-medium text-white will-change-transform sm:text-4xl  lg:text-5xl'>
                     Management Expert
                   </h1>
                 )}
@@ -68,7 +68,7 @@ const Hero = ({ setShowMyModal }) => {
               </div>
             </div>
 
-            <span className='mb-8  text-left text-xl italic leading-relaxed text-white md:text-2xl '>
+            <span className='mb-8  text-left text-xl italic leading-relaxed text-white lg:text-2xl '>
               Working closely with top architects and developers, We raise the
               bar for{' '}
               <span className='  font-medium underline underline-offset-4 hover:text-yellow-300'>
@@ -128,7 +128,7 @@ const Hero = ({ setShowMyModal }) => {
             data-aos='fade-down'
             data-aos-delay='0'
             data-aos-duration='1500'
-            className=' pb-10'
+            className=' md:w-1/2 pb-10'
           >
             <img
               className='    rounded object-cover object-center lg:w-full lg:max-w-lg  '

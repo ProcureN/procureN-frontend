@@ -7,7 +7,7 @@ import Otp from './Pages/Otp';
 import Singup from './Pages/Singup';
 import UserDashboard from './components/Dashboard/User/UserDashboard';
 import ManufacturerDashboard from './components/Dashboard/Manufacturer/ManufacturerDashboard';
-
+import "./App.css"
 import RestPassword from './Pages/RestPassword';
 
 function App() {

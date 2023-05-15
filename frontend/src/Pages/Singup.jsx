@@ -9,12 +9,12 @@ const Signup = () => {
 
   return (
     <>
+      <div className='absolute inset-0 hidden h-full bg-black opacity-50 xl:block'></div>
+
       <div
-        className=' flex h-screen w-full items-center justify-center  bg-cover '
+        className=' flex h-screen w-full items-center justify-center bg-cover  bg-center '
         style={{ backgroundImage: `url(${LoginPage})` }}
       >
-        {/* <div className='absolute inset-0 h-full bg-black opacity-50'></div> */}
-
         <div className={`z-20 m-2  w-[400px]   shadow-2xl  `}>
           {next ? (
             <SignupPage2 setNext={setNext} formValue={formValue} />

@@ -28,16 +28,16 @@ const RestPassword = () => {
 
   return (
     <>
+      <div className='absolute inset-0 hidden bg-black opacity-50 xl:block'></div>
       <div
-        className='  flex h-screen w-full items-center justify-center  bg-cover '
+        className='  flex h-screen w-full items-center justify-center bg-cover bg-center bg-no-repeat '
         style={{ backgroundImage: `url(${LoginPage})` }}
       >
-        {/* <div className='absolute inset-0 bg-black opacity-50'></div> */}
         <div className={` z-20  m-2 w-[400px] shadow-2xl `}>
           {/* <div className=' z-20   m-2 w-full shadow-2xl sm:w-4/5 md:w-1/2 lg:w-1/2 xl:w-1/3 2xl:w-1/4  '> */}
           <Formik
             initialValues={{
-              email: email ,
+              email: email,
               password: '',
             }}
             validationSchema={RestPassSchema}
@@ -52,7 +52,7 @@ const RestPassword = () => {
                 )
                 .then((response) => {
                   if (response.data.message === 'success') {
-                    alert("success")
+                    alert('success');
                     history(`/login`);
                   }
                   setSubmitting(false);
@@ -125,7 +125,7 @@ const RestPassword = () => {
                 >
                   {loading ? 'Reseting Password' : 'Reset Password'}
                 </button>
-                
+
                 <div className='-mb-3 mt-4 text-[12px] '>
                   © 2023 ProcureN. All rights reserved{' '}
                 </div>

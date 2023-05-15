@@ -51,7 +51,7 @@ const About = () => {
               </span>
               {open ? (
                 <>
-                  <span className='mb-4 justify-center text-center md:text-lg  '>
+                  <span className='mb-4   md:text-lg  '>
                     At{' '}
                     <span className=' bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] bg-clip-text font-medium text-transparent '>
                       ProcureN

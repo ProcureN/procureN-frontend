@@ -5,7 +5,6 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 
-
 // import { FiUserPlus } from 'react-icons/fi';
 
 // import { FcGoogle } from 'react-icons/fc';
@@ -28,25 +27,29 @@ const Login = () => {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  useEffect(()=>{
+  useEffect(() => {
     const timer = setTimeout(() => {
-      setShake(false)
+      setShake(false);
     }, 2000);
 
     return () => {
       clearTimeout(timer);
     };
-  },[shake])
+  }, [shake]);
 
   return (
     <>
-
+      {' '}
+      <div className='absolute inset-0 hidden bg-black opacity-50 xl:block'></div>
       <div
-        className='  flex h-screen w-full items-center justify-center  bg-cover '
+        className='  flex h-screen w-full items-center justify-center bg-cover  bg-center '
         style={{ backgroundImage: `url(${LoginPage})` }}
       >
-        {/* <div className='absolute inset-0 bg-black opacity-50'></div> */}
-        <div className= {`z-20 m-2  w-[400px] ${shake && "animate-shake"}  shadow-2xl `}>
+        <div
+          className={`z-20 m-2  w-[400px] ${
+            shake && 'animate-shake'
+          }  shadow-2xl `}
+        >
           {/* <div className=' z-20   m-2 w-full shadow-2xl sm:w-4/5 md:w-1/2 lg:w-1/2 xl:w-1/3 2xl:w-1/4  '> */}
           <Formik
             initialValues={{
@@ -86,8 +89,8 @@ const Login = () => {
                     alert('please verify your mail');
                     history('/otp/signup');
                   } else {
-                    setShake(true)
-                  };
+                    setShake(true);
+                  }
 
                   setSubmitting(false);
                 });
