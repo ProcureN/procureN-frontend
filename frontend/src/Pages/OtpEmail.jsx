@@ -1,10 +1,9 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import LoginPage from '../assets/Login.jpg';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import { EmailContext } from '../context/Email';
 
 // import { FiUserPlus } from 'react-icons/fi';
 
@@ -25,8 +24,8 @@ const Login = () => {
   let history = useNavigate();
   const [loading, setLoading] = useState(false);
   const [shake, setShake] = useState(false);
+
   const [showPassword, setShowPassword] = useState(false);
-  const emailContext = useContext(EmailContext);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -87,8 +86,8 @@ const Login = () => {
                 .catch((error) => {
                   setLoading(false);
                   if (error.response.data.message === 'you are not verified') {
-                    emailContext.setEmail(values.email);
-                    history('/otpsign');
+                    alert('please verify your mail');
+                    history('/otp/signup');
                   } else {
                     setShake(true);
                   }

@@ -9,6 +9,9 @@ import UserDashboard from './components/Dashboard/User/UserDashboard';
 import ManufacturerDashboard from './components/Dashboard/Manufacturer/ManufacturerDashboard';
 import "./App.css"
 import RestPassword from './Pages/RestPassword';
+import OtpSignup from './Pages/OtpSignup';
+
+
 
 function App() {
   return (
@@ -20,6 +23,7 @@ function App() {
           <Route exact path='/signup' element={<Singup />} />
           <Route exact path='/resetpass/:email' element={<RestPassword />} />
           <Route exact path={`/otp/:path`} element={<Otp />} />
+          <Route exact path={`/otpsign`} element={<OtpSignup />} />
           <Route exact path='/admin' element={<Admin />} />
           <Route exact path='/Retailer' element={<UserDashboard />} />
           <Route exact path='/manufacturer' element={<ManufacturerDashboard />} />

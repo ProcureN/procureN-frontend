@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import { EmailContext } from '../context/Email';
 
 import logo from '../assets/logo.png';
 
@@ -19,6 +20,8 @@ const SignupPage2 = ({ setNext, formValue }) => {
   let history = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const emailContext = useContext(EmailContext);
+  console.log(emailContext)
 
   let state = [
     'Andaman and Nicobar Islands',
@@ -81,7 +84,7 @@ const SignupPage2 = ({ setNext, formValue }) => {
               if (response.data.status === true) {
                 setLoading(false);
                 // alert('Successfully signup');
-                history('/otp/signup');
+                history('/otpsign');
               } else {
                 setError(error.message);
                 setLoading(false);

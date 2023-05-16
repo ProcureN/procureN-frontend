@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { EmailContext } from '../context/Email';
 
 // import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
@@ -66,13 +67,11 @@ const SignupSchema = Yup.object().shape({
 });
 
 const SignupPage1 = ({ setNext, setFormValue }) => {
+  const emailContext = useContext(EmailContext);
+  console.log(emailContext);
   const [loading, setLoading] = useState(false);
-
   const [showPassword, setShowPassword] = useState(false);
 
-  useEffect(() => {
-    console.log(setFormValue);
-  }, [setFormValue]);
   return (
     <>
       <Formik
@@ -85,6 +84,7 @@ const SignupPage1 = ({ setNext, setFormValue }) => {
         validationSchema={SignupSchema}
         onSubmit={(values, { setSubmitting }) => {
           setLoading(true);
+          emailContext.setEmail(values.email);
           setFormValue({ ...values });
           console.log(values);
           setLoading(false);

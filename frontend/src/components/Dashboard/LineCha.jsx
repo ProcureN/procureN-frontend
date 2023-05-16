@@ -127,78 +127,8 @@ const data2 = [
     pending: 2400,
     rejected: 2400,
   },
-  {
-    name: 'User 1',
-    approved: 4000,
-    pending: 2400,
-    rejected: 2400,
-  },
-  {
-    name: 'User 2',
-    approved: 3000,
-    pending: 1400,
-    rejected: 1000,
-  },
-  {
-    name: 'User 3',
-    approved: 4000,
-    pending: 3400,
-    rejected: 400,
-  },
-  {
-    name: 'User 4',
-    approved: 4000,
-    pending: 2400,
-    rejected: 2400,
-  },
-  {
-    name: 'User 1',
-    approved: 4000,
-    pending: 2400,
-    rejected: 2400,
-  },
-  {
-    name: 'User 2',
-    approved: 3000,
-    pending: 1400,
-    rejected: 1000,
-  },
-  {
-    name: 'User 3',
-    approved: 4000,
-    pending: 3400,
-    rejected: 400,
-  },
-  {
-    name: 'User 4',
-    approved: 4000,
-    pending: 2400,
-    rejected: 2400,
-  },
-  {
-    name: 'User 1',
-    approved: 4000,
-    pending: 2400,
-    rejected: 2400,
-  },
-  {
-    name: 'User 2',
-    approved: 3000,
-    pending: 1400,
-    rejected: 1000,
-  },
-  {
-    name: 'User 3',
-    approved: 4000,
-    pending: 3400,
-    rejected: 400,
-  },
-  {
-    name: 'User 4',
-    approved: 4000,
-    pending: 2400,
-    rejected: 2400,
-  },
+
+ 
  
 
 ];

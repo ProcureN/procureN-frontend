@@ -65,7 +65,7 @@ const HomePage = () => {
                     <NumberCounter
                       end={data.retailerCount}
                       start={0}
-                      delay='4'
+                    delay="2"
                       preFix='+'
                     />
                   ) : (
@@ -81,7 +81,7 @@ const HomePage = () => {
                     <NumberCounter
                       end={data.manufacturerCount}
                       start={0}
-                      delay='4'
+                    delay="2"
                       preFix='+'
                     />
                   ) : (
@@ -98,7 +98,7 @@ const HomePage = () => {
                     <NumberCounter
                       end={data.total}
                       start={0}
-                      delay='4'
+                    delay="2"
                       preFix='+'
                     />
                   ) : (
@@ -163,7 +163,7 @@ const HomePage = () => {
                     <NumberCounter
                       end={data3.data.pending}
                       start={0}
-                      delay='4'
+                    delay="2"
                       preFix='+'
                     />
                   ) : (
@@ -179,7 +179,7 @@ const HomePage = () => {
                     <NumberCounter
                       end={data3.data.approved}
                       start={0}
-                      delay='4'
+                    delay="2"
                       preFix='+'
                     />
                   ) : (
@@ -195,7 +195,7 @@ const HomePage = () => {
                     <NumberCounter
                       end={data3.data.rejected}
                       start={0}
-                      delay='4'
+                    delay="2"
                       preFix='+'
                     />
                   ) : (
@@ -211,7 +211,7 @@ const HomePage = () => {
                     <NumberCounter
                       end={data3.count}
                       start={0}
-                      delay='4'
+                    delay="2"
                       preFix='+'
                     />
                   ) : (
@@ -234,7 +234,7 @@ const HomePage = () => {
                     <NumberCounter
                       end={data2.count}
                       start={0}
-                      delay='4'
+                    delay="2"
                       preFix='+'
                     />
                     ):"0"}
@@ -248,7 +248,7 @@ const HomePage = () => {
                     <NumberCounter
                       end={data2.data.approvedData}
                       start={0}
-                      delay='4'
+                    delay="2"
                       preFix='+'
                     />
                     ):"0"}
@@ -262,7 +262,7 @@ const HomePage = () => {
                     <NumberCounter
                       end={data2.data.pendingData}
                       start={0}
-                      delay='4'
+                    delay="2"
                       preFix='+'
                     />
                   ):"0"}
@@ -276,7 +276,7 @@ const HomePage = () => {
                     <NumberCounter
                       end={data2.data.rejectedData}
                       start={0}
-                      delay='4'
+                    delay="2"
                       preFix='+'
                     />
                   ):"0"}
@@ -290,7 +290,7 @@ const HomePage = () => {
                     <NumberCounter
                       end={data2.data.countOfInprocessingDelivery}
                       start={0}
-                      delay='4'
+                    delay="2"
                       preFix='+'
                     />
                   ):"0"}
@@ -304,7 +304,7 @@ const HomePage = () => {
                     <NumberCounter
                       end={data2.data.countOfinshippedDelivery}
                       start={0}
-                      delay='4'
+                    delay="2"
                       preFix='+'
                     />
                   ):"0"}
@@ -318,7 +318,7 @@ const HomePage = () => {
                     <NumberCounter
                       end={data2.data.countOfinTransitDelivery}
                       start={0}
-                      delay='4'
+                    delay="2"
                       preFix='+'
                     />
                   ):"0"}
@@ -332,7 +332,7 @@ const HomePage = () => {
                     <NumberCounter
                       end={data2.data.countOfindeliveredDelivery}
                       start={0}
-                      delay='4'
+                    delay="2"
                       preFix='+'
                     />
                   ):"0"}
