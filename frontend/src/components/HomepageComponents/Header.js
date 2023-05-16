@@ -81,13 +81,13 @@ export default function Header({ setShowMyModal }) {
                       <li
                         className={`from-[#5c67f5] to-[#cb67ac]  ${
                           selectedItem === i
-                            ? `{ border-b-2 tracking-wide font-medium ${
-                                color ? 'bg-gradient-to-tr font-semibold text-transparent':'text-white'
+                            ? `{ border-b-2 tracking-wide  ${
+                                color ? 'bg-gradient-to-tr  text-transparent font-bold':'text-white font-semibold tracking-wider'
                               } }`
                             : 'hover:border-b-2 '
                         }  bg-clip-text ${
                           color
-                            ? 'border-indigo-500 hover:bg-gradient-to-tr hover:font-semibold hover:text-transparent'
+                            ? 'border-indigo-500 hover:bg-gradient-to-tr hover:font-bold hover:text-transparent'
                             : 'hover:text-yellow-300'
                         }  `}
                       >

@@ -23,9 +23,9 @@ const Sidebar = ({ links, setInputValue }) => {
 
   return (
     <div className='container w-max '>
-      <section className='    border'>
+      <section className='    border-r'>
         <div className='flex h-screen flex-col justify-between pr-0.5'>
-          <div className='  borderbg-slate-300 border-1 rounded-xl border-indigo-800'>
+          <div className='    rounded-xl border-indigo-800'>
             <Link to='/' className='flex justify-center '>
               <img
                 src={logo}

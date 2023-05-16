@@ -26,8 +26,13 @@ const About = () => {
               <div className='h-[1px] w-1/2 bg-indigo-800 '></div>
               <div className=' -mt-0.5 mb-3 h-1 w-28 rounded-full bg-indigo-600 '></div>
             </div> */}
-            <div data-aos='fade-up' data-aos-delay='0' data-aos-duration='1500'>
-              <span className='    md:text-lg  '>
+            <div
+              data-aos='fade-up'
+              data-aos-delay='0'
+              data-aos-duration='1500'
+              className='text-justify indent-16 md:indent-20 lg:indent-24 xl:indent-28 '
+            >
+              <span className='   md:text-lg  '>
                 At{' '}
                 <span className=' bg-gradient-to-bl from-[#5c67f5] to-[#cb67ac] bg-clip-text font-medium text-transparent '>
                   ProcureN!
@@ -51,9 +56,9 @@ const About = () => {
               </span>
               {open ? (
                 <>
-                  <span className='mb-4   md:text-lg  '>
+                  <div className='mb-4  md:text-lg  '>
                     At{' '}
-                    <span className=' bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] bg-clip-text font-medium text-transparent '>
+                    <span className='bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] bg-clip-text indent-8 font-medium text-transparent '>
                       ProcureN
                     </span>
                     , we understand the importance of streamlining your direct
@@ -68,7 +73,7 @@ const About = () => {
                     to flipping into a purchase order, submission to the
                     supplier, acknowledgement by the supplier, advanced shipping
                     notice (ASN), and finally, the invoice.
-                    <div className='mt-2' />
+                    <div className='mt-2 ' >
                     Our Sales Management/ERP Dashboard is a powerful application
                     that automates business processes, provides insights, and
                     internal controls, drawing on a central database that
@@ -80,7 +85,9 @@ const About = () => {
                     </span>{' '}
                     to help you manage your procurement processes efficiently
                     and effectively, so you can focus on growing your business.
-                  </span>
+
+                  </div>
+                  </div>
                   <div className='flex justify-center'>
                     <button
                       onClick={() => setOpen(false)}
