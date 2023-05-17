@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import LoginPage from '../assets/Login.jpg';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -9,10 +9,9 @@ import logo from '../assets/logo.png';
 import { EmailContext } from '../context/Email';
 
 const otpSchema = Yup.object().shape({
-  otp: Yup.number('OTP will be number only')
-    .required('OTP is required')
-    // .min(5, 'Invalid OTP')
-    // .max(5, 'Invalid OTP'),
+  otp: Yup.number('OTP will be number only').required('OTP is required'),
+  // .min(5, 'Invalid OTP')
+  // .max(5, 'Invalid OTP'),
 });
 
 const OtpSignup = () => {
@@ -44,11 +43,11 @@ const OtpSignup = () => {
 
   return (
     <>
+      <div className='absolute inset-0 hidden bg-black opacity-50 xl:block'></div>
       <div
         className='  flex h-screen w-full items-center justify-center  bg-cover '
         style={{ backgroundImage: `url(${LoginPage})` }}
       >
-        {/* <div className='absolute inset-0 bg-black opacity-50'></div> */}
         <div
           className={`z-20 m-2  w-[400px] ${
             shake && 'animate-shake'
@@ -95,15 +94,7 @@ const OtpSignup = () => {
           >
             {({ isSubmitting }) => (
               <Form className='  rounded-3xl  bg-white  p-6 text-center   shadow-xl shadow-black '>
-                <div className='flex justify-center'>
-                  <Link to='/'>
-                    <img
-                      src={logo}
-                      alt='logo'
-                      className='mx-auto mb-8   h-20'
-                    />
-                  </Link>
-                </div>
+                <img src={logo} alt='logo' className='mx-auto mb-8   h-20' />
 
                 <div>
                   <div className='mx-2 flex items-center justify-end'>
@@ -132,7 +123,7 @@ const OtpSignup = () => {
                 >
                   {loading ? 'Verifying' : 'Verify'}
                 </button>
-               
+
                 <span className='text-sm ' to='/signup'>
                   Don't have an OTP? -{' '}
                   <span
@@ -142,7 +133,7 @@ const OtpSignup = () => {
                     Resend OTP
                   </span>
                 </span>
-                
+
                 <div className='-mb-3 mt-4 text-[12px] '>
                   © 2023 ProcureN. All rights reserved{' '}
                 </div>

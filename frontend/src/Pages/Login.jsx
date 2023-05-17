@@ -40,7 +40,6 @@ const Login = () => {
 
   return (
     <>
-      {' '}
       <div className='absolute inset-0 hidden bg-black opacity-50 xl:block'></div>
       <div
         className='  flex h-screen w-full items-center justify-center bg-cover  bg-center '
@@ -99,9 +98,6 @@ const Login = () => {
           >
             {({ isSubmitting }) => (
               <Form className='  rounded-3xl    bg-white p-6  text-center shadow-xl shadow-black '>
-                {/* <h1 className='mb-2 bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] bg-clip-text text-center font-sans text-2xl   font-bold text-transparent duration-500'>
-                Welcome Back
-              </h1> */}
                 <div className='flex justify-center'>
                   <Link to='/'>
                     <img
@@ -111,15 +107,9 @@ const Login = () => {
                     />
                   </Link>
                 </div>
-                {/* <div className='h-0.5 rounded-full  bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] ' /> */}
+
                 <div>
                   <div className='mx-2 flex items-center justify-end'>
-                    {/* <label
-                      className='text-md my-3 block text-center font-semibold text-gray-800  '
-                      htmlFor='email'
-                    >
-                      EMAIL
-                    </label> */}
                     <ErrorMessage
                       name='email'
                       component='div'
@@ -137,12 +127,6 @@ const Login = () => {
                 </div>
                 <div className='mt-2'>
                   <div className='mx-2 flex items-center justify-end'>
-                    {/* <label
-                      className='text-md mb-2 mt-4 block text-center font-semibold  text-gray-800 '
-                      htmlFor='password'
-                    >
-                      PASSWORD
-                    </label> */}
                     <ErrorMessage
                       name='password'
                       component='div'
@@ -172,7 +156,7 @@ const Login = () => {
 
                   <div className='mt-2'>
                     <Link
-                      to='/otp/forget'
+                      to='/otplogin'
                       className=' text-md group relative mb-4 flex  items-center rounded-md 	p-1 pr-2  '
                     >
                       Having trouble in sign in?

@@ -21,7 +21,7 @@ const Services = () => {
             data-aos='fade-up'
             data-aos-delay='0'
             data-aos-duration='1000'
-            className='mb-6 flex w-full flex-col text-center'
+            className='mb-4 flex w-full flex-col text-center'
           >
             <h1 className='mb-6 text-3xl font-medium  uppercase text-[#5c67f5] sm:text-4xl'>
               Services

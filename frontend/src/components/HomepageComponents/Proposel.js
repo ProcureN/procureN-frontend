@@ -39,7 +39,7 @@ const Proposel = () => {
   // const [submit, setSubmit] = useState(false);
   return (
     <div id='contact'>
-      <div className='container mx-auto px-5 pt-10 md:pt-24 -mb-6'>
+      <div className='container mx-auto -mb-6 px-5 pt-10 md:pt-24'>
         <div
           data-aos='fade-up'
           data-aos-delay='0'
@@ -69,7 +69,7 @@ const Proposel = () => {
             data-aos='fade-right'
             data-aos-delay='0'
             data-aos-duration='1000'
-            className=' flex flex-col   md:w-1/2 overflow-hidden  '
+            className=' flex flex-col   overflow-hidden md:w-1/2  '
           >
             <img src={deal} className='h-[90%]  ' alt='' srcSet='' />
           </div>
@@ -132,7 +132,7 @@ const Proposel = () => {
                         name='name'
                         // placeholder='Enter your name'
                         required
-                        className='placeholder:text-md w-full rounded-lg  border-b border-gray-500  bg-white px-3 py-1 text-center leading-8  placeholder-gray-300  outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 '
+                        className='placeholder:text-md w-full   border-b border-gray-500  bg-white px-3 py-1 text-center leading-8  placeholder-gray-300  outline-none  '
                       />
                     </div>
                     <ErrorMessage
@@ -153,7 +153,7 @@ const Proposel = () => {
                         name='email'
                         // placeholder='example@email.com'
                         required
-                        className='placeholder:text-md w-full rounded-lg  border-b border-gray-500  bg-white px-3 py-1 text-center leading-8  placeholder-gray-300  outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 '
+                        className='placeholder:text-md w-full   border-b border-gray-500  bg-white px-3 py-1 text-center leading-8  placeholder-gray-300  outline-none  '
                       />
                     </div>
                     <ErrorMessage
@@ -173,7 +173,7 @@ const Proposel = () => {
                         name='phone'
                         // placeholder='+91 00000 00000 '
                         required
-                        className='placeholder:text-md w-full rounded-lg  border-b border-gray-500  bg-white px-3 py-1 text-center leading-8  placeholder-gray-300  outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 '
+                        className='placeholder:text-md w-full   border-b border-gray-500  bg-white px-3 py-1 text-center leading-8  placeholder-gray-300  outline-none  '
                       />
                     </div>
                     <ErrorMessage
@@ -196,7 +196,7 @@ const Proposel = () => {
                         name='subject'
                         // placeholder='Enter your subject'
                         required
-                        className='placeholder:text-md w-full rounded-lg  border-b border-gray-500  bg-white px-3 py-1 text-center leading-8  placeholder-gray-300  outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 '
+                        className='placeholder:text-md w-full   border-b border-gray-500  bg-white px-3 py-1 text-center leading-8  placeholder-gray-300  outline-none  '
                       />
                     </div>
                     <ErrorMessage
@@ -216,7 +216,7 @@ const Proposel = () => {
                       as='textarea'
                       id='message'
                       name='message'
-                      className='h-16 w-full resize-none rounded-lg  border-b  border-gray-500 bg-white px-3 py-1 text-base leading-6  outline-none transition-colors duration-200 ease-in-out focus-within:ring-2 focus:border-indigo-500 focus:ring-indigo-200'
+                      className='h-16 w-full resize-none   border-b  border-gray-500 bg-white px-3 py-1 text-base leading-6  outline-none '
                     ></Field>
                   </div>
                   <div className='ml-4 flex justify-center '>

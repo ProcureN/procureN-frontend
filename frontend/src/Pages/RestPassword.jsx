@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import LoginPage from '../assets/LoginBack.jpg';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -8,6 +8,7 @@ import axios from 'axios';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 import logo from '../assets/logo.png';
+import { EmailContext } from '../context/Email';
 
 const RestPassSchema = Yup.object().shape({
   password: Yup.string()
@@ -19,13 +20,11 @@ const RestPassSchema = Yup.object().shape({
 });
 
 const RestPassword = () => {
-  const [loading, setLoading] = useState(false);
-
   let history = useNavigate();
+  const emailContext = useContext(EmailContext);
+  const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  let email = '';
-  email = useParams().email;
-
+  console.log(emailContext);
   return (
     <>
       <div className='absolute inset-0 hidden bg-black opacity-50 xl:block'></div>
@@ -37,7 +36,7 @@ const RestPassword = () => {
           {/* <div className=' z-20   m-2 w-full shadow-2xl sm:w-4/5 md:w-1/2 lg:w-1/2 xl:w-1/3 2xl:w-1/4  '> */}
           <Formik
             initialValues={{
-              email: email,
+              email: `${emailContext.email}`,
               password: '',
             }}
             validationSchema={RestPassSchema}
@@ -52,7 +51,7 @@ const RestPassword = () => {
                 )
                 .then((response) => {
                   if (response.data.message === 'success') {
-                    alert('success');
+                    alert('Password updated successfully');
                     history(`/login`);
                   }
                   setSubmitting(false);
@@ -67,15 +66,8 @@ const RestPassword = () => {
           >
             {({ isSubmitting }) => (
               <Form className='  rounded-3xl    bg-white p-6  text-center shadow-xl shadow-black '>
-                <div className='flex justify-center'>
-                  <Link to='/'>
-                    <img
-                      src={logo}
-                      alt='logo'
-                      className='mx-auto mb-8   h-20'
-                    />
-                  </Link>
-                </div>
+                <img src={logo} alt='logo' className='mx-auto mb-8   h-20' />
+
                 <div>
                   <ErrorMessage
                     name='password'

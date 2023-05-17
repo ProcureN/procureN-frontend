@@ -73,25 +73,25 @@ const About = () => {
                     to flipping into a purchase order, submission to the
                     supplier, acknowledgement by the supplier, advanced shipping
                     notice (ASN), and finally, the invoice.
-                    <div className='mt-2 ' >
-                    Our Sales Management/ERP Dashboard is a powerful application
-                    that automates business processes, provides insights, and
-                    internal controls, drawing on a central database that
-                    collects inputs from departments including accounting,
-                    manufacturing, supply chain management, sales, marketing,
-                    and human resources (HR). Trust{' '}
-                    <span className=' bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] bg-clip-text font-medium text-transparent '>
-                      ProcureN
-                    </span>{' '}
-                    to help you manage your procurement processes efficiently
-                    and effectively, so you can focus on growing your business.
-
-                  </div>
+                    <div className='mt-2 '>
+                      Our Sales Management/ERP Dashboard is a powerful
+                      application that automates business processes, provides
+                      insights, and internal controls, drawing on a central
+                      database that collects inputs from departments including
+                      accounting, manufacturing, supply chain management, sales,
+                      marketing, and human resources (HR). Trust{' '}
+                      <span className=' bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] bg-clip-text font-medium text-transparent '>
+                        ProcureN
+                      </span>{' '}
+                      to help you manage your procurement processes efficiently
+                      and effectively, so you can focus on
+                      growing your business.
+                    </div>
                   </div>
                   <div className='flex justify-center'>
                     <button
                       onClick={() => setOpen(false)}
-                      className='mt-6   rounded-full border border-gray-500   from-[#5c67f5] to-[#cb67ac]  bg-clip-text p-2 pl-3 font-sans duration-500 hover:bg-gradient-to-tr   hover:text-black hover:text-transparent   focus:outline-none md:mx-2  lg:mx-10 xl:pr-3 '
+                      className='mt-6  mb-4 rounded-full border border-gray-500   from-[#5c67f5] to-[#cb67ac]  bg-clip-text p-2 pl-3 font-sans duration-500 hover:bg-gradient-to-tr   hover:text-black hover:text-transparent   focus:outline-none md:mx-2  lg:mx-10 xl:pr-3 '
                     >
                       Show less
                     </button>
@@ -105,7 +105,7 @@ const About = () => {
 
                   <button
                     onClick={() => setOpen(true)}
-                    className='mt-6  flex rounded-full border border-gray-500   from-[#5c67f5] to-[#cb67ac]  bg-clip-text p-2 pl-3 font-sans duration-500 hover:bg-gradient-to-tr   hover:text-black hover:text-transparent   focus:outline-none md:mx-2  lg:mx-10 xl:pr-3 '
+                    className='mt-6 mb-4 flex rounded-full border border-gray-500   from-[#5c67f5] to-[#cb67ac]  bg-clip-text p-2 pl-3 font-sans duration-500 hover:bg-gradient-to-tr   hover:text-black hover:text-transparent   focus:outline-none md:mx-2  lg:mx-10 xl:pr-3 '
                   >
                     Know More
                   </button>
