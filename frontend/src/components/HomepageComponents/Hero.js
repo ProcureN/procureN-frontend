@@ -128,7 +128,7 @@ const Hero = ({ setShowMyModal }) => {
             data-aos='fade-down'
             data-aos-delay='0'
             data-aos-duration='1500'
-            className=' md:w-1/2 pb-10'
+            className=' md:w-1/2 pb-10 flex justify-center'
           >
             <img
               className='    rounded object-cover object-center lg:w-full lg:max-w-lg  '
