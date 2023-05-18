@@ -3,13 +3,14 @@ import defaultImage from '../../../../assets/Default_pfp.jpg';
 import NumberCounter from 'number-counter';
 import axios from 'axios';
 import { CgSpinner } from 'react-icons/cg';
-import LineCha from '../../LineCha';
+
 
 const HomeManufacture = ({ setProfile }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
-  const manu = 10;
+  const [data2, setData2] = useState([]);
+
 
   useEffect(() => {
     async function fetchData() {
@@ -39,6 +40,21 @@ const HomeManufacture = ({ setProfile }) => {
     fetchData();
   }, [setProfile]);
 
+  useEffect(() => {
+    const customerID = localStorage.getItem('customerID');
+    axios
+      .get(
+        `https://procuren-backend.onrender.com/individualproductscount/${customerID}`
+      )
+      .then((response) => {
+        setData2(response.data); // Assuming the response data should be set to `data`
+        console.log(response)
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+
   return (
     <>
       {loading ? (
@@ -54,56 +70,7 @@ const HomeManufacture = ({ setProfile }) => {
             Welcome back to your dashboard! We're glad to see you again.
           </span>
           <div className='flex justify-center '>
-            <div className='mx-10 grid lg:grid-cols-2 lg:gap-14'>
-              <div className='col-span-1  mt-2  h-36 w-36 rounded-xl   p-4 text-xl  shadow-lg'>
-                <span className='text-green-500'>Approved Products</span>
-                <div className='h-0.5 w-full bg-indigo-500'></div>
-                <div className='text-3xl  font-bold text-gray-600'>
-                  <NumberCounter
-                    end={manu}
-                    start={manu - 10}
-                    delay='4'
-                    preFix='+'
-                  />
-                </div>
-              </div>
-              <div className='col-span-1  mt-2     h-36 w-36 rounded-xl   p-4 text-xl  shadow-lg'>
-                <span className='text-orange-400'>Pending Products</span>
-                <div className='h-0.5 w-full bg-indigo-500'></div>
-                <div className='text-3xl  font-bold text-gray-600'>
-                  <NumberCounter
-                    end={manu}
-                    start={manu - 10}
-                    delay='4'
-                    preFix='+'
-                  />
-                </div>
-              </div>
-              <div className=' col-span-1 mt-2     h-36 w-36 rounded-xl   p-4 text-xl  shadow-lg'>
-                <span className='text-red-600'>Rejected Products</span>
-                <div className='h-0.5 w-full bg-indigo-500'></div>
-                <div className='text-3xl  font-bold text-gray-600'>
-                  <NumberCounter
-                    end={manu}
-                    start={manu - 10}
-                    delay='4'
-                    preFix='+'
-                  />
-                </div>
-              </div>
-              <div className='col-span-1 mt-2   h-36 w-36 rounded-xl   p-4 text-xl  shadow-lg'>
-                <span className=''>Total Products</span>
-                <div className='h-0.5 w-full bg-indigo-500'></div>
-                <div className='text-3xl  font-bold text-gray-600'>
-                  <NumberCounter
-                    end={manu}
-                    start={manu - 10}
-                    delay='4'
-                    preFix='+'
-                  />
-                </div>
-              </div>
-            </div>
+         
 
             <div className='m-4 flex  items-center justify-center rounded-2xl bg-gradient-to-tl from-blue-300 to-pink-300  shadow-2xl'>
               <div className='flex flex-col items-center justify-around px-5 py-8 md:px-10'>
@@ -161,9 +128,78 @@ const HomeManufacture = ({ setProfile }) => {
               </div>
             </div>
           </div>
-          <div className='mt-4 h-36 w-full'>
-            <LineCha />
+          <div className='w-full col-span-2 mr-2 mt-2 items-center justify-center  p-2'>
+            <div className='flex flex-wrap justify-center'>
+              <div className=' mr-2 mt-2  h-28 w-28 rounded-xl p-2 text-xl'>
+                <span className=''>Total Products</span>
+                <div className='h-0.5 w-full bg-indigo-500'></div>
+                <div className='text-xl  font-bold text-gray-600'>
+                  {data2.count ? (
+                    <NumberCounter
+                      end={data2.count}
+                      start={0}
+                      delay='1'
+                      preFix='+'
+                    />
+                  ) : (
+                    '0'
+                  )}
+                </div>
+              </div>
+              <div className=' mr-2 mt-2  h-28 w-28 rounded-xl p-2 text-xl'>
+                <span className='text-green-500'>Approved Products</span>
+                <div className='h-0.5 w-full bg-indigo-500'></div>
+                <div className='text-xl  font-bold text-gray-600'>
+                  {data2.count > 0 ? (
+                    <NumberCounter
+                      end={data2.data.approved}
+                      start={0}
+                      delay='1'
+                      preFix='+'
+                    />
+                  ) : (
+                    '0'
+                  )}
+                </div>
+              </div>
+              <div className=' mr-2 mt-2  h-28 w-28 rounded-xl p-2 text-xl'>
+                <span className='text-orange-500'>Pending Products</span>
+                <div className='h-0.5 w-full bg-indigo-500'></div>
+                <div className='text-xl  font-bold text-gray-600'>
+                  {data2.count ? (
+                    <NumberCounter
+                      end={data2.data.pending}
+                      start={0}
+                      delay='1'
+                      preFix='+'
+                    />
+                  ) : (
+                    '0'
+                  )}
+                </div>
+              </div>
+              <div className=' mr-2 mt-2  h-28 w-28 rounded-xl p-2 text-xl'>
+                <span className='text-red-500 '>Rejected Products</span>
+                <div className='h-0.5 w-full bg-indigo-500'></div>
+                <div className='text-xl  font-bold text-gray-600'>
+                  {data2.count ? (
+                    <NumberCounter
+                      end={data2.data.rejected}
+                      start={0}
+                      delay='1'
+                      preFix='+'
+                    />
+                  ) : (
+                    '0'
+                  )}
+                </div>
+              </div>
+              
+            </div>
           </div>
+          {/* <div className='mt-4 h-36 w-full'>
+            <LineCha />
+          </div> */}
         </div>
       )}
     </>

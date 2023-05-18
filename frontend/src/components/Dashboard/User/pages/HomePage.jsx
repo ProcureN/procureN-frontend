@@ -126,9 +126,8 @@ const HomePage = ({ setProfile }) => {
             </div>
           
           </div>
-          <div className='w-full col-span-2 mr-2 mt-2 items-center justify-center border-t p-2'>
+          <div className='w-full col-span-2 mr-2 mt-2 items-center justify-center  p-2'>
             <div className='flex flex-wrap justify-center'>
-              
               <div className=' mr-2 mt-2  h-28 w-28 rounded-xl p-2 text-xl'>
                 <span className=''>Total Enquiries</span>
                 <div className='h-0.5 w-full bg-indigo-500'></div>
