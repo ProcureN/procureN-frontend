@@ -149,41 +149,7 @@ const HomePage = () => {
               )}
             </div>
           </div>
-          {/* <div className='mx-2 grid  grid-cols-3 rounded-xl border  p-2'>
-            <div className=' '>
-              <div className=' mr-4 mt-2  h-28 w-28 rounded-xl p-2 text-xl'>
-                <span className='text-orange-400'>Pending Products</span>
-                <div className='h-0.5 w-full bg-indigo-500'></div>
-                <div className='text-xl  font-bold text-gray-600'>
-                  <NumberCounter end={manu} start={800} delay='4' preFix='+' />
-                </div>
-              </div>
-              <div className=' mr-4 mt-2  h-28 w-28 rounded-xl p-2 text-xl'>
-                <span className='text-green-500'>Approved Products</span>
-                <div className='h-0.5 w-full bg-indigo-500'></div>
-                <div className='text-xl  font-bold text-gray-600'>
-                  <NumberCounter end={manu} start={800} delay='4' preFix='+' />
-                </div>
-              </div>
-              <div className=' mr-4 mt-2  h-28 w-28 rounded-xl p-2 text-xl'>
-                <span className='text-red-600'>Rejected Products</span>
-                <div className='h-0.5 w-full bg-indigo-500'></div>
-                <div className='text-xl  font-bold text-gray-600'>
-                  <NumberCounter end={manu} start={800} delay='4' preFix='+' />
-                </div>
-              </div>
-              <div className=' mr-4 mt-2  h-28 w-28 rounded-xl p-2 text-xl'>
-                <span className=''>Total Products</span>
-                <div className='h-0.5 w-full bg-indigo-500'></div>
-                <div className='text-2xl  font-bold text-gray-600'>
-                  <NumberCounter end={manu} start={800} delay='4' preFix='+' />
-                </div>
-              </div>
-            </div>
-            <div className='col-span-2'>
-              <BarCha />
-            </div>
-          </div> */}
+          
           <div className='mx-2 grid  grid-cols-3  border-l  p-2'>
             <div className=' '>
               <div className=' mr-4 mt-2  h-28 w-28 rounded-xl p-2 text-xl'>
