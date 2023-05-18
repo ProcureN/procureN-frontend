@@ -51,11 +51,19 @@ export default function Header({ setShowMyModal }) {
               } md:w-auto`}
             >
               <a href='#hero' id='logoForHeader'>
-                <img
-                  src={color ? logo2 : logo}
-                  alt='logo'
-                  className='h-16 px-3 py-1 md:h-20 md:cursor-pointer md:px-8  '
-                />
+                {color ? (
+                  <img
+                    src={logo2}
+                    alt='logo'
+                    className='h-16 px-3 py-1 md:h-20 md:cursor-pointer md:px-8  '
+                  />
+                ) : (
+                  <img
+                    src={logo}
+                    alt='logo'
+                    className='h-16 px-3 py-1 md:h-20 md:cursor-pointer md:px-8  '
+                  />
+                )}
               </a>
               <div
                 className='z-10 flex p-3 text-3xl md:hidden md:p-5 '
@@ -71,7 +79,6 @@ export default function Header({ setShowMyModal }) {
                 }  md:flex`}
               >
                 {navigation.map((item, i) => (
-                  
                   <div className='relative'>
                     <a
                       key={i}
@@ -82,7 +89,9 @@ export default function Header({ setShowMyModal }) {
                         className={`from-[#5c67f5] to-[#cb67ac]  ${
                           selectedItem === i
                             ? `{ border-b-2 tracking-wide  ${
-                                color ? 'bg-gradient-to-tr  text-transparent font-bold':'text-white font-semibold tracking-wider'
+                                color
+                                  ? 'bg-gradient-to-tr  font-bold text-transparent'
+                                  : 'font-semibold tracking-wider text-white'
                               } }`
                             : 'hover:border-b-2 '
                         }  bg-clip-text ${
