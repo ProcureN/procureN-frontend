@@ -3,18 +3,34 @@ import defaultImage from '../../../../assets/Default_pfp.jpg';
 import NumberCounter from 'number-counter';
 import axios from 'axios';
 import { CgSpinner } from 'react-icons/cg';
-import LineCha from '../../LineCha';
 
 const HomePage = ({ setProfile }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
-  const manu = 1000;
+  const [data2, setData2] = useState([]);
+
+  
 
   useEffect(() => {
+    const customerID = localStorage.getItem('customerID');
+    axios
+      .get(
+        `https://procuren-backend.onrender.com/individualproductscount/${customerID}`
+      )
+      .then((response) => {
+        setData2(response.data); // Assuming the response data should be set to `data`
+        console.log(response)
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+
+  useEffect(() => {
+    const customerID = localStorage.getItem('customerID');
     async function fetchData() {
       try {
-        const customerID = localStorage.getItem('customerID');
         setLoading(true);
         const token = localStorage.getItem('token');
         if (!token) {
@@ -23,7 +39,6 @@ const HomePage = ({ setProfile }) => {
         }
         const res = await axios.get(
           `https://procuren-backend.onrender.com/Individualprofiles/${customerID}`,
-          // `http://localhost:3001/Individualprofiles/${customerID}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -54,84 +69,6 @@ const HomePage = ({ setProfile }) => {
             Welcome back to your dashboard! We're glad to see you again.
           </span>
           <div className='flex justify-center '>
-            <div className=' flex  rounded-xl  p-2'>
-              <div className='mx-2'>
-                <div className='  mt-2  h-36 w-36 rounded-xl    p-4 text-xl  shadow-lg'>
-                  <span className='text-blue-500'>Total Manufacturer</span>
-                  <div className='h-0.5 w-full bg-indigo-500'></div>
-                  <div className='text-3xl  font-bold text-gray-600'>
-                    <NumberCounter
-                      end={manu}
-                      start={800}
-                      delay='4'
-                      preFix='+'
-                    />
-                  </div>
-                </div>
-                <div className='  mt-2     h-36 w-36 rounded-xl   p-4 text-xl  shadow-lg'>
-                  <span className='text-green-500'>Total Retailer</span>
-                  <div className='h-0.5 w-full bg-indigo-500'></div>
-                  <div className='text-3xl  font-bold text-gray-600'>
-                    <NumberCounter
-                      end={manu}
-                      start={800}
-                      delay='4'
-                      preFix='+'
-                    />
-                  </div>
-                </div>
-                <div className=' mt-2   h-36 w-36 rounded-xl   p-4 text-xl  shadow-lg'>
-                  <span className=''>Total Users</span>
-                  <div className='h-0.5 w-full bg-indigo-500'></div>
-                  <div className='text-3xl  font-bold text-gray-600'>
-                    <NumberCounter
-                      end={manu}
-                      start={800}
-                      delay='4'
-                      preFix='+'
-                    />
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div className='  mt-2   h-36 w-36 rounded-xl   p-4 text-xl  shadow-lg'>
-                  <span className='text-blue-500'>Total Manufacturer</span>
-                  <div className='h-0.5 w-full bg-indigo-500'></div>
-                  <div className='text-3xl  font-bold text-gray-600'>
-                    <NumberCounter
-                      end={manu}
-                      start={800}
-                      delay='4'
-                      preFix='+'
-                    />
-                  </div>
-                </div>
-                <div className='  mt-2     h-36 w-36 rounded-xl   p-4 text-xl  shadow-lg'>
-                  <span className='text-green-500'>Total Retailer</span>
-                  <div className='h-0.5 w-full bg-indigo-500'></div>
-                  <div className='text-3xl  font-bold text-gray-600'>
-                    <NumberCounter
-                      end={manu}
-                      start={800}
-                      delay='4'
-                      preFix='+'
-                    />
-                  </div>
-                </div>
-                <div className=' mt-2   h-36 w-36 rounded-xl   p-4 text-xl  shadow-lg'>
-                  <span className=''>Total Users</span>
-                  <div className='h-0.5 w-full bg-indigo-500'></div>
-                  <div className='text-3xl  font-bold text-gray-600'>
-                    <NumberCounter
-                      end={manu}
-                      start={800}
-                      delay='4'
-                      preFix='+'
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
             <div className='m-4 flex  items-center justify-center rounded-2xl bg-gradient-to-tl from-blue-300 to-pink-300  shadow-2xl'>
               <div className='flex flex-col items-center justify-around px-5 py-8 md:px-10'>
                 <div className='h-24 w-24 overflow-hidden rounded-full border'>
@@ -188,8 +125,137 @@ const HomePage = ({ setProfile }) => {
               </div>
             </div>
           </div>
-          <div className='mt-4 h-36 w-full'>
-            <LineCha />
+          <div className='w-full col-span-2 mr-2 mt-2 items-center justify-center border-t p-2'>
+            <div className='flex flex-wrap justify-center'>
+              <div className=' mr-2 mt-2  h-28 w-28 rounded-xl p-2 text-xl'>
+                <span className=''>Total Enquiries</span>
+                <div className='h-0.5 w-full bg-indigo-500'></div>
+                <div className='text-xl  font-bold text-gray-600'>
+                  {data2.count ? (
+                    <NumberCounter
+                      end={data2.count}
+                      start={0}
+                      delay='2'
+                      preFix='+'
+                    />
+                  ) : (
+                    '0'
+                  )}
+                </div>
+              </div>
+              <div className=' mr-2 mt-2  h-28 w-28 rounded-xl p-2 text-xl'>
+                <span className='text-green-500'>Approved Enquiries</span>
+                <div className='h-0.5 w-full bg-indigo-500'></div>
+                <div className='text-xl  font-bold text-gray-600'>
+                  {data2.count > 0 ? (
+                    <NumberCounter
+                      end={data2.data.approvedData}
+                      start={0}
+                      delay='2'
+                      preFix='+'
+                    />
+                  ) : (
+                    '0'
+                  )}
+                </div>
+              </div>
+              <div className=' mr-2 mt-2  h-28 w-28 rounded-xl p-2 text-xl'>
+                <span className='text-orange-500'>Pending Enquiries</span>
+                <div className='h-0.5 w-full bg-indigo-500'></div>
+                <div className='text-xl  font-bold text-gray-600'>
+                  {data2.count ? (
+                    <NumberCounter
+                      end={data2.data.pendingData}
+                      start={0}
+                      delay='2'
+                      preFix='+'
+                    />
+                  ) : (
+                    '0'
+                  )}
+                </div>
+              </div>
+              <div className=' mr-2 mt-2  h-28 w-28 rounded-xl p-2 text-xl'>
+                <span className='text-red-500 '>Rejected Enquiries</span>
+                <div className='h-0.5 w-full bg-indigo-500'></div>
+                <div className='text-xl  font-bold text-gray-600'>
+                  {data2.count ? (
+                    <NumberCounter
+                      end={data2.data.rejectedData}
+                      start={0}
+                      delay='2'
+                      preFix='+'
+                    />
+                  ) : (
+                    '0'
+                  )}
+                </div>
+              </div>
+              <div className=' mr-2 mt-2  h-28 w-28 rounded-xl p-2 text-xl'>
+                <span className='text-orange-300-400'>InProcees Product</span>
+                <div className='h-0.5 w-full bg-indigo-500'></div>
+                <div className='text-xl  font-bold text-gray-600'>
+                  {data2.count ? (
+                    <NumberCounter
+                      end={data2.data.countOfInprocessingDelivery}
+                      start={0}
+                      delay='2'
+                      preFix='+'
+                    />
+                  ) : (
+                    '0'
+                  )}
+                </div>
+              </div>
+              <div className=' mr-2 mt-2  h-28 w-28 rounded-xl p-2 text-xl'>
+                <span className='text-orange-400'>Inshipped Product</span>
+                <div className='h-0.5 w-full bg-indigo-500'></div>
+                <div className='text-xl  font-bold text-gray-600'>
+                  {data2.count ? (
+                    <NumberCounter
+                      end={data2.data.countOfinshippedDelivery}
+                      start={0}
+                      delay='2'
+                      preFix='+'
+                    />
+                  ) : (
+                    '0'
+                  )}
+                </div>
+              </div>
+              <div className=' mr-2 mt-2  h-28 w-28 rounded-xl p-2 text-xl'>
+                <span className='text-blue-400'>InTransit Product</span>
+                <div className='h-0.5 w-full bg-indigo-500'></div>
+                <div className='text-xl  font-bold text-gray-600'>
+                  {data2.count ? (
+                    <NumberCounter
+                      end={data2.data.countOfinTransitDelivery}
+                      start={0}
+                      delay='2'
+                      preFix='+'
+                    />
+                  ) : (
+                    '0'
+                  )}
+                </div>
+              </div>
+              <div className=' mr-2 mt-2  h-28 w-28 rounded-xl p-2 text-xl'>
+                <span className='text-green-500'>Delivered Product</span>
+                <div className='h-0.5 w-full bg-indigo-500'></div>
+                <div className='text-xl  font-bold text-gray-600'>
+                  {data2.count > 0 ? (
+                    <NumberCounter
+                      end={data2.data.countOfindeliveredDelivery}
+                      start={0}
+                      delay='2'
+                      preFix='+'
+                    />
+                  ) : (
+                    '0'
+                  )}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}
