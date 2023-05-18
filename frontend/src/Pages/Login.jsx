@@ -168,7 +168,7 @@ const Login = () => {
                   type='submit'
                   disabled={isSubmitting}
                 >
-                  {loading ? 'Sign in...' : 'Sign in'}
+                  {loading ? 'Signing in' : 'Sign in'}
                 </button>
                 {/* <span>or Sign in with</span>
                 <div className='mb-6 mt-3 flex justify-around'>

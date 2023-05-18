@@ -8,6 +8,7 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import logo from '../assets/logo.png';
+// import Selector from './Selector';
 
 const phoneRegex = /^(\+91-|\+91|0)?\d{10}$/;
 const passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,16}$/;
@@ -98,6 +99,9 @@ const SignupPage1 = ({ setNext, setFormValue }) => {
                 <img src={logo} alt='logo' className='mx-auto mb-8   h-20' />
               </Link>
             </div>
+            
+              {/* <Selector /> */}
+ 
             <div>
               <div>
                 <ErrorMessage
