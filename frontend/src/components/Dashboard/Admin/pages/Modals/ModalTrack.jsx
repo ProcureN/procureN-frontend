@@ -10,8 +10,8 @@ import { AiOutlineCloseCircle } from 'react-icons/ai';
 const trackingSchema = Yup.object().shape({
   trackingID: Yup.string()
     .required('TrackingID is required.*')
-    .min(15, 'Invalid TrackingID')
-    .max(15, 'Invalid TrackingID'),
+    // .min(15, 'Invalid TrackingID')
+    // .max(15, 'Invalid TrackingID'),
 });
 
 const ModalTrack = ({ visible, onClose }) => {
@@ -84,7 +84,7 @@ const ModalTrack = ({ visible, onClose }) => {
                   </label> */}
                   <Field
                     className='w-full rounded-lg  border-2 bg-gray-100 px-4 py-2 focus:outline-none'
-                    type='number'
+                    type='text'
                     name='trackingID'
                     id='trackingID'
                     placeholder='Enter your tracking id'
