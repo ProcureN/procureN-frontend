@@ -16,7 +16,7 @@ const HomePage = ({ setProfile }) => {
     const customerID = localStorage.getItem('customerID');
     axios
       .get(
-        `https://procuren-backend.onrender.com/individualproductscount/${customerID}`
+        `https://procuren-backend.onrender.com/individualcostumerenquirycounts/${customerID}`
       )
       .then((response) => {
         setData2(response.data); // Assuming the response data should be set to `data`
@@ -124,9 +124,11 @@ const HomePage = ({ setProfile }) => {
                 </div>
               </div>
             </div>
+          
           </div>
           <div className='w-full col-span-2 mr-2 mt-2 items-center justify-center border-t p-2'>
             <div className='flex flex-wrap justify-center'>
+              
               <div className=' mr-2 mt-2  h-28 w-28 rounded-xl p-2 text-xl'>
                 <span className=''>Total Enquiries</span>
                 <div className='h-0.5 w-full bg-indigo-500'></div>
@@ -135,7 +137,7 @@ const HomePage = ({ setProfile }) => {
                     <NumberCounter
                       end={data2.count}
                       start={0}
-                      delay='2'
+                      delay='1'
                       preFix='+'
                     />
                   ) : (
@@ -151,7 +153,7 @@ const HomePage = ({ setProfile }) => {
                     <NumberCounter
                       end={data2.data.approvedData}
                       start={0}
-                      delay='2'
+                      delay='1'
                       preFix='+'
                     />
                   ) : (
@@ -167,7 +169,7 @@ const HomePage = ({ setProfile }) => {
                     <NumberCounter
                       end={data2.data.pendingData}
                       start={0}
-                      delay='2'
+                      delay='1'
                       preFix='+'
                     />
                   ) : (
@@ -183,7 +185,7 @@ const HomePage = ({ setProfile }) => {
                     <NumberCounter
                       end={data2.data.rejectedData}
                       start={0}
-                      delay='2'
+                      delay='1'
                       preFix='+'
                     />
                   ) : (
@@ -199,7 +201,7 @@ const HomePage = ({ setProfile }) => {
                     <NumberCounter
                       end={data2.data.countOfInprocessingDelivery}
                       start={0}
-                      delay='2'
+                      delay='1'
                       preFix='+'
                     />
                   ) : (
@@ -215,7 +217,7 @@ const HomePage = ({ setProfile }) => {
                     <NumberCounter
                       end={data2.data.countOfinshippedDelivery}
                       start={0}
-                      delay='2'
+                      delay='1'
                       preFix='+'
                     />
                   ) : (
@@ -231,7 +233,7 @@ const HomePage = ({ setProfile }) => {
                     <NumberCounter
                       end={data2.data.countOfinTransitDelivery}
                       start={0}
-                      delay='2'
+                      delay='1'
                       preFix='+'
                     />
                   ) : (
@@ -247,7 +249,7 @@ const HomePage = ({ setProfile }) => {
                     <NumberCounter
                       end={data2.data.countOfindeliveredDelivery}
                       start={0}
-                      delay='2'
+                      delay='1'
                       preFix='+'
                     />
                   ) : (
