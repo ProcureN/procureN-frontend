@@ -1,28 +1,27 @@
 import React, { useState } from 'react';
-import Sidebar from '../Sidebar';
-import { AiOutlineMenuFold, AiOutlineMenuUnfold } from 'react-icons/ai';
 import { BsCartPlus } from 'react-icons/bs';
 import { TfiShoppingCartFull } from 'react-icons/tfi';
-// import {CgProfile} from "react-icons/cg"
 import { FaHome } from 'react-icons/fa';
+import AddProduct from './pages/AddProduct';
+import ViewAllProducts from './pages/ViewAllProducts';
 
-import MainContentManufac from './MainContentManufac';
+import SidePanel from '../SidePanel';
+import HomeManufacture from './pages/HomeManufacture2';
+
 
 const manufactureLinks = [
   {
     Head: 'DASHBOARD',
-    subLinks: [
-      { name: 'Home Page', link: '/manufacturer', logo: [<FaHome />] },
-    ],
+    subLinks: [{ name: 'Home Page', logo: [<FaHome />] }],
   },
 
   {
     Head: 'ACTION',
     subLinks: [
-      { name: 'Add Product', link: '/manufacturer', logo: [<BsCartPlus />] },
+      { name: 'Add Product', logo: [<BsCartPlus />] },
       {
         name: 'View All Products',
-        link: '/manufacturer',
+
         logo: [<TfiShoppingCartFull />],
       },
       // { name: 'Edit Product', link: '/manufacturer' },
@@ -31,36 +30,36 @@ const manufactureLinks = [
   // {
   //   Head: 'PROFILE',
   //   subLinks: [
-  //     { name: 'View Profile', link: '/manufacturer',logo: [<CgProfile />] },
+  //     { name: 'View Profile', logo: [<CgProfile />] },
   //   ],
   // },
 ];
 
 const ManufacturerDashboard = () => {
-  const [open, setOpen] = useState(true);
-  const [profile, setProfile] = useState('');
-  const [inputValue, setInputValue] = useState('Home Page');
+  const [open, setOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState('Home Page');
 
   return (
     <>
-      <div className=' flex w-full '>
-        {open && (
-          <div className='w-1/2 duration-1000  ease-linear md:w-1/4 '>
-            <Sidebar links={manufactureLinks} setInputValue={setInputValue} />
-          </div>
-        )}
-        <div className='flex w-full flex-col'>
-        <div className=' mx-2 mt-1 flex items-center  justify-between rounded-xl border px-10 py-4 shadow-md '>
-            <div className='text-3xl' onClick={() => setOpen(!open)}>
-              {open ? <AiOutlineMenuUnfold /> : <AiOutlineMenuFold />}
-            </div>
-            <div className='flex items-center'>
-              {profile && <div className='text-xl font-semibold uppercase'>{profile} - </div>}
-              <div className='text-md pl-2'>Manufacturer Dashborad</div>
-            </div>
-          </div>
-          <div className='  m-2 h-full px-10'>
-            <MainContentManufac selectedItem={inputValue} setProfile={setProfile} />
+      <div className=' flex  '>
+        <SidePanel
+          open={open}
+          selectedItem={selectedItem}
+          setSelectedItem={setSelectedItem}
+          setOpen={setOpen}
+          links={manufactureLinks}
+        />
+
+        <div className=' font-roboto h-screen flex-auto '>
+          <div className='mx-1 h-[80vh]    md:mx-2 '>
+            {selectedItem === 'Home Page' ? (
+              <HomeManufacture open={open} setOpen={setOpen} />
+
+            ) : selectedItem === 'Add Product' ? (
+              <AddProduct open={open} setOpen={setOpen} />
+            ) : (
+              selectedItem === 'View All Products' && [<ViewAllProducts open={open} setOpen={setOpen} />]
+            )}
           </div>
         </div>
       </div>

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 
-
 import AddProduct from './pages/AddProduct';
 import ViewAllProducts from './pages/ViewAllProducts';
 
@@ -9,7 +8,7 @@ import ViewAllProducts from './pages/ViewAllProducts';
 import HomeManufacture from './pages/HomeManufacture';
 // import Products from './pages/Products';
 
-function MainContentManufac({ selectedItem ,setProfile}) {
+function MainContentManufac({ selectedItem, setProfile }) {
   useEffect(() => {
     const token = localStorage.getItem('token');
     const role = localStorage.getItem('role');
@@ -24,19 +23,11 @@ function MainContentManufac({ selectedItem ,setProfile}) {
 
   return (
     <div>
-      {selectedItem === 'Home Page' ? (
-       [ <HomeManufacture setProfile={setProfile} />]
-      ) : selectedItem === 'Add Product' ? (
-        [<AddProduct />]
-      ) : selectedItem === 'View All Products' && (
-       [ <ViewAllProducts />]
-      ) 
-      // : (
-      //   selectedItem === 'View Profile' && [<ViewProfile />]
-      // )
-      }
-      {/* {selectedItem === 'Manage Products' && <ManageProducts />} 
-      {selectedItem === 'Manage Users' && <ManageUser />}  */}
+      {selectedItem === 'Home Page'
+        ? [<HomeManufacture setProfile={setProfile} />]
+        : selectedItem === 'Add Product'
+        ? [<AddProduct />]
+        : selectedItem === 'View All Products' && [<ViewAllProducts />]}
     </div>
   );
 }

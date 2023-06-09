@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import { AiOutlineMenu } from 'react-icons/ai';
 
 const productSchema = Yup.object().shape({
   productName: Yup.string().required('Information is required*'),
@@ -28,7 +29,7 @@ const productSchema = Yup.object().shape({
   // selectImage2: Yup.string(),
 });
 
-const AddProduct = () => {
+const AddProduct = ({ open, setOpen }) => {
   const [loading, setLoading] = useState(false);
   // const [error, setError] = useState(null);
 
@@ -57,6 +58,18 @@ const AddProduct = () => {
 
   return (
     <div>
+      <div className='my-2 flex h-16 justify-between rounded-md bg-white shadow md:mr-4'>
+        <div className='my-auto pl-2'>
+          <AiOutlineMenu
+            className=' cursor-pointer text-3xl text-[#5c67f5] '
+            onClick={() => setOpen(!open)}
+          />
+        </div>
+
+        <div className=' my-auto mx-auto bg-gradient-to-tr from-[#5c67f5]  to-pink-500 bg-clip-text font-sans text-2xl font-semibold  uppercase  text-transparent'>
+        Add Your Product
+        </div>
+      </div>
       <div>
         <Formik
           initialValues={initialValues}
@@ -97,9 +110,7 @@ const AddProduct = () => {
         >
           {({ isSubmitting }) => (
             <Form className=' px-10 py-10'>
-              <h1 className='mb-10 bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-2xl font-bold text-transparent lg:text-3xl xl:text-4xl'>
-                Add Your Product
-              </h1>
+              
 
               <div className='grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 '>
                 <div>

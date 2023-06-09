@@ -1,123 +1,4 @@
-// import React, { useState, useEffect } from 'react';
 
-// import axios from 'axios';
-// import { CgSpinner } from 'react-icons/cg';
-
-// const ViewAllProducts = () => {
-//   const [loading, setLoading] = useState(false);
-//   const [error, setError] = useState(false);
-//   const [data, setData] = useState([]);
-//   // const [page, setPage] = useState(1);
-//   // const [limit, setLimit] = useState(10);
-
-//   const page = 1;
-//   const limit = 10;
-//   useEffect(() => {
-//     async function fetchData() {
-//       try {
-//         const customerID = localStorage.getItem('customerID');
-
-//         setLoading(true);
-//         const token = localStorage.getItem('token');
-//         // if (!token) {
-//         //   window.location.href = '/login';
-//         //   return;
-//         // }
-//         const res = await axios.get(
-//           `https://procuren-backend-g6z9.onrender.com/getProducts/${customerID}/${page}/${limit}`,
-//           {
-//             headers: { Authorization: `Bearer ${token}` },
-//           }
-//         );
-//         setData(res.data.data);
-//       } catch (err) {
-//         setError(err);
-//       } finally {
-//         setLoading(false);
-//       }
-//     }
-//     fetchData();
-//   }, [page, limit]);
-
-//   return (
-//     <>
-//       {loading ? (
-//         <CgSpinner
-//         size={60}
-//         className='mx-auto mt-16 animate-spin text-indigo-600'
-//       />
-//       ) : error ? (
-//         'Error'
-//       ) : (
-//         <div className='overflow-y-none overflow-x-scroll md:overflow-x-hidden'>
-//           {/* <div>{JSON.stringify(data)}</div>  */}
-//           <table>
-//             <thead>
-//               <tr className='bg-indigo-200  '>
-//                 <th className='border p-1 md:p-2'>Sr. No.</th>
-//                 <th className='border p-1 md:p-2'>Product Name</th>
-//                 <th className='border p-1 md:p-2'>Manufacturer Name</th>
-//                 <th className=' border p-1 md:p-2 '>category</th>
-//                 <th className=' border p-1 md:p-2 '>subCategory</th>
-//                 <th className='border p-1 md:p-2'>Price Before Discount</th>
-//                 <th className='border p-1 md:p-2'>Price with GST</th>
-//                 <th className='border p-1 md:p-2'>Price</th>
-//                 {/* <th className='border p-1 md:p-2'>Image-1</th> */}
-//                 {/* <th className='border p-1 md:p-2'>Image-2</th> */}
-//                 <th className='border p-1 md:p-2'>Quantity</th>
-//                 <th className='border p-1 md:p-2'>Description</th>
-//                 <th className='border p-1 md:p-2'>Availability</th>
-//                 <th className='border p-1 md:p-2'>Shipping Charges</th>
-//               </tr>
-//             </thead>
-//             <tbody>
-//               {data
-//                 ? data.map((item, index) => (
-//                     <tr key={index} className='text-center'>
-//                       <td className='border p-4 md:p-2 '>{index + 1}</td>
-//                       <td className='border p-4 md:p-2  '>
-//                         {item.productName}
-//                       </td>
-//                       <td className='border  p-1 md:p-2 '>
-//                         {item.manufacturerName}
-//                       </td>
-//                       <td className='border  p-1 md:p-2 '>{item.category}</td>
-//                       <td className='border  p-1 md:p-2 '>
-//                         {item.subCategory}
-//                       </td>
-//                       <td className='border p-1 md:p-2 '>
-//                         {item.priceBeforeDiscount}
-//                       </td>
-//                       <td className='border p-1 md:p-2 '>{item.withGST}</td>
-//                       <td className='border p-1 md:p-2 '>{item.price}</td>
-//                       {/* <td className='w-24 border p-1 md:p-2 '>
-//                         <img src={item.selectImage1} alt='' srcSet='' />
-//                       </td>
-//                       <td className='w-24 border p-1 md:p-2'>
-//                         <img src={item.selectImage2} alt='' srcSet='' />
-//                       </td> */}
-//                       <td className='border p-1 md:p-2 '>
-//                         {item.productQuantity}
-//                       </td>
-//                       <td className='border p-1 md:p-2 '>{item.description}</td>
-//                       <td className='border p-1 md:p-2 '>
-//                         {item.availability}
-//                       </td>
-//                       <td className='border p-1 md:p-2 '>
-//                         {item.shippingCharges}
-//                       </td>
-//                     </tr>
-//                   ))
-//                 : 'No data found'}
-//             </tbody>
-//           </table>
-//         </div>
-//       )}
-//     </>
-//   );
-// };
-
-// export default ViewAllProducts;
 
 import React, { useState, useEffect } from 'react';
 
@@ -126,14 +7,16 @@ import { CgSpinner } from 'react-icons/cg';
 // import ExcelData from '../../ExcelData';
 
 import PdfData from '../../PdfData';
+import { AiOutlineMenu } from 'react-icons/ai';
 
-const ViewAllProducts = () => {
+const ViewAllProducts = ({ open, setOpen }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [limit, setLimit] = useState(10);
+  // const [limit, setLimit] = useState(10);
+  const limit = 10;
   const [screenSize, setScreenSize] = useState(undefined);
   const [btn, setBtn] = useState(6);
 
@@ -284,13 +167,7 @@ const ViewAllProducts = () => {
     return <ul className='flex'>{pageNumbers}</ul>;
   };
 
-  const handleLimitPlus = async () => {
-    setLimit(limit + 10);
-    console.log(page);
-  };
-  const handleLimitMinus = async () => {
-    setLimit(limit - 10);
-  };
+ 
 
   function TableRow({ item, index }) {
     return (
@@ -355,6 +232,40 @@ const ViewAllProducts = () => {
   }
   return (
     <>
+      <div className='my-2 flex h-16 justify-between rounded-md bg-white shadow md:mr-4'>
+            <div className='my-auto pl-2'>
+              <AiOutlineMenu
+                className=' cursor-pointer text-3xl text-[#5c67f5] '
+                onClick={() => setOpen(!open)}
+              />
+            </div>
+
+            <div className='mx-auto my-auto bg-gradient-to-tl uppercase from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-xl font-semibold text-transparent  lg:text-2xl'>
+              Your Enquiries
+            </div>
+            {data.length > 0 && (
+              <>
+                <div className='hidden items-center pr-2 md:visible md:flex'>
+                  
+                  <PdfData
+                    fileName='Enquiry Form Data'
+                    bdy={bdy}
+                    wid={widths}
+                  />
+                </div>
+                
+              </>
+            )}
+          </div>
+          {data.length > 0 && (
+            <div className='flex justify-between md:hidden'>
+              <div className='mb-3 flex items-center md:visible '>
+               
+                <PdfData fileName='Enquiry Form Data' bdy={bdy} wid={widths} />
+              </div>
+              
+            </div>
+          )}
       {loading ? (
         <CgSpinner
           size={60}
@@ -364,35 +275,6 @@ const ViewAllProducts = () => {
         'Error'
       ) : (
         <div className='overflow-y-none  '>
-          <div className='my-2 flex justify-between md:mr-4 '>
-            <div className='flex items-center'>
-              {/* <ExcelData data={data} fileName='Enquiry Form Data' /> */}
-              <PdfData fileName='Enquiry Form Data' bdy={bdy} wid={widths} />
-            </div>
-            <div className='my-auto bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-2xl font-semibold  text-transparent'>
-              Products Data
-            </div>
-            <div className='rounded-lg  p-0.5 text-sm   lg:p-2'>
-              Rows per page: <span className='text-lg'>{limit}</span>
-              <button
-                // disabled={totalPages >= page  }
-                onClick={handleLimitPlus}
-                className={`text-md mx-1 cursor-pointer  rounded-lg bg-indigo-300 p-1  shadow-lg shadow-indigo-300  lg:px-2 lg:text-lg xl:text-xl ${
-                  totalPages === 1 ? 'hidden' : 'visible bg-indigo-300'
-                }`}
-              >
-                &#43;
-              </button>
-              <button
-                onClick={handleLimitMinus}
-                className={`text-md mx-1 ml-2 cursor-pointer rounded-lg p-1 shadow-lg   shadow-indigo-300 lg:mx-2 lg:px-2 lg:text-lg xl:text-xl ${
-                  limit <= 10 ? 'hidden' : 'visible bg-indigo-300'
-                }`}
-              >
-                &minus;
-              </button>
-            </div>
-          </div>
           {data.length > 0 ? (
             <section
               className={`h-[80vh] overflow-x-scroll xl:overflow-x-hidden `}

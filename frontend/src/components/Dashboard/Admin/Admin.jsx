@@ -75,14 +75,7 @@ const Admin = () => {
       />
 
       <div className=' font-roboto h-screen flex-auto '>
-        {/* <div className='mx-1 my-2 flex h-16 items-center justify-between rounded-md border-b-2  bg-white p-4 duration-1000 md:mx-2 xl:h-20'>
-         
-          <AiOutlineMenu
-            className=' cursor-pointer text-3xl text-[#5c67f5] '
-            onClick={() => setOpen(!open)}
-          />
-          <div className='font-mono text-2xl'>Admin</div>
-        </div> */}
+      
         <div className='mx-1 h-[80vh]    md:mx-2 '>
           {selectedItem === 'Home Page' ? (
             <HomePage open={open} setOpen={setOpen} />

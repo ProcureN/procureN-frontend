@@ -1,15 +1,13 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import NumberCounter from 'number-counter';
-import { AiOutlineMenu } from 'react-icons/ai';
-import { CgSpinner } from 'react-icons/cg';
+import React, { useState, useEffect } from 'react';
 import defaultImage from '../../../../assets/Default_pfp.jpg';
+import NumberCounter from 'number-counter';
+import axios from 'axios';
+import { CgSpinner } from 'react-icons/cg';
 
-
-const HomeManufacture = ({ open, setOpen }) => {
-  const [data, setData] = useState([]);
+const HomeManufacture = ({ setProfile }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [data, setData] = useState([]);
   const [data2, setData2] = useState([]);
 
   useEffect(() => {
@@ -29,9 +27,8 @@ const HomeManufacture = ({ open, setOpen }) => {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
-
+        setProfile(res.data.data.name);
         setData(res.data.data);
-        console.log(data);
       } catch (err) {
         setError(err);
       } finally {
@@ -39,7 +36,7 @@ const HomeManufacture = ({ open, setOpen }) => {
       }
     }
     fetchData();
-  }, []);
+  }, [setProfile]);
 
   useEffect(() => {
     const customerID = localStorage.getItem('customerID');
@@ -57,21 +54,7 @@ const HomeManufacture = ({ open, setOpen }) => {
   }, []);
 
   return (
-    <div>
-      <div className='my-2 flex h-16 justify-between rounded-md bg-white shadow md:mr-4'>
-        <div className='my-auto pl-2'>
-          <AiOutlineMenu
-            className=' cursor-pointer text-3xl text-[#5c67f5] '
-            onClick={() => setOpen(!open)}
-          />
-        </div>
-        {data && (
-          <div className=' my-auto mr-4 bg-gradient-to-tr from-[#5c67f5]  to-pink-500 bg-clip-text font-sans text-2xl font-semibold  uppercase  text-transparent'>
-            {/* {data.name} */}
-            Retailers Dashboard
-          </div>
-        )}
-      </div>
+    <>
       {loading ? (
         <CgSpinner
           size={60}
@@ -214,7 +197,7 @@ const HomeManufacture = ({ open, setOpen }) => {
           </div> */}
         </div>
       )}
-    </div>
+    </>
   );
 };
 
