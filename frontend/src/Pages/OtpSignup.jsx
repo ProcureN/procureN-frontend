@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import {  useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import LoginPage from '../assets/Login.jpg';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -31,9 +31,12 @@ const OtpSignup = () => {
   const emailContext = useContext(EmailContext);
   const handleResendOTP = async () => {
     try {
-      await axios.post('https://procuren-backend.onrender.com/resendOtp ', {
-        email: `${emailContext.email}`,
-      });
+      await axios.post(
+        'https://procuren-backend-g6z9.onrender.com/resendOtp ',
+        {
+          email: `${emailContext.email}`,
+        }
+      );
     } catch (error) {
       console.error(error);
     }
@@ -63,7 +66,7 @@ const OtpSignup = () => {
               setLoading(true);
               await axios
                 .post(
-                  'https://procuren-backend.onrender.com/otp ',
+                  'https://procuren-backend-g6z9.onrender.com/otp ',
 
                   { ...values, email: `${emailContext.email}` }
                 )

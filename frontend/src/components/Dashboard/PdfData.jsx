@@ -54,7 +54,7 @@ const PdfData = ({ fileName, bdy, wid }) => {
   return (
     <button
       onClick={handleDownload}
-      className='text-2xl text-red-700 lg:text-3xl'
+      className='text-2xl text-red-700 md:text-3xl'
     >
       <BsFiletypePdf />
     </button>

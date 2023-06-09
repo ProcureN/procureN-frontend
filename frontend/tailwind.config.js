@@ -8,7 +8,7 @@ module.exports = {
         type: 'type 2.7s ease-out .8s infinite alternate both',
         'type-second': 'type-second 2.7s ease-out .8s infinite alternate both',
         cursor: 'cursor .6s linear infinite alternate',
-        shake: "shake 0.2s ease-in-out 0s 2"
+        fill: 'fill .5s ease-out .0s   ',
       },
       keyframes: {
         type: {
@@ -44,12 +44,11 @@ module.exports = {
 
           ' 90%': { opacity: '1' },
         },
-        shake: {
-          "0%": { marginLeft: "0rem" },
-          "25%": { marginLeft: "1rem" },
-          "75%": { marginLeft: "-1rem" },
-          "100%": { marginLeft: "0rem" },
-        }
+        fill: {
+          '0%': { width: '0' },
+          // '10%': { width: '10%' },
+          // '100%': { width: '100%' },
+        },
       },
     },
   },

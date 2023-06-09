@@ -1,5 +1,3 @@
-
-
 import React, { useState } from 'react';
 
 import { Formik, Form, Field, ErrorMessage } from 'formik';
@@ -8,10 +6,9 @@ import axios from 'axios';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 
 const trackingSchema = Yup.object().shape({
-  trackingID: Yup.string()
-    .required('TrackingID is required.*')
-    // .min(15, 'Invalid TrackingID')
-    // .max(15, 'Invalid TrackingID'),
+  trackingID: Yup.string().required('TrackingID is required.*'),
+  // .min(15, 'Invalid TrackingID')
+  // .max(15, 'Invalid TrackingID'),
 });
 
 const ModalTrack = ({ visible, onClose }) => {
@@ -46,7 +43,7 @@ const ModalTrack = ({ visible, onClose }) => {
             setLoading(true);
             axios
               .get(
-                `https://procuren-backend.onrender.com/trackEnquiry/${values.trackingID}`
+                `https://procuren-backend-g6z9.onrender.com/trackEnquiry/${values.trackingID}`
                 // `http://localhost:3001/trackEnquiry/${values.trackingID}`,
               )
               .then((response) => {

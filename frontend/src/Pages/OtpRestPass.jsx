@@ -39,9 +39,12 @@ const OtpRestPass = () => {
   const emailContext = useContext(EmailContext);
   const handleResendOTP = async () => {
     try {
-      await axios.post('https://procuren-backend.onrender.com/resendOtp ', {
-        email: `${emailContext.email}`,
-      });
+      await axios.post(
+        'https://procuren-backend-g6z9.onrender.com/resendOtp ',
+        {
+          email: `${emailContext.email}`,
+        }
+      );
     } catch (error) {
       console.error(error);
     }
@@ -72,7 +75,7 @@ const OtpRestPass = () => {
                 setLoading(true);
                 await axios
                   .post(
-                    'https://procuren-backend.onrender.com/otp ',
+                    'https://procuren-backend-g6z9.onrender.com/otp ',
 
                     { ...values, email: `${emailContext.email}` }
                   )
@@ -158,7 +161,7 @@ const OtpRestPass = () => {
                 setLoading(true);
                 await axios
                   .post(
-                    'https://procuren-backend.onrender.com/resendOtp ',
+                    'https://procuren-backend-g6z9.onrender.com/resendOtp ',
                     values
                   )
                   .then((response) => {
@@ -206,7 +209,7 @@ const OtpRestPass = () => {
                       placeholder='Email ID'
                     />
                   </div>
-                  <div className='mb-6 w-full text-xs text-left ml-2 text-red-500'>
+                  <div className='mb-6 ml-2 w-full text-left text-xs text-red-500'>
                     Enter your registered email address*
                   </div>
                   <button

@@ -26,7 +26,7 @@ const SignupSchema = Yup.object().shape({
         // make a request to the backend to check if the email address is unique
         try {
           const response = await axios.post(
-            `https://procuren-backend.onrender.com/uniquePhone`,
+            `https://procuren-backend-g6z9.onrender.com/uniquePhone`,
             { phone: value }
           );
 
@@ -48,7 +48,7 @@ const SignupSchema = Yup.object().shape({
         // make a request to the backend to check if the email address is unique
         try {
           const response = await axios.post(
-            `https://procuren-backend.onrender.com/UniqueEmail`,
+            `https://procuren-backend-g6z9.onrender.com/UniqueEmail`,
             { email: value }
           );
 
@@ -99,9 +99,9 @@ const SignupPage1 = ({ setNext, setFormValue }) => {
                 <img src={logo} alt='logo' className='mx-auto mb-8   h-20' />
               </Link>
             </div>
-            
-              {/* <Selector /> */}
- 
+
+            {/* <Selector /> */}
+
             <div>
               <div>
                 <ErrorMessage

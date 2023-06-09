@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FiEdit2 } from 'react-icons/fi';
-import { AiFillDelete } from 'react-icons/ai';
+import { AiFillDelete, AiOutlineMenu } from 'react-icons/ai';
 
 import axios from 'axios';
 import { CgSpinner } from 'react-icons/cg';
@@ -9,13 +9,14 @@ import PdfData from '../../PdfData';
 import ModalUpdateUser from './Modals/ModalUpdateUser';
 import ModalDelete from './Modals/ModalDelete';
 
-const VendorManagement = () => {
+const VendorManagement = ({ open, setOpen }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [limit, setLimit] = useState(10);
+  // const [limit, setLimit] = useState(10);
+  const limit = 10;
   const [screenSize, setScreenSize] = useState(undefined);
   const [btn, setBtn] = useState(6);
   const [showMyModal, setShowMyModal] = useState(false);
@@ -47,7 +48,7 @@ const VendorManagement = () => {
           return;
         }
         const res = await axios.get(
-          `https://procuren-backend.onrender.com/getAllDetails/${page}/${limit}`,
+          `https://procuren-backend-g6z9.onrender.com/getAllDetails/${page}/${limit}`,
           // `http://localhost:3001/getAllDetails/${page}/${limit}`,
 
           {
@@ -161,10 +162,10 @@ const VendorManagement = () => {
     return <ul className='flex'>{pageNumbers}</ul>;
   };
 
-  const handleLimitChange = (event) => {
-    const newLimit = parseInt(event.target.value);
-    setLimit(newLimit);
-  };
+  // const handleLimitChange = (event) => {
+  //   const newLimit = parseInt(event.target.value);
+  //   setLimit(newLimit);
+  // };
 
   const handleOnClose = () => setShowMyModal(false);
   const handleOnClose2 = () => setShowMyModal2(false);
@@ -178,7 +179,7 @@ const VendorManagement = () => {
         <td className=' border-x border-black'>
           {(page - 1) * limit + index + 1}
         </td>
-        <td className='text-sm whitespace-nowrap  border border-black px-1  text-center md:py-2  '>
+        <td className='whitespace-nowrap border  border-black px-1 text-center  text-sm md:py-2  '>
           {item.date}
           <br />
           {item.time}
@@ -196,17 +197,20 @@ const VendorManagement = () => {
         <td className=' border-x border-gray-400 px-1 '>{item.company}</td>
         <td className=' border-x border-gray-400 px-1 '> {item.jobTitle}</td>
         <td
-          className={`border-x border-gray-400 px-1 font-medium ${
+          className={`border-x border-gray-400 px-1 text-sm font-medium ${
             item.selectRole === 'Retailer'
-              ? ' text-green-700 '
-              : ' text-cyan-700'
+              ? '  bg-[#cb67ac] bg-opacity-50 '
+              : ' bg-[#5c67f5] bg-opacity-50'
           }`}
         >
           {item.selectRole}
         </td>
         <td className=' border-x border-gray-400 px-1 '>{item.phone}</td>
-        <td className=' border-x border-gray-400 px-1 '>{item.city}</td>
-        <td className='border-x border-gray-400 px-1 '>{item.state}</td>
+        <td className=' border-x border-gray-400 px-1 '>
+          {item.city}
+          <br />
+          {item.state}
+        </td>
         <td
           onClick={() => {
             setVal(item);
@@ -242,7 +246,7 @@ const VendorManagement = () => {
         'Error ~ Something went wrong :)'
       ) : (
         <div className='overflow-y-none overflow-x-scroll md:overflow-x-hidden'>
-          <div className='my-2 flex justify-between md:mr-4 '>
+          {/* <div className='my-2 flex justify-between md:mr-4 '>
             <div className='flex items-center'>
               <ExcelData data={data} fileName='Vendors Data' />
               <PdfData fileName='Vendors Data' bdy={bdy} wid={widths} />
@@ -265,11 +269,63 @@ const VendorManagement = () => {
                 <option value={100}>100</option>
               </select>
             </div>
+          </div> */}
+          <div className='my-2 flex h-16 justify-between rounded-md bg-white shadow md:mr-4'>
+            <div className='my-auto pl-2'>
+              <AiOutlineMenu
+                className=' cursor-pointer text-3xl text-[#5c67f5] '
+                onClick={() => setOpen(!open)}
+              />
+            </div>
+
+            <div className='mx-auto my-auto bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-xl font-semibold text-transparent  lg:text-2xl'>
+              Vendors Data
+            </div>
+            {data.length > 0 && (
+              <>
+                <div className='hidden items-center pr-2 md:visible md:flex'>
+                  <ExcelData data={data} fileName='Vendors Data' />
+                  <PdfData fileName='Vendors Data' bdy={bdy} wid={widths} />
+                </div>
+                {/* <div className='my-auto hidden  rounded-lg  pr-2 text-sm md:block'>
+                  Rows per page:
+                  <select
+                    className='mx-1 cursor-pointer rounded-lg border p-1 text-lg shadow-indigo-300 hover:shadow-lg '
+                    value={limit}
+                    onChange={handleLimitChange}
+                  >
+                    <option value={10}>10</option>
+                    <option value={20}>20</option>
+                    <option value={50}>50</option>
+                    <option value={100}>100</option>
+                  </select>
+                </div> */}
+              </>
+            )}
           </div>
+          {data.length > 0 && (
+            <div className='flex justify-between md:hidden'>
+              <div className='flex items-center md:visible  '>
+                <ExcelData data={data} fileName='Vendors Data' />
+                <PdfData fileName='Vendors Data' bdy={bdy} wid={widths} />
+              </div>
+              {/* <div className='my-auto   rounded-lg  pr-2 text-sm '>
+                Rows / page:
+                <select
+                  className='mx-1 cursor-pointer rounded-lg border p-1 text-lg shadow-indigo-300 hover:shadow-lg '
+                  value={limit}
+                  onChange={handleLimitChange}
+                >
+                  <option value={10}>10</option>
+                  <option value={20}>20</option>
+                  <option value={50}>50</option>
+                  <option value={100}>100</option>
+                </select>
+              </div> */}
+            </div>
+          )}
           {data.length > 0 ? (
-            <section
-              className={`h-[80vh] overflow-x-scroll lg:overflow-x-hidden `}
-            >
+            <section className={`mb-6 overflow-x-scroll lg:overflow-x-hidden `}>
               <table className=' mx-auto border  border-black'>
                 <thead>
                   <tr className='border-y border-black bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] p-1 font-normal  text-white md:p-2 '>
@@ -286,7 +342,6 @@ const VendorManagement = () => {
                     <th className='border-x border-gray-400'>Role</th>
                     <th className='border-x border-gray-400'>Phone No</th>
                     <th className='border-x border-gray-400'>City</th>
-                    <th className='border-x border-gray-400'>State</th>
 
                     <th
                       className='col-span-2 border-x border-gray-400'

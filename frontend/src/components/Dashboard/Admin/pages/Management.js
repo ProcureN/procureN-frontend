@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FiEdit2 } from 'react-icons/fi';
-import { AiFillDelete } from 'react-icons/ai';
+import { AiFillDelete, AiOutlineMenu } from 'react-icons/ai';
 import axios from 'axios';
 import { CgSpinner } from 'react-icons/cg';
 import ExcelData from '../../ExcelData';
@@ -8,13 +8,14 @@ import PdfData from '../../PdfData';
 import ModalUpdate from './Modals/ModalUpdate';
 import ModalDelete from './Modals/ModalDelete';
 
-const Management = () => {
+const Management = ({ open, setOpen }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [limit, setLimit] = useState(10);
+  // const [limit, setLimit] = useState(10);
+  const limit = 10;
   const [screenSize, setScreenSize] = useState(undefined);
   const [btn, setBtn] = useState(6);
   const [showMyModal, setShowMyModal] = useState(false);
@@ -46,7 +47,7 @@ const Management = () => {
           return;
         }
         const res = await axios.get(
-          `https://procuren-backend.onrender.com/getenquiries/${page}/${limit}`,
+          `https://procuren-backend-g6z9.onrender.com/getenquiries/${page}/${limit}`,
           // `http://localhost:3001/getenquiries/${page}/${limit}`,
           {
             headers: { Authorization: `Bearer ${token}` }, // Send token in Authorization header
@@ -160,10 +161,10 @@ const Management = () => {
     return <ul className='flex'>{pageNumbers}</ul>;
   };
 
-  const handleLimitChange = (event) => {
-    const newLimit = parseInt(event.target.value);
-    setLimit(newLimit);
-  };
+  // const handleLimitChange = (event) => {
+  //   const newLimit = parseInt(event.target.value);
+  //   setLimit(newLimit);
+  // };
 
   const handleOnClose = () => setShowMyModal(false);
   const handleOnClose2 = () => setShowMyModal2(false);
@@ -188,10 +189,10 @@ const Management = () => {
         {/* <td className=' whitespace-nowrap border border-black px-1  text-center md:py-2  '>
           {item.date}
         </td> */}
-        <td className=' border border-black px-1 text-sm whitespace-nowrap  text-center md:py-2  '>
-          {item.date}
-          <br />
+        <td className=' whitespace-nowrap border border-black px-1 text-center  text-sm md:py-2  '>
           {item.time}
+          <br />
+          {item.date}
         </td>
 
         <td className=' border-y border-black px-1  text-center md:py-2  '>
@@ -208,8 +209,10 @@ const Management = () => {
         </td> */}
         <td className=' border-x border-gray-400 px-1 '>{item.email}</td>
         <td className=' border-x border-gray-400 px-1 '>{item.quantity}</td>
-        <td className='border-x border-gray-400 px-1 '>{item.city}</td>
-        <td className='border-x border-gray-400 px-1 '>{item.state}</td>
+        <td className='border-x border-gray-400 px-1 '>
+          {item.city} <br /> {item.state}{' '}
+        </td>
+
         <td className='w-[15%]  border-x border-gray-400 px-1 '>
           {isExpanded ? item.billingAddress : truncatedAddress}
           {item.billingAddress.length > 25 && (
@@ -296,53 +299,83 @@ const Management = () => {
         'Error ~ Something went wrong :)'
       ) : (
         <div className='overflow-y-none  '>
-          <div className='my-2 flex justify-between md:mr-4 '>
-            <div className='flex items-center'>
-              <ExcelData data={data} fileName='Enquiry Form Data' />
-              <PdfData fileName='Enquiry Form Data' bdy={bdy} wid={widths} />
+          <div className='my-2 flex h-16 justify-between rounded-md bg-white shadow md:mr-4'>
+            <div className='my-auto pl-2'>
+              <AiOutlineMenu
+                className=' cursor-pointer text-3xl text-[#5c67f5] '
+                onClick={() => setOpen(!open)}
+              />
             </div>
-            <div className='my-auto bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-2xl font-semibold  text-transparent'>
+
+            <div className='mx-auto my-auto bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-xl font-semibold text-transparent  lg:text-2xl'>
               Retailer Enquiries Data
             </div>
-            <div className='rounded-lg p-0.5 text-sm lg:p-2'>
-              Rows per page:
-              <select
-                className='mx-1 cursor-pointer rounded-lg border p-1 text-lg shadow-indigo-300 hover:shadow-lg '
-                value={limit}
-                onChange={handleLimitChange}
-              >
-                <option c value={10}>
-                  10
-                </option>
-                <option value={20}>20</option>
-                <option value={50}>50</option>
-                <option value={100}>100</option>
-              </select>
-            </div>
+            {data.length > 0 && (
+              <>
+                <div className='hidden items-center pr-2 md:visible md:flex'>
+                  <ExcelData data={data} fileName='Enquiry Form Data' />
+                  <PdfData
+                    fileName='Enquiry Form Data'
+                    bdy={bdy}
+                    wid={widths}
+                  />
+                </div>
+                {/* <div className='my-auto hidden  rounded-lg  pr-2 text-sm md:block'>
+                  Rows per page:
+                  <select
+                    className='mx-1 cursor-pointer rounded-lg border p-1 text-lg shadow-indigo-300 hover:shadow-lg '
+                    value={limit}
+                    onChange={handleLimitChange}
+                  >
+                    <option value={10}>10</option>
+                    <option value={20}>20</option>
+                    <option value={50}>50</option>
+                    <option value={100}>100</option>
+                  </select>
+                </div> */}
+              </>
+            )}
           </div>
+          {data.length > 0 && (
+            <div className='flex justify-between md:hidden'>
+              <div className='mb-3 flex items-center md:visible '>
+                <ExcelData data={data} fileName='Enquiry Form Data' />
+                <PdfData fileName='Enquiry Form Data' bdy={bdy} wid={widths} />
+              </div>
+              {/* <div className='my-auto   rounded-lg  pr-2 text-sm '>
+                Rows / page:
+                <select
+                  className='mx-1 cursor-pointer rounded-lg border p-1 text-lg shadow-indigo-300 hover:shadow-lg '
+                  value={limit}
+                  onChange={handleLimitChange}
+                >
+                  <option value={10}>10</option>
+                  <option value={20}>20</option>
+                  <option value={50}>50</option>
+                  <option value={100}>100</option>
+                </select>
+              </div> */}
+            </div>
+          )}
           {data.length > 0 ? (
-            <section
-              className={`h-[80vh] overflow-x-scroll xl:overflow-x-hidden `}
-            >
-              <table className=' mx-auto border border-black shadow-xl'>
+            <section className={` mr-5 overflow-x-auto  lg:mb-6`}>
+              <table className=' mx-auto border border-black   '>
                 <thead>
                   <tr className='border-y border-black bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] p-1 font-normal  text-white md:p-2 '>
                     <th className='border-x border-black py-1 md:py-2'>
                       Sr. No.
                     </th>
-                    {/* <th className='border-x border-gray-400 '>Date</th> */}
+
                     <th className='border-x border-gray-400 '>Time</th>
 
                     <th className='border-x border-gray-400 '>Product Name</th>
                     <th className='border-x border-gray-400 '>Name</th>
                     <th className='border-x border-gray-400 '>Phone</th>
-                    {/* <th className='border-x border-gray-400 '>
-                      Alternative No
-                    </th> */}
+
                     <th className='border-x border-gray-400 '>Email</th>
                     <th className='border-x border-gray-400 '>Quantity</th>
-                    <th className='border-x border-gray-400 '>City</th>
-                    <th className='border-x border-gray-400 '>State</th>
+                    <th className='border-x border-gray-400 '>City </th>
+
                     <th className='border-x border-gray-400 '>
                       Billing Address
                     </th>
@@ -355,9 +388,7 @@ const Management = () => {
                         Delivery Status
                       </span>
                     </th>
-                    {/* <th className='border-x border-gray-400 '>
-                      Delivery Status
-                    </th> */}
+
                     <th
                       className='col-span-2 border-x border-gray-400'
                       colSpan='2'

@@ -15,7 +15,8 @@ const ManageRetailer = () => {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [limit, setLimit] = useState(10);
+  // const [limit, setLimit] = useState(10);
+  const limit = 10;
   const [screenSize, setScreenSize] = useState(undefined);
   const [btn, setBtn] = useState(6);
   const [showMyModal, setShowMyModal] = useState(false);
@@ -47,7 +48,7 @@ const ManageRetailer = () => {
           return;
         }
         const res = await axios.get(
-          `https://procuren-backend.onrender.com/getroles/${page}/${limit}`,
+          `https://procuren-backend-g6z9.onrender.com/getroles/${page}/${limit}`,
           // `http://localhost:3001/getAllDetails/${page}/${limit}`,
 
           {
@@ -240,33 +241,36 @@ const ManageRetailer = () => {
       ) : (
         <div className='overflow-y-none overflow-x-scroll md:overflow-x-hidden'>
           <div className='my-2 flex justify-between md:mr-4 '>
-            <div className='flex items-center'>
-              <ExcelData data={data} fileName='Reatilers Data' />
-              <PdfData fileName='Reatilers Data' bdy={bdy} wid={widths} />
-            </div>
+            {data.length > 0 && (
+              <div className='flex items-center'>
+                <ExcelData data={data} fileName='Reatilers Data' />
+                <PdfData fileName='Reatilers Data' bdy={bdy} wid={widths} />
+              </div>
+            )}
             <div className='my-auto bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-2xl font-semibold  text-transparent'>
               Retailers Data
             </div>
-            <div className='rounded-lg  p-0.5 text-sm   lg:p-2'>
-              Rows per page: <span className='text-lg'>{limit}</span>
-              <button
-                // disabled={totalPages >= page  }
-                onClick={handleLimitPlus}
-                className={`text-md mx-1 cursor-pointer  rounded-lg bg-indigo-300 p-1  shadow-lg shadow-indigo-300  lg:px-2 lg:text-lg xl:text-xl ${
-                  totalPages === 1 ? 'hidden' : 'visible bg-indigo-300'
-                }`}
-              >
-                &#43;
-              </button>
-              <button
-                onClick={handleLimitMinus}
-                className={`text-md mx-1 ml-2 cursor-pointer rounded-lg p-1 shadow-lg   shadow-indigo-300 lg:mx-2 lg:px-2 lg:text-lg xl:text-xl ${
-                  limit <= 10 ? 'hidden' : 'visible bg-indigo-300'
-                }`}
-              >
-                &minus;
-              </button>
-            </div>
+            {data.length > 0 && (
+              <div className='rounded-lg  p-0.5 text-sm   lg:p-2'>
+                Rows per page: <span className='text-lg'>{limit}</span>
+                <button
+                  onClick={handleLimitPlus}
+                  className={`text-md mx-1 cursor-pointer  rounded-lg bg-indigo-300 p-1  shadow-lg shadow-indigo-300  lg:px-2 lg:text-lg xl:text-xl ${
+                    totalPages === 1 ? 'hidden' : 'visible bg-indigo-300'
+                  }`}
+                >
+                  &#43;
+                </button>
+                <button
+                  onClick={handleLimitMinus}
+                  className={`text-md mx-1 ml-2 cursor-pointer rounded-lg p-1 shadow-lg   shadow-indigo-300 lg:mx-2 lg:px-2 lg:text-lg xl:text-xl ${
+                    limit <= 10 ? 'hidden' : 'visible bg-indigo-300'
+                  }`}
+                >
+                  &minus;
+                </button>
+              </div>
+            )}
           </div>
           {data.length > 0 ? (
             <section

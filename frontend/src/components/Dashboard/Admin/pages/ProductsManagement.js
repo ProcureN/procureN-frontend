@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FiEdit2 } from 'react-icons/fi';
-import { AiFillDelete } from 'react-icons/ai';
+import { AiFillDelete, AiOutlineMenu } from 'react-icons/ai';
+import { BsCartPlus } from 'react-icons/bs';
 import axios from 'axios';
 import { CgSpinner } from 'react-icons/cg';
 import ExcelData from '../../ExcelData';
@@ -10,13 +11,14 @@ import ModalUpdateProduct from './Modals/ModalUpdateProduct';
 import ModalDelete from './Modals/ModalDelete';
 import ModalAddProduct from './Modals/ModalAddProduct';
 
-const ProductsManagement = () => {
+const ProductsManagement = ({ open, setOpen }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [limit, setLimit] = useState(10);
+  // const [limit, setLimit] = useState(10);
+  const limit = 10;
   const [screenSize, setScreenSize] = useState(undefined);
   const [btn, setBtn] = useState(6);
   const [showMyModal, setShowMyModal] = useState(false);
@@ -48,17 +50,17 @@ const ProductsManagement = () => {
           window.location.href = '/login'; // Redirect to login page if token not found
           return;
         }
-        const res = await axios.get(
-          `https://procuren-backend.onrender.com/getproducts/${page}/${limit}`,
-          // `http://localhost:3001/getproducts/${page}/${limit}`,
-          {
-            headers: { Authorization: `Bearer ${token}` }, // Send token in Authorization header
-          }
-        );
-        setData(res.data.data);
-        setSub(false);
+         const res = await axios.get(
+           `https://procuren-backend-g6z9.onrender.com/getproducts/${page}/${limit}`,
+           // `http://localhost:3001/getproducts/${page}/${limit}`,
+           {
+             headers: { Authorization: `Bearer ${token}` }, // Send token in Authorization header
+           }
+         );
+         setData(res.data.data);
+         setSub(false);
 
-        setTotalPages(Math.ceil(res.data.count / limit)); // calculate total number of pages
+         setTotalPages(Math.ceil(res.data.count / limit)); // calculate total number of pages
       } catch (err) {
         setError(err);
       } finally {
@@ -172,10 +174,10 @@ const ProductsManagement = () => {
     return <ul className='flex'>{pageNumbers}</ul>;
   };
 
-  const handleLimitChange = (event) => {
-    const newLimit = parseInt(event.target.value);
-    setLimit(newLimit);
-  };
+  // const handleLimitChange = (event) => {
+  //   const newLimit = parseInt(event.target.value);
+  //   setLimit(newLimit);
+  // };
 
   const handleOnClose = () => setShowMyModal(false);
   const handleOnClose2 = () => setShowMyModal2(false);
@@ -190,7 +192,7 @@ const ProductsManagement = () => {
         <td className=' border-x border-black'>
           {(page - 1) * limit + index + 1}
         </td>
-        <td className='text-sm whitespace-nowrap border border-black px-1  text-center md:py-2  '>
+        <td className='whitespace-nowrap border border-black px-1 text-center  text-sm md:py-2  '>
           {item.date}
           <br />
           {item.time}
@@ -202,28 +204,27 @@ const ProductsManagement = () => {
           {item.manufacturerName.charAt(0).toUpperCase() +
             item.manufacturerName.slice(1)}
         </td>
-        <td className=' border-x border-gray-400 px-1 '>
+        {/* <td className=' border-x border-gray-400 px-1 '>
           {item.priceBeforeDiscount}
-        </td>
-        <td className=' border-x border-gray-400 px-1'>{item.withGST}</td>
+        </td> */}
+        {/* <td className=' border-x border-gray-400 px-1'>{item.withGST}</td> */}
         {/* <td className='w-24 border p-1 md:p-2 '>
                       <img src={item.selectImage1} alt='' srcSet='' />
                     </td>
                     <td className='w-24 border p-1 md:p-2'>
                       <img src={item.selectImage2} alt='' srcSet='' />
                     </td> */}
-        <td className=' border-x border-gray-400 px-1 '>{item.price}</td>
+        <td className=' border-x border-gray-400 px-1 italic'>{item.price}</td>
+        <td className='border-x border-gray-400 px-1  '>{item.description}</td>
         <td className=' border-x border-gray-400 px-1 '>
-          {' '}
           {item.productQuantity}
         </td>
-        <td className='border-x border-gray-400 px-1 '>{item.description}</td>
         <td className='  border-x border-gray-400 px-1 '>
           {item.availability}
         </td>
-        <td className='  border-x border-gray-400 px-1'>
+        {/* <td className='  border-x border-gray-400 px-1'>
           {item.shippingCharges}
-        </td>
+        </td> */}
         <td className={` border-x  border-gray-400 px-1 font-medium `}>
           <span
             className={`${
@@ -291,7 +292,7 @@ const ProductsManagement = () => {
         'Error'
       ) : (
         <div className='overflow-y-none  '>
-          <div className='my-2 flex justify-between md:mr-4 '>
+          {/* <div className='my-2 flex justify-between md:mr-4 '>
             <div className='flex items-center'>
               <ExcelData data={data} fileName='Products Data' />
               <PdfData fileName='Products Data' bdy={bdy} wid={widths} />
@@ -320,12 +321,84 @@ const ProductsManagement = () => {
                 </select>
               </div>
             </div>
+          </div> */}
+          <div className='my-2 flex h-16 justify-between rounded-md bg-white shadow md:mr-4'>
+            <div className='my-auto pl-4'>
+              <AiOutlineMenu
+                className=' cursor-pointer text-3xl text-[#5c67f5] '
+                onClick={() => setOpen(!open)}
+              />
+            </div>
+
+            <div className='mx-auto my-auto bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-xl font-semibold text-transparent  lg:text-2xl'>
+              Products Data
+            </div>
+            <div className='hidden items-center pr-2 md:visible md:flex '>
+              <button
+                onClick={() => setShowMyModal3(true)}
+                className='m-1  hidden items-center  justify-center rounded pr-4 text-3xl text-[#5c67f5] md:block '
+              >
+                <BsCartPlus />
+              </button>
+              {data.length > 0 && (
+                <>
+                  <ExcelData data={data} fileName='Products Data' />
+                  <PdfData fileName='Products Data' bdy={bdy} wid={widths} />
+                </>
+              )}
+            </div>
+            {/* {data.length > 0 && (
+              <div className='my-auto hidden  rounded-lg  pr-2 text-sm md:block'>
+                Rows per page:
+                <select
+                  className='mx-1 cursor-pointer rounded-lg border p-1 text-lg shadow-indigo-300 hover:shadow-lg '
+                  value={limit}
+                  onChange={handleLimitChange}
+                >
+                  <option value={10}>10</option>
+                  <option value={20}>20</option>
+                  <option value={50}>50</option>
+                  <option value={100}>100</option>
+                </select>
+              </div>
+            )} */}
+          </div>
+          <div className='flex justify-between border-b pb-1 md:hidden'>
+            <div className='flex items-center md:visible  '>
+              {data.length > 0 && (
+                <>
+                  <ExcelData data={data} fileName='Products Data' />
+                  <PdfData fileName='Products Data' bdy={bdy} wid={widths} />
+                </>
+              )}
+              <button
+                onClick={() => setShowMyModal3(true)}
+                className='m-1 ml-4 flex items-center justify-center rounded px-2 text-2xl text-[#5c67f5] '
+              >
+                <BsCartPlus />
+              </button>
+            </div>
+            {/* {data.length > 0 && (
+              <div className='my-auto   rounded-lg  pr-2 text-sm '>
+                Rows / page:
+                <select
+                  className='mx-1 cursor-pointer rounded-lg border p-1 text-lg shadow-indigo-300 hover:shadow-lg '
+                  value={limit}
+                  onChange={handleLimitChange}
+                >
+                  <option value={10}>10</option>
+                  <option value={20}>20</option>
+                  <option value={50}>50</option>
+                  <option value={100}>100</option>
+                </select>
+              </div>
+            )} */}
           </div>
           {data.length > 0 ? (
             <section
-              className={`h-[80vh] overflow-x-scroll xl:overflow-x-hidden `}
+              className={`mb-6   mr-5 `}
             >
-              <table className='mx-auto  border  border-black shadow-xl xl:whitespace-normal'>
+              <table className='mx-auto  border  border-black  xl:whitespace-normal'>
                 <thead className=''>
                   <tr className='border-y border-black bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] p-1 font-normal  text-white md:p-2 '>
                     <th className='border-x border-black py-1 md:py-2'>
@@ -337,19 +410,19 @@ const ProductsManagement = () => {
                     <th className='border-x border-gray-400 '>
                       Manufacturer Name
                     </th>
-                    <th className='border-x border-gray-400 '>
+                    {/* <th className='border-x border-gray-400 '>
                       Price Before Discount
                     </th>
                     <th className='border-x border-gray-400 '>
                       Price with GST
-                    </th>
+                    </th> */}
                     <th className='border-x border-gray-400 '>Price</th>
-                    <th className='border-x border-gray-400 '>Quantity</th>
                     <th className='border-x border-gray-400 '>Description</th>
+                    <th className='border-x border-gray-400 '>Quantity</th>
                     <th className='border-x border-gray-400 '>Availability</th>
-                    <th className='border-x border-gray-400 '>
+                    {/* <th className='border-x border-gray-400 '>
                       Shipping Charges
-                    </th>
+                    </th> */}
                     <th className='border-x border-gray-400 '>
                       Status <br />
                       <span className='text-sm font-normal'>
@@ -357,7 +430,7 @@ const ProductsManagement = () => {
                       </span>
                     </th>
                     <th
-                      className='col-span-2 border-x border-gray-400'
+                      className='col-span-2 border-x border-r-black border-gray-400'
                       colSpan='2'
                     >
                       Edit

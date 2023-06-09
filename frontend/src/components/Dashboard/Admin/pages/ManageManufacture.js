@@ -15,7 +15,8 @@ const ManageManufacture = () => {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [limit, setLimit] = useState(10);
+ // const [limit, setLimit] = useState(10);
+ const limit = 10;
   const [screenSize, setScreenSize] = useState(undefined);
   const [btn, setBtn] = useState(6);
   const [showMyModal, setShowMyModal] = useState(false);
@@ -47,7 +48,7 @@ const ManageManufacture = () => {
           return;
         }
         const res = await axios.get(
-          `https://procuren-backend.onrender.com/getroles/${page}/${limit}`,
+          `https://procuren-backend-g6z9.onrender.com/getroles/${page}/${limit}`,
           // `http://localhost:3001/getAllDetails/${page}/${limit}`,
 
           {

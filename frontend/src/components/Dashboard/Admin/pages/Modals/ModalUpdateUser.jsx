@@ -94,7 +94,7 @@ const ModalUpdateUser = ({ visible, onClose, initialValues, setSub }) => {
 
             axios
               .put(
-                `https://procuren-backend.onrender.com/UpdateCostumer/${initialValues._id}`,
+                `https://procuren-backend-g6z9.onrender.com/UpdateCostumer/${initialValues._id}`,
                 // `http://localhost:3001/UpdateCostumer/${initialValues._id}`,
                 values,
                 {

@@ -73,7 +73,7 @@ const ModalAddProduct = ({ visible, onClose, setSub }) => {
             setLoading(true);
             axios
               .post(
-                `https://procuren-backend.onrender.com/addProducts`,
+                `https://procuren-backend-g6z9.onrender.com/addProducts`,
                 // `http://localhost:3001/addProducts`,
                 { ...values, costumerID: `${customerID}` },
                 {
@@ -83,11 +83,11 @@ const ModalAddProduct = ({ visible, onClose, setSub }) => {
               .then((response) => {
                 setSub(true);
                 resetForm({ values: initialValues });
-                onClose()
+                onClose();
                 setLoading(false);
 
                 if (response.data.status === true) {
-                  setLoading(false)
+                  setLoading(false);
                 } else {
                   // setError(error.message);
                   setLoading(false);
@@ -98,7 +98,7 @@ const ModalAddProduct = ({ visible, onClose, setSub }) => {
                 // setError(error.message);
                 setSub(true);
                 setLoading(false);
-                console.log(error.response.data.message)
+                console.log(error.response.data.message);
                 // alert(`${error.response.data.message}`);
                 setSubmitting(false);
               });
@@ -210,7 +210,7 @@ const ModalAddProduct = ({ visible, onClose, setSub }) => {
                     className=' text-red-700'
                   />
                 </div>
-               
+
                 <div>
                   <label
                     className='text-md block font-semibold text-gray-800'
@@ -231,7 +231,7 @@ const ModalAddProduct = ({ visible, onClose, setSub }) => {
                     className=' text-red-700'
                   />
                 </div>
-              
+
                 <div className=''>
                   <label
                     className='text-md block font-semibold text-gray-800'
@@ -305,7 +305,7 @@ const ModalAddProduct = ({ visible, onClose, setSub }) => {
                   </label>
                   <Field
                     as='select'
-                    className='w-full border rounded-lg  px-4 py-2  focus:outline-none '
+                    className='w-full rounded-lg border  px-4 py-2  focus:outline-none '
                     name='availability'
                     id='availability'
                   >
@@ -318,10 +318,6 @@ const ModalAddProduct = ({ visible, onClose, setSub }) => {
                     className='text-red-700'
                   />
                 </div>
-                
-               
-              
-               
               </div>
 
               <div className='flex justify-center'>

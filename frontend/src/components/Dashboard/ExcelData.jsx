@@ -20,7 +20,7 @@ const ExcelData = ({data,fileName}) => {
   };
 
   return (
-    <button onClick={handleDownload} className='text-2xl lg:text-3xl mx-4 text-green-700'><RiFileExcel2Line/></button>
+    <button onClick={handleDownload} className='text-2xl md:text-3xl mr-4 text-green-700'><RiFileExcel2Line/></button>
   );
 };
 

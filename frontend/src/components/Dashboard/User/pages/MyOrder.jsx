@@ -41,7 +41,7 @@ const MyOrder = () => {
           return;
         }
         const res = await axios.get(
-          `https://procuren-backend.onrender.com/IndividualcustomerEnquiry/${customerID}/${page}/${limit}`,
+          `https://procuren-backend-g6z9.onrender.com/IndividualcustomerEnquiry/${customerID}/${page}/${limit}`,
           // `http://localhost:3001/IndividualcustomerEnquiry/${customerID}/${page}/${limit}`,
           {
             headers: { Authorization: `Bearer ${token}` },
@@ -200,7 +200,7 @@ const MyOrder = () => {
             >
               <table className=' mx-auto border border-black shadow-xl'>
                 <thead>
-                <tr className='border-y border-black bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] p-1 font-normal  text-white md:p-2 '>
+                  <tr className='border-y border-black bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] p-1 font-normal  text-white md:p-2 '>
                     <th className='border-x border-black py-1 md:py-2 '>
                       Sr. No.
                     </th>
@@ -225,7 +225,7 @@ const MyOrder = () => {
                   {data.map((item, index) => (
                     <tr
                       key={index}
-                      className={`  border-y border-black p-1 text-center md:py-2  hover:bg-indigo-200 `}
+                      className={`  border-y border-black p-1 text-center hover:bg-indigo-200  md:py-2 `}
                     >
                       <td className='border-x border-gray-400 p-1 '>
                         {index + 1}

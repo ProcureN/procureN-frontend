@@ -10,17 +10,15 @@ const HomePage = ({ setProfile }) => {
   const [data, setData] = useState([]);
   const [data2, setData2] = useState([]);
 
-  
-
   useEffect(() => {
     const customerID = localStorage.getItem('customerID');
     axios
       .get(
-        `https://procuren-backend.onrender.com/individualcostumerenquirycounts/${customerID}`
+        `https://procuren-backend-g6z9.onrender.com/individualcostumerenquirycounts/${customerID}`
       )
       .then((response) => {
         setData2(response.data); // Assuming the response data should be set to `data`
-        console.log(response)
+        console.log(response);
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
@@ -38,7 +36,7 @@ const HomePage = ({ setProfile }) => {
           return;
         }
         const res = await axios.get(
-          `https://procuren-backend.onrender.com/Individualprofiles/${customerID}`,
+          `https://procuren-backend-g6z9.onrender.com/Individualprofiles/${customerID}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -124,9 +122,8 @@ const HomePage = ({ setProfile }) => {
                 </div>
               </div>
             </div>
-          
           </div>
-          <div className='w-full col-span-2 mr-2 mt-2 items-center justify-center  p-2'>
+          <div className='col-span-2 mr-2 mt-2 w-full items-center justify-center  p-2'>
             <div className='flex flex-wrap justify-center'>
               <div className=' mr-2 mt-2  h-28 w-28 rounded-xl p-2 text-xl'>
                 <span className=''>Total Enquiries</span>
@@ -193,7 +190,7 @@ const HomePage = ({ setProfile }) => {
                 </div>
               </div>
               <div className=' mr-2 mt-2  h-28 w-28 rounded-xl p-2 text-xl'>
-                <span className='text-orange-300-400'>InProcees Product</span>
+                <span className='text-orange-300-400'>InProcess Product</span>
                 <div className='h-0.5 w-full bg-indigo-500'></div>
                 <div className='text-xl  font-bold text-gray-600'>
                   {data2.count ? (

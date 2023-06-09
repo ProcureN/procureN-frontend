@@ -24,7 +24,7 @@
 //         //   return;
 //         // }
 //         const res = await axios.get(
-//           `https://procuren-backend.onrender.com/getProducts/${customerID}/${page}/${limit}`,
+//           `https://procuren-backend-g6z9.onrender.com/getProducts/${customerID}/${page}/${limit}`,
 //           {
 //             headers: { Authorization: `Bearer ${token}` },
 //           }
@@ -162,7 +162,7 @@ const ViewAllProducts = () => {
         }
         const customerID = localStorage.getItem('customerID');
         const res = await axios.get(
-          `https://procuren-backend.onrender.com/getProducts/${customerID}/${page}/${limit}`,
+          `https://procuren-backend-g6z9.onrender.com/getProducts/${customerID}/${page}/${limit}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -400,7 +400,6 @@ const ViewAllProducts = () => {
               <table className='whitespace-nowrap border  border-black shadow-xl xl:whitespace-normal'>
                 <thead>
                   <tr className='border-y border-black bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] p-1 font-normal  text-white md:p-2 '>
-                    {' '}
                     <th className='border-x border-black py-1 md:py-2'>
                       Sr. No.
                     </th>

@@ -4,13 +4,11 @@ import NumberCounter from 'number-counter';
 import axios from 'axios';
 import { CgSpinner } from 'react-icons/cg';
 
-
 const HomeManufacture = ({ setProfile }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
   const [data2, setData2] = useState([]);
-
 
   useEffect(() => {
     async function fetchData() {
@@ -23,7 +21,7 @@ const HomeManufacture = ({ setProfile }) => {
           return;
         }
         const res = await axios.get(
-          `https://procuren-backend.onrender.com/Individualprofiles/${customerID}`,
+          `https://procuren-backend-g6z9.onrender.com/Individualprofiles/${customerID}`,
           // `http://localhost:3001/Individualprofiles/${customerID}`,
           {
             headers: { Authorization: `Bearer ${token}` },
@@ -44,11 +42,11 @@ const HomeManufacture = ({ setProfile }) => {
     const customerID = localStorage.getItem('customerID');
     axios
       .get(
-        `https://procuren-backend.onrender.com/individualproductscount/${customerID}`
+        `https://procuren-backend-g6z9.onrender.com/individualproductscount/${customerID}`
       )
       .then((response) => {
         setData2(response.data); // Assuming the response data should be set to `data`
-        console.log(response)
+        console.log(response);
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
@@ -70,8 +68,6 @@ const HomeManufacture = ({ setProfile }) => {
             Welcome back to your dashboard! We're glad to see you again.
           </span>
           <div className='flex justify-center '>
-         
-
             <div className='m-4 flex  items-center justify-center rounded-2xl bg-gradient-to-tl from-blue-300 to-pink-300  shadow-2xl'>
               <div className='flex flex-col items-center justify-around px-5 py-8 md:px-10'>
                 <div className='h-24 w-24 overflow-hidden rounded-full border'>
@@ -128,7 +124,7 @@ const HomeManufacture = ({ setProfile }) => {
               </div>
             </div>
           </div>
-          <div className='w-full col-span-2 mr-2 mt-2 items-center justify-center  p-2'>
+          <div className='col-span-2 mr-2 mt-2 w-full items-center justify-center  p-2'>
             <div className='flex flex-wrap justify-center'>
               <div className=' mr-2 mt-2  h-28 w-28 rounded-xl p-2 text-xl'>
                 <span className=''>Total Products</span>
@@ -194,7 +190,6 @@ const HomeManufacture = ({ setProfile }) => {
                   )}
                 </div>
               </div>
-              
             </div>
           </div>
           {/* <div className='mt-4 h-36 w-full'>

@@ -21,7 +21,7 @@ const SignupPage2 = ({ setNext, formValue }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const emailContext = useContext(EmailContext);
-  console.log(emailContext)
+  console.log(emailContext);
 
   let state = [
     'Andaman and Nicobar Islands',
@@ -78,7 +78,7 @@ const SignupPage2 = ({ setNext, formValue }) => {
           values = { ...values, ...formValue };
           console.log(values);
           axios
-            .post('https://procuren-backend.onrender.com/register', values)
+            .post('https://procuren-backend-g6z9.onrender.com/register', values)
             // .post('http://localhost:3001/register', values)
             .then((response) => {
               if (response.data.status === true) {

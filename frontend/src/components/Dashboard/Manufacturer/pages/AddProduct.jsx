@@ -62,12 +62,11 @@ const AddProduct = () => {
           initialValues={initialValues}
           validationSchema={productSchema}
           onSubmit={(values, { setSubmitting, resetForm }) => {
-    
             const token = localStorage.getItem('token');
             setLoading(true);
             axios
               .post(
-                `https://procuren-backend.onrender.com/addProducts`,
+                `https://procuren-backend-g6z9.onrender.com/addProducts`,
                 // `http://localhost:3001/addProducts`,
                 { ...values, costumerID: `${customerID}` },
                 {
@@ -484,7 +483,7 @@ export default AddProduct;
 //       axios
 
 //         .post(
-//           `https://procuren-backend.onrender.com/addProducts`,
+//           `https://procuren-backend-g6z9.onrender.com/addProducts`,
 //           // `http://localhost:3001/costumer/enquiryForm`,
 //           { ...values, customerID: `${customerID}` },
 //           {
