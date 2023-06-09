@@ -318,7 +318,7 @@ const ViewAllProducts = ({ open, setOpen }) => {
               </table>
             </section>
           ) : (
-            'No data found'
+            'No enquiries found'
           )}
 
           <div className='flex justify-center'>

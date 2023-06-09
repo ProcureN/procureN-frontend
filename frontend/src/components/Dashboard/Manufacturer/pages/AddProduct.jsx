@@ -400,11 +400,11 @@ const AddProduct = ({ open, setOpen }) => {
 
               <div className='flex justify-center'>
                 <button
-                  className='mb-4  mt-6 flex rounded-lg bg-indigo-500 px-4 py-2 font-sans text-lg font-semibold tracking-wide text-white'
+                  className='mb-4 px-8 mt-6 flex rounded-lg bg-indigo-500  py-2 font-sans text-lg font-semibold tracking-wide text-white'
                   type='submit'
                   disabled={isSubmitting}
                 >
-                  {loading ? 'Loading...' : 'Send Enquiry'}
+                  {loading ? 'Loading...' : 'Add'}
                 </button>
               </div>
 

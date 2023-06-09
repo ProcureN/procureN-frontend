@@ -31,7 +31,6 @@ const HomeManufacture = ({ open, setOpen }) => {
         );
 
         setData(res.data.data);
-        console.log(data);
       } catch (err) {
         setError(err);
       } finally {

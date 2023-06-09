@@ -6,7 +6,7 @@ import AddProduct from './pages/AddProduct';
 import ViewAllProducts from './pages/ViewAllProducts';
 
 import SidePanel from '../SidePanel';
-import HomeManufacture from './pages/HomeManufacture2';
+import HomeManufacture from './pages/HomeManufacture';
 
 
 const manufactureLinks = [
