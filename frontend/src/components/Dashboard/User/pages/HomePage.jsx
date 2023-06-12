@@ -3,27 +3,13 @@ import defaultImage from '../../../../assets/Default_pfp.jpg';
 import NumberCounter from 'number-counter';
 import axios from 'axios';
 import { CgSpinner } from 'react-icons/cg';
+import { AiOutlineMenu } from 'react-icons/ai';
 
-const HomePage = ({ setProfile }) => {
+const HomePage = ({ open, setOpen }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
   const [data2, setData2] = useState([]);
-
-  useEffect(() => {
-    const customerID = localStorage.getItem('customerID');
-    axios
-      .get(
-        `https://procuren-backend-g6z9.onrender.com/individualcostumerenquirycounts/${customerID}`
-      )
-      .then((response) => {
-        setData2(response.data); // Assuming the response data should be set to `data`
-        console.log(response);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
-  }, []);
 
   useEffect(() => {
     const customerID = localStorage.getItem('customerID');
@@ -41,7 +27,6 @@ const HomePage = ({ setProfile }) => {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
-        setProfile(res.data.data.name);
         setData(res.data.data);
       } catch (err) {
         setError(err);
@@ -50,10 +35,41 @@ const HomePage = ({ setProfile }) => {
       }
     }
     fetchData();
-  }, [setProfile]);
+  }, []);
+
+  useEffect(() => {
+    const customerID = localStorage.getItem('customerID');
+    axios
+      .get(
+        `https://procuren-backend-g6z9.onrender.com/individualcostumerenquirycounts/${customerID}`
+      )
+      .then((response) => {
+        setData2(response.data); // Assuming the response data should be set to `data`
+        console.log(response);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+
+
 
   return (
     <>
+    <div className='my-2 flex h-16 justify-between rounded-md bg-white shadow md:mr-4'>
+        <div className='my-auto pl-2'>
+          <AiOutlineMenu
+            className=' cursor-pointer text-3xl text-[#5c67f5] '
+            onClick={() => setOpen(!open)}
+          />
+        </div>
+        {data && (
+          <div className=' my-auto  mx-auto bg-gradient-to-tr from-[#5c67f5]  to-pink-500 bg-clip-text font-sans text-2xl font-semibold  uppercase  text-transparent'>
+            {/* {data.name} */}
+            Retailer Dashboard
+          </div>
+        )}
+      </div>
       {loading ? (
         <CgSpinner
           size={60}
@@ -63,9 +79,9 @@ const HomePage = ({ setProfile }) => {
         'Error'
       ) : (
         <div>
-          <span className='text-md px-2'>
+          {/* <span className='text-md px-2'>
             Welcome back to your dashboard! We're glad to see you again.
-          </span>
+          </span> */}
           <div className='flex justify-center '>
             <div className='m-4 flex  items-center justify-center rounded-2xl bg-gradient-to-tl from-blue-300 to-pink-300  shadow-2xl'>
               <div className='flex flex-col items-center justify-around px-5 py-8 md:px-10'>

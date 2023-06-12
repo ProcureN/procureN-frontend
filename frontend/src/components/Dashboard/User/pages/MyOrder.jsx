@@ -4,13 +4,15 @@ import axios from 'axios';
 import { CgSpinner } from 'react-icons/cg';
 // import ExcelData from '../../ExcelData';
 import PdfData from '../../PdfData';
+import { AiOutlineMenu } from 'react-icons/ai';
 
-const MyOrder = () => {
+const MyOrder = ({ open, setOpen }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(10);
+  // const [limit, setLimit] = useState(10);
+  const limit = 10
   const [totalPages, setTotalPages] = useState(0);
   const [screenSize, setScreenSize] = useState(undefined);
   const [btn, setBtn] = useState(6);
@@ -154,13 +156,36 @@ const MyOrder = () => {
     return <ul className='flex'>{pageNumbers}</ul>;
   };
 
-  const handleLimitChange = (event) => {
-    const newLimit = parseInt(event.target.value);
-    setLimit(newLimit);
-  };
+
 
   return (
     <>
+      <div className='my-2 flex h-16 justify-between rounded-md bg-white shadow md:mr-4'>
+        <div className='my-auto pl-2'>
+          <AiOutlineMenu
+            className=' cursor-pointer text-3xl text-[#5c67f5] '
+            onClick={() => setOpen(!open)}
+          />
+        </div>
+
+        <div className='mx-auto my-auto bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-xl font-semibold uppercase text-transparent  lg:text-2xl'>
+          Your Enquiries
+        </div>
+        {data.length > 0 && (
+          <>
+            <div className='hidden items-center pr-2 md:visible md:flex'>
+              <PdfData fileName='Enquiries' bdy={bdy} wid={widths} />
+            </div>
+          </>
+        )}
+      </div>
+      {data.length > 0 && (
+        <div className='flex justify-between md:hidden'>
+          <div className='mb-3 flex items-center md:visible '>
+            <PdfData fileName='Enquiries' bdy={bdy} wid={widths} />
+          </div>
+        </div>
+      )}
       {loading ? (
         <CgSpinner
           size={60}
@@ -170,35 +195,11 @@ const MyOrder = () => {
         'Error ~ Something went wrong :)'
       ) : (
         <div className='overflow-y-none  '>
-          <div className='my-2 flex justify-between md:mr-4 '>
-            <div className='mx-2 flex items-center'>
-              {/* <ExcelData data={data} fileName='Enquiries' /> */}
-              <PdfData fileName='Enquiries' bdy={bdy} wid={widths} />
-            </div>
-            <div className='my-auto bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-2xl font-semibold  text-transparent'>
-              Your Enquiries
-            </div>
-            <div className='rounded-lg p-0.5 text-sm lg:p-2'>
-              Rows per page:
-              <select
-                className='mx-1 cursor-pointer rounded-lg border p-1 text-lg shadow-indigo-300 hover:shadow-lg '
-                value={limit}
-                onChange={handleLimitChange}
-              >
-                <option c value={10}>
-                  10
-                </option>
-                <option value={20}>20</option>
-                <option value={50}>50</option>
-                <option value={100}>100</option>
-              </select>
-            </div>
-          </div>
           {data.length > 0 ? (
             <section
-              className={`container mx-auto h-[80vh] overflow-x-scroll xl:overflow-x-hidden `}
+              className={`container mx-auto h-[80vh] overflow-x-scroll lg:overflow-x-hidden `}
             >
-              <table className=' mx-auto border border-black shadow-xl'>
+              <table className='mt-2 mx-auto border border-black shadow-xl'>
                 <thead>
                   <tr className='border-y border-black bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] p-1 font-normal  text-white md:p-2 '>
                     <th className='border-x border-black py-1 md:py-2 '>
@@ -210,7 +211,7 @@ const MyOrder = () => {
                     <th className=' border-x border-gray-400 '>Email</th>
                     <th className=' border-x border-gray-400 '>Phone Number</th>
                     <th className=' border-x border-gray-400 '>City</th>
-                    <th className=' border-x border-gray-400 '>State</th>
+                  
                     <th className=' border-x border-gray-400 '>
                       Billing Address
                     </th>
@@ -246,11 +247,9 @@ const MyOrder = () => {
                         {item.contact}
                       </td>
                       <td className='border-x border-gray-400 px-1'>
-                        {item.city}
+                        {item.city} <br /> {item.state}
                       </td>
-                      <td className='border-x border-gray-400 px-1'>
-                        {item.state}
-                      </td>
+                      
                       <td className='border-x border-gray-400 px-1'>
                         {item.billingAddress}
                       </td>

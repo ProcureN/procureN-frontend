@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import Sidebar from '../Sidebar';
 import {
-  AiOutlineMenuFold,
-  AiOutlineMenuUnfold,
   AiOutlineFileAdd,
 } from 'react-icons/ai';
 
@@ -10,21 +7,23 @@ import { HiOutlineDocumentDuplicate } from 'react-icons/hi';
 // import { CgProfile } from 'react-icons/cg';
 import { FaHome } from 'react-icons/fa';
 
-import MainContentUser from './MainContentUser';
+import SidePanel from '../SidePanel';
+import Enquiry from './pages/Enquiry';
+import HomePage from './pages/HomePage';
+import MyOrder from './pages/MyOrder';
 
-const manufactureLinks = [
+const retailersLinks = [
   {
     Head: 'DASHBOARD',
-    subLinks: [{ name: 'Home Page', link: '/retailer', logo: [<FaHome />] }],
+    subLinks: [{ name: 'Home Page', logo: [<FaHome />] }],
   },
 
   {
     Head: 'ACTION',
     subLinks: [
-      { name: 'Send Enquiry', link: '/retailer', logo: [<AiOutlineFileAdd />] },
+      { name: 'Send Enquiry', logo: [<AiOutlineFileAdd />] },
       {
         name: 'All Enquiries',
-        link: '/retailer',
         logo: [<HiOutlineDocumentDuplicate />],
       },
     ],
@@ -38,37 +37,32 @@ const manufactureLinks = [
 ];
 
 const UserDashboard = () => {
-  const [open, setOpen] = useState(true);
-  const [profile, setProfile] = useState('');
-  const [inputValue, setInputValue] = useState('Home Page');
+  const [open, setOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState('Home Page');
+
 
   return (
     <>
-      <div className=' flex '>
-        {open && (
-          <div className='  duration-1000 ease-linear'>
-            <Sidebar links={manufactureLinks} setInputValue={setInputValue} />
-          </div>
-        )}
-        <div className='flex w-full flex-col'>
-        <div className=' mx-2 mt-1 flex items-center  justify-between rounded-xl border px-10 py-4 shadow-md '>
-            <div className='text-3xl' onClick={() => setOpen(!open)}>
-              {open ? <AiOutlineMenuUnfold /> : <AiOutlineMenuFold />}
-            </div>
-            <div className='flex items-center'>
-              {profile && (
-                <div className='text-xl font-semibold uppercase'>
-                  {profile} -{' '}
-                </div>
-              )}
-              <div className='text-xl pl-2'>User Dashborad</div>
-            </div>
-          </div>
-          <div className='   mt-2 h-full px-5'>
-            <MainContentUser
-              selectedItem={inputValue}
-              setProfile={setProfile}
-            />
+      <div className=' flex  '>
+        <SidePanel
+          open={open}
+          selectedItem={selectedItem}
+          setSelectedItem={setSelectedItem}
+          setOpen={setOpen}
+          links={retailersLinks}
+        />
+
+        <div className=' font-roboto h-screen flex-auto '>
+          <div className='mx-1 h-[80vh]    md:mx-2 '>
+            {selectedItem === 'Home Page' ? (
+              <HomePage open={open} setOpen={setOpen} />
+            ) : selectedItem === 'Send Enquiry' ? (
+              <Enquiry open={open} setOpen={setOpen} />
+            ) : (
+              selectedItem === 'All Enquiries' && (
+                <MyOrder open={open} setOpen={setOpen} />
+              )
+            )}
           </div>
         </div>
       </div>

@@ -1,15 +1,4 @@
-// import React from 'react';
 
-// function MainContent({ selectedItem }) {
-//   return (
-//     <div>
-//       {/* {selectedItem === 'Home Page' && <HomePage />} */}
-// hiii
-//     </div>
-//   );
-// }
-
-// export default MainContentManufac;
 import React, { useEffect } from 'react';
 import HomePage from './pages/HomePage';
 import Enquiry from './pages/Enquiry';

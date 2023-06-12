@@ -57,7 +57,7 @@ const AddProduct = ({ open, setOpen }) => {
   };
 
   return (
-    <div>
+    <>
       <div className='my-2 flex h-16 justify-between rounded-md bg-white shadow md:mr-4'>
         <div className='my-auto pl-2'>
           <AiOutlineMenu
@@ -412,7 +412,7 @@ const AddProduct = ({ open, setOpen }) => {
           )}
         </Formik>
       </div>
-    </div>
+    </>
   );
 };
 

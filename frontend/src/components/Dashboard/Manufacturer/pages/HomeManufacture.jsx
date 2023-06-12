@@ -67,7 +67,7 @@ const HomeManufacture = ({ open, setOpen }) => {
         {data && (
           <div className=' my-auto  mx-auto bg-gradient-to-tr from-[#5c67f5]  to-pink-500 bg-clip-text font-sans text-2xl font-semibold  uppercase  text-transparent'>
             {/* {data.name} */}
-            Retailers Dashboard
+            Manufacturer Dashboard
           </div>
         )}
       </div>

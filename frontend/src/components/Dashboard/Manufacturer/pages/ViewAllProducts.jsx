@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from 'react';
 
 import axios from 'axios';
@@ -167,8 +165,6 @@ const ViewAllProducts = ({ open, setOpen }) => {
     return <ul className='flex'>{pageNumbers}</ul>;
   };
 
- 
-
   function TableRow({ item, index }) {
     return (
       <tr
@@ -203,7 +199,6 @@ const ViewAllProducts = ({ open, setOpen }) => {
                     </td> */}
         <td className=' border-x border-gray-400 px-1 '>{item.price}</td>
         <td className=' border-x border-gray-400 px-1 '>
-          {' '}
           {item.productQuantity}
         </td>
         <td className='border-x border-gray-400 px-1 '>{item.description}</td>
@@ -233,39 +228,31 @@ const ViewAllProducts = ({ open, setOpen }) => {
   return (
     <>
       <div className='my-2 flex h-16 justify-between rounded-md bg-white shadow md:mr-4'>
-            <div className='my-auto pl-2'>
-              <AiOutlineMenu
-                className=' cursor-pointer text-3xl text-[#5c67f5] '
-                onClick={() => setOpen(!open)}
-              />
-            </div>
+        <div className='my-auto pl-2'>
+          <AiOutlineMenu
+            className=' cursor-pointer text-3xl text-[#5c67f5] '
+            onClick={() => setOpen(!open)}
+          />
+        </div>
 
-            <div className='mx-auto my-auto bg-gradient-to-tl uppercase from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-xl font-semibold text-transparent  lg:text-2xl'>
-              Your Enquiries
+        <div className='mx-auto my-auto bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-xl font-semibold uppercase text-transparent  lg:text-2xl'>
+          Your Enquiries
+        </div>
+        {data.length > 0 && (
+          <>
+            <div className='hidden items-center pr-2 md:visible md:flex'>
+              <PdfData fileName='Enquiry Form Data' bdy={bdy} wid={widths} />
             </div>
-            {data.length > 0 && (
-              <>
-                <div className='hidden items-center pr-2 md:visible md:flex'>
-                  
-                  <PdfData
-                    fileName='Enquiry Form Data'
-                    bdy={bdy}
-                    wid={widths}
-                  />
-                </div>
-                
-              </>
-            )}
+          </>
+        )}
+      </div>
+      {data.length > 0 && (
+        <div className='flex justify-between md:hidden'>
+          <div className='mb-3 flex items-center md:visible '>
+            <PdfData fileName='Enquiry Form Data' bdy={bdy} wid={widths} />
           </div>
-          {data.length > 0 && (
-            <div className='flex justify-between md:hidden'>
-              <div className='mb-3 flex items-center md:visible '>
-               
-                <PdfData fileName='Enquiry Form Data' bdy={bdy} wid={widths} />
-              </div>
-              
-            </div>
-          )}
+        </div>
+      )}
       {loading ? (
         <CgSpinner
           size={60}
