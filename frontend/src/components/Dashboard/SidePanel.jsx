@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import logo from '../../assets/logo.png';
 import logo2 from '../../assets/logo2.png';
-import { Link, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 
 import { AiOutlineLogout, AiOutlineClose } from 'react-icons/ai';
 
@@ -48,9 +48,8 @@ const SidePanel = ({ open, setOpen, selectedItem, setSelectedItem, links }) => {
       >
         <div>
           <div className='relative  mt-2  pt-2'>
-            <Link to='/'>
-              <img src={logo} alt='logo' className='mx-4  h-[56px] ' />
-            </Link>
+            <img src={logo} alt='logo' className='mx-4  h-[56px] ' />
+
             <AiOutlineClose
               onClick={() => setOpen(false)}
               className='absolute right-2 top-1/2 cursor-pointer  hover:text-red-800'
@@ -106,13 +105,13 @@ const SidePanel = ({ open, setOpen, selectedItem, setSelectedItem, links }) => {
         <div className='flex h-full flex-col justify-between'>
           <div>
             <div className='mb-6    py-4'>
-              <Link to='/'>
+        
                 {open ? (
                   <img src={logo} alt='logo' className='mx-auto  h-16  ' />
                 ) : (
                   <img src={logo2} alt='logo' className=' h-12  px-4 ' />
                 )}
-              </Link>
+          
             </div>
             <div className=''>
               <div>

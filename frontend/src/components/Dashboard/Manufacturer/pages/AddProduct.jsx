@@ -66,8 +66,8 @@ const AddProduct = ({ open, setOpen }) => {
           />
         </div>
 
-        <div className=' my-auto mx-auto bg-gradient-to-tr from-[#5c67f5]  to-pink-500 bg-clip-text font-sans text-2xl font-semibold  uppercase  text-transparent'>
-        Add Your Product
+        <div className=' mx-auto my-auto bg-gradient-to-tr from-[#5c67f5]  to-pink-500 bg-clip-text font-sans text-2xl font-semibold  uppercase  text-transparent'>
+          Add Your Product
         </div>
       </div>
       <div>
@@ -110,8 +110,6 @@ const AddProduct = ({ open, setOpen }) => {
         >
           {({ isSubmitting }) => (
             <Form className=' px-10 py-10'>
-              
-
               <div className='grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 '>
                 <div>
                   <label
@@ -121,13 +119,33 @@ const AddProduct = ({ open, setOpen }) => {
                     Product Name
                   </label>
                   <Field
-                    className='select w-full max-w-xs rounded-md border-2 bg-slate-100 p-2 '
+                   className=' w-full  rounded-md border-2 border-indigo-200 bg-indigo-100 p-2 '
                     name='productName'
                     id='productName'
-                    placeholder='Enter your product name'
+                    // placeholder='Enter your product name'
                   />
                   <ErrorMessage
                     name='productName'
+                    component='div'
+                    className='text-red-700'
+                  />
+                </div>
+                <div>
+                  <label
+                    className='text-md flex  font-semibold text-gray-800'
+                    htmlFor='description'
+                  >
+                    Description
+                  </label>
+                  <Field
+                  className=' w-full  rounded-md border-2 border-indigo-200 bg-indigo-100 p-2 '
+                    type='text'
+                    name='description'
+                    id='description'
+                    // placeholder='Description of your product '
+                  />
+                  <ErrorMessage
+                    name='description'
                     component='div'
                     className='text-red-700'
                   />
@@ -140,11 +158,11 @@ const AddProduct = ({ open, setOpen }) => {
                     Category
                   </label>
                   <Field
-                    className='w-full rounded-lg border-2 bg-slate-100 px-4 py-2 focus:outline-none'
+                    className=' w-full  rounded-md border-2 border-indigo-200 bg-indigo-100 p-2 '
                     type='text'
                     name='category'
                     id='category'
-                    placeholder='Category'
+                    // placeholder='Category'
                   />
                   <ErrorMessage
                     name='category'
@@ -161,7 +179,7 @@ const AddProduct = ({ open, setOpen }) => {
                     Sub-category
                   </label>
                   <Field
-                    className='select w-full max-w-xs rounded-md border-2 bg-slate-100 p-2 '
+                    className=' w-full  rounded-md border-2 border-indigo-200 bg-indigo-100 p-2 '
                     name='subCategory'
                     id='subCategory'
                     type='text'
@@ -180,11 +198,11 @@ const AddProduct = ({ open, setOpen }) => {
                     Manufacturer Name
                   </label>
                   <Field
-                    className='w-full rounded-lg border bg-slate-100 px-4 py-2 focus:outline-none'
+                  className=' w-full  rounded-md border-2 border-indigo-200 bg-indigo-100 p-2 '
                     type='text'
                     name='manufacturerName'
                     id='manufacturerName'
-                    placeholder='Manufacturer name'
+                    // placeholder='Manufacturer name'
                   />
                   <ErrorMessage
                     name='manufacturerName'
@@ -192,7 +210,7 @@ const AddProduct = ({ open, setOpen }) => {
                     className=' text-red-700'
                   />
                 </div>
-                <div>
+                {/* <div>
                   <label
                     className='text-md block font-semibold text-gray-800'
                     htmlFor='priceBeforeDiscount'
@@ -200,7 +218,7 @@ const AddProduct = ({ open, setOpen }) => {
                     Price Before Discount
                   </label>
                   <Field
-                    className='w-full rounded-lg border bg-slate-100 px-4 py-2 focus:outline-none'
+                   className=' w-full  rounded-md border-2 border-indigo-200 bg-indigo-100 p-2 '
                     type='number'
                     name='priceBeforeDiscount'
                     id='priceBeforeDiscount'
@@ -211,20 +229,20 @@ const AddProduct = ({ open, setOpen }) => {
                     component='div'
                     className=' text-red-700'
                   />
-                </div>
+                </div> */}
                 <div>
                   <label
                     className='text-md block font-semibold text-gray-800'
                     htmlFor='price'
                   >
-                    Price
+                    Price - ₹
                   </label>
                   <Field
-                    className='w-full rounded-lg border bg-slate-100 px-4 py-2 focus:outline-none'
+                    className=' w-full  rounded-md border-2 border-indigo-200 bg-indigo-100 p-2 '
                     type='number'
                     name='price'
                     id='price'
-                    placeholder='Enter the price with discount '
+                    // placeholder='Price '
                   />
                   <ErrorMessage
                     name='price'
@@ -232,7 +250,7 @@ const AddProduct = ({ open, setOpen }) => {
                     className=' text-red-700'
                   />
                 </div>
-                <div>
+                {/* <div>
                   <label
                     className='text-md block font-semibold text-gray-800'
                     htmlFor='withGST'
@@ -240,19 +258,19 @@ const AddProduct = ({ open, setOpen }) => {
                     Price with GST
                   </label>
                   <Field
-                    className='w-full rounded-lg border bg-slate-100 px-4 py-2 focus:outline-none'
+                    className=' w-full  rounded-md border-2 border-indigo-200 bg-indigo-100 p-2 '
                     type='number'
                     name='withGST'
                     id='withGST'
-                    placeholder='Enter the price with GST'
+                    // placeholder='Enter the price with GST'
                   />
                   <ErrorMessage
                     name='withGST'
                     component='div'
                     className=' text-red-700'
                   />
-                </div>
-                <div>
+                </div> */}
+                {/* <div>
                   <label
                     className='text-md block font-semibold text-gray-800'
                     htmlFor='shippingCharges'
@@ -260,7 +278,7 @@ const AddProduct = ({ open, setOpen }) => {
                     Delivery Charges
                   </label>
                   <Field
-                    className='w-full rounded-lg border bg-slate-100 px-4 py-2 focus:outline-none'
+                    className=' w-full  rounded-md border-2 border-indigo-200 bg-indigo-100 p-2 '
                     type='number'
                     name='shippingCharges'
                     id='shippingCharges'
@@ -271,8 +289,8 @@ const AddProduct = ({ open, setOpen }) => {
                     component='div'
                     className=' text-red-700'
                   />
-                </div>
-                <div className=''>
+                </div> */}
+                <div >
                   <label
                     className='text-md block font-semibold text-gray-800'
                     htmlFor='sizeUnit'
@@ -280,11 +298,11 @@ const AddProduct = ({ open, setOpen }) => {
                     Size Unit
                   </label>
                   <Field
-                    className='w-full rounded-lg border bg-slate-100 px-4 py-2 focus:outline-none'
+                   className=' w-full  rounded-md border-2 border-indigo-200 bg-indigo-100 p-2 '
                     type='text'
                     name='sizeUnit'
                     id='sizeUnit'
-                    placeholder='Enter your size unit'
+                    // placeholder='Enter your size unit'
                   />
                   <ErrorMessage
                     name='sizeUnit'
@@ -300,11 +318,11 @@ const AddProduct = ({ open, setOpen }) => {
                     Product Quantity
                   </label>
                   <Field
-                    className='w-full rounded-lg border bg-slate-100 px-4 py-2 focus:outline-none'
+                   className=' w-full  rounded-md border-2 border-indigo-200 bg-indigo-100 p-2 '
                     type='text'
                     name='productQuantity'
                     id='productQuantity'
-                    placeholder='Enter your product total quantity'
+                    // placeholder='Enter your product total quantity'
                   />
                   <ErrorMessage
                     name='productQuantity'
@@ -321,7 +339,7 @@ const AddProduct = ({ open, setOpen }) => {
                   </label>
                   <Field
                     as='select'
-                    className='w-full rounded-lg border bg-slate-100 px-4 py-2 focus:outline-none '
+                    className=' w-full  rounded-md border-2 border-indigo-200 bg-indigo-100 p-2 '
                     name='availability'
                     id='availability'
                   >
@@ -335,26 +353,7 @@ const AddProduct = ({ open, setOpen }) => {
                     className='text-red-700'
                   />
                 </div>
-                <div>
-                  <label
-                    className='text-md flex  font-semibold text-gray-800'
-                    htmlFor='description'
-                  >
-                    Description
-                  </label>
-                  <Field
-                    className='w-full rounded-lg border bg-slate-100 px-4 py-2 focus:outline-none'
-                    type='text'
-                    name='description'
-                    id='description'
-                    placeholder='Description of your product '
-                  />
-                  <ErrorMessage
-                    name='description'
-                    component='div'
-                    className='text-red-700'
-                  />
-                </div>
+
                 {/* <div>
                   <label
                     className='text-gray-800 font-semibold  text-md '
@@ -400,11 +399,11 @@ const AddProduct = ({ open, setOpen }) => {
 
               <div className='flex justify-center'>
                 <button
-                  className='mb-4 px-8 mt-6 flex rounded-lg bg-indigo-500  py-2 font-sans text-lg font-semibold tracking-wide text-white'
+                  className='mb-4 mt-6 hover:shadow-xl hover:border-2 hover:border-[#5c67f5] flex rounded-lg bg-[#5c67f5] px-8  py-2 font-sans text-lg font-semibold tracking-wide text-white'
                   type='submit'
                   disabled={isSubmitting}
                 >
-                  {loading ? 'Loading...' : 'Add'}
+                  {loading ? 'Adding...' : 'Add'}
                 </button>
               </div>
 

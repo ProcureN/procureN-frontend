@@ -65,7 +65,7 @@ const HomeManufacture = ({ open, setOpen }) => {
           />
         </div>
         {data && (
-          <div className=' my-auto mr-4 bg-gradient-to-tr from-[#5c67f5]  to-pink-500 bg-clip-text font-sans text-2xl font-semibold  uppercase  text-transparent'>
+          <div className=' my-auto  mx-auto bg-gradient-to-tr from-[#5c67f5]  to-pink-500 bg-clip-text font-sans text-2xl font-semibold  uppercase  text-transparent'>
             {/* {data.name} */}
             Retailers Dashboard
           </div>
@@ -80,9 +80,9 @@ const HomeManufacture = ({ open, setOpen }) => {
         'Error'
       ) : (
         <div className=''>
-          <span className='text-md px-2'>
+          {/* <span className='text-md px-2'>
             Welcome back to your dashboard! We're glad to see you again.
-          </span>
+          </span> */}
           <div className='flex justify-center '>
             <div className='m-4 flex  items-center justify-center rounded-2xl bg-gradient-to-tl from-blue-300 to-pink-300  shadow-2xl'>
               <div className='flex flex-col items-center justify-around px-5 py-8 md:px-10'>
