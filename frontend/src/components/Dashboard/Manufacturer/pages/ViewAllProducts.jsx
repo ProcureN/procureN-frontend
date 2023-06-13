@@ -261,12 +261,12 @@ const ViewAllProducts = ({ open, setOpen }) => {
       ) : error ? (
         'Error'
       ) : (
-        <div className='overflow-y-none  '>
+        <div className=' '>
           {data.length > 0 ? (
             <section
-              className={`h-[80vh] overflow-x-scroll lg:overflow-x-hidden `}
+              className={` pb-4  `}
             >
-              <table className='whitespace-nowrap border mx-auto border-black shadow-xl xl:whitespace-normal'>
+              <table className=' whitespace-nowrap border mx-auto border-black shadow-xl xl:whitespace-normal'>
                 <thead>
                   <tr className='border-y border-black bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] p-1 font-normal  text-white md:p-2 '>
                     <th className='border-x border-black py-1 md:py-2'>
