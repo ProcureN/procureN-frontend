@@ -187,10 +187,10 @@ const ViewAllProducts = ({ open, setOpen }) => {
           {item.manufacturerName.charAt(0).toUpperCase() +
             item.manufacturerName.slice(1)}
         </td>
-        <td className=' border-x border-gray-400 px-1 '>
+        {/* <td className=' border-x border-gray-400 px-1 '>
           {item.priceBeforeDiscount}
-        </td>
-        <td className=' border-x border-gray-400 px-1'>{item.withGST}</td>
+        </td> */}
+        {/* <td className=' border-x border-gray-400 px-1'>{item.withGST}</td> */}
         {/* <td className='w-24 border p-1 md:p-2 '>
                       <img src={item.selectImage1} alt='' srcSet='' />
                     </td>
@@ -205,9 +205,9 @@ const ViewAllProducts = ({ open, setOpen }) => {
         <td className='  border-x border-gray-400 px-1 '>
           {item.availability}
         </td>
-        <td className='  border-x border-gray-400 px-1'>
+        {/* <td className='  border-x border-gray-400 px-1'>
           {item.shippingCharges}
-        </td>
+        </td> */}
         <td
           className={` border-x  border-gray-400 px-1 font-medium ${
             item.status === 'Approved'
@@ -264,9 +264,9 @@ const ViewAllProducts = ({ open, setOpen }) => {
         <div className='overflow-y-none  '>
           {data.length > 0 ? (
             <section
-              className={`h-[80vh] overflow-x-scroll xl:overflow-x-hidden `}
+              className={`h-[80vh] overflow-x-scroll lg:overflow-x-hidden `}
             >
-              <table className='whitespace-nowrap border  border-black shadow-xl xl:whitespace-normal'>
+              <table className='whitespace-nowrap border mx-auto border-black shadow-xl xl:whitespace-normal'>
                 <thead>
                   <tr className='border-y border-black bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] p-1 font-normal  text-white md:p-2 '>
                     <th className='border-x border-black py-1 md:py-2'>
@@ -278,19 +278,19 @@ const ViewAllProducts = ({ open, setOpen }) => {
                     <th className='border-x border-gray-400 '>
                       Manufacturer Name
                     </th>
-                    <th className='border-x border-gray-400 '>
+                    {/* <th className='border-x border-gray-400 '>
                       Price Before Discount
-                    </th>
-                    <th className='border-x border-gray-400 '>
+                    </th> */}
+                    {/* <th className='border-x border-gray-400 '>
                       Price with GST
-                    </th>
+                    </th> */}
                     <th className='border-x border-gray-400 '>Price</th>
                     <th className='border-x border-gray-400 '>Quantity</th>
                     <th className='border-x border-gray-400 '>Description</th>
                     <th className='border-x border-gray-400 '>Availability</th>
-                    <th className='border-x border-gray-400 '>
+                    {/* <th className='border-x border-gray-400 '>
                       Shipping Charges
-                    </th>
+                    </th> */}
                     <th className='border-x border-gray-400 '>Status</th>
                     <th className='border-x border-gray-400 '>
                       Delivery Status
