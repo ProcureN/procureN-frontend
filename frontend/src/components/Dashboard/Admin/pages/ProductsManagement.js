@@ -197,13 +197,14 @@ const ProductsManagement = ({ open, setOpen }) => {
           <br />
           {item.time}
         </td>
-        <td className=' border-y border-black px-1  text-center md:py-2  '>
-          {item.productName}
-        </td>
         <td className=' border-x border-gray-400 px-1 font-medium'>
           {item.manufacturerName.charAt(0).toUpperCase() +
             item.manufacturerName.slice(1)}
         </td>
+        <td className=' border-y border-black px-1  text-center md:py-2  '>
+          {item.productName}
+        </td>
+      
         {/* <td className=' border-x border-gray-400 px-1 '>
           {item.priceBeforeDiscount}
         </td> */}
@@ -221,6 +222,9 @@ const ProductsManagement = ({ open, setOpen }) => {
         </td>
         <td className='  border-x border-gray-400 px-1 '>
           {item.availability}
+        </td>
+        <td className='  border-x border-gray-400 px-1 '>
+          {item.category}
         </td>
         {/* <td className='  border-x border-gray-400 px-1'>
           {item.shippingCharges}
@@ -406,10 +410,10 @@ const ProductsManagement = ({ open, setOpen }) => {
                     </th>
                     <th className='border-x border-gray-400 '>Time</th>
                     {/* <th className='border-x border-gray-400 '>Date</th> */}
-                    <th className='border-x border-gray-400 '>Product Name</th>
                     <th className='border-x border-gray-400 '>
                       Manufacturer Name
                     </th>
+                    <th className='border-x border-gray-400 '>Product Name</th>
                     {/* <th className='border-x border-gray-400 '>
                       Price Before Discount
                     </th>
@@ -420,13 +424,14 @@ const ProductsManagement = ({ open, setOpen }) => {
                     <th className='border-x border-gray-400 '>Description</th>
                     <th className='border-x border-gray-400 '>Quantity</th>
                     <th className='border-x border-gray-400 '>Availability</th>
+                    <th className='border-x border-gray-400 '>Category</th>
                     {/* <th className='border-x border-gray-400 '>
                       Shipping Charges
                     </th> */}
                     <th className='border-x border-gray-400 '>
                       Status <br />
                       <span className='text-sm font-normal'>
-                        Delivery Status
+                        D.S.
                       </span>
                     </th>
                     <th

@@ -64,7 +64,7 @@ const ModalAddProduct = ({ visible, onClose, setSub }) => {
       // onClick={handleOnClose}
       className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-25 backdrop-blur-sm'
     >
-      <div className=' rounded-2xl bg-white p-2'>
+      <div className=' rounded bg-white p-2'>
         <Formik
           initialValues={initialValues}
           validationSchema={productSchema}

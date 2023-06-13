@@ -74,7 +74,7 @@ const ModalUpdateUser = ({ visible, onClose, initialValues, setSub }) => {
       onClick={handleOnClose}
       className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-25 backdrop-blur-sm'
     >
-      <div className=' rounded bg-indigo-100 p-2'>
+      <div className=' rounded '>
         <Formik
           initialValues={{
             name: initialValues.name,
@@ -118,11 +118,11 @@ const ModalUpdateUser = ({ visible, onClose, initialValues, setSub }) => {
           }}
         >
           {({ isSubmitting }) => (
-            <Form className=' min-w-full rounded-b-lg bg-indigo-100 p-4  text-center md:p-10'>
-              <h1 className='mb-4 bg-gradient-to-tl  from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-2xl font-bold text-transparent'>
+            <Form className=' min-w-full rounded-b-lg bg-white p-4  text-center md:p-10'>
+              <h1 className='mb-4 bg-gradient-to-tl  from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-3xl font-semibold text-transparent'>
                 Update Customer Details
               </h1>
-              <div className='mb-10 h-0.5 rounded-full  bg-gradient-to-tl from-blue-600 to-pink-500 ' />
+              {/* <div className='mb-10 h-0.5 rounded-full  bg-gradient-to-tl from-blue-600 to-pink-500 ' /> */}
 
               <div className='grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3'>
                 <div>
@@ -133,7 +133,7 @@ const ModalUpdateUser = ({ visible, onClose, initialValues, setSub }) => {
                     Name
                   </label>
                   <Field
-                    className='w-full rounded-lg bg-gray-100 px-4 py-2 shadow-xl focus:outline-none'
+                    className='w-full rounded-lg border-2 border-slate-400 bg-gray-100 px-4 py-2 shadow-xl focus:outline-none'
                     type='text'
                     name='name'
                     id='name'
@@ -153,7 +153,7 @@ const ModalUpdateUser = ({ visible, onClose, initialValues, setSub }) => {
                     Email
                   </label>
                   <Field
-                    className='w-full rounded-lg  px-4 py-2  shadow-xl focus:outline-none'
+                    className='w-full rounded-lg  border-2 border-slate-400 px-4 py-2  shadow-xl focus:outline-none'
                     type='text'
                     name='email'
                     id='email'
@@ -175,7 +175,7 @@ const ModalUpdateUser = ({ visible, onClose, initialValues, setSub }) => {
                     Phone Number
                   </label>
                   <Field
-                    className='w-full rounded-lg  px-4 py-2  shadow-xl focus:outline-none'
+                    className='w-full rounded-lg  border-2 border-slate-400 px-4 py-2  shadow-xl focus:outline-none'
                     type='text'
                     name='phone'
                     id='phone'
@@ -196,7 +196,7 @@ const ModalUpdateUser = ({ visible, onClose, initialValues, setSub }) => {
                     Company Name
                   </label>
                   <Field
-                    className='w-full rounded-lg  px-4 py-2  shadow-xl focus:outline-none'
+                    className='w-full rounded-lg  border-2 border-slate-400 px-4 py-2  shadow-xl focus:outline-none'
                     type='text'
                     name='company'
                     id='company'
@@ -217,11 +217,11 @@ const ModalUpdateUser = ({ visible, onClose, initialValues, setSub }) => {
                   </label>
                   <Field
                     as='select'
-                    className='w-full rounded-lg  px-4 py-2  shadow-xl focus:outline-none '
+                    className='w-full rounded-lg  border-2 border-slate-400 px-4 py-2  shadow-xl focus:outline-none '
                     name='selectRole'
                     id='selectRole'
                   >
-                    <option className='text-sm text-gray-500' disabled></option>
+                    {/* <option className='text-sm text-gray-500' disabled></option> */}
                     <option value='Retailer'>Retailer</option>
                     <option value='Manufacturer'>Manufacturer</option>
                   </Field>
@@ -239,7 +239,7 @@ const ModalUpdateUser = ({ visible, onClose, initialValues, setSub }) => {
                     Job Title
                   </label>
                   <Field
-                    className='w-full rounded-lg  px-4 py-2  shadow-xl focus:outline-none'
+                    className='w-full rounded-lg  border-2 border-slate-400 px-4 py-2  shadow-xl focus:outline-none'
                     type='text'
                     name='jobTitle'
                     id='jobTitle'
@@ -260,7 +260,7 @@ const ModalUpdateUser = ({ visible, onClose, initialValues, setSub }) => {
                     City
                   </label>
                   <Field
-                    className='w-full rounded-lg bg-gray-100 px-4 py-2 shadow-xl focus:outline-none'
+                    className='w-full rounded-lg  border-2 border-slate-400 bg-gray-100 px-4 py-2 shadow-xl focus:outline-none'
                     type='text'
                     name='city'
                     id='city'
@@ -281,7 +281,7 @@ const ModalUpdateUser = ({ visible, onClose, initialValues, setSub }) => {
                   </label>
                   <Field
                     as='select'
-                    className='w-full rounded-lg  px-4 py-2  shadow-xl focus:outline-none '
+                    className='w-full rounded-lg  border-2 border-slate-400 px-4 py-2  shadow-xl focus:outline-none '
                     name='state'
                     id='state'
                   >

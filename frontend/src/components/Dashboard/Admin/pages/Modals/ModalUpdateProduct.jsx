@@ -8,11 +8,11 @@ const productSchema = Yup.object().shape({
   category: Yup.string().required('Information is required*'),
   subCategory: Yup.string().required('Information is required*'),
   manufacturerName: Yup.string().required('Information is required*'),
-  priceBeforeDiscount: Yup.number().required('Information is required*'),
+  // priceBeforeDiscount: Yup.number().required('Information is required*'),
   price: Yup.number().required('Information is required*'),
-  withGST: Yup.number().required('Information is required*'),
+  // withGST: Yup.number().required('Information is required*'),
   description: Yup.string().required('Information is required*'),
-  shippingCharges: Yup.number().required('Information is required*'),
+  // shippingCharges: Yup.number().required('Information is required*'),
   sizeUnit: Yup.string().required('Information is required*'),
   productQuantity: Yup.string().required('Information is required*'),
   availability: Yup.string().required('Information is required*'),
@@ -47,7 +47,7 @@ const ModalUpdateProduct = ({ visible, onClose, initialValues, setSub }) => {
       onClick={handleOnClose}
       className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-25 backdrop-blur-sm'
     >
-      <div className=' rounded bg-indigo-100 p-2'>
+      <div className=' rounded bg-white p-2'>
         <Formik
           initialValues={{
             productName: initialValues.productName,
@@ -99,7 +99,7 @@ const ModalUpdateProduct = ({ visible, onClose, initialValues, setSub }) => {
         >
           {({ isSubmitting }) => (
             <Form className=' px-10 py-10'>
-              <h1 className='mb-10 bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-2xl font-bold text-transparent lg:text-3xl xl:text-4xl'>
+              <h1 className='mb-10 bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-2xl font-semibold text-transparent lg:text-3xl xl:text-4xl'>
                 Update Product
               </h1>
 
@@ -183,7 +183,7 @@ const ModalUpdateProduct = ({ visible, onClose, initialValues, setSub }) => {
                     className=' text-red-700'
                   />
                 </div>
-                <div>
+                {/* <div>
                   <label
                     className='text-md block font-semibold text-gray-800'
                     htmlFor='priceBeforeDiscount'
@@ -202,7 +202,7 @@ const ModalUpdateProduct = ({ visible, onClose, initialValues, setSub }) => {
                     component='div'
                     className=' text-red-700'
                   />
-                </div>
+                </div> */}
                 <div>
                   <label
                     className='text-md block font-semibold text-gray-800'
@@ -223,7 +223,7 @@ const ModalUpdateProduct = ({ visible, onClose, initialValues, setSub }) => {
                     className=' text-red-700'
                   />
                 </div>
-                <div>
+                {/* <div>
                   <label
                     className='text-md block font-semibold text-gray-800'
                     htmlFor='withGST'
@@ -242,8 +242,8 @@ const ModalUpdateProduct = ({ visible, onClose, initialValues, setSub }) => {
                     component='div'
                     className=' text-red-700'
                   />
-                </div>
-                <div>
+                </div> */}
+                {/* <div>
                   <label
                     className='text-md block font-semibold text-gray-800'
                     htmlFor='shippingCharges'
@@ -262,7 +262,7 @@ const ModalUpdateProduct = ({ visible, onClose, initialValues, setSub }) => {
                     component='div'
                     className=' text-red-700'
                   />
-                </div>
+                </div> */}
                 <div className=''>
                   <label
                     className='text-md block font-semibold text-gray-800'

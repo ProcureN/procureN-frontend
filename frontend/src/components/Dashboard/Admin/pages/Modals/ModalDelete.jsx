@@ -63,7 +63,7 @@ const ModalDelete = ({ visible, onClose, Values, setSub, deletePopup }) => {
       onClick={handleOnClose}
       className='fixed  inset-0 flex items-center justify-center   backdrop-blur-[3px]'
     >
-      <div className='  shadow-lg shadow-gray-500  bg-indigo-100 px-16 py-4 text-center '>
+      <div className='  shadow-lg shadow-gray-500  bg-white px-16 py-4 text-center '>
         <AiFillDelete className='mx-auto mb-2 text-4xl text-red-500 ' />
         <span className='text-2xl'>Are you sure?</span>
         <p className='mt-2'>Do you really want to delete record?</p>

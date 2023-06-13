@@ -94,7 +94,7 @@ const ModalUpdate = ({ visible, onClose, initialValues, setSub }) => {
       onClick={handleOnClose}
       className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-25 backdrop-blur-sm'
     >
-      <div className=' rounded bg-indigo-100 p-2'>
+      <div className=' rounded bg-white'>
         <Formik
           initialValues={{
             productName: initialValues.productName,
@@ -145,7 +145,7 @@ const ModalUpdate = ({ visible, onClose, initialValues, setSub }) => {
         >
           {({ isSubmitting }) => (
             <Form className=' rounded-xl  px-10 py-10'>
-              <h1 className='mb-10 bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-2xl font-bold text-transparent lg:text-4xl'>
+              <h1 className='mb-10 bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-3xl font-semibold text-transparent '>
                 Update Customer Enquiry Form
               </h1>
 
@@ -282,8 +282,8 @@ const ModalUpdate = ({ visible, onClose, initialValues, setSub }) => {
                     className='text-md flex  font-semibold text-gray-800'
                     htmlFor='alternativeNumber'
                   >
-                    Alternative No.{' '}
-                    <div className='text-sm text-gray-200'>( ~optional )</div>
+                    Alternative No.
+                    <div className='text-sm text-gray-600'>( ~ optional )</div>
                   </label>
                   <Field
                     className='w-full rounded-lg border bg-slate-100 px-4 py-2 focus:outline-none'
