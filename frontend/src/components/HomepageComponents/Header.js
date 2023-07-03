@@ -35,7 +35,7 @@ export default function Header({ setShowMyModal }) {
     <div
       className={`${
         color && 'border-b bg-[white] duration-150'
-      } fixed   isolate z-10 w-full`}
+      } fixed   isolate z-10 w-full `}
     >
       <>
         {/* bg-[#492DD5] */}
