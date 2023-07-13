@@ -40,7 +40,7 @@ const SidePanel = ({ open, setOpen, selectedItem, setSelectedItem, links }) => {
   };
 
   return (
-    <div className='flex   '>
+    <div className='flex    '>
       <div
         className={`absolute z-10  border-r bg-white duration-500 md:hidden   ${
           open ? 'left-0  ' : '-left-[100%]'
@@ -55,7 +55,7 @@ const SidePanel = ({ open, setOpen, selectedItem, setSelectedItem, links }) => {
               className='absolute right-2 top-1/2 cursor-pointer  hover:text-red-800'
             />
           </div>
-          <div>
+          <div className=''>
             <ul>
               {links.map((items, index) => (
                 <div key={index}>
@@ -77,7 +77,7 @@ const SidePanel = ({ open, setOpen, selectedItem, setSelectedItem, links }) => {
                         }`}
                         onClick={() => handleClick(x)}
                       >
-                        <div className={`mx-2 text-2xl `}>{x.logo[0]}</div>
+                        <div className={`mx-2 text-2xl ${open ? 'visible' : 'hidden'} `}>{x.logo[0]}</div>
                         <div className={`${open ? 'visible' : 'hidden'} `}>
                           {x.name}
                         </div>
@@ -98,11 +98,11 @@ const SidePanel = ({ open, setOpen, selectedItem, setSelectedItem, links }) => {
         </div>
       </div>
       <div
-        className={`hidden shadow-xl md:block ${
+        className={`hidden shadow-xl shadow-gray-400 md:block ${
           open ? 'min-w-max' : 'w-20'
-        }   mr-2 justify-between rounded-r-md bg-white  transition  `}
+        }   mr-2  rounded-r-md bg-white  transition   `}
       >
-        <div className='flex h-full flex-col justify-between'>
+        
           <div>
             <div className='mb-6    py-4'>
         
@@ -129,14 +129,14 @@ const SidePanel = ({ open, setOpen, selectedItem, setSelectedItem, links }) => {
                         {items.subLinks.map((x, subIndex) => (
                           <li
                             key={subIndex}
-                            className={`text-md group relative mx-2 mb-2 flex items-center rounded-xl py-2 pl-2 pr-2 font-mono text-[#5c67f5] duration-75 lg:mb-4 xl:text-lg ${
+                            className={`text-md cursor-pointer group relative mx-2 mb-2 flex items-center rounded-xl py-2 pl-2 pr-2 font-mono text-[#5c67f5] duration-75 lg:mb-4 xl:text-lg ${
                               selectedItem === x.name
                                 ? 'bg-[#5c67f5] text-white   '
                                 : ' hover:hover:bg-[#5c67f5] hover:text-white'
                             }`}
                             onClick={() => handleClick(x)}
                           >
-                            <div className={`mx-2 text-2xl `}>{x.logo[0]}</div>
+                            <div className={`mx-2 text-2xl ${open ? 'hidden' : 'visible'} `}>{x.logo[0]}</div>
                             {/* {!open && (
                               <span class='absolute   -mb-8  translate-y-full whitespace-nowrap rounded-md bg-indigo-800 px-1 text-sm opacity-0 transition-opacity  group-hover:opacity-100'>
                                 {x.name}
@@ -145,7 +145,7 @@ const SidePanel = ({ open, setOpen, selectedItem, setSelectedItem, links }) => {
                             <div
                               className={`${
                                 open ? 'visible' : 'hidden'
-                              } text-md`}
+                              } text-md mx-2`}
                             >
                               {x.name}
                             </div>
@@ -159,7 +159,7 @@ const SidePanel = ({ open, setOpen, selectedItem, setSelectedItem, links }) => {
             </div>
           </div>
           <div
-            className={`mx-2 mb-8 flex cursor-pointer gap-2 rounded-xl border-2 border-gray-300 py-2 pl-2  pr-2 font-mono  text-lg text-[#5c67f5] duration-75 hover:border-[#5c67f5] `}
+            className={`mx-2 mt-8 flex cursor-pointer gap-2 rounded-xl border  py-2 pl-2  pr-2 font-mono  text-lg text-[#5c67f5] duration-75 hover:border-[#5c67f5] `}
             onClick={handleLogout}
           >
             <AiOutlineLogout className='text-3xl' />
@@ -167,7 +167,7 @@ const SidePanel = ({ open, setOpen, selectedItem, setSelectedItem, links }) => {
           </div>
         </div>
       </div>
-    </div>
+  
   );
 };
 

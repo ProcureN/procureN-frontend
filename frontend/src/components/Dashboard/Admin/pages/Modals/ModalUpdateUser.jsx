@@ -94,7 +94,7 @@ const ModalUpdateUser = ({ visible, onClose, initialValues, setSub }) => {
 
             axios
               .put(
-                `https://procuren-backend-g6z9.onrender.com/UpdateCostumer/${initialValues._id}`,
+                `https://procuren-backend.onrender.com/UpdateCostumer/${initialValues._id}`,
                 // `http://localhost:3001/UpdateCostumer/${initialValues._id}`,
                 values,
                 {
@@ -119,10 +119,10 @@ const ModalUpdateUser = ({ visible, onClose, initialValues, setSub }) => {
         >
           {({ isSubmitting }) => (
             <Form className=' min-w-full rounded-b-lg bg-white p-4  text-center md:p-10'>
-              <h1 className='mb-4 bg-gradient-to-tl  from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-3xl font-semibold text-transparent'>
+              <h1 className='mb-4 bg-gradient-to-tl  from-blue-600 to-[#cb67ac] bg-clip-text text-center font-sans text-3xl font-semibold text-transparent'>
                 Update Customer Details
               </h1>
-              {/* <div className='mb-10 h-0.5 rounded-full  bg-gradient-to-tl from-blue-600 to-pink-500 ' /> */}
+              {/* <div className='mb-10 h-0.5 rounded-full  bg-gradient-to-tl from-blue-600 to-[#cb67ac] ' /> */}
 
               <div className='grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3'>
                 <div>
@@ -301,7 +301,7 @@ const ModalUpdateUser = ({ visible, onClose, initialValues, setSub }) => {
               </div>
 
               <button
-                className='mb-4 mt-6 rounded-lg  bg-gradient-to-tl from-blue-600 to-pink-500 px-8 py-2 font-sans text-lg font-semibold tracking-wide text-white shadow-lg'
+                className='mb-4 mt-6 rounded-lg  bg-gradient-to-tl from-blue-600 to-[#cb67ac] px-8 py-2 font-sans text-lg font-semibold tracking-wide text-white shadow-lg'
                 type='submit'
                 disabled={isSubmitting}
               >

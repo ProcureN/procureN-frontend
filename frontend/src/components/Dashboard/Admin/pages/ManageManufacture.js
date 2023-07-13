@@ -15,8 +15,8 @@ const ManageManufacture = () => {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
- // const [limit, setLimit] = useState(10);
- const limit = 10;
+  // const [limit, setLimit] = useState(10);
+  const limit = 10;
   const [screenSize, setScreenSize] = useState(undefined);
   const [btn, setBtn] = useState(6);
   const [showMyModal, setShowMyModal] = useState(false);
@@ -48,7 +48,7 @@ const ManageManufacture = () => {
           return;
         }
         const res = await axios.get(
-          `https://procuren-backend-g6z9.onrender.com/getroles/${page}/${limit}`,
+          `https://procuren-backend.onrender.com/getroles/${page}/${limit}`,
           // `http://localhost:3001/getAllDetails/${page}/${limit}`,
 
           {
@@ -245,7 +245,7 @@ const ManageManufacture = () => {
               <ExcelData data={data} fileName='Manufacturers Data' />
               <PdfData fileName='Manufacturers Data' bdy={bdy} wid={widths} />
             </div>
-            <div className='my-auto bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-2xl font-semibold  text-transparent'>
+            <div className='my-auto bg-gradient-to-tl from-blue-600 to-[#cb67ac] bg-clip-text text-center font-sans text-2xl font-semibold  text-transparent'>
               Manufacturers Data
             </div>
             <div className='rounded-lg  p-0.5 text-sm   lg:p-2'>

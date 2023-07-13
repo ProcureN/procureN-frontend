@@ -15,8 +15,8 @@ const Services = () => {
 
   return (
     <div id='service'>
-      <section className=' body-font container mx-auto -mt-16 -pb-4 overflow-hidden'>
-        <div className='container mx-auto   pb-12 pt-20 md:pt-24'>
+      <section className=' body-font -pb-4 container mx-auto -mt-16 overflow-hidden '>
+        <div className='container mx-auto   pb-12 pt-20 md:pt-24 '>
           <div
             data-aos='fade-up'
             data-aos-delay='0'
@@ -41,14 +41,14 @@ const Services = () => {
               <button className="py-1 px-4 focus:outline-none">Annually</button>
             </div> */}
           </div>
-          <div className=' flex flex-wrap justify-center tracking-tighter'>
+          <div className=' flex flex-wrap justify-center tracking-tighter '>
             <div
               data-aos='zoom-in'
               data-aos-delay='10'
               data-aos-duration='1500'
               className='w-full p-4 md:w-1/2 lg:w-1/4 xl:w-1/5 '
             >
-              <div className='flex h-full flex-col overflow-hidden rounded-lg border-2 border-gray-300 p-2 shadow-lg shadow-indigo-500/50 duration-500 hover:scale-110 hover:border-indigo-200'>
+              <div className='flex h-full flex-col overflow-hidden rounded-lg border border-gray-200 p-2 shadow-lg shadow-indigo-500/50 duration-500 hover:scale-110 hover:border-indigo-200'>
                 <div className='mb-4  flex min-h-[80px] items-center justify-center rounded-md  border-b  px-1 text-center text-xl  text-[#5c67f5] md:min-h-[100px] '>
                   <div>
                     <AiOutlineShoppingCart className='mx-auto hover:scale-125' />
@@ -57,7 +57,7 @@ const Services = () => {
                 </div>
                 <div className='flex h-full flex-col justify-between'>
                   <div>
-                    <h3 className='px-1  pb-2 text-center md:text-lg'>
+                    <h3 className='px-1  pb-2 '>
                       Improve your procurement process, save time and money, and
                       enhance your brand's value with ProcureN's direct
                       materials sourcing solutions.
@@ -79,7 +79,7 @@ const Services = () => {
               data-aos-duration='1500'
               className='w-full p-4 md:w-1/2 lg:w-1/4 xl:w-1/5 '
             >
-              <div className='flex h-full flex-col overflow-hidden rounded-lg border-2 border-gray-300 p-2 shadow-lg shadow-indigo-500/50 duration-500 hover:scale-110 hover:border-indigo-200'>
+              <div className='flex h-full flex-col overflow-hidden rounded-lg border border-gray-200 p-2 shadow-lg shadow-indigo-500/50 duration-500 hover:scale-110 hover:border-indigo-200'>
                 <div className='mb-4  flex min-h-[80px] items-center justify-center rounded-md border-b  px-1 text-center text-xl  text-[#5c67f5] md:min-h-[100px] '>
                   <div>
                     <BiPurchaseTagAlt className='mx-auto hover:scale-125 ' />
@@ -87,7 +87,7 @@ const Services = () => {
                   </div>
                 </div>
                 <div className='flex h-full flex-col justify-between'>
-                  <span className=' justify-center pb-2  text-center tracking-tighter md:text-lg'>
+                  <span className=' justify-center pb-2    '>
                     ProcureN handles your full procure-to-pay process, from
                     requisition to invoice payment, and gives you complete
                     visibility of your purchase order's progress. Track your
@@ -107,18 +107,18 @@ const Services = () => {
               data-aos='zoom-in'
               data-aos-delay='10'
               data-aos-duration='1500'
-              className='w-full p-4 md:w-1/2 lg:w-1/4 xl:w-1/5 '
+              className='w-full p-4 duration-1000 md:w-1/2 lg:w-1/4 xl:w-1/5  '
             >
-              <div className='flex h-full flex-col overflow-hidden rounded-lg border-2 border-gray-300 p-2 shadow-lg shadow-indigo-500/50 duration-500 hover:scale-110 hover:border-indigo-200'>
-                <div className='mb-4  flex min-h-[80px] items-center justify-center rounded-md border-b  px-1 text-center text-xl  text-[#5c67f5] md:min-h-[100px] '>
+              <div className='group flex h-full flex-col overflow-hidden rounded-lg   border   from-[#5c67f5] to-[#cb67ac] p-2 shadow-lg shadow-indigo-500/50 duration-500 hover:scale-110   hover:bg-gradient-to-tr'>
+                <div className='mb-4  flex min-h-[80px] items-center justify-center rounded-md border-b  px-1 text-center text-xl  text-[#5c67f5] group-hover:text-white  md:min-h-[100px] '>
                   <div>
-                    <BsTruck className='mx-auto whitespace-nowrap hover:scale-125' />
+                    <BsTruck className='mx-auto whitespace-nowrap hover:scale-125 ' />
                     Tracking Mechanism
                   </div>
                 </div>
                 <div className='flex h-full flex-col justify-between'>
                   <div>
-                    <h3 className='px-1 pb-2 text-center md:text-lg'>
+                    <h3 className='px-1 pb-2 group-hover:text-white   '>
                       Track the status of your requisitions from submission to
                       invoice with ProcureN's multi-stage approval tracking
                       mechanism. You'll know exactly where your orders are in
@@ -139,9 +139,9 @@ const Services = () => {
               data-aos='zoom-in'
               data-aos-delay='10'
               data-aos-duration='1500'
-              className='w-full p-4 md:w-1/2 lg:w-1/4 xl:w-1/5 '
+              className='w-full p-4 md:w-1/2 lg:w-1/4 xl:w-1/5  '
             >
-              <div className='flex h-full flex-col overflow-hidden rounded-lg border-2 border-gray-300 p-2 shadow-lg shadow-indigo-500/50 duration-500 hover:scale-110 hover:border-indigo-200'>
+              <div className='flex h-full flex-col overflow-hidden rounded-lg border border-gray-300 p-2 shadow-lg shadow-indigo-500/50 duration-500 hover:scale-110 hover:border-indigo-200'>
                 <div className='mb-4  flex min-h-[80px] items-center justify-center rounded-md border-b  px-1 text-center text-xl  text-[#5c67f5] md:min-h-[100px] '>
                   <div>
                     <BiTrendingUp className='mx-auto hover:scale-125' />
@@ -150,7 +150,7 @@ const Services = () => {
                 </div>
                 <div className='flex h-full flex-col justify-between'>
                   <div>
-                    <h3 className='px-1 pb-2 text-center md:text-lg '>
+                    <h3 className='px-1 pb-2  '>
                       Get insights, automate processes, and control your
                       business operations with ProcureN's Sales Management/ERP
                       Dashboard. Integrated to data from accounting,

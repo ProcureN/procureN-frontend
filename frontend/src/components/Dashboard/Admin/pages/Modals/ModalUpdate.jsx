@@ -73,7 +73,7 @@ const ModalUpdate = ({ visible, onClose, initialValues, setSub }) => {
 
   useEffect(() => {
     axios
-      .get(`https://procuren-backend-g6z9.onrender.com/getproductnames`)
+      .get(`https://procuren-backend.onrender.com/getproductnames`)
       .then((response) => {
         setProduct(response.data.data);
       })
@@ -120,7 +120,7 @@ const ModalUpdate = ({ visible, onClose, initialValues, setSub }) => {
 
             axios
               .put(
-                `https://procuren-backend-g6z9.onrender.com/updateCostumersEnquiry/${initialValues._id}`,
+                `https://procuren-backend.onrender.com/updateCostumersEnquiry/${initialValues._id}`,
                 // `http://localhost:3001/UpdateCostumer/${initialValues._id}`,
                 values,
 
@@ -145,7 +145,7 @@ const ModalUpdate = ({ visible, onClose, initialValues, setSub }) => {
         >
           {({ isSubmitting }) => (
             <Form className=' rounded-xl  px-10 py-10'>
-              <h1 className='mb-10 bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-3xl font-semibold text-transparent '>
+              <h1 className='mb-10 bg-gradient-to-tl from-blue-600 to-[#cb67ac] bg-clip-text text-center font-sans text-3xl font-semibold text-transparent '>
                 Update Customer Enquiry Form
               </h1>
 
@@ -433,7 +433,7 @@ const ModalUpdate = ({ visible, onClose, initialValues, setSub }) => {
 
               <div className='flex justify-center'>
                 <button
-                  className='  mt-6 flex rounded-lg bg-gradient-to-tl from-blue-600 to-pink-500 px-4 py-2 font-sans text-lg font-semibold tracking-wide text-white shadow-xl shadow-indigo-200'
+                  className='  mt-6 flex rounded-lg bg-gradient-to-tl from-blue-600 to-[#cb67ac] px-4 py-2 font-sans text-lg font-semibold tracking-wide text-white shadow-xl shadow-indigo-200'
                   type='submit'
                   disabled={isSubmitting}
                 >

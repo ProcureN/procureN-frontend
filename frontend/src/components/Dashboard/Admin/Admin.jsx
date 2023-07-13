@@ -6,12 +6,18 @@ import {
   AiOutlineUsergroupAdd,
 } from 'react-icons/ai';
 import SidePanel from '../SidePanel';
-import Management from './pages/Management';
-import ProductsManagement from './pages/ProductsManagement';
+// import Management from './pages/Management';
+// import ProductsManagement from './pages/ProductsManagement';
 import HomePage from './pages/HomePage';
-import VendorManagement from './pages/VendorManagement';
+// import VendorManagement from './pages/VendorManagement';
 import VendorEnquiries from './pages/VendorEnquiries';
-import { FaHome, FaHandsHelping } from 'react-icons/fa';
+import {  FaUsers,FaHome } from 'react-icons/fa';
+// import { FaHome, FaHandsHelping, FaUsers } from 'react-icons/fa';
+import OrderMan from './pages/OrderMan';
+import VendorMan from './pages/VendorMan';
+import ClientDetails from './pages/ClientDetails';
+import VendorDetails from './pages/VendorDetails';
+
 // import Test from './pages/Test';
 
 const Admin = () => {
@@ -24,16 +30,16 @@ const Admin = () => {
     {
       Head: 'ACTION',
       subLinks: [
+        // {
+        //   name: 'Home Enquiries',
+        //   logo: [<FaHandsHelping />],
+        // },
         {
-          name: 'Vendor Enquiries',
-          logo: [<FaHandsHelping />],
-        },
-        {
-          name: 'Management',
+          name: 'Order Management',
           logo: [<AiOutlineFileSearch />],
         },
         {
-          name: 'Product Management',
+          name: 'Vendor Management',
           logo: [<AiOutlineShoppingCart />],
         },
       ],
@@ -41,13 +47,58 @@ const Admin = () => {
     {
       Head: 'USERS',
       subLinks: [
+        // {
+        //   name: 'Order Management',
+        //   logo: [<AiOutlineUsergroupAdd />],
+        // },
         {
-          name: 'Vendor Management',
+          name: 'Client Details',
+          logo: [<FaUsers />],
+        },
+        {
+          name: 'Vendor Details',
           logo: [<AiOutlineUsergroupAdd />],
         },
       ],
     },
   ];
+  // const AdminLinks = [
+  //   {
+  //     Head: 'DASHBOARD',
+  //     subLinks: [{ name: 'Home Page', logo: [<FaHome />] }],
+  //   },
+
+  //   {
+  //     Head: 'ACTION',
+  //     subLinks: [
+  //       {
+  //         name: 'Home Enquiries',
+  //         logo: [<FaHandsHelping />],
+  //       },
+  //       {
+  //         name: 'Order Manage',
+  //         logo: [<AiOutlineFileSearch />],
+  //       },
+  //       {
+  //         name: 'Vendor Manage',
+  //         logo: [<AiOutlineShoppingCart />],
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     Head: 'USERS',
+  //     subLinks: [
+  //       {
+  //         name: 'Order Management',
+  //         logo: [<AiOutlineUsergroupAdd />],
+  //       },
+  //       {
+  //         name: 'Vendor Management',
+  //         logo: [<AiOutlineUsergroupAdd />],
+  //       },
+  //     ],
+  //   },
+  // ];
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -63,6 +114,7 @@ const Admin = () => {
 
   const [open, setOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState('Home Page');
+  // const [selectedItem, setSelectedItem] = useState('Home Page');
 
   return (
     <div className='flex  '>
@@ -74,20 +126,38 @@ const Admin = () => {
         links={AdminLinks}
       />
 
-      <div className=' font-roboto h-screen flex-auto '>
-      
-        <div className='mx-1 h-[80vh]    md:mx-2 '>
+      <div className=' font-roboto h-screen  w-[90%] mx-auto '>
+        <div className='mx-1 h-[90vh]    md:mx-2 '>
           {selectedItem === 'Home Page' ? (
             <HomePage open={open} setOpen={setOpen} />
-          ) : selectedItem === 'Vendor Enquiries' ? (
+          ) : selectedItem === 'Home Enquiries' ? (
             <VendorEnquiries open={open} setOpen={setOpen} />
-          ) : selectedItem === 'Management' ? (
-            <Management open={open} setOpen={setOpen} />
-          ) : selectedItem === 'Product Management' ? (
-            <ProductsManagement open={open} setOpen={setOpen} />
+          ) : selectedItem === 'Order Management' ? (
+            <OrderMan open={open} setOpen={setOpen} />
+          ) : selectedItem === 'Vendor Management' ? (
+            <VendorMan open={open} setOpen={setOpen} />
+          ) : selectedItem === 'Client Details' ? (
+            <ClientDetails open={open} setOpen={setOpen} />
           ) : (
-            selectedItem === 'Vendor Management' && <VendorManagement open={open} setOpen={setOpen} />
+            selectedItem === 'Vendor Details' && (
+              <VendorDetails open={open} setOpen={setOpen} />
+            )
           )}
+          {/* {selectedItem === 'Home Page' ? (
+            <HomePage open={open} setOpen={setOpen} />
+          ) : selectedItem === 'Home Enquiries' ? (
+            <VendorEnquiries open={open} setOpen={setOpen} />
+          ) : selectedItem === 'Order Manage' ? (
+            <Management open={open} setOpen={setOpen} />
+          ) : selectedItem === 'Vendor Manage' ? (
+            <ProductsManagement open={open} setOpen={setOpen} />
+          ) : selectedItem === 'Order Management' ? (
+            <OrderMan open={open} setOpen={setOpen} />
+          ) : (
+            selectedItem === 'Vendor Management' && (
+              <VendorManagement open={open} setOpen={setOpen} />
+            )
+          )} */}
         </div>
       </div>
     </div>

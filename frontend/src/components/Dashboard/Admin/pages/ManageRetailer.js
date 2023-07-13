@@ -48,7 +48,7 @@ const ManageRetailer = () => {
           return;
         }
         const res = await axios.get(
-          `https://procuren-backend-g6z9.onrender.com/getroles/${page}/${limit}`,
+          `https://procuren-backend.onrender.com/getroles/${page}/${limit}`,
           // `http://localhost:3001/getAllDetails/${page}/${limit}`,
 
           {
@@ -247,7 +247,7 @@ const ManageRetailer = () => {
                 <PdfData fileName='Reatilers Data' bdy={bdy} wid={widths} />
               </div>
             )}
-            <div className='my-auto bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-2xl font-semibold  text-transparent'>
+            <div className='my-auto bg-gradient-to-tl from-blue-600 to-[#cb67ac] bg-clip-text text-center font-sans text-2xl font-semibold  text-transparent'>
               Retailers Data
             </div>
             {data.length > 0 && (

@@ -22,7 +22,7 @@ const HomePage = ({ open, setOpen }) => {
           return;
         }
         const res = await axios.get(
-          `https://procuren-backend-g6z9.onrender.com/Individualprofiles/${customerID}`,
+          `https://procuren-backend.onrender.com/Individualprofiles/${customerID}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -41,7 +41,7 @@ const HomePage = ({ open, setOpen }) => {
     const customerID = localStorage.getItem('customerID');
     axios
       .get(
-        `https://procuren-backend-g6z9.onrender.com/individualcostumerenquirycounts/${customerID}`
+        `https://procuren-backend.onrender.com/individualcostumerenquirycounts/${customerID}`
       )
       .then((response) => {
         setData2(response.data); // Assuming the response data should be set to `data`
@@ -52,11 +52,9 @@ const HomePage = ({ open, setOpen }) => {
       });
   }, []);
 
-
-
   return (
     <>
-    <div className='my-2 flex h-16 justify-between rounded-md bg-white shadow md:mr-4'>
+      <div className='my-2 flex h-16 justify-between rounded-md bg-white shadow md:mr-4'>
         <div className='my-auto pl-2'>
           <AiOutlineMenu
             className=' cursor-pointer text-3xl text-[#5c67f5] '
@@ -64,7 +62,7 @@ const HomePage = ({ open, setOpen }) => {
           />
         </div>
         {data && (
-          <div className=' my-auto  mx-auto bg-gradient-to-tr from-[#5c67f5]  to-pink-500 bg-clip-text font-sans text-2xl font-semibold  uppercase  text-transparent'>
+          <div className=' mx-auto  my-auto bg-gradient-to-tr from-[#5c67f5]  to-[#cb67ac] bg-clip-text font-sans text-2xl font-semibold  uppercase  text-transparent'>
             {/* {data.name} */}
             Retailer Dashboard
           </div>

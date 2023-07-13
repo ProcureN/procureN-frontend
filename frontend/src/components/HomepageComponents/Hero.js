@@ -52,19 +52,25 @@ const Hero = ({ setShowMyModal }) => {
             className='flex flex-col  md:w-1/2 lg:flex-grow   '
           >
             <div className='md:pr-16 lg:pr-24 '>
-              <span className='relative whitespace-nowrap '>
+              <div className='relative hidden whitespace-nowrap md:block '>
                 <h1 className=' group-hover:animate-type-reverse text-brand-accent  inline-flex h-20 animate-type overflow-x-hidden  whitespace-nowrap pb-2 pt-2  text-3xl font-medium text-white will-change-transform sm:text-4xl  lg:text-5xl '>
                   Leading Procurement
                 </h1>
                 <span className='-mb-2  box-border inline-block h-10 w-1 animate-cursor bg-white will-change-transform md:-mb-4 md:h-16'></span>
-              </span>
-              <div className='relative h-20 whitespace-nowrap '>
+              </div>
+              <div className='relative hidden h-20 whitespace-nowrap md:block '>
                 {showComponent && (
                   <h1 className=' group-hover:animate-type-reverse text-brand-accent  inline-flex h-20 animate-type-second overflow-x-hidden  whitespace-nowrap   text-3xl font-medium text-white will-change-transform sm:text-4xl  lg:text-5xl'>
                     Management Expert
                   </h1>
                 )}
                 <span className='-mb-2  -ml-1  box-border inline-block h-10 w-1 animate-cursor bg-white will-change-transform md:-mb-4 md:h-16'></span>
+              </div>
+              <div className=' text-brand-accent inline-flex  pb-4 text-3xl     font-medium text-white sm:text-4xl  md:hidden  '>
+                Leading Procurement
+              </div>
+              <div className=' text-brand-accent  inline-flex  pb-4  text-3xl   font-medium text-white sm:text-4xl  md:hidden  '>
+                Management Expert
               </div>
             </div>
 
@@ -79,13 +85,13 @@ const Hero = ({ setShowMyModal }) => {
                 Perfection.
               </span>
             </span>
-            <div className='flex justify-start '>
+            <div className='flex justify-around md:justify-start '>
               <button className='border-1 inline-flex rounded-full bg-[#F170D5]  from-[#5c67f5] to-[#cb67ac] px-4 py-2.5  font-medium text-white hover:border hover:border-white hover:bg-gradient-to-tr focus:outline-none  md:px-5 lg:text-xl'>
                 <a href={'#about'}>Get Started</a>
               </button>
 
               <div
-                className=' mx-10 flex rounded-full border   py-2  hover:text-black  focus:outline-none md:mx-2   lg:mx-10'
+                className='  flex rounded-full border   py-2  hover:text-black  focus:outline-none md:mx-2   lg:mx-10'
                 onClick={() => {
                   setShowMyModal(true);
                 }}
@@ -110,11 +116,11 @@ const Hero = ({ setShowMyModal }) => {
                 )}
 
                 {player ? (
-                  <button className=' from-blue-200 to-pink-500 bg-clip-text   pr-2 font-sans  text-white duration-500 hover:bg-gradient-to-tl hover:text-transparent md:pr-1 xl:pr-3  '>
+                  <button className=' from-blue-200 to-[#cb67ac] bg-clip-text   pr-2 font-sans  text-white duration-500 hover:bg-gradient-to-tl hover:text-transparent md:pr-1 xl:pr-3  '>
                     Watch Video
                   </button>
                 ) : (
-                  <button className=' mr-3   from-blue-200 to-pink-500 bg-clip-text font-sans text-white duration-500 hover:bg-gradient-to-tl hover:text-transparent xl:px-2  '>
+                  <button className=' mr-3   from-blue-200 to-[#cb67ac] bg-clip-text font-sans text-white duration-500 hover:bg-gradient-to-tl hover:text-transparent xl:px-2  '>
                     <AiOutlineHome
                       className='my-auto  text-white '
                       size={'25px'}
@@ -128,7 +134,7 @@ const Hero = ({ setShowMyModal }) => {
             data-aos='fade-down'
             data-aos-delay='0'
             data-aos-duration='1500'
-            className=' md:w-1/2 pb-10 flex justify-center'
+            className=' flex justify-center pb-10 md:w-1/2'
           >
             <img
               className='    rounded object-cover object-center lg:w-full lg:max-w-lg  '
@@ -171,12 +177,11 @@ const Hero = ({ setShowMyModal }) => {
               <div className='mb-1 h-4 w-1 animate-bounce rounded-full border-2 bg-white '></div>
             </div>
           </div> */}
-           <a href='#about'>
-
-          <div className='mt-1 flex animate-bounce justify-center '>
-            <div className='h-4 w-4  rotate-45 border-b-2 border-r-2'></div>
-          </div>
-           </a>
+          <a href='#about'>
+            <div className='mt-1 flex animate-bounce justify-center '>
+              <div className='h-4 w-4  rotate-45 border-b-2 border-r-2'></div>
+            </div>
+          </a>
         </div>
         {/* <div className='absolute bottom-10 left-1/2 -ml-4 hidden md:block '>
           <div className='flex h-14 w-8 animate-pulse   items-end justify-center rounded-full border '>

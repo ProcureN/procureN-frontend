@@ -28,7 +28,7 @@ const allProducts = [
   { image: giCoupler2_15, desciption: '15mm DIA GI Coupler' },
 ];
 
-const Products = () => {
+const Inventory = () => {
   const [screenSize, setScreenSize] = useState(undefined);
   const [slide, setSlide] = useState(1);
 
@@ -80,12 +80,12 @@ const Products = () => {
             className='mySwiper '
           >
             {allProducts.map((items, i) => (
-              <div className='container ' key={i}>
+              <div className='container  ' key={i}>
                 <SwiperSlide key={i + 1}>
                 <div className='h-4 md:h-8 '></div>
                   <div
                     key={i + 1}
-                    className='flex flex-col hover:scale-110 bg-white  duration-300 items-center  rounded-lg border-2 text-center text-lg '
+                    className='flex flex-col hover:scale-110 group bg-white  duration-300 items-center  rounded-lg border-2 text-center text-lg '
                   >
                     <div key={i + 1} >
                       <img
@@ -96,8 +96,8 @@ const Products = () => {
                       />
                     </div>
                     <hr />
-                    <div className='w-full border-t py-4  '>
-                      {items.desciption}{' '}
+                    <div className='w-full border-t py-4  bg-gradient-to-bl from-[#5c67f5] to-[#cb67ac] bg-clip-text font-semibold text-transparent  '>
+                      {items.desciption}
                     </div>
                   </div>
                   <div className='h-8 lg:h-12'></div>
@@ -112,4 +112,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default Inventory;

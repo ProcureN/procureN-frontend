@@ -8,12 +8,12 @@ import Header from '../components/HomepageComponents/Header';
 import Hero from '../components/HomepageComponents/Hero';
 import HowItWorks from '../components/HomepageComponents/HowItWorks';
 
-import Products from '../components/HomepageComponents/Products';
 import Proposel from '../components/HomepageComponents/Proposel';
 import Services from '../components/HomepageComponents/Services';
 
 import ModalTrack from '../components/Dashboard/Admin/pages/Modals/ModalTrack';
 import Tracking from '../components/HomepageComponents/Tracking';
+import Inventory from '../components/HomepageComponents/Inventory';
 
 const Main = () => {
   const [showMyModal, setShowMyModal] = useState(false);
@@ -32,7 +32,7 @@ const Main = () => {
       {/* <Track setShowMyModal2={setShowMyModal2} /> */}
       <Tracking setShowMyModal2={setShowMyModal2} />
       <HowItWorks />
-      <Products />
+      <Inventory />
       <Frequently />
       <Proposel />
 

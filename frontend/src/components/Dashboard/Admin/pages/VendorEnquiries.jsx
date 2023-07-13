@@ -13,8 +13,8 @@ const VendorEnquiries = ({ open, setOpen }) => {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-// const [limit, setLimit] = useState(10);
-const limit = 10;
+  // const [limit, setLimit] = useState(10);
+  const limit = 10;
   const [screenSize, setScreenSize] = useState(undefined);
   const [btn, setBtn] = useState(6);
   const [showMyModal2, setShowMyModal2] = useState(false);
@@ -44,16 +44,16 @@ const limit = 10;
           window.location.href = '/login'; // Redirect to login page if token not found
           return;
         }
-         const res = await axios.get(
-           `https://procuren-backend-g6z9.onrender.com/getcontactform/${page}/${limit}`,
-           // `http://localhost:3001/getcontactform/${page}/${limit}`
-           {
-             headers: { Authorization: `Bearer ${token}` }, // Send token in Authorization header
-           }
-         );
-         setData(res.data.data);
-         setSub(false);
-         setTotalPages(Math.ceil(res.data.count / limit)); // calculate total number of pages
+        const res = await axios.get(
+          `https://procuren-backend.onrender.com/getcontactform/${page}/${limit}`,
+          // `http://localhost:3001/getcontactform/${page}/${limit}`
+          {
+            headers: { Authorization: `Bearer ${token}` }, // Send token in Authorization header
+          }
+        );
+        setData(res.data.data);
+        setSub(false);
+        setTotalPages(Math.ceil(res.data.count / limit)); // calculate total number of pages
 
         // const res = {
         //   status: true,
@@ -79,7 +79,6 @@ const limit = 10;
         // setData(res.data);
         //  setSub(false);
         // setTotalPages(Math.ceil(res.count / limit)); // calculate total number of pages
-
       } catch (err) {
         setError(err);
       } finally {
@@ -216,7 +215,7 @@ const limit = 10;
 
         <td className=' border-x border-black px-1  '>{item.message}</td>
         <td
-          className='border-r border-black cursor-pointer text-xl  text-orange-600 hover:text-red-600 '
+          className='cursor-pointer border-r border-black text-xl  text-orange-600 hover:text-red-600 '
           onClick={() => {
             setVal(item);
             setShowMyModal2(true);
@@ -245,7 +244,7 @@ const limit = 10;
               <ExcelData data={data} fileName='Vendor Enquiries' />
               <PdfData fileName='Vendor Enquiries' bdy={bdy} wid={widths} />
             </div>
-            <div className='my-auto bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-2xl font-semibold  text-transparent'>
+            <div className='my-auto bg-gradient-to-tl from-blue-600 to-[#cb67ac] bg-clip-text text-center font-sans text-2xl font-semibold  text-transparent'>
               Vendor Enquiries
             </div>
             <div className='rounded-lg p-0.5 text-sm lg:p-2'>
@@ -270,7 +269,7 @@ const limit = 10;
               />
             </div>
 
-            <div className='mx-auto my-auto bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-xl font-semibold text-transparent  lg:text-2xl'>
+            <div className='mx-auto my-auto bg-gradient-to-tl from-[#5c67f5] to-[#cb67ac] bg-clip-text text-center font-sans text-xl font-semibold text-transparent  lg:text-2xl'>
               Vendor Enquiries
             </div>
             {data.length > 0 && (
@@ -317,32 +316,29 @@ const limit = 10;
             </div>
           )}
           {data.length > 0 ? (
-             <section
-               className={`h-[80vh] mr-5 `}
-             >
-               <table className=' border border-black shadow-xl mx-auto '>
-                 <thead>
-                   <tr className='border-y border-black bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] p-1 font-normal  text-white md:p-2 '>
-                     <th className='border-x border-black py-1 md:py-2'>
-                       Sr. No.
-                     </th>
-                     <th className='border-x border-black '>Time</th>
-                     <th className='border-x border-black'>Name</th>
-                     <th className='border-x border-black'>Email</th>
-                     <th className='border-x border-black'>Phone</th>
-                     <th className='border-x border-black'>Subject</th>
-                     <th className='border-x border-black'>Message</th>
-                     <th className=' border-r border-black px-1'>Delete</th>
-                   </tr>
-                 </thead>
-                 <tbody>
-                   {data.map((item, index) => (
-                     <TableRow key={index} index={index} item={item} />
-                   ))}
-                 </tbody>
-               </table>
-             </section>
-            
+            <section className={`mr-5 h-[80vh] `}>
+              <table className=' mx-auto border border-black shadow-xl '>
+                <thead>
+                  <tr className='border-y border-black bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] p-1 font-normal  text-white md:p-2 '>
+                    <th className='border-x border-black py-1 md:py-2'>
+                      Sr. No.
+                    </th>
+                    <th className='border-x border-black '>Time</th>
+                    <th className='border-x border-black'>Name</th>
+                    <th className='border-x border-black'>Email</th>
+                    <th className='border-x border-black'>Phone</th>
+                    <th className='border-x border-black'>Subject</th>
+                    <th className='border-x border-black'>Message</th>
+                    <th className=' border-r border-black px-1'>Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.map((item, index) => (
+                    <TableRow key={index} index={index} item={item} />
+                  ))}
+                </tbody>
+              </table>
+            </section>
           ) : (
             'No data found'
           )}
@@ -359,7 +355,7 @@ const limit = 10;
                 >
                   Prev
                 </button>
-                <div >{renderPagination()}</div>
+                <div>{renderPagination()}</div>
                 <button
                   className={`  ml-2 rounded-md border border-gray-400 px-2 hover:bg-[#5c67f5] hover:text-white ${
                     page === totalPages && 'cursor-not-allowed opacity-50'

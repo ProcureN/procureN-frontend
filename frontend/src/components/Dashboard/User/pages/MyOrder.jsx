@@ -12,7 +12,7 @@ const MyOrder = ({ open, setOpen }) => {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   // const [limit, setLimit] = useState(10);
-  const limit = 10
+  const limit = 10;
   const [totalPages, setTotalPages] = useState(0);
   const [screenSize, setScreenSize] = useState(undefined);
   const [btn, setBtn] = useState(6);
@@ -43,7 +43,7 @@ const MyOrder = ({ open, setOpen }) => {
           return;
         }
         const res = await axios.get(
-          `https://procuren-backend-g6z9.onrender.com/IndividualcustomerEnquiry/${customerID}/${page}/${limit}`,
+          `https://procuren-backend.onrender.com/IndividualcustomerEnquiry/${customerID}/${page}/${limit}`,
           // `http://localhost:3001/IndividualcustomerEnquiry/${customerID}/${page}/${limit}`,
           {
             headers: { Authorization: `Bearer ${token}` },
@@ -156,8 +156,6 @@ const MyOrder = ({ open, setOpen }) => {
     return <ul className='flex'>{pageNumbers}</ul>;
   };
 
-
-
   return (
     <>
       <div className='my-2 flex h-16 justify-between rounded-md bg-white shadow md:mr-4'>
@@ -168,7 +166,7 @@ const MyOrder = ({ open, setOpen }) => {
           />
         </div>
 
-        <div className='mx-auto my-auto bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-xl font-semibold uppercase text-transparent  lg:text-2xl'>
+        <div className='mx-auto my-auto bg-gradient-to-tl from-blue-600 to-[#cb67ac] bg-clip-text text-center font-sans text-xl font-semibold uppercase text-transparent  lg:text-2xl'>
           Your Enquiries
         </div>
         {data.length > 0 && (
@@ -199,7 +197,7 @@ const MyOrder = ({ open, setOpen }) => {
             <section
               className={`container mx-auto h-[80vh] overflow-x-scroll lg:overflow-x-hidden `}
             >
-              <table className='mt-2 mx-auto border border-black shadow-xl'>
+              <table className='mx-auto mt-2 border border-black shadow-xl'>
                 <thead>
                   <tr className='border-y border-black bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] p-1 font-normal  text-white md:p-2 '>
                     <th className='border-x border-black py-1 md:py-2 '>
@@ -211,7 +209,7 @@ const MyOrder = ({ open, setOpen }) => {
                     <th className=' border-x border-gray-400 '>Email</th>
                     <th className=' border-x border-gray-400 '>Phone Number</th>
                     <th className=' border-x border-gray-400 '>City</th>
-                  
+
                     <th className=' border-x border-gray-400 '>
                       Billing Address
                     </th>
@@ -249,7 +247,7 @@ const MyOrder = ({ open, setOpen }) => {
                       <td className='border-x border-gray-400 px-1'>
                         {item.city} <br /> {item.state}
                       </td>
-                      
+
                       <td className='border-x border-gray-400 px-1'>
                         {item.billingAddress}
                       </td>

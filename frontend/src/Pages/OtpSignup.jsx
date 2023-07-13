@@ -31,12 +31,9 @@ const OtpSignup = () => {
   const emailContext = useContext(EmailContext);
   const handleResendOTP = async () => {
     try {
-      await axios.post(
-        'https://procuren-backend-g6z9.onrender.com/resendOtp ',
-        {
-          email: `${emailContext.email}`,
-        }
-      );
+      await axios.post('https://procuren-backend.onrender.com/resendOtp ', {
+        email: `${emailContext.email}`,
+      });
     } catch (error) {
       console.error(error);
     }
@@ -66,7 +63,7 @@ const OtpSignup = () => {
               setLoading(true);
               await axios
                 .post(
-                  'https://procuren-backend-g6z9.onrender.com/otp ',
+                  'https://procuren-backend.onrender.com/otp ',
 
                   { ...values, email: `${emailContext.email}` }
                 )

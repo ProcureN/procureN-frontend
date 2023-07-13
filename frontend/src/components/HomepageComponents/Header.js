@@ -110,7 +110,7 @@ export default function Header({ setShowMyModal }) {
                     <Link to='/login'>
                       {/* <button
                         type='button'
-                        className='flex items-center rounded-lg bg-gradient-to-b from-purple-500 to-pink-500 px-2.5 py-1.5  text-center text-lg font-medium text-white  hover:bg-gradient-to-t hover:from-[#5440ef] hover:to-[#E82FE8] focus:outline-none focus:ring-4  focus:ring-purple-200 dark:focus:ring-purple-800 '
+                        className='flex items-center rounded-lg bg-gradient-to-b from-purple-500 to-[#cb67ac] px-2.5 py-1.5  text-center text-lg font-medium text-white  hover:bg-gradient-to-t hover:from-[#5440ef] hover:to-[#E82FE8] focus:outline-none focus:ring-4  focus:ring-purple-200 dark:focus:ring-purple-800 '
                       >
                         Login
                         

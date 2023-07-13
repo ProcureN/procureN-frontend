@@ -43,7 +43,7 @@ const ViewAllProducts = ({ open, setOpen }) => {
         }
         const customerID = localStorage.getItem('customerID');
         const res = await axios.get(
-          `https://procuren-backend-g6z9.onrender.com/getProducts/${customerID}/${page}/${limit}`,
+          `https://procuren-backend.onrender.com/getProducts/${customerID}/${page}/${limit}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -235,7 +235,7 @@ const ViewAllProducts = ({ open, setOpen }) => {
           />
         </div>
 
-        <div className='mx-auto my-auto bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-xl font-semibold uppercase text-transparent  lg:text-2xl'>
+        <div className='mx-auto my-auto bg-gradient-to-tl from-blue-600 to-[#cb67ac] bg-clip-text text-center font-sans text-xl font-semibold uppercase text-transparent  lg:text-2xl'>
           Your Enquiries
         </div>
         {data.length > 0 && (
@@ -263,10 +263,8 @@ const ViewAllProducts = ({ open, setOpen }) => {
       ) : (
         <div className=' '>
           {data.length > 0 ? (
-            <section
-              className={` pb-4  `}
-            >
-              <table className=' whitespace-nowrap border mx-auto border-black shadow-xl xl:whitespace-normal'>
+            <section className={` pb-4  `}>
+              <table className=' mx-auto whitespace-nowrap border border-black shadow-xl xl:whitespace-normal'>
                 <thead>
                   <tr className='border-y border-black bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] p-1 font-normal  text-white md:p-2 '>
                     <th className='border-x border-black py-1 md:py-2'>

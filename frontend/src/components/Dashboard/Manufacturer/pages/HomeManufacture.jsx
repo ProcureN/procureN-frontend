@@ -5,7 +5,6 @@ import { AiOutlineMenu } from 'react-icons/ai';
 import { CgSpinner } from 'react-icons/cg';
 import defaultImage from '../../../../assets/Default_pfp.jpg';
 
-
 const HomeManufacture = ({ open, setOpen }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -23,7 +22,7 @@ const HomeManufacture = ({ open, setOpen }) => {
           return;
         }
         const res = await axios.get(
-          `https://procuren-backend-g6z9.onrender.com/Individualprofiles/${customerID}`,
+          `https://procuren-backend.onrender.com/Individualprofiles/${customerID}`,
           // `http://localhost:3001/Individualprofiles/${customerID}`,
           {
             headers: { Authorization: `Bearer ${token}` },
@@ -44,7 +43,7 @@ const HomeManufacture = ({ open, setOpen }) => {
     const customerID = localStorage.getItem('customerID');
     axios
       .get(
-        `https://procuren-backend-g6z9.onrender.com/individualproductscount/${customerID}`
+        `https://procuren-backend.onrender.com/individualproductscount/${customerID}`
       )
       .then((response) => {
         setData2(response.data); // Assuming the response data should be set to `data`
@@ -65,7 +64,7 @@ const HomeManufacture = ({ open, setOpen }) => {
           />
         </div>
         {data && (
-          <div className=' my-auto  mx-auto bg-gradient-to-tr from-[#5c67f5]  to-pink-500 bg-clip-text font-sans text-2xl font-semibold  uppercase  text-transparent'>
+          <div className=' mx-auto  my-auto bg-gradient-to-tr from-[#5c67f5]  to-[#cb67ac] bg-clip-text font-sans text-2xl font-semibold  uppercase  text-transparent'>
             {/* {data.name} */}
             Manufacturer Dashboard
           </div>

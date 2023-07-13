@@ -48,7 +48,7 @@ const VendorManagement = ({ open, setOpen }) => {
           return;
         }
         const res = await axios.get(
-          `https://procuren-backend-g6z9.onrender.com/getAllDetails/${page}/${limit}`,
+          `https://procuren-backend.onrender.com/getAllDetails/${page}/${limit}`,
           // `http://localhost:3001/getAllDetails/${page}/${limit}`,
 
           {
@@ -251,7 +251,7 @@ const VendorManagement = ({ open, setOpen }) => {
               <ExcelData data={data} fileName='Vendors Data' />
               <PdfData fileName='Vendors Data' bdy={bdy} wid={widths} />
             </div>
-            <div className='my-auto bg-gradient-to-tl from-[#5c67f5] to-pink-500 bg-clip-text text-center font-sans text-2xl font-semibold  text-transparent'>
+            <div className='my-auto bg-gradient-to-tl from-[#5c67f5] to-[#cb67ac] bg-clip-text text-center font-sans text-2xl font-semibold  text-transparent'>
               Vendors Data
             </div>
             <div className='rounded-lg p-0.5 text-sm lg:p-2'>
@@ -278,7 +278,7 @@ const VendorManagement = ({ open, setOpen }) => {
               />
             </div>
 
-            <div className='mx-auto my-auto bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-xl font-semibold text-transparent  lg:text-2xl'>
+            <div className='mx-auto my-auto bg-gradient-to-tl from-blue-600 to-[#cb67ac] bg-clip-text text-center font-sans text-xl font-semibold text-transparent  lg:text-2xl'>
               Vendors Data
             </div>
             {data.length > 0 && (

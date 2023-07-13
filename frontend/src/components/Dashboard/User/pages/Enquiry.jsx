@@ -77,7 +77,7 @@ const Enquiry = ({ open, setOpen }) => {
   useEffect(() => {
     setCustomerID(localStorage.getItem('customerID'));
     axios
-      .get(`https://procuren-backend-g6z9.onrender.com/getproductnames`)
+      .get(`https://procuren-backend.onrender.com/getproductnames`)
       //  .get(`http://localhost:3001/getproductnames`)
       .then((response) => {
         setProduct(response.data.data);
@@ -104,7 +104,7 @@ const Enquiry = ({ open, setOpen }) => {
 
   return (
     <>
-    <div className='my-2 flex h-16 justify-between rounded-md bg-white shadow md:mr-4'>
+      <div className='my-2 flex h-16 justify-between rounded-md bg-white shadow md:mr-4'>
         <div className='my-auto pl-2'>
           <AiOutlineMenu
             className=' cursor-pointer text-3xl text-[#5c67f5] '
@@ -112,8 +112,8 @@ const Enquiry = ({ open, setOpen }) => {
           />
         </div>
 
-        <div className=' mx-auto my-auto bg-gradient-to-tr from-[#5c67f5]  to-pink-500 bg-clip-text font-sans text-2xl font-semibold  uppercase  text-transparent'>
-        Enquiry Form
+        <div className=' mx-auto my-auto bg-gradient-to-tr from-[#5c67f5]  to-[#cb67ac] bg-clip-text font-sans text-2xl font-semibold  uppercase  text-transparent'>
+          Enquiry Form
         </div>
       </div>
       <Formik
@@ -127,7 +127,7 @@ const Enquiry = ({ open, setOpen }) => {
           axios
 
             .post(
-              `https://procuren-backend-g6z9.onrender.com/costumer/enquiryForm`,
+              `https://procuren-backend.onrender.com/costumer/enquiryForm`,
               // `http://localhost:3001/costumer/enquiryForm`,
               values,
               {
@@ -151,8 +151,6 @@ const Enquiry = ({ open, setOpen }) => {
       >
         {({ isSubmitting }) => (
           <Form className=' rounded-xl  px-10 pb-10 pt-5'>
-           
-
             <div className='grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 '>
               <div>
                 <label
@@ -398,7 +396,7 @@ const Enquiry = ({ open, setOpen }) => {
 
             <div className='flex justify-center'>
               <button
-                className='mb-4  mt-6 flex rounded-lg bg-gradient-to-tl from-blue-600 to-pink-500 px-4 py-2 font-sans text-lg font-semibold tracking-wide text-white shadow-xl shadow-indigo-200'
+                className='mb-4  mt-6 flex rounded-lg bg-gradient-to-tl from-blue-600 to-[#cb67ac] px-4 py-2 font-sans text-lg font-semibold tracking-wide text-white shadow-xl shadow-indigo-200'
                 type='submit'
                 disabled={isSubmitting}
               >

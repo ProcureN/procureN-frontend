@@ -16,7 +16,7 @@ const ModalDelete = ({ visible, onClose, Values, setSub, deletePopup }) => {
     try {
       if (deletePopup === 'user') {
         await axios.delete(
-          `https://procuren-backend-g6z9.onrender.com/deletecostumer/${Values._id}`,
+          `https://procuren-backend.onrender.com/deletecostumer/${Values._id}`,
           // `http://localhost:3001/deletecostumer/${id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
@@ -24,7 +24,7 @@ const ModalDelete = ({ visible, onClose, Values, setSub, deletePopup }) => {
         );
       } else if (deletePopup === 'product') {
         await axios.delete(
-          `https://procuren-backend-g6z9.onrender.com/products/${Values._id}`,
+          `https://procuren-backend.onrender.com/products/${Values._id}`,
           // `http://localhost:3001/deletecostumer/${id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
@@ -32,7 +32,7 @@ const ModalDelete = ({ visible, onClose, Values, setSub, deletePopup }) => {
         );
       } else if (deletePopup === 'contactForm') {
         await axios.delete(
-          `https://procuren-backend-g6z9.onrender.com/deleteContactForm/${Values._id}`,
+          `https://procuren-backend.onrender.com/deleteContactForm/${Values._id}`,
           // `http://localhost:3001/deletecostumer/${id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
@@ -40,7 +40,7 @@ const ModalDelete = ({ visible, onClose, Values, setSub, deletePopup }) => {
         );
       } else if (deletePopup === 'enquiry') {
         await axios.delete(
-          `https://procuren-backend-g6z9.onrender.com/deleteCostumerEnquiry/${Values._id}`,
+          `https://procuren-backend.onrender.com/deleteCostumerEnquiry/${Values._id}`,
           // `http://localhost:3001/deletecostumer/${id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
@@ -63,7 +63,7 @@ const ModalDelete = ({ visible, onClose, Values, setSub, deletePopup }) => {
       onClick={handleOnClose}
       className='fixed  inset-0 flex items-center justify-center   backdrop-blur-[3px]'
     >
-      <div className='  shadow-lg shadow-gray-500  bg-white px-16 py-4 text-center '>
+      <div className='  bg-white px-16  py-4 text-center shadow-lg shadow-gray-500 '>
         <AiFillDelete className='mx-auto mb-2 text-4xl text-red-500 ' />
         <span className='text-2xl'>Are you sure?</span>
         <p className='mt-2'>Do you really want to delete record?</p>

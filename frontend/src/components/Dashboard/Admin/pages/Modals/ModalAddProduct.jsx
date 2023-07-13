@@ -46,11 +46,8 @@ const ModalAddProduct = ({ visible, onClose, setSub }) => {
     category: '',
     subCategory: '',
     manufacturerName: '',
-
     price: '',
-
     description: '',
-
     sizeUnit: '',
     productQuantity: '',
     availability: 'Yes',
@@ -73,7 +70,7 @@ const ModalAddProduct = ({ visible, onClose, setSub }) => {
             setLoading(true);
             axios
               .post(
-                `https://procuren-backend-g6z9.onrender.com/addProducts`,
+                `https://procuren-backend.onrender.com/addProducts`,
                 // `http://localhost:3001/addProducts`,
                 { ...values, costumerID: `${customerID}` },
                 {
@@ -106,7 +103,7 @@ const ModalAddProduct = ({ visible, onClose, setSub }) => {
         >
           {({ isSubmitting }) => (
             <Form className=' px-10 py-10'>
-              <h1 className='mb-10 bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-2xl font-bold text-transparent lg:text-3xl xl:text-4xl'>
+              <h1 className='mb-10 bg-gradient-to-tl from-blue-600 to-[#cb67ac] bg-clip-text text-center font-sans text-2xl font-bold text-transparent lg:text-3xl xl:text-4xl'>
                 Add Product
               </h1>
 
@@ -322,7 +319,7 @@ const ModalAddProduct = ({ visible, onClose, setSub }) => {
 
               <div className='flex justify-center'>
                 <button
-                  className='  mt-6 flex rounded-lg bg-gradient-to-tl from-blue-600 to-pink-500 px-4 py-2 font-sans text-lg font-semibold tracking-wide text-white shadow-xl shadow-indigo-200'
+                  className='  mt-6 flex rounded-lg bg-gradient-to-tl from-blue-600 to-[#cb67ac] px-4 py-2 font-sans text-lg font-semibold tracking-wide text-white shadow-xl shadow-indigo-200'
                   type='submit'
                   disabled={isSubmitting}
                 >

@@ -47,7 +47,7 @@ const Management = ({ open, setOpen }) => {
           return;
         }
         const res = await axios.get(
-          `https://procuren-backend-g6z9.onrender.com/getenquiries/${page}/${limit}`,
+          `https://procuren-backend.onrender.com/getenquiries/${page}/${limit}`,
           // `http://localhost:3001/getenquiries/${page}/${limit}`,
           {
             headers: { Authorization: `Bearer ${token}` }, // Send token in Authorization header
@@ -307,7 +307,7 @@ const Management = ({ open, setOpen }) => {
               />
             </div>
 
-            <div className='mx-auto my-auto bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-xl font-semibold text-transparent  lg:text-2xl'>
+            <div className='mx-auto my-auto bg-gradient-to-tl from-blue-600 to-[#cb67ac] bg-clip-text text-center font-sans text-xl font-semibold text-transparent  lg:text-2xl'>
               Retailer Enquiries Data
             </div>
             {data.length > 0 && (

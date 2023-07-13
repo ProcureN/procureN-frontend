@@ -43,7 +43,7 @@ const ModalTrack = ({ visible, onClose }) => {
             setLoading(true);
             axios
               .get(
-                `https://procuren-backend-g6z9.onrender.com/trackEnquiry/${values.trackingID}`
+                `https://procuren-backend.onrender.com/trackEnquiry/${values.trackingID}`
                 // `http://localhost:3001/trackEnquiry/${values.trackingID}`,
               )
               .then((response) => {
@@ -66,10 +66,10 @@ const ModalTrack = ({ visible, onClose }) => {
         >
           {({ isSubmitting }) => (
             <Form className=' min-w-full   p-2 py-4   md:px-10'>
-              <h1 className='mb-6 bg-gradient-to-tl from-blue-600  to-pink-500 bg-clip-text text-center  font-sans text-2xl font-semibold text-transparent'>
+              <h1 className='mb-6 bg-gradient-to-tl from-blue-600  to-[#cb67ac] bg-clip-text text-center  font-sans text-2xl font-semibold text-transparent'>
                 TRACKING
               </h1>
-              {/* <div className='mb-6 h-0.5 rounded-full w-1/2 mx-auto bg-gradient-to-tl from-blue-600 to-pink-500 ' /> */}
+              {/* <div className='mb-6 h-0.5 rounded-full w-1/2 mx-auto bg-gradient-to-tl from-blue-600 to-[#cb67ac] ' /> */}
 
               <div className=''>
                 <div>

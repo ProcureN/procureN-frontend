@@ -66,7 +66,7 @@ const AddProduct = ({ open, setOpen }) => {
           />
         </div>
 
-        <div className=' mx-auto my-auto bg-gradient-to-tr from-[#5c67f5]  to-pink-500 bg-clip-text font-sans text-2xl font-semibold  uppercase  text-transparent'>
+        <div className=' mx-auto my-auto bg-gradient-to-tr from-[#5c67f5]  to-[#cb67ac] bg-clip-text font-sans text-2xl font-semibold  uppercase  text-transparent'>
           Add Your Product
         </div>
       </div>
@@ -79,7 +79,7 @@ const AddProduct = ({ open, setOpen }) => {
             setLoading(true);
             axios
               .post(
-                `https://procuren-backend-g6z9.onrender.com/addProducts`,
+                `https://procuren-backend.onrender.com/addProducts`,
                 // `http://localhost:3001/addProducts`,
                 { ...values, costumerID: `${customerID}` },
                 {
@@ -119,7 +119,7 @@ const AddProduct = ({ open, setOpen }) => {
                     Product Name
                   </label>
                   <Field
-                   className=' w-full  rounded-md border-2 border-indigo-200 bg-indigo-100 p-2 '
+                    className=' w-full  rounded-md border-2 border-indigo-200 bg-indigo-100 p-2 '
                     name='productName'
                     id='productName'
                     // placeholder='Enter your product name'
@@ -138,7 +138,7 @@ const AddProduct = ({ open, setOpen }) => {
                     Description
                   </label>
                   <Field
-                  className=' w-full  rounded-md border-2 border-indigo-200 bg-indigo-100 p-2 '
+                    className=' w-full  rounded-md border-2 border-indigo-200 bg-indigo-100 p-2 '
                     type='text'
                     name='description'
                     id='description'
@@ -198,7 +198,7 @@ const AddProduct = ({ open, setOpen }) => {
                     Manufacturer Name
                   </label>
                   <Field
-                  className=' w-full  rounded-md border-2 border-indigo-200 bg-indigo-100 p-2 '
+                    className=' w-full  rounded-md border-2 border-indigo-200 bg-indigo-100 p-2 '
                     type='text'
                     name='manufacturerName'
                     id='manufacturerName'
@@ -290,7 +290,7 @@ const AddProduct = ({ open, setOpen }) => {
                     className=' text-red-700'
                   />
                 </div> */}
-                <div >
+                <div>
                   <label
                     className='text-md block font-semibold text-gray-800'
                     htmlFor='sizeUnit'
@@ -298,7 +298,7 @@ const AddProduct = ({ open, setOpen }) => {
                     Size Unit
                   </label>
                   <Field
-                   className=' w-full  rounded-md border-2 border-indigo-200 bg-indigo-100 p-2 '
+                    className=' w-full  rounded-md border-2 border-indigo-200 bg-indigo-100 p-2 '
                     type='text'
                     name='sizeUnit'
                     id='sizeUnit'
@@ -318,7 +318,7 @@ const AddProduct = ({ open, setOpen }) => {
                     Product Quantity
                   </label>
                   <Field
-                   className=' w-full  rounded-md border-2 border-indigo-200 bg-indigo-100 p-2 '
+                    className=' w-full  rounded-md border-2 border-indigo-200 bg-indigo-100 p-2 '
                     type='text'
                     name='productQuantity'
                     id='productQuantity'
@@ -399,7 +399,7 @@ const AddProduct = ({ open, setOpen }) => {
 
               <div className='flex justify-center'>
                 <button
-                  className='mb-4 mt-6 hover:shadow-xl hover:border-2 hover:border-[#5c67f5] flex rounded-lg bg-[#5c67f5] px-8  py-2 font-sans text-lg font-semibold tracking-wide text-white'
+                  className='mb-4 mt-6 flex rounded-lg bg-[#5c67f5] px-8 py-2 font-sans text-lg  font-semibold tracking-wide text-white hover:border-2 hover:border-[#5c67f5] hover:shadow-xl'
                   type='submit'
                   disabled={isSubmitting}
                 >
@@ -493,7 +493,7 @@ export default AddProduct;
 //       axios
 
 //         .post(
-//           `https://procuren-backend-g6z9.onrender.com/addProducts`,
+//           `https://procuren-backend.onrender.com/addProducts`,
 //           // `http://localhost:3001/costumer/enquiryForm`,
 //           { ...values, customerID: `${customerID}` },
 //           {
@@ -534,7 +534,7 @@ export default AddProduct;
 //   return (
 //     <div>
 //       <Form className=' px-10 py-10'  onSubmit={formik.handleSubmit} encType="multipart/form-data">
-//         <h1 className='text-center text-2xl lg:text-3xl xl:text-4xl bg-gradient-to-tl from-blue-600 to-pink-500 text-transparent bg-clip-text font-bold font-sans mb-10'>
+//         <h1 className='text-center text-2xl lg:text-3xl xl:text-4xl bg-gradient-to-tl from-blue-600 to-[#cb67ac] text-transparent bg-clip-text font-bold font-sans mb-10'>
 //           Add Your Product
 //         </h1>
 

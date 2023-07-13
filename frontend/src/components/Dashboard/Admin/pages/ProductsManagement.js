@@ -50,17 +50,17 @@ const ProductsManagement = ({ open, setOpen }) => {
           window.location.href = '/login'; // Redirect to login page if token not found
           return;
         }
-         const res = await axios.get(
-           `https://procuren-backend-g6z9.onrender.com/getproducts/${page}/${limit}`,
-           // `http://localhost:3001/getproducts/${page}/${limit}`,
-           {
-             headers: { Authorization: `Bearer ${token}` }, // Send token in Authorization header
-           }
-         );
-         setData(res.data.data);
-         setSub(false);
+        const res = await axios.get(
+          `https://procuren-backend.onrender.com/getproducts/${page}/${limit}`,
+          // `http://localhost:3001/getproducts/${page}/${limit}`,
+          {
+            headers: { Authorization: `Bearer ${token}` }, // Send token in Authorization header
+          }
+        );
+        setData(res.data.data);
+        setSub(false);
 
-         setTotalPages(Math.ceil(res.data.count / limit)); // calculate total number of pages
+        setTotalPages(Math.ceil(res.data.count / limit)); // calculate total number of pages
       } catch (err) {
         setError(err);
       } finally {
@@ -204,7 +204,7 @@ const ProductsManagement = ({ open, setOpen }) => {
         <td className=' border-y border-black px-1  text-center md:py-2  '>
           {item.productName}
         </td>
-      
+
         {/* <td className=' border-x border-gray-400 px-1 '>
           {item.priceBeforeDiscount}
         </td> */}
@@ -223,9 +223,7 @@ const ProductsManagement = ({ open, setOpen }) => {
         <td className='  border-x border-gray-400 px-1 '>
           {item.availability}
         </td>
-        <td className='  border-x border-gray-400 px-1 '>
-          {item.category}
-        </td>
+        <td className='  border-x border-gray-400 px-1 '>{item.category}</td>
         {/* <td className='  border-x border-gray-400 px-1'>
           {item.shippingCharges}
         </td> */}
@@ -301,7 +299,7 @@ const ProductsManagement = ({ open, setOpen }) => {
               <ExcelData data={data} fileName='Products Data' />
               <PdfData fileName='Products Data' bdy={bdy} wid={widths} />
             </div>
-            <div className='my-auto bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-2xl font-semibold  text-transparent'>
+            <div className='my-auto bg-gradient-to-tl from-blue-600 to-[#cb67ac] bg-clip-text text-center font-sans text-2xl font-semibold  text-transparent'>
               Products Data
             </div>
             <div className='flex '>
@@ -334,7 +332,7 @@ const ProductsManagement = ({ open, setOpen }) => {
               />
             </div>
 
-            <div className='mx-auto my-auto bg-gradient-to-tl from-blue-600 to-pink-500 bg-clip-text text-center font-sans text-xl font-semibold text-transparent  lg:text-2xl'>
+            <div className='mx-auto my-auto bg-gradient-to-tl from-blue-600 to-[#cb67ac] bg-clip-text text-center font-sans text-xl font-semibold text-transparent  lg:text-2xl'>
               Products Data
             </div>
             <div className='hidden items-center pr-2 md:visible md:flex '>
@@ -399,9 +397,7 @@ const ProductsManagement = ({ open, setOpen }) => {
             )} */}
           </div>
           {data.length > 0 ? (
-            <section
-              className={`mb-6   mr-5 `}
-            >
+            <section className={`mb-6   mr-5 `}>
               <table className='mx-auto  border  border-black  xl:whitespace-normal'>
                 <thead className=''>
                   <tr className='border-y border-black bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] p-1 font-normal  text-white md:p-2 '>
@@ -430,12 +426,10 @@ const ProductsManagement = ({ open, setOpen }) => {
                     </th> */}
                     <th className='border-x border-gray-400 '>
                       Status <br />
-                      <span className='text-sm font-normal'>
-                        D.S.
-                      </span>
+                      <span className='text-sm font-normal'>D.S.</span>
                     </th>
                     <th
-                      className='col-span-2 border-x border-r-black border-gray-400'
+                      className='col-span-2 border-x border-gray-400 border-r-black'
                       colSpan='2'
                     >
                       Edit

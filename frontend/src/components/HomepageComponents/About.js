@@ -32,7 +32,7 @@ const About = () => {
               data-aos-duration='1500'
               className='text-justify indent-16 md:indent-20 lg:indent-24 xl:indent-28 '
             >
-              <span className='   md:text-lg  '>
+              <span>
                 At{' '}
                 <span className=' bg-gradient-to-bl from-[#5c67f5] to-[#cb67ac] bg-clip-text font-medium text-transparent '>
                   ProcureN!
@@ -56,7 +56,7 @@ const About = () => {
               </span>
               {open ? (
                 <>
-                  <div className='mb-4  md:text-lg  '>
+                  <div className='mb-4    '>
                     At{' '}
                     <span className='bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] bg-clip-text indent-8 font-medium text-transparent '>
                       ProcureN
@@ -91,7 +91,7 @@ const About = () => {
                   <div className='flex justify-center'>
                     <button
                       onClick={() => setOpen(false)}
-                      className='mt-6  mb-4 rounded-full border border-gray-500   from-[#5c67f5] to-[#cb67ac]  bg-clip-text p-2 pl-3 font-sans duration-500 hover:bg-gradient-to-tr   hover:text-black hover:text-transparent   focus:outline-none md:mx-2  lg:mx-10 xl:pr-3 '
+                      className='mb-4  mt-6 rounded-full border border-gray-500   from-[#5c67f5] to-[#cb67ac]  bg-clip-text p-2 pl-3 font-sans duration-500 hover:bg-gradient-to-tr   hover:text-black hover:text-transparent   focus:outline-none md:mx-2  lg:mx-10 xl:pr-3 '
                     >
                       Show less
                     </button>
@@ -99,13 +99,13 @@ const About = () => {
                 </>
               ) : (
                 <div className='flex justify-center'>
-                  {/* <button className='inline-flex    rounded-md  bg-gradient-to-t from-violet-700 to-pink-500  px-4 py-2 text-lg text-white shadow-lg shadow-indigo-400 hover:scale-105 focus:outline-none'>
+                  {/* <button className='inline-flex    rounded-md  bg-gradient-to-t from-violet-700 to-[#cb67ac]  px-4 py-2 text-lg text-white shadow-lg shadow-indigo-400 hover:scale-105 focus:outline-none'>
                 Know More...
               </button> */}
 
                   <button
                     onClick={() => setOpen(true)}
-                    className='mt-6 mb-4 flex rounded-full border border-gray-500   from-[#5c67f5] to-[#cb67ac]  bg-clip-text p-2 pl-3 font-sans duration-500 hover:bg-gradient-to-tr   hover:text-black hover:text-transparent   focus:outline-none md:mx-2  lg:mx-10 xl:pr-3 '
+                    className='mb-4 mt-6 flex rounded-full border border-gray-500   from-[#5c67f5] to-[#cb67ac]  bg-clip-text p-2 pl-3 font-sans duration-500 hover:bg-gradient-to-tr   hover:text-black hover:text-transparent   focus:outline-none md:mx-2  lg:mx-10 xl:pr-3 '
                   >
                     Know More
                   </button>
