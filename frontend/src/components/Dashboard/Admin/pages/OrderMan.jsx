@@ -29,7 +29,7 @@ const OrderMan = ({ open, setOpen }) => {
       try {
         setLoading(true);
         const res = await axios.get(
-          'https://procuren-backend.onrender.com/getclient/1/100'
+          'https://procuren-backend.onrender.com/getclient'
         );
         // console.log(res);
         setData(res.data.data);

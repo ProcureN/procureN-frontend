@@ -30,7 +30,7 @@ const VendorMan = ({ open, setOpen }) => {
       try {
         setLoading(true);
         const res = await axios.get(
-          'https://procuren-backend.onrender.com/getVendor/1/1000'
+          'https://procuren-backend.onrender.com/getVendor'
         );
         // console.log(res);
         setData(res.data.data);

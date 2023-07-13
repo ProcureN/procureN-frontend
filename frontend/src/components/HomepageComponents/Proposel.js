@@ -122,7 +122,7 @@ const Proposel = () => {
                 >
                   <div className=' mb-4'>
                     <div className='flex '>
-                      <label htmlFor='name' className='text-md my-auto pr-6 '>
+                      <label htmlFor='name' className='text-md my-auto pr-8 '>
                         Name:
                       </label>
 
@@ -143,7 +143,7 @@ const Proposel = () => {
                   </div>
                   <div className=' mb-4'>
                     <div className='flex'>
-                      <label htmlFor='email' className='text-md my-auto pr-7 '>
+                      <label htmlFor='email' className='text-md my-auto pr-9 '>
                         Email:
                       </label>
 
@@ -186,7 +186,7 @@ const Proposel = () => {
                     <div className='flex'>
                       <label
                         htmlFor='subject'
-                        className='text-md my-auto pr-4 '
+                        className='text-md my-auto pr-5 '
                       >
                         Subject:
                       </label>
@@ -208,7 +208,7 @@ const Proposel = () => {
                   <div className=' mb-4 flex '>
                     <label
                       htmlFor='message'
-                      className='text-md my-auto mr-2 pr-2 '
+                      className='text-md my-auto mr-2  '
                     >
                       Message:
                     </label>
@@ -219,11 +219,11 @@ const Proposel = () => {
                       className='h-16 w-full resize-none   border-b  border-gray-500 bg-white px-3 py-1 text-base leading-6  outline-none '
                     ></Field>
                   </div>
-                  <div className='ml-4 flex justify-center '>
+                  <div className=' flex justify-center text-center container '>
                     <button
                       type='submit'
                       disabled={isSubmitting}
-                      className={`mt-4 inline-flex  rounded-full border-2 border-white bg-gradient-to-tr   from-[#5c67f5] to-[#cb67ac] px-4 py-2 text-lg text-white duration-500  hover:border-[#5c67f5] hover:bg-white hover:from-white hover:text-[#5c67f5] focus:outline-none  xl:px-5`}
+                      className={`mt-4   rounded-full bg-white text-[#5c67f5] border border-gray-500 hover:bg-gradient-to-tr   from-[#5c67f5] to-[#cb67ac] px-10  py-2 text-lg hover:text-white duration-500  hover:border-white   focus:outline-none text-center flex justify-center `}
                     >
                       {loading ? 'Submitting' : 'Submit'}
                     </button>
