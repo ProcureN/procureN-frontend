@@ -4,8 +4,8 @@ import About from '../components/HomepageComponents/About';
 import Footer from '../components/HomepageComponents/Footer';
 
 import Frequently from '../components/HomepageComponents/Frequently';
-import Header from '../components/HomepageComponents/Header';
-import Hero from '../components/HomepageComponents/Hero';
+// import Header from '../components/HomepageComponents/Header';
+// import Hero from '../components/HomepageComponents/Hero';
 import HowItWorks from '../components/HomepageComponents/HowItWorks';
 
 import Proposel from '../components/HomepageComponents/Proposel';
@@ -14,6 +14,10 @@ import Services from '../components/HomepageComponents/Services';
 import ModalTrack from '../components/Dashboard/Admin/pages/Modals/ModalTrack';
 import Tracking from '../components/HomepageComponents/Tracking';
 import Inventory from '../components/HomepageComponents/Inventory';
+
+// import Hero from '../components/HomepageComponents/Hero';
+import Hero2 from '../components/HomepageComponents/Hero2';
+import Header2 from '../components/HomepageComponents/Header2';
 
 const Main = () => {
   const [showMyModal, setShowMyModal] = useState(false);
@@ -24,8 +28,8 @@ const Main = () => {
 
   return (
     <div className='overflow-hidden'>
-      <Header setShowMyModal={setShowMyModal} />
-      <Hero setShowMyModal={setShowMyModal} />
+      <Header2 setShowMyModal={setShowMyModal} />
+      <Hero2 setShowMyModal={setShowMyModal} />
       <About />
       <Services />
 

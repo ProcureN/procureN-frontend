@@ -9,12 +9,12 @@ import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-import giPipes4_15 from '../../assets/4-15MM DIA GI PIPE.jpg';
-import giElbow3_15 from '../../assets/3-15MM DIA GI ELBOW copy.jpg';
-import hdpe60mm from '../../assets/6-HDPE 60MM DIA copy.jpg';
-import hdpe20mm from '../../assets/5-HDPE 20MM DIA copy.jpg';
-import brassCock1_15 from '../../assets/1-15MM DIA BRASS COCK copy.jpg';
-import giCoupler2_15 from '../../assets/2-15MM DIA GI COUPLER copy.jpg';
+import giPipes4_15 from '../../assets/4-15MM DIA GI PIPE.png';
+import giElbow3_15 from '../../assets/3-15MM DIA GI ELBOW.png';
+import hdpe60mm from '../../assets/6-HDPE 60MM DIA.png';
+import hdpe20mm from '../../assets/5-HDPE 20MM DIA.png';
+import brassCock1_15 from '../../assets/1-15MM DIA BRASS COCK.png';
+import giCoupler2_15 from '../../assets/2-15MM DIA GI COUPLER.png';
 
 // import required modules
 import { FreeMode, Pagination, Autoplay, Navigation } from 'swiper';
@@ -82,10 +82,10 @@ const Inventory = () => {
             {allProducts.map((items, i) => (
               <div className='container  ' key={i}>
                 <SwiperSlide key={i + 1}>
-                <div className='h-4 md:h-8 '></div>
+                <div className='h-4 md:h-8  group'></div>
                   <div
                     key={i + 1}
-                    className='flex flex-col hover:scale-110 group bg-white  duration-300 items-center  rounded-lg border-2 text-center text-lg '
+                    className='flex flex-col hover:scale-110 hover:bg-gradient-to-tr from-white via-stone-200 to-white group bg-white  duration-300 items-center  rounded-lg border-2 text-center text-lg '
                   >
                     <div key={i + 1} >
                       <img
@@ -96,11 +96,11 @@ const Inventory = () => {
                       />
                     </div>
                     <hr />
-                    <div className='w-full border-t py-4  bg-gradient-to-bl from-[#5c67f5] to-[#cb67ac] bg-clip-text font-semibold text-transparent  '>
+                    <div className='w-full border-t py-4  group-hover:bg-gradient-to-bl from-[#5c67f5] to-[#cb67ac] bg-clip-text group-hover:font-semibold group-hover:text-transparent  '>
                       {items.desciption}
                     </div>
                   </div>
-                  <div className='h-8 lg:h-12'></div>
+                  <div className='h-10 lg:h-14'></div>
                 </SwiperSlide>
                 ;
               </div>

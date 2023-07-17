@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import logo from '../../assets/logo1.png';
+// import logo from '../../assets/logo1.png';
 import logo2 from '../../assets/logo.png';
 
 import { Link } from 'react-router-dom';
@@ -13,57 +13,32 @@ const navigation = [
   { name: 'Contact', href: '#contact' },
 ];
 
-export default function Header({ setShowMyModal }) {
+export default function Header2({ setShowMyModal }) {
   const [open, setOpen] = useState(false);
   //change nav color when crolling
-  const [color, setColor] = useState(true);
+
   const [selectedItem, setSelectedItem] = useState(0);
   // ...
 
-  const changcolor = () => {
-    if (window.scrollY >= 150) {
-      setColor(true);
-      setShowMyModal(false);
-    } else {
-      setColor(true);
-    }
-  };
-
-  window.addEventListener('scroll', changcolor);
-
   return (
     <div
-      className={`${
-        color && 'border-b bg-[white] duration-150'
-      } fixed   isolate z-10 w-full `}
+      className={`border-b duration-150 fixed
+       isolate   z-10 w-full bg-[white] `}
     >
       <>
         {/* bg-[#492DD5] */}
         <nav className={`  container mx-auto  py-1   `}>
           <div className='flex items-center justify-between'>
             <div
-              className={`  flex w-full items-center justify-between ${
-                !color && open
-                  ? 'text-[#5c67f5] '
-                  : color
-                  ? 'text-[#5c67f5]'
-                  : 'text-white'
-              } md:w-auto`}
+              className={`  text-[#5c67f5]md:w-auto flex w-full items-center 
+               justify-between`}
             >
               <a href='#hero' id='logoForHeader'>
-                {color ? (
-                  <img
-                    src={logo2}
-                    alt='logo'
-                    className='h-16 px-3 py-1 md:h-20 md:cursor-pointer md:px-8  '
-                  />
-                ) : (
-                  <img
-                    src={logo}
-                    alt='logo'
-                    className='h-16 px-3 py-1 md:h-20 md:cursor-pointer md:px-8  '
-                  />
-                )}
+                <img
+                  src={logo2}
+                  alt='logo'
+                  className='h-16 px-3 py-1 md:h-20 md:cursor-pointer md:px-8  '
+                />
               </a>
               <div
                 className='z-10 flex p-3 text-3xl md:hidden md:p-5 '
@@ -74,9 +49,7 @@ export default function Header({ setShowMyModal }) {
             </div>
             <div>
               <ul
-                className={`hidden  items-center gap-6 pr-4 uppercase ${
-                  color ? 'text-[#5c67f5]' : 'text-white'
-                }  md:flex`}
+                className={`hidden  items-center gap-6 pr-4 uppercase text-[#5c67f5]   md:flex`}
               >
                 {navigation.map((item, i) => (
                   <div className='relative'>
@@ -88,17 +61,10 @@ export default function Header({ setShowMyModal }) {
                       <li
                         className={`from-[#5c67f5] to-[#cb67ac]  ${
                           selectedItem === i
-                            ? `{ border-b-2 tracking-wide  ${
-                                color
-                                  ? 'bg-gradient-to-tr  font-bold text-transparent'
-                                  : 'font-semibold tracking-wider text-white'
-                              } }`
+                            ? ` text-transparent border-b-2  bg-gradient-to-tr  font-bold tracking-wide                              `
                             : 'hover:border-b-2 '
-                        }  bg-clip-text ${
-                          color
-                            ? 'border-indigo-500 hover:bg-gradient-to-tr hover:font-bold hover:text-transparent'
-                            : 'hover:text-yellow-300'
-                        }  `}
+                        }  hover:text-transparent border-indigo-500 bg-clip-text hover:bg-gradient-to-tr hover:font-bold
+                         `}
                       >
                         {item.name}
                       </li>
@@ -116,9 +82,7 @@ export default function Header({ setShowMyModal }) {
                         
                       </button> */}
                       <button
-                        className={`inline-flex rounded-full  border-2 bg-white ${
-                          color ? '  border-[#5c67f5]' : 'border-[white]'
-                        }  from-[#5c67f5] to-[#cb67ac] px-2 py-1 text-lg text-[#5c67f5]  duration-500 hover:bg-gradient-to-tr  hover:text-white focus:outline-none lg:px-4`}
+                        className={`inline-flex rounded-full  border-2 border-[#5c67f5]  bg-white  from-[#5c67f5] to-[#cb67ac] px-2 py-1 text-lg text-[#5c67f5]  duration-500 hover:bg-gradient-to-tr  hover:text-white focus:outline-none lg:px-4`}
                         // className={` inline-flex  rounded-full border-2  hover:border-[#5c67f5]   bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] px-2 py-1 text-lg text-white  duration-500 hover:bg-white hover:from-white hover:text-[#5c67f5] focus:outline-none lg:px-4 `}
                       >
                         Login

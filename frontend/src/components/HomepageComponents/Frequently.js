@@ -69,9 +69,9 @@ const Frequently = () => {
               </i>
             </span>
           </div>
-          <div className='grid  grid-cols-1 md:grid-cols-3 '>
+          <div className='grid  grid-cols-1 lg:grid-cols-3 '>
             <div
-              className='grid grid-cols-1 md:col-span-2 lg:h-8 '
+              className='grid grid-cols-1 lg:col-span-2 lg:h-8 '
               data-aos='fade-right'
               data-aos-delay='0'
               data-aos-duration='1000'
@@ -85,7 +85,7 @@ const Frequently = () => {
                       className='flex cursor-pointer items-center justify-between  rounded-xl p-2'
                       onClick={() => handleItemClick(index)}
                     >
-                      <h2 className='m-1 text-lg md:text-xl lg:m-2 lg:text-2xl'>
+                      <h2 className='m-1 text-md md:text-lg lg:m-2 lg:text-xl'>
                         {item.title}
                       </h2>
                       <svg
@@ -103,7 +103,7 @@ const Frequently = () => {
                       </svg>
                     </div>
                     {activeIndex === index && (
-                      <div className='mt-4 border-t-2 px-3 py-1 text-lg '>
+                      <div className='mt-4 border-t-2 px-3 py-1 text lg:text-md '>
                         <p >{item.content}</p>
                       </div>
                     )}
@@ -115,7 +115,7 @@ const Frequently = () => {
               data-aos='fade-left'
               data-aos-delay='0'
               data-aos-duration='1000'
-              className=' scale-50'
+              // className=' scale-50'
             >
               <img src={faq} alt='FAQs'  />
             </div>

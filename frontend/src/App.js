@@ -14,7 +14,7 @@ import OtpRestPass from './Pages/OtpRestPass';
 
 function App() {
   return (
-    <div className='scroll-smooth'>
+    <div className='scroll-smooth '>
       <Router>
         <Routes>
           <Route exact path='/' element={<Main />} />

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect} from 'react';
 
 // import heroImag from '../../assets/hero.png';
 // import heroBgVd from '../../assets/heroVideo.mp4';
@@ -12,23 +12,23 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 // import ModalVideo from '../Dashboard/Admin/pages/Modals/ModalVideo';
 
-const Hero = ({ setShowMyModal }) => {
+const Hero2 = ({ setShowMyModal }) => {
   useEffect(() => {
     AOS.init();
   }, []);
 
   // const [player, setPlayer] = useState(true);
-  const [showComponent, setShowComponent] = useState(false);
+  // const [showComponent, setShowComponent] = useState(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowComponent(true);
-    }, 3000);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setShowComponent(true);
+  //   }, 3000);
 
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
+  //   return () => {
+  //     clearTimeout(timer);
+  //   };
+  // }, []);
 
   // const togglePlayer = () => {
   //   setPlayer(!player);
@@ -40,7 +40,7 @@ const Hero = ({ setShowMyModal }) => {
   // const handleOnClose = () => setShowMyModal(false);
 
   return (
-    <div id='hero' className='bg-[#5c67f5]'>
+    <div id='hero' className=''>
     {/* <div id='hero' className='bg-gradient-to-tr   from-[#5c67f5] via-[#5c67f5] to-[#cb67ac]'> */}
       <section
         className={` container relative mx-auto h-[95vh] min-h-[700px] md:h-screen`}
@@ -52,30 +52,38 @@ const Hero = ({ setShowMyModal }) => {
             data-aos-duration='1500'
             className='flex flex-col  md:w-1/2 lg:flex-grow   '
           >
-            <div className='md:pr-16 lg:pr-24 mb-8 '>
-              <div className='relative hidden whitespace-nowrap md:block '>
-                <h1 className=' group-hover:animate-type-reverse text-brand-accent  inline-flex h-20 animate-type overflow-x-hidden  whitespace-nowrap pb-2 pt-2  text-3xl font-medium text-white will-change-transform sm:text-4xl  lg:text-5xl '>
+            <div className='md:pr-16 lg:pr-24 lg:mb-4'>
+              <div className='relative  whitespace-nowrap '>
+                <h1 className='  text-brand-accent  inline-flex h-20  overflow-x-hidden  whitespace-nowrap pb-2 pt-2  text-3xl font-medium  will-change-transform sm:text-4xl text-[#5c67f5] lg:text-5xl '>
                   Leading Procurement
                 </h1>
-                <span className='-mb-2  box-border inline-block h-10 w-1 animate-cursor bg-white will-change-transform md:-mb-4 md:h-16'></span>
+                {/* <h1 className=' group-hover:animate-type-reverse text-brand-accent  inline-flex h-20 animate-type overflow-x-hidden  whitespace-nowrap pb-2 pt-2  text-3xl font-medium  will-change-transform sm:text-4xl  lg:text-5xl '>
+                  Leading Procurement
+                </h1> */}
+                {/* <span className='-mb-2  box-border inline-block h-10 w-1 animate-cursor bg-black will-change-transform md:-mb-4 md:h-16'></span> */}
               </div>
-              <div className='relative hidden h-20 whitespace-nowrap md:block '>
-                {showComponent && (
-                  <h1 className=' group-hover:animate-type-reverse text-brand-accent  inline-flex h-20 animate-type-second overflow-x-hidden  whitespace-nowrap   text-3xl font-medium text-white will-change-transform sm:text-4xl  lg:text-5xl'>
+              <div className='relative  h-20 whitespace-nowrap  '>
+                
+                  <h1 className='  text-brand-accent  inline-flex h-20  overflow-x-hidden  whitespace-nowrap   text-3xl font-medium  will-change-transform sm:text-4xl text-[#5c67f5] lg:text-5xl'>
                     Management Expert
                   </h1>
-                )}
-                <span className='-mb-2  -ml-1  box-border inline-block h-10 w-1 animate-cursor bg-white will-change-transform md:-mb-4 md:h-16'></span>
+                
+                {/* {showComponent && (
+                  <h1 className='  text-brand-accent  inline-flex h-20  overflow-x-hidden  whitespace-nowrap   text-3xl font-medium  will-change-transform sm:text-4xl  lg:text-5xl'>
+                    Management Expert
+                  </h1>
+                )} */}
+                {/* <span className='-mb-2  -ml-1  box-border inline-block h-10 w-1 animate-cursor bg-black will-change-transform md:-mb-4 md:h-16'></span> */}
               </div>
-              <div className=' text-brand-accent inline-flex  pb-4 text-3xl     font-medium text-white sm:text-4xl  md:hidden  '>
+              {/* <div className=' text-brand-accent inline-flex  pb-4 text-3xl     font-medium text-[#5c67f5] sm:text-4xl  md:hidden  '>
                 Leading Procurement
               </div>
-              <div className=' text-brand-accent  inline-flex  pb-4  text-3xl   font-medium text-white sm:text-4xl  md:hidden  '>
+              <div className=' text-brand-accent  inline-flex  pb-4  text-3xl   font-medium  sm:text-4xl  md:hidden  '>
                 Management Expert
-              </div>
+              </div> */}
             </div>
 
-            <span className='mb-8  text-left text-xl italic leading-relaxed text-white lg:text-2xl '>
+            {/* <span className='mb-8  text-left text-xl italic leading-relaxed  lg:text-2xl '>
               Working closely with top architects and developers, We raise the
               bar for{' '}
               <span className='  font-medium underline underline-offset-4 hover:text-yellow-300'>
@@ -85,9 +93,9 @@ const Hero = ({ setShowMyModal }) => {
               <span className='font-medium underline underline-offset-4 hover:text-yellow-300'>
                 Perfection.
               </span>
-            </span>
+            </span> */}
             <div className='flex justify-around md:justify-start '>
-              <button className='border-1 inline-flex rounded-full bg-[#F170D5]  from-[#5c67f5] to-[#cb67ac] px-4 py-2.5  font-medium text-white hover:border hover:border-white hover:bg-gradient-to-tr focus:outline-none  md:px-5 lg:text-xl'>
+              <button className='border-1 inline-flex rounded-full bg-[#5c67f5] from-[#5c67f5] to-[#cb67ac] px-4 py-2.5  font-medium text-white  hover:border-white hover:bg-gradient-to-tr focus:outline-none  md:px-5 lg:text-xl'>
                 <a href={'#about'}>Get Started</a>
               </button>
 
@@ -98,10 +106,10 @@ const Hero = ({ setShowMyModal }) => {
                 }}
               >
                 <AiOutlinePlayCircle
-                  className='mx-2  my-auto ml-2 animate-pulse text-white '
+                  className='mx-2 text-[#5c67f5] my-auto ml-2   '
                   size={'30px'}
                 />
-                <button className=' from-[#5c67f5] to-[#cb67ac] bg-clip-text   pr-2 font-sans  text-white duration-500 hover:bg-gradient-to-tl hover:text-transparent md:pr-2 lg:pr-3 xl:pr-3  '>
+                <button className=' from-[#5c67f5] to-[#cb67ac] bg-clip-text   pr-2 font-sans   duration-500 hover:bg-gradient-to-tl hover:text-transparent md:pr-2 text-[#5c67f5] lg:pr-3 xl:pr-3  '>
                   Watch Video
                 </button>
                 {/* {player ? (
@@ -140,9 +148,7 @@ const Hero = ({ setShowMyModal }) => {
             <img
               className='    rounded object-cover object-center lg:w-full lg:max-w-lg  '
               alt='hero'
-              src="https://test-saboo-rks.s3.ap-south-1.amazonaws.com/hero.png"
-              // src={require("../../assets/under_construction-01.png")}
-              // src='https://test-saboo-rks.s3.ap-south-1.amazonaws.com/hero.png'
+              src={require("../../assets/under_construction_with foliage-01.png")}
             />
             {/* {player ? (
               <img
@@ -182,7 +188,7 @@ const Hero = ({ setShowMyModal }) => {
           </div> */}
           <a href='#about'>
             <div className='mt-1 flex animate-bounce justify-center '>
-              <div className='h-4 w-4  rotate-45 border-b-2 border-r-2'></div>
+              <div className='h-4 w-4  rotate-45 border-b-2 border-r-2 border-[#5c67f5]'></div>
             </div>
           </a>
         </div>
@@ -203,5 +209,7 @@ const Hero = ({ setShowMyModal }) => {
   );
 };
 
-export default Hero;
+export default Hero2;
+
+
 

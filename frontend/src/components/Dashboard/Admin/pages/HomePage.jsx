@@ -1,5 +1,6 @@
 
 import { AiOutlineMenu } from 'react-icons/ai';
+
 // import axios from 'axios';
 // import CircularProgressBar from '../../CircularProgressBar';
 // import BarCha from '../../BarCha';
@@ -106,6 +107,7 @@ const HomePage = ({ open, setOpen }) => {
         </div>
       </div>
 
+<img src={require("../../../../assets/Capture.PNG")} alt="" srcset="" className='w-full'/>
       {/* <div className='rounded-xl bg-slate-50 '>
         <div className='mt-1 border-b text-[#5c67f5]'>
           <div className='text-center text-2xl '> Manufacturer Summary </div>

@@ -107,6 +107,36 @@ const Services = () => {
               data-aos='zoom-in'
               data-aos-delay='10'
               data-aos-duration='1500'
+              className='w-full p-4 md:w-1/2 lg:w-1/4 xl:w-1/5 '
+            >
+              <div className='flex h-full flex-col overflow-hidden rounded-lg border border-gray-200 p-2 shadow-lg shadow-indigo-500/50 duration-500 hover:scale-110 hover:border-indigo-200'>
+                <div className='mb-4  flex min-h-[80px] items-center justify-center rounded-md border-b  px-1 text-center text-xl  text-[#5c67f5] md:min-h-[100px] '>
+                <div>
+                    <BsTruck className='mx-auto whitespace-nowrap hover:scale-125 ' />
+                    Tracking Mechanism
+                  </div>
+                </div>
+                <div className='flex h-full flex-col justify-between'>
+                  <span className=' justify-center pb-2    '>
+                  Track the status of your requisitions from submission to
+                      invoice with ProcureN's multi-stage approval tracking
+                      mechanism. You'll know exactly where your orders are in
+                      the process at all times.
+                  </span>
+                  {/* <div className='mx-auto'>
+                    <a href='#contact'>
+                      <button className='mt-6 flex rounded-full border border-y   border-gray-500  from-[#5c67f5]  to-[#cb67ac] bg-clip-text p-2 pl-3 font-sans duration-500   hover:bg-gradient-to-tl    hover:text-transparent focus:outline-none md:mx-2 lg:mx-10 xl:pr-3 '>
+                        Know More
+                      </button>
+                    </a>
+                  </div> */}
+                </div>
+              </div>
+            </div>
+            {/* <div
+              data-aos='flip-left'
+              data-aos-delay='10'
+              data-aos-duration='1000'
               className='w-full p-4 duration-1000 md:w-1/2 lg:w-1/4 xl:w-1/5  '
             >
               <div className='group flex h-full flex-col overflow-hidden rounded-lg   border   from-[#5c67f5] to-[#cb67ac] p-2 shadow-lg shadow-indigo-500/50 duration-500 hover:scale-110   hover:bg-gradient-to-tr'>
@@ -125,16 +155,10 @@ const Services = () => {
                       the process at all times.
                     </h3>
                   </div>
-                  {/* <div className='mx-auto'>
-                    <a href='#contact'>
-                      <button className='mt-6 flex rounded-full border border-y   border-gray-500  from-[#5c67f5]  to-[#cb67ac] bg-clip-text p-2 pl-3 font-sans duration-500   hover:bg-gradient-to-tl   hover:text-transparent focus:outline-none md:mx-2 lg:mx-10 xl:pr-3 '>
-                        Know More
-                      </button>
-                    </a>
-                  </div> */}
+                  
                 </div>
               </div>
-            </div>
+            </div> */}
             <div
               data-aos='zoom-in'
               data-aos-delay='10'
