@@ -23,7 +23,7 @@ const proposelSchema = Yup.object().shape({
   message: Yup.string(),
 });
 
-const Proposel = () => {
+const Proposel = ({setFormSub}) => {
   useEffect(() => {
     AOS.init({ once: true });
   }, []);
@@ -94,9 +94,7 @@ const Proposel = () => {
                     if (response.data.status === true) {
                       setLoading(false);
                       // setSubmit(true);
-                      alert(
-                        'form submitted successfully. Our team will contact you soon'
-                      );
+                      setFormSub(true)
                       resetForm({ values: initialValues });
                     } else {
                       setError(error.message);

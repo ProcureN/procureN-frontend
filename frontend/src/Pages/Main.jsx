@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ModalVideo from '../components/Dashboard/Admin/pages/Modals/ModalVideo';
 import About from '../components/HomepageComponents/About';
 import Footer from '../components/HomepageComponents/Footer';
@@ -19,12 +19,39 @@ import Inventory from '../components/HomepageComponents/Inventory';
 import Hero2 from '../components/HomepageComponents/Hero2';
 import Header2 from '../components/HomepageComponents/Header2';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Main = () => {
   const [showMyModal, setShowMyModal] = useState(false);
   const [showMyModal2, setShowMyModal2] = useState(false);
 
+  const [formSub, setFormSub] = useState(false);
+
   const handleOnClose = () => setShowMyModal(false);
   const handleOnClose2 = () => setShowMyModal2(false);
+
+  const notify = () =>
+    toast.success(
+      'Form submitted successfully. Our team will contact you soon',
+      {
+        position: 'top-right',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      }
+    );
+
+  useEffect(() => {
+    if (formSub) {
+      notify();
+      setFormSub(false);
+    }
+  }, [formSub]);
 
   return (
     <div className='overflow-hidden'>
@@ -38,11 +65,12 @@ const Main = () => {
       <HowItWorks />
       <Inventory />
       <Frequently />
-      <Proposel />
+      <Proposel setFormSub={setFormSub} />
 
       <Footer />
       <ModalVideo onClose={handleOnClose} visible={showMyModal} />
       <ModalTrack onClose={handleOnClose2} visible={showMyModal2} />
+      <ToastContainer />
     </div>
   );
 };

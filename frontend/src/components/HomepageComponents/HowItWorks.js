@@ -85,7 +85,7 @@ const HowItWorks = () => {
             to your enquiry
           </div>
           <div className='-mt-8 ml-28 flex  justify-center hover:z-10 hover:scale-110'>
-            <div className='text-4xl text-[#cb67ac] h-full flex items-center text-end  mr-2 '>4.</div>
+            {/* <div className='text-4xl text-[#cb67ac] h-full flex items-center text-end  mr-2 '>4.</div> */}
             <div className='top-10   w-min whitespace-nowrap rounded-3xl  border border-white bg-[#cb67ac] px-8 py-12 transition-all duration-100 '>
               Finalize the deal
             </div>

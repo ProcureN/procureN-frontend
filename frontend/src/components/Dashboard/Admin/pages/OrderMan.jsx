@@ -18,7 +18,6 @@ import ModalDubplicates from './Modals/ModalDubplicates';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
 const OrderMan = ({ open, setOpen }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -26,7 +25,7 @@ const OrderMan = ({ open, setOpen }) => {
   const [showMyModal2, setShowMyModal2] = useState(false);
   const [showMyModal, setShowMyModal] = useState(false);
   const [errorData, setErrorData] = useState({});
-  // const [docAdded, setDocAdded] = useState(false);
+  const [docAdded, setDocAdded] = useState(false);
 
   const [sub, setSub] = useState(false);
   // const [val, setVal] = useState({});
@@ -50,8 +49,6 @@ const OrderMan = ({ open, setOpen }) => {
     fetchData();
   }, [sub]);
 
-  
-
   const notify = () =>
     toast.error('Invalid rows or duplicate entries (check error tab)', {
       position: 'top-right',
@@ -64,26 +61,28 @@ const OrderMan = ({ open, setOpen }) => {
       theme: 'light',
     });
 
-  // const notify2 = () =>
-  //   toast.success('Document added successfully.', {
-  //     position: 'top-right',
-  //     autoClose: 2000,
-  //     hideProgressBar: false,
-  //     closeOnClick: true,
-  //     pauseOnHover: false,
-  //     draggable: true,
-  //     progress: undefined,
-  //     theme: 'light',
-  //   });
+  const notify2 = () =>
+    toast.success('Document added successfully.', {
+      position: 'top-right',
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: 'light',
+    });
 
   useEffect(() => {
     if (Object.keys(errorData).length > 0) notify();
   }, [errorData]);
 
-  // useEffect(() => {
-  //   if(docAdded) notify2();
-  //   alert("runned")
-  // }, [docAdded]);
+  useEffect(() => {
+    if (docAdded) {
+      notify2()
+      setDocAdded(false)
+    }
+  }, [docAdded]);
 
   // const columns = [
   //   { field: '_id', headerName: 'ID' },
@@ -362,14 +361,13 @@ const OrderMan = ({ open, setOpen }) => {
         setSub={setSub}
         setErrorData={setErrorData}
         errorData={errorData}
-        // setDocAdded= {setDocAdded}
+        setDocAdded= {setDocAdded}
       />
 
       <ModalDubplicates
         onClose={handleOnClose}
         visible={showMyModal}
         data={errorData}
-        
       />
 
       <ToastContainer />

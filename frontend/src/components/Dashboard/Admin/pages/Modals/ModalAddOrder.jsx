@@ -16,7 +16,13 @@ const productSchema = Yup.object().shape({
   // productQuantity: Yup.string().required('Information is required*'),
 });
 
-const ModalAddOrder = ({ visible, onClose, setSub, setErrorData }) => {
+const ModalAddOrder = ({
+  visible,
+  onClose,
+  setSub,
+  setErrorData,
+  setDocAdded,
+}) => {
   // const handleOnClose = (e) => {
   //   if (e.target.id === 'container') onClose();
   // };
@@ -51,7 +57,7 @@ const ModalAddOrder = ({ visible, onClose, setSub, setErrorData }) => {
         setLoading(false);
         setSelectedFile(null);
         setSub(true);
-        // setDocAdded(true);
+        setDocAdded(true);
         onClose();
       })
       .catch((error) => {
@@ -160,7 +166,7 @@ const ModalAddOrder = ({ visible, onClose, setSub, setErrorData }) => {
                   resetForm({ values: initialValues });
                   onClose();
                   setLoading(false);
-                  // setDocAdded(true);
+                  setDocAdded(true);
                   setErr(false);
                   if (response.data.status === true) {
                     setLoading(false);

@@ -26,6 +26,7 @@ const VendorMan = ({ open, setOpen }) => {
   const [showMyModal, setShowMyModal] = useState(false);
   const [showMyModal2, setShowMyModal2] = useState(false);
   const [errorData, setErrorData] = useState({});
+  const [docAdded, setDocAdded] = useState(false);
 
   const [sub, setSub] = useState(false);
   // const [val, setVal] = useState({});
@@ -60,6 +61,25 @@ const VendorMan = ({ open, setOpen }) => {
       progress: undefined,
       theme: 'light',
     });
+
+    const notify2 = () =>
+    toast.success('Document added successfully.', {
+      position: 'top-right',
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: 'light',
+    });
+
+    useEffect(() => {
+      if (docAdded) {
+        notify2()
+        setDocAdded(false)
+      }
+    }, [docAdded]);
 
   useEffect(() => {
     if (Object.keys(errorData).length > 0) notify();
@@ -342,6 +362,7 @@ const VendorMan = ({ open, setOpen }) => {
         setSub={setSub}
         setErrorData={setErrorData}
         errorData={errorData}
+        setDocAdded= {setDocAdded}
       />
       {/* <ModalUpdateProduct
         onClose={handleOnClose}
