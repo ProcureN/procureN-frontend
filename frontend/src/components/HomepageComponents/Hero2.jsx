@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react';
+import React, { useEffect } from 'react';
 
 // import heroImag from '../../assets/hero.png';
 // import heroBgVd from '../../assets/heroVideo.mp4';
@@ -14,7 +14,7 @@ import 'aos/dist/aos.css';
 
 const Hero2 = ({ setShowMyModal }) => {
   useEffect(() => {
-    AOS.init();
+    AOS.init({once: true});
   }, []);
 
   // const [player, setPlayer] = useState(true);
@@ -41,7 +41,7 @@ const Hero2 = ({ setShowMyModal }) => {
 
   return (
     <div id='hero' className=''>
-    {/* <div id='hero' className='bg-gradient-to-tr   from-[#5c67f5] via-[#5c67f5] to-[#cb67ac]'> */}
+      {/* <div id='hero' className='bg-gradient-to-tr   from-[#5c67f5] via-[#5c67f5] to-[#cb67ac]'> */}
       <section
         className={` container relative mx-auto h-[95vh] min-h-[700px] md:h-screen`}
       >
@@ -50,52 +50,28 @@ const Hero2 = ({ setShowMyModal }) => {
             data-aos='fade-up'
             data-aos-delay='0'
             data-aos-duration='1500'
-            className='flex flex-col  md:w-1/2 lg:flex-grow   '
+            className='flex flex-col  md:w-1/2 lg:flex-grow  '
           >
-            <div className='md:pr-16 lg:pr-24 lg:mb-4'>
-              <div className='relative  whitespace-nowrap '>
-                <h1 className='  text-brand-accent  inline-flex h-20  overflow-x-hidden  whitespace-nowrap pb-2 pt-2  text-3xl font-medium  will-change-transform sm:text-4xl text-[#5c67f5] lg:text-5xl '>
-                  Leading Procurement
-                </h1>
-                {/* <h1 className=' group-hover:animate-type-reverse text-brand-accent  inline-flex h-20 animate-type overflow-x-hidden  whitespace-nowrap pb-2 pt-2  text-3xl font-medium  will-change-transform sm:text-4xl  lg:text-5xl '>
-                  Leading Procurement
-                </h1> */}
-                {/* <span className='-mb-2  box-border inline-block h-10 w-1 animate-cursor bg-black will-change-transform md:-mb-4 md:h-16'></span> */}
-              </div>
-              <div className='relative  h-20 whitespace-nowrap  '>
-                
-                  <h1 className='  text-brand-accent  inline-flex h-20  overflow-x-hidden  whitespace-nowrap   text-3xl font-medium  will-change-transform sm:text-4xl text-[#5c67f5] lg:text-5xl'>
-                    Management Expert
-                  </h1>
-                
-                {/* {showComponent && (
-                  <h1 className='  text-brand-accent  inline-flex h-20  overflow-x-hidden  whitespace-nowrap   text-3xl font-medium  will-change-transform sm:text-4xl  lg:text-5xl'>
-                    Management Expert
-                  </h1>
-                )} */}
-                {/* <span className='-mb-2  -ml-1  box-border inline-block h-10 w-1 animate-cursor bg-black will-change-transform md:-mb-4 md:h-16'></span> */}
-              </div>
-              {/* <div className=' text-brand-accent inline-flex  pb-4 text-3xl     font-medium text-[#5c67f5] sm:text-4xl  md:hidden  '>
+            {/* <div className='md:pr-16 lg:mb-4 lg:pr-24'>
+              <div className='   inline-flex   overflow-x-hidden   pb-2 pt-2  text-3xl font-medium  text-[#5c67f5] sm:text-4xl lg:text-5xl '>
                 Leading Procurement
               </div>
-              <div className=' text-brand-accent  inline-flex  pb-4  text-3xl   font-medium  sm:text-4xl  md:hidden  '>
+
+              <div className='      overflow-x-hidden    text-3xl font-medium  text-[#5c67f5]  sm:text-4xl lg:text-5xl'>
                 Management Expert
-              </div> */}
+              </div>
+            </div> */}
+            <div className='font-serif  bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] bg-clip-text -tracking-tight text-transparent '>
+              <div className='text-3xl font-medium  leading-10 sm:text-4xl lg:text-5xl xl:pb-6'>
+                Leading Procurement
+              </div>
+              <div className='text-3xl font-medium h-12 xl:h-16 sm:text-4xl lg:text-5xl '>
+                Management Expert
+              </div>
             </div>
 
-            {/* <span className='mb-8  text-left text-xl italic leading-relaxed  lg:text-2xl '>
-              Working closely with top architects and developers, We raise the
-              bar for{' '}
-              <span className='  font-medium underline underline-offset-4 hover:text-yellow-300'>
-                Quality
-              </span>{' '}
-              and{' '}
-              <span className='font-medium underline underline-offset-4 hover:text-yellow-300'>
-                Perfection.
-              </span>
-            </span> */}
-            <div className='flex justify-around md:justify-start '>
-              <button className='border-1 inline-flex rounded-full bg-[#5c67f5] from-[#5c67f5] to-[#cb67ac] px-4 py-2.5  font-medium text-white  hover:border-white hover:bg-gradient-to-tr focus:outline-none  md:px-5 lg:text-xl'>
+            <div className='flex justify-around pt-5 md:justify-start lg:pt-8'>
+              <button className='border-1 inline-flex rounded-full  from-[#5c67f5] to-[#cb67ac] px-4 py-3  font-medium text-white  bg-gradient-to-tr focus:outline-none  md:px-5 lg:text-xl'>
                 <a href={'#about'}>Get Started</a>
               </button>
 
@@ -106,36 +82,12 @@ const Hero2 = ({ setShowMyModal }) => {
                 }}
               >
                 <AiOutlinePlayCircle
-                  className='mx-2 text-[#5c67f5] my-auto ml-2   '
+                  className='mx-2 my-auto ml-2  text-[#5c67f5]  '
                   size={'30px'}
                 />
-                <button className=' from-[#5c67f5] to-[#cb67ac] bg-clip-text   pr-2 font-sans   duration-500 hover:bg-gradient-to-tl hover:text-transparent md:pr-2 text-[#5c67f5] lg:pr-3 xl:pr-3  '>
+                <button className=' from-[#5c67f5] to-[#cb67ac] bg-clip-text   pr-2 font-sans  text-[#5c67f5]  duration-500 hover:bg-gradient-to-tl hover:text-transparent md:pr-2 lg:pr-3 xl:pr-3  '>
                   Watch Video
                 </button>
-                {/* {player ? (
-                  <AiOutlinePlayCircle
-                    className='mx-2  my-auto ml-2 animate-pulse text-white '
-                    size={'30px'}
-                  />
-                ) : (
-                  <AiOutlineArrowLeft
-                    className='mx-2  my-auto animate-pulse text-white '
-                    size={'25px'}
-                  />
-                )}
-
-                {player ? (
-                  <button className=' from-blue-200 to-[#cb67ac] bg-clip-text   pr-2 font-sans  text-white duration-500 hover:bg-gradient-to-tl hover:text-transparent md:pr-1 xl:pr-3  '>
-                    Watch Video
-                  </button>
-                ) : (
-                  <button className=' mr-3   from-blue-200 to-[#cb67ac] bg-clip-text font-sans text-white duration-500 hover:bg-gradient-to-tl hover:text-transparent xl:px-2  '>
-                    <AiOutlineHome
-                      className='my-auto  text-white '
-                      size={'25px'}
-                    />
-                  </button>
-                )} */}
               </div>
             </div>
           </div>
@@ -148,7 +100,7 @@ const Hero2 = ({ setShowMyModal }) => {
             <img
               className='    rounded object-cover object-center lg:w-full lg:max-w-lg  '
               alt='hero'
-              src={require("../../assets/under_construction_with foliage-01.png")}
+              src={require('../../assets/construction.png')}
             />
             {/* {player ? (
               <img
@@ -205,11 +157,7 @@ const Hero2 = ({ setShowMyModal }) => {
         {/* <ModalVideo onClose={handleOnClose} visible={showMyModal} /> */}
       </section>
     </div>
-    
   );
 };
 
 export default Hero2;
-
-
-

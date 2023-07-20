@@ -15,17 +15,17 @@ const proposelSchema = Yup.object().shape({
   name: Yup.string().required('Name is required.*'),
   email: Yup.string()
     .email('Invalid email address')
-    .required('Email is required'),
+    .required('Email is required*'),
   phone: Yup.string()
     .matches(phoneRegExp, 'Invalid phone number')
-    .required('Phone number is required.*'),
+    .required('Phone number is required*'),
   subject: Yup.string().required('Information is required*'),
   message: Yup.string(),
 });
 
 const Proposel = () => {
   useEffect(() => {
-    AOS.init();
+    AOS.init({ once: true });
   }, []);
   const initialValues = {
     name: '',
@@ -78,7 +78,7 @@ const Proposel = () => {
             data-aos='fade-left'
             data-aos-delay='0'
             data-aos-duration='1000'
-            className=' flex flex-col  md:w-1/2   '
+            className=' flex flex-col md:w-1/2   '
           >
             <Formik
               initialValues={initialValues}
@@ -122,93 +122,108 @@ const Proposel = () => {
                 >
                   <div className=' mb-4'>
                     <div className='flex '>
-                      <label htmlFor='name' className='text-md my-auto pr-8 '>
+                      <label
+                        htmlFor='name'
+                        className='text-md my-auto pr-8 text-[#5c67f5] '
+                      >
                         Name:
                       </label>
-
-                      <Field
-                        type='text'
-                        id='name'
-                        name='name'
-                        // placeholder='Enter your name'
-                        required
-                        className='placeholder:text-md w-full   border-b border-gray-500  bg-white px-3 py-1 text-center leading-8  placeholder-gray-300  outline-none  '
-                      />
+                      <div className='w-full'>
+                        <Field
+                          type='text'
+                          id='name'
+                          name='name'
+                          placeholder='Enter your name'
+                          required
+                          className='placeholder:text-md w-full rounded-md border-b border-l-4 border-b-gray-500 border-l-[#5c67f5] bg-white px-3  py-1  leading-8 placeholder-gray-300 shadow-md outline-none'
+                        />
+                        <ErrorMessage
+                          name='name'
+                          component='div'
+                          className='px-3 text-sm text-red-700'
+                        />
+                      </div>
                     </div>
-                    <ErrorMessage
-                      name='name'
-                      component='div'
-                      className=' ml-10 flex justify-center text-sm text-red-700'
-                    />
                   </div>
                   <div className=' mb-4'>
                     <div className='flex'>
-                      <label htmlFor='email' className='text-md my-auto pr-9 '>
+                      <label
+                        htmlFor='email'
+                        className='text-md my-auto pr-9 text-[#5c67f5] '
+                      >
                         Email:
                       </label>
-
-                      <Field
-                        type='email'
-                        id='email'
-                        name='email'
-                        // placeholder='example@email.com'
-                        required
-                        className='placeholder:text-md w-full   border-b border-gray-500  bg-white px-3 py-1 text-center leading-8  placeholder-gray-300  outline-none  '
-                      />
+                      <div className='w-full'>
+                        <Field
+                          type='email'
+                          id='email'
+                          name='email'
+                          placeholder='Enter your email'
+                          required
+                          className='placeholder:text-md w-full rounded-md border-b border-l-4 border-b-gray-500 border-l-[#5c67f5] bg-white px-3 py-1 leading-8 placeholder-gray-300 shadow-md outline-none'
+                        />
+                        <ErrorMessage
+                          name='email'
+                          component='div'
+                          className=' px-3 text-sm text-red-700'
+                        />
+                      </div>
                     </div>
-                    <ErrorMessage
-                      name='email'
-                      component='div'
-                      className=' ml-8 flex justify-center text-sm text-red-700'
-                    />
                   </div>
                   <div className=' mb-4'>
                     <div className='flex'>
-                      <label htmlFor='phone' className='text-md my-auto  pr-4'>
+                      <label
+                        htmlFor='phone'
+                        className='text-md my-auto pr-4  text-[#5c67f5]'
+                      >
                         Contact:
                       </label>
-                      <Field
-                        type='text'
-                        id='phone'
-                        name='phone'
-                        // placeholder='+91 00000 00000 '
-                        required
-                        className='placeholder:text-md w-full   border-b border-gray-500  bg-white px-3 py-1 text-center leading-8  placeholder-gray-300  outline-none  '
-                      />
+                      <div className='w-full'>
+                        <Field
+                          type='text'
+                          id='phone'
+                          name='phone'
+                          placeholder='Enter your contact number '
+                          required
+                          className='placeholder:text-md w-full rounded-md border-b border-l-4 border-b-gray-500 border-l-[#5c67f5] bg-white px-3 py-1  leading-8 placeholder-gray-300 shadow-md outline-none'
+                        />
+                        <ErrorMessage
+                          name='phone'
+                          component='div'
+                          className='px-3 text-sm text-red-700 '
+                        />
+                      </div>
                     </div>
-                    <ErrorMessage
-                      name='phone'
-                      component='div'
-                      className=' ml-10 flex justify-center text-sm text-red-700 '
-                    />
                   </div>
                   <div className=' mb-4'>
                     <div className='flex'>
                       <label
                         htmlFor='subject'
-                        className='text-md my-auto pr-5 '
+                        className='text-md my-auto pr-5 text-[#5c67f5] '
                       >
                         Subject:
                       </label>
-                      <Field
-                        type='text'
-                        id='subject'
-                        name='subject'
-                        // placeholder='Enter your subject'
-                        required
-                        className='placeholder:text-md w-full   border-b border-gray-500  bg-white px-3 py-1 text-center leading-8  placeholder-gray-300  outline-none  '
-                      />
+                      <div className='w-full'>
+                        <Field
+                          type='text'
+                          id='subject'
+                          name='subject'
+                          placeholder='Enter your subject'
+                          required
+                          className='placeholder:text-md w-full rounded-md border-b border-l-4 border-b-gray-500 border-l-[#5c67f5] bg-white px-3 py-1  leading-8 placeholder-gray-300 shadow-md outline-none'
+                        />
+                        <ErrorMessage
+                          name='subject'
+                          component='div'
+                          className=' px-3 text-sm text-red-700'
+                        />
+                      </div>
                     </div>
-                    <ErrorMessage
-                      name='subject'
-                      component='div'
-                      className=' ml-16 flex justify-center text-sm text-red-700'
-                    />
                   </div>
                   <div className=' mb-4 flex '>
                     <label
                       htmlFor='message'
-                      className='text-md my-auto mr-2  '
+                      className='text-md my-auto mr-2 text-[#5c67f5]  '
                     >
                       Message:
                     </label>
@@ -216,14 +231,14 @@ const Proposel = () => {
                       as='textarea'
                       id='message'
                       name='message'
-                      className='h-16 w-full resize-none   border-b  border-gray-500 bg-white px-3 py-1 text-base leading-6  outline-none '
+                      className='h-16 w-full resize-none rounded-md border-b border-l-4 border-b-gray-500  border-l-[#5c67f5] bg-white px-3 py-1  text-base leading-6 shadow-md  outline-none '
                     ></Field>
                   </div>
-                  <div className=' flex justify-center text-center container '>
+                  <div className=' container flex justify-center text-center '>
                     <button
                       type='submit'
                       disabled={isSubmitting}
-                      className={`mt-4   rounded-full bg-white text-[#5c67f5] border border-gray-500 hover:bg-gradient-to-tr   from-[#5c67f5] to-[#cb67ac] px-10  py-2 text-lg hover:text-white duration-500  hover:border-white   focus:outline-none text-center flex justify-center `}
+                      className={`mt-4 flex justify-center rounded-full border border-[#5c67f5] bg-white   from-[#5c67f5] to-[#cb67ac] px-10 py-2 text-center text-lg text-[#5c67f5]  duration-500  hover:border-white hover:bg-gradient-to-tr hover:text-white focus:outline-none `}
                     >
                       {loading ? 'Submitting' : 'Submit'}
                     </button>

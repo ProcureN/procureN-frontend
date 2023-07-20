@@ -12,14 +12,21 @@ import { AiOutlineMenu } from 'react-icons/ai';
 // import ModalAddProduct from './Modals/ModalAddProduct';
 // import ModalUpdateProduct from './Modals/ModalUpdateProduct';
 import ModalAddOrder from './Modals/ModalAddOrder';
-import { BiRefresh } from 'react-icons/bi';
+import { BiCommentError, BiRefresh } from 'react-icons/bi';
+import ModalDubplicates from './Modals/ModalDubplicates';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const OrderMan = ({ open, setOpen }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
-  const [showMyModal3, setShowMyModal3] = useState(false);
-  // const [showMyModal, setShowMyModal] = useState(false);
+  const [showMyModal2, setShowMyModal2] = useState(false);
+  const [showMyModal, setShowMyModal] = useState(false);
+  const [errorData, setErrorData] = useState({});
+  // const [docAdded, setDocAdded] = useState(false);
 
   const [sub, setSub] = useState(false);
   // const [val, setVal] = useState({});
@@ -42,6 +49,41 @@ const OrderMan = ({ open, setOpen }) => {
     }
     fetchData();
   }, [sub]);
+
+  
+
+  const notify = () =>
+    toast.error('Invalid rows or duplicate entries (check error tab)', {
+      position: 'top-right',
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: 'light',
+    });
+
+  // const notify2 = () =>
+  //   toast.success('Document added successfully.', {
+  //     position: 'top-right',
+  //     autoClose: 2000,
+  //     hideProgressBar: false,
+  //     closeOnClick: true,
+  //     pauseOnHover: false,
+  //     draggable: true,
+  //     progress: undefined,
+  //     theme: 'light',
+  //   });
+
+  useEffect(() => {
+    if (Object.keys(errorData).length > 0) notify();
+  }, [errorData]);
+
+  // useEffect(() => {
+  //   if(docAdded) notify2();
+  //   alert("runned")
+  // }, [docAdded]);
 
   // const columns = [
   //   { field: '_id', headerName: 'ID' },
@@ -196,8 +238,13 @@ const OrderMan = ({ open, setOpen }) => {
     ...item,
   }));
 
-  // const handleOnClose = () => setShowMyModal(false);
-  const handleOnClose3 = () => setShowMyModal3(false);
+  const handleOnClose = () => setShowMyModal(false);
+  const handleOnClose2 = () => setShowMyModal2(false);
+
+  const handleOpen = () => {
+    setShowMyModal2(true);
+    setShowMyModal(false);
+  };
 
   return (
     <>
@@ -209,17 +256,23 @@ const OrderMan = ({ open, setOpen }) => {
           />
         </div>
 
-        <div className='mx-auto my-auto bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] bg-clip-text text-center font-sans text-xl font-semibold text-transparent  lg:text-2xl'>
+        <div className='my-auto bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] bg-clip-text pr-1 text-center  font-sans text-xl font-semibold text-transparent  lg:text-2xl'>
           Order Management
         </div>
         {data.length > 0 && (
           <div className='hidden items-center pr-2 md:visible md:flex'>
+            {Object.keys(errorData).length > 0 && (
+              <BiCommentError
+                className='mr-2 cursor-pointer text-3xl text-red-600'
+                onClick={() => setShowMyModal(true)}
+              />
+            )}
             <BiRefresh
-              className='cursor-pointer text-3xl text-[#5c67f5]'
+              className='cursor-pointer text-4xl text-[#5c67f5]'
               onClick={() => setSub(true)}
             />
             <button
-              onClick={() => setShowMyModal3(true)}
+              onClick={handleOpen}
               className='mx-2 rounded bg-gradient-to-tr  from-[#5c67f5] to-[#cb67ac] px-3 py-1  text-white'
             >
               Add Order
@@ -232,12 +285,20 @@ const OrderMan = ({ open, setOpen }) => {
       </div>
       {data.length > 0 && (
         <div className='flex justify-between md:hidden'>
-          <button
-            onClick={() => setShowMyModal3(true)}
-            className='mx-2 rounded bg-gradient-to-tr  from-[#5c67f5] to-[#cb67ac] px-3 py-1  text-white'
-          >
-            Add Order
-          </button>
+          <div className='flex'>
+            <button
+              onClick={handleOpen}
+              className='mx-2 rounded bg-gradient-to-tr  from-[#5c67f5] to-[#cb67ac] px-3 py-1  text-white'
+            >
+              Add Order
+            </button>
+            {Object.keys(errorData).length > 0 && (
+              <BiCommentError
+                className='mr-2 cursor-pointer text-3xl text-red-600'
+                onClick={() => setShowMyModal(true)}
+              />
+            )}
+          </div>
           <div className='flex'>
             <BiRefresh
               className='mx-2 cursor-pointer text-3xl'
@@ -250,7 +311,7 @@ const OrderMan = ({ open, setOpen }) => {
       )}
       <div className=' overflow-hidden '>
         <Box
-           m='0 20px 0 0'
+          m='0 20px 0 0'
           height='90vh'
           sx={{
             '& .MuiDataGrid-root': {
@@ -296,10 +357,23 @@ const OrderMan = ({ open, setOpen }) => {
         </Box>
       </div>
       <ModalAddOrder
-        onClose={handleOnClose3}
-        visible={showMyModal3}
+        onClose={handleOnClose2}
+        visible={showMyModal2}
         setSub={setSub}
+        setErrorData={setErrorData}
+        errorData={errorData}
+        // setDocAdded= {setDocAdded}
       />
+
+      <ModalDubplicates
+        onClose={handleOnClose}
+        visible={showMyModal}
+        data={errorData}
+        
+      />
+
+      <ToastContainer />
+
       {/* <ModalUpdateProduct
         onClose={handleOnClose}
         visible={showMyModal}

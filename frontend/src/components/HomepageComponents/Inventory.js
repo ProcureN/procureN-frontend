@@ -17,7 +17,7 @@ import brassCock1_15 from '../../assets/1-15MM DIA BRASS COCK.png';
 import giCoupler2_15 from '../../assets/2-15MM DIA GI COUPLER.png';
 
 // import required modules
-import { FreeMode, Pagination, Autoplay, Navigation } from 'swiper';
+import {  Pagination, Autoplay, Navigation } from 'swiper';
 
 const allProducts = [
   { image: giPipes4_15, desciption: '15mm DIA GI Pipes' },
@@ -65,8 +65,8 @@ const Inventory = () => {
         <div>
           <Swiper
             slidesPerView={slide}
-            spaceBetween={25}
-            freeMode={true}
+            spaceBetween={20}
+            // freeMode={true}
             autoplay={{
               delay: 2500,
               disableOnInteraction: false,
@@ -76,16 +76,16 @@ const Inventory = () => {
             pagination={{
               clickable: true,
             }}
-            modules={[Pagination, Autoplay, Navigation, FreeMode]}
+            modules={[Pagination, Autoplay, Navigation]}
             className='mySwiper '
           >
             {allProducts.map((items, i) => (
               <div className='container  ' key={i}>
                 <SwiperSlide key={i + 1}>
-                <div className='h-4 md:h-8  group'></div>
+                <div className='h-4 md:h-8  group w-10'></div>
                   <div
                     key={i + 1}
-                    className='flex flex-col hover:scale-110 hover:bg-gradient-to-tr from-white via-stone-200 to-white group bg-white  duration-300 items-center  rounded-lg border-2 text-center text-lg '
+                    className='flex flex-col hover:scale-105 hover:bg-[#5c66f526] shadow-md hover:shadow-xl bg-white group duration-300 items-center  rounded-xl  border text-center text-lg '
                   >
                     <div key={i + 1} >
                       <img
@@ -96,7 +96,7 @@ const Inventory = () => {
                       />
                     </div>
                     <hr />
-                    <div className='w-full border-t py-4  group-hover:bg-gradient-to-bl from-[#5c67f5] to-[#cb67ac] bg-clip-text group-hover:font-semibold group-hover:text-transparent  '>
+                    <div className='w-full  py-4  group-hover:bg-gradient-to-bl from-[#5c67f5] to-[#cb67ac] bg-clip-text group-hover:font-semibold group-hover:text-transparent  '>
                       {items.desciption}
                     </div>
                   </div>

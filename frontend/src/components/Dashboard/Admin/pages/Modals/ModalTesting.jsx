@@ -5,15 +5,15 @@ const ModalVideo2 = ({ visible, onClose }) => {
   const handleOnClose = (e) => {
     if (e.target.id === 'container') onClose();
   };
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      onClose();
-    }, 3000);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     onClose();
+  //   }, 3000);
 
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [onClose]);
+  //   return () => {
+  //     clearTimeout(timer);
+  //   };
+  // }, [onClose]);
 
   if (!visible) return null;
   return (

@@ -6,6 +6,9 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import { EmailContext } from '../context/Email';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 // import { FiUserPlus } from 'react-icons/fi';
 
 // import { FcGoogle } from 'react-icons/fc';
@@ -27,6 +30,18 @@ const Login = () => {
   const [shake, setShake] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const emailContext = useContext(EmailContext);
+
+  const notify = () =>
+    toast.error('Wrong Credential', {
+      position: 'top-right',
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light',
+    });
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -85,13 +100,14 @@ const Login = () => {
                 })
                 .catch((error) => {
                   setLoading(false);
+
                   if (error.response.data.message === 'you are not verified') {
                     emailContext.setEmail(values.email);
                     history('/otpsign');
                   } else {
+                    notify();
                     setShake(true);
                   }
-
                   setSubmitting(false);
                 });
             }}
@@ -226,6 +242,7 @@ const Login = () => {
             )}
           </Formik>
         </div>
+        <ToastContainer />
       </div>
     </>
   );

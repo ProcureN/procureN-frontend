@@ -13,14 +13,19 @@ import ModalAddVendor from './Modals/ModalAddVendor';
 // import ModalAddProduct from './Modals/ModalAddProduct';
 // import ModalUpdateProduct from './Modals/ModalUpdateProduct';
 
-import { BiRefresh } from 'react-icons/bi';
+import { BiCommentError, BiRefresh } from 'react-icons/bi';
+import ModalDubplicates from './Modals/ModalDubplicates';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const VendorMan = ({ open, setOpen }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
-  const [showMyModal3, setShowMyModal3] = useState(false);
-  // const [showMyModal, setShowMyModal] = useState(false);
+  const [showMyModal, setShowMyModal] = useState(false);
+  const [showMyModal2, setShowMyModal2] = useState(false);
+  const [errorData, setErrorData] = useState({});
 
   const [sub, setSub] = useState(false);
   // const [val, setVal] = useState({});
@@ -43,6 +48,22 @@ const VendorMan = ({ open, setOpen }) => {
     }
     fetchData();
   }, [sub]);
+
+  const notify = () =>
+    toast.error('Invalid rows or duplicate entries (check error tab)', {
+      position: 'top-right',
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: 'light',
+    });
+
+  useEffect(() => {
+    if (Object.keys(errorData).length > 0) notify();
+  }, [errorData]);
 
   // const columns = [
   //   { field: '_id', headerName: 'ID' },
@@ -197,8 +218,13 @@ const VendorMan = ({ open, setOpen }) => {
     ...item,
   }));
 
-  // const handleOnClose = () => setShowMyModal(false);
-  const handleOnClose3 = () => setShowMyModal3(false);
+  const handleOnClose = () => setShowMyModal(false);
+  const handleOnClose2 = () => setShowMyModal2(false);
+
+  const handleOpen = () => {
+    setShowMyModal2(true);
+    setShowMyModal(false);
+  };
 
   return (
     <>
@@ -215,12 +241,18 @@ const VendorMan = ({ open, setOpen }) => {
         </div>
         {data.length > 0 && (
           <div className='hidden items-center pr-2 md:visible md:flex'>
+            {Object.keys(errorData).length > 0 && (
+              <BiCommentError
+                className='mr-2 cursor-pointer text-3xl text-red-600'
+                onClick={() => setShowMyModal(true)}
+              />
+            )}
             <BiRefresh
-              className='cursor-pointer text-3xl text-[#5c67f5]'
+              className='cursor-pointer text-4xl text-[#5c67f5]'
               onClick={() => setSub(true)}
             />
             <button
-              onClick={() => setShowMyModal3(true)}
+              onClick={handleOpen}
               className='mx-2 rounded bg-gradient-to-tr  from-[#5c67f5] to-[#cb67ac] px-3 py-1  text-white'
             >
               Add Order
@@ -233,12 +265,20 @@ const VendorMan = ({ open, setOpen }) => {
       </div>
       {data.length > 0 && (
         <div className='flex justify-between md:hidden'>
-          <button
-            onClick={() => setShowMyModal3(true)}
-            className='mx-2 rounded bg-gradient-to-tr  from-[#5c67f5] to-[#cb67ac] px-3 py-1  text-white'
-          >
-            Add Order
-          </button>
+          <div className='flex'>
+            <button
+              onClick={handleOpen}
+              className='mx-2 rounded bg-gradient-to-tr  from-[#5c67f5] to-[#cb67ac] px-3 py-1  text-white'
+            >
+              Add Order
+            </button>
+            {Object.keys(errorData).length > 0 && (
+              <BiCommentError
+                className='mr-2 cursor-pointer text-3xl text-red-600'
+                onClick={() => setShowMyModal(true)}
+              />
+            )}
+          </div>
           <div className='flex'>
             <BiRefresh
               className='mx-2 cursor-pointer text-3xl'
@@ -297,9 +337,11 @@ const VendorMan = ({ open, setOpen }) => {
         </Box>
       </div>
       <ModalAddVendor
-        onClose={handleOnClose3}
-        visible={showMyModal3}
+        onClose={handleOnClose2}
+        visible={showMyModal2}
         setSub={setSub}
+        setErrorData={setErrorData}
+        errorData={errorData}
       />
       {/* <ModalUpdateProduct
         onClose={handleOnClose}
@@ -307,12 +349,19 @@ const VendorMan = ({ open, setOpen }) => {
         initialValues={val}
         setSub={setSub}
       /> */}
+
+      <ModalDubplicates
+        onClose={handleOnClose}
+        visible={showMyModal}
+        data={errorData}
+      />
+
+      <ToastContainer />
     </>
   );
 };
 
 export default VendorMan;
-
 
 // import React, { useState } from 'react';
 // import { DataGrid, GridToolbar } from '@mui/x-data-grid';
@@ -580,8 +629,8 @@ export default VendorMan;
 //               rows={rows}
 //               columns={columns}
 //               components={{ Toolbar: GridToolbar }}
-//               getRowHeight={() => 'auto'} 
-             
+//               getRowHeight={() => 'auto'}
+
 //             />
 //           )}
 //         </Box>

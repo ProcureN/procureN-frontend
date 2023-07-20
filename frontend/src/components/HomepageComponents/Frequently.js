@@ -33,7 +33,7 @@ const Frequently = () => {
   };
 
   useEffect(() => {
-    AOS.init();
+    AOS.init({once: true});
   }, []);
 
   return (

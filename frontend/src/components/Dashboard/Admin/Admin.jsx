@@ -11,7 +11,8 @@ import SidePanel from '../SidePanel';
 import HomePage from './pages/HomePage';
 // import VendorManagement from './pages/VendorManagement';
 import VendorEnquiries from './pages/VendorEnquiries';
-import {  FaUsers,FaHome } from 'react-icons/fa';
+import {  FaUsers } from 'react-icons/fa';
+// import {  FaUsers,FaHome } from 'react-icons/fa';
 // import { FaHome, FaHandsHelping, FaUsers } from 'react-icons/fa';
 import OrderMan from './pages/OrderMan';
 import VendorMan from './pages/VendorMan';
@@ -21,11 +22,24 @@ import VendorDetails from './pages/VendorDetails';
 // import Test from './pages/Test';
 
 const Admin = () => {
+  const [open, setOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState('Order Management');
+  // const [selectedItem, setSelectedItem] = useState('Home Page');
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const role = localStorage.getItem('role');
+    if (!token) {
+      window.location.href = '/login';
+      return;
+    } else if (role !== 'admin') {
+      window.location.href = '/login';
+      return;
+    }
+  }, []);
+
   const AdminLinks = [
-    {
-      Head: 'DASHBOARD',
-      subLinks: [{ name: 'Home Page', logo: [<FaHome />] }],
-    },
+    
 
     {
       Head: 'ACTION',
@@ -61,6 +75,10 @@ const Admin = () => {
         },
       ],
     },
+    // {
+    //   Head: 'DASHBOARD',
+    //   subLinks: [{ name: 'Home Page', logo: [<FaHome />] }],
+    // },
   ];
   // const AdminLinks = [
   //   {
@@ -100,21 +118,6 @@ const Admin = () => {
   //   },
   // ];
 
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    const role = localStorage.getItem('role');
-    if (!token) {
-      window.location.href = '/login';
-      return;
-    } else if (role !== 'admin') {
-      window.location.href = '/login';
-      return;
-    }
-  }, []);
-
-  const [open, setOpen] = useState(false);
-  const [selectedItem, setSelectedItem] = useState('Home Page');
-  // const [selectedItem, setSelectedItem] = useState('Home Page');
 
   return (
     <div className='flex  '>
@@ -126,8 +129,8 @@ const Admin = () => {
         links={AdminLinks}
       />
 
-      <div className=' font-roboto h-screen  w-[90%] mx-auto '>
-        <div className='mx-1 h-[90vh]    md:mx-2 '>
+      <div className=' font-roboto h-screen  w-[92%] mx-auto '>
+        <div className='h-[80vh] lg:h-[90vh]     '>
           {selectedItem === 'Home Page' ? (
             <HomePage open={open} setOpen={setOpen} />
           ) : selectedItem === 'Home Enquiries' ? (

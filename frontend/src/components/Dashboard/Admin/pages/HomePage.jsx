@@ -1,5 +1,6 @@
-
 import { AiOutlineMenu } from 'react-icons/ai';
+import TinyLineChart from '../TinyLineChart';
+// import SynchronizedLineChart from '../SynchronizedLineChart';
 
 // import axios from 'axios';
 // import CircularProgressBar from '../../CircularProgressBar';
@@ -102,12 +103,41 @@ const HomePage = ({ open, setOpen }) => {
             onClick={() => setOpen(!open)}
           />
         </div>
-        <div className='my-auto mx-auto bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] bg-clip-text text-center font-sans  text-2xl font-semibold  text-transparent'>
+        <div className='mx-auto my-auto bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] bg-clip-text text-center font-sans  text-2xl font-semibold  text-transparent'>
           Admin Dashboard
         </div>
       </div>
 
-<img src={require("../../../../assets/Capture.PNG")} alt="" srcset="" className='w-full'/>
+      {/* <img
+        src={require('../../../../assets/Capture.PNG')}
+        alt=''
+        srcset=''
+        className='w-full'
+      /> */}
+      <div className='flex  flex-wrap w-full h-full '>
+        {/* <div className='h-1/3 w-1/5'>
+          <TinyLineChart />
+        </div> */}
+        <div className='h-[90vh] w-full'>
+          <TinyLineChart />
+          {/* <SynchronizedLineChart/> */}
+        </div>
+        {/* <div className='h-1/3 w-1/5'>
+          <TinyLineChart />
+        </div>
+        <div className='h-1/3 w-1/5'>
+          <TinyLineChart />
+        </div> */}
+        {/* <div className='h-1/3 w-1/2'>
+          <SynchronizedLineChart/>
+        </div> */}
+        {/* <div className='h-1/3 w-1/5'>
+          <TinyLineChart />
+        </div>
+        <div className='h-1/3 w-1/5'>
+          <TinyLineChart />
+        </div> */}
+      </div>
       {/* <div className='rounded-xl bg-slate-50 '>
         <div className='mt-1 border-b text-[#5c67f5]'>
           <div className='text-center text-2xl '> Manufacturer Summary </div>

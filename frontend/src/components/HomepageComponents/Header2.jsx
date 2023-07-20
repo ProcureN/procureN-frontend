@@ -22,8 +22,8 @@ export default function Header2({ setShowMyModal }) {
 
   return (
     <div
-      className={`border-b duration-150 fixed
-       isolate   z-10 w-full bg-[white] `}
+      className={`fixed isolate z-10
+       w-full   border-b bg-[white] duration-150 `}
     >
       <>
         {/* bg-[#492DD5] */}
@@ -61,9 +61,9 @@ export default function Header2({ setShowMyModal }) {
                       <li
                         className={`from-[#5c67f5] to-[#cb67ac]  ${
                           selectedItem === i
-                            ? ` text-transparent border-b-2  bg-gradient-to-tr  font-bold tracking-wide                              `
+                            ? ` border-b-2 bg-gradient-to-tr  font-bold  tracking-wide text-transparent                              `
                             : 'hover:border-b-2 '
-                        }  hover:text-transparent border-indigo-500 bg-clip-text hover:bg-gradient-to-tr hover:font-bold
+                        }  border-indigo-500 bg-clip-text hover:bg-gradient-to-tr hover:font-bold hover:text-transparent
                          `}
                       >
                         {item.name}

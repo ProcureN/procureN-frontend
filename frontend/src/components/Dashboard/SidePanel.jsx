@@ -131,8 +131,8 @@ const SidePanel = ({ open, setOpen, selectedItem, setSelectedItem, links }) => {
                             key={subIndex}
                             className={`text-md cursor-pointer group relative mx-2 mb-2 flex items-center rounded-xl py-2 pl-2 pr-2 font-mono text-[#5c67f5] duration-75 lg:mb-4 xl:text-lg ${
                               selectedItem === x.name
-                                ? 'bg-[#5c67f5] text-white   '
-                                : ' hover:hover:bg-[#5c67f5] hover:text-white'
+                                ? 'bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] text-white   '
+                                : ' hover:bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] hover:text-white'
                             }`}
                             onClick={() => handleClick(x)}
                           >

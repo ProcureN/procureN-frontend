@@ -4,7 +4,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 const About = () => {
   useEffect(() => {
-    AOS.init();
+    AOS.init({once: true});
   }, []);
 
   const [open, setOpen] = useState(false);
