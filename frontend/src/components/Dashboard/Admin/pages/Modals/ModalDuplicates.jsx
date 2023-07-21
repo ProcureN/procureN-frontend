@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-const ModalDubplicates = ({ visible, onClose, data }) => {
+const ModalDuplicates = ({ visible, onClose, data }) => {
   const handleOnClose = (e) => {
     if (e.target.id === 'container') onClose();
   };
@@ -14,10 +14,10 @@ const ModalDubplicates = ({ visible, onClose, data }) => {
   //   };
   // }, [onClose]);
 
-  useEffect(() => {
-    // console.log(data);
-    console.log(data);
-  }, [data]);
+  // useEffect(() => {
+  //   // console.log(data);
+  //   console.log(data);
+  // }, [data]);
 
   function TableRow({ item, index }) {
     return (
@@ -45,7 +45,7 @@ const ModalDubplicates = ({ visible, onClose, data }) => {
       onClick={handleOnClose}
       className='fixed  top-16 flex items-center justify-center whitespace-nowrap md:right-[18%] '
     >
-      {/* {Object.keys(data).length > 0 && data.dupesClients.length > 0 ? (
+      {/* {Object.keys(data).length > 0 && data.duplicateEntries.length > 0 ? (
         <div className=' absolute top-20 overflow-hidden bg-white px-4 py-6 md:w-2/3 '>
           <table className='w-full'>
             <thead className=''>
@@ -58,7 +58,7 @@ const ModalDubplicates = ({ visible, onClose, data }) => {
               </tr>
             </thead>
             <tbody>
-              {data.dupesClients.map((item, index) => (
+              {data.duplicateEntries.map((item, index) => (
                 <TableRow key={index} index={index} item={item} />
               ))}
             </tbody>
@@ -82,7 +82,7 @@ const ModalDubplicates = ({ visible, onClose, data }) => {
           className=' mr-4 flex cursor-pointer justify-end gap-2 py-2 text-red-500 '
           onClick={onClose}
         >
-          {Object.keys(data).length > 0 && data.dupesClients.length > 0 && <div className=''>Duplicates Rows </div>}
+          {Object.keys(data).length > 0 && data.duplicateEntries.length > 0 && <div className=''>Duplicates Rows </div>}
           <div className='w-min rounded-full border border-red-500 px-1.5'>
             X
           </div>
@@ -94,7 +94,7 @@ const ModalDubplicates = ({ visible, onClose, data }) => {
               {data.invalidRows[0].join(', ')}
             </div>
           ) 
-          :data.dupesClients && data.dupesClients.length > 0 ? (
+          :data.duplicateEntries && data.duplicateEntries.length > 0 ? (
             <div className='mr-6 max-h-[70vh] overflow-y-scroll rounded-md pb-4 pl-4 pr-2'>
               <table>
                 <thead>
@@ -107,7 +107,7 @@ const ModalDubplicates = ({ visible, onClose, data }) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.dupesClients.map((item, index) => (
+                  {data.duplicateEntries.map((item, index) => (
                     <TableRow key={index} index={index} item={item} />
                   ))}
                 </tbody>
@@ -133,4 +133,4 @@ const ModalDubplicates = ({ visible, onClose, data }) => {
   );
 };
 
-export default ModalDubplicates;
+export default ModalDuplicates;

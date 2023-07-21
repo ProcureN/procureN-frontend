@@ -14,10 +14,10 @@ import ModalAddVendor from './Modals/ModalAddVendor';
 // import ModalUpdateProduct from './Modals/ModalUpdateProduct';
 
 import { BiCommentError, BiRefresh } from 'react-icons/bi';
-import ModalDubplicates from './Modals/ModalDubplicates';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ModalDuplicates from './Modals/ModalDuplicates';
 
 const VendorMan = ({ open, setOpen }) => {
   const [loading, setLoading] = useState(false);
@@ -62,7 +62,7 @@ const VendorMan = ({ open, setOpen }) => {
       theme: 'light',
     });
 
-    const notify2 = () =>
+  const notify2 = () =>
     toast.success('Document added successfully.', {
       position: 'top-right',
       autoClose: 2000,
@@ -74,12 +74,12 @@ const VendorMan = ({ open, setOpen }) => {
       theme: 'light',
     });
 
-    useEffect(() => {
-      if (docAdded) {
-        notify2()
-        setDocAdded(false)
-      }
-    }, [docAdded]);
+  useEffect(() => {
+    if (docAdded) {
+      notify2();
+      setDocAdded(false);
+    }
+  }, [docAdded]);
 
   useEffect(() => {
     if (Object.keys(errorData).length > 0) notify();
@@ -166,7 +166,7 @@ const VendorMan = ({ open, setOpen }) => {
     { field: 'date', headerName: 'Date', width: '130' },
     {
       field: 'particular',
-      headerName: 'Particular',
+      headerName: 'Particulars',
       width: '300',
     },
     { field: 'vchNo', headerName: 'Vch No' },
@@ -183,14 +183,15 @@ const VendorMan = ({ open, setOpen }) => {
           style={{
             backgroundColor:
               params.row.status === 'Pending'
-                ? '#f5ddc4'
+                ? '#f5d889'
                 : params.row.status === 'Approved'
                 ? '#8db598'
                 : '#eb8888',
-            color: 'black',
-            fontSize: '0.875rem',
-            marginTop: '10px',
-            marginBottom: '10px',
+            // color: 'black',
+            fontSize: '0.6rem',
+            // marginTop: '10px',
+            // marginBottom: '10px',
+            // border:"0px"
           }}
         >
           {statusOptions.map((option) => (
@@ -215,7 +216,7 @@ const VendorMan = ({ open, setOpen }) => {
   let bdy = [
     [
       // 'No',
-      'Particular',
+      'Particulars',
       'Vch No',
       'Vendor',
       'Quantity',
@@ -318,7 +319,8 @@ const VendorMan = ({ open, setOpen }) => {
               border: 'none',
             },
             '& .MuiDataGrid-cell': {
-              borderBottom: '1 solid',
+              border: '1px solid', // Add the border style for the cell
+              borderColor: 'lightgray', // Set the color of the border
             },
             '& .name-column--cell': {
               // color: colors.greenAccent[300],
@@ -362,7 +364,7 @@ const VendorMan = ({ open, setOpen }) => {
         setSub={setSub}
         setErrorData={setErrorData}
         errorData={errorData}
-        setDocAdded= {setDocAdded}
+        setDocAdded={setDocAdded}
       />
       {/* <ModalUpdateProduct
         onClose={handleOnClose}
@@ -371,7 +373,7 @@ const VendorMan = ({ open, setOpen }) => {
         setSub={setSub}
       /> */}
 
-      <ModalDubplicates
+      <ModalDuplicates
         onClose={handleOnClose}
         visible={showMyModal}
         data={errorData}

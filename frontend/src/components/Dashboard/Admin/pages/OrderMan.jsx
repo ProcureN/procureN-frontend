@@ -13,10 +13,10 @@ import { AiOutlineMenu } from 'react-icons/ai';
 // import ModalUpdateProduct from './Modals/ModalUpdateProduct';
 import ModalAddOrder from './Modals/ModalAddOrder';
 import { BiCommentError, BiRefresh } from 'react-icons/bi';
-import ModalDubplicates from './Modals/ModalDubplicates';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ModalDuplicates from './Modals/ModalDuplicates';
 
 const OrderMan = ({ open, setOpen }) => {
   const [loading, setLoading] = useState(false);
@@ -165,7 +165,7 @@ const OrderMan = ({ open, setOpen }) => {
     { field: 'date', headerName: 'Date', width: '130' },
     {
       field: 'particular',
-      headerName: 'Particular',
+      headerName: 'Particulars',
       width: '300',
     },
     { field: 'vchNo', headerName: 'Vch No' },
@@ -182,18 +182,20 @@ const OrderMan = ({ open, setOpen }) => {
           style={{
             backgroundColor:
               params.row.status === 'Pending'
-                ? '#f5ddc4'
+                ? '#f5d889'
                 : params.row.status === 'Approved'
                 ? '#8db598'
                 : '#eb8888',
             // color: 'black',
-            fontSize: '0.875rem',
-            marginTop: '10px',
-            marginBottom: '10px',
+            fontSize: '0.6rem',
+            // marginTop: '10px',
+            // marginBottom: '10px',
+            // border:"0px"
           }}
+         
         >
           {statusOptions.map((option) => (
-            <MenuItem key={option} value={option}>
+            <MenuItem  key={option} value={option}>
               {option}
             </MenuItem>
           ))}
@@ -214,7 +216,7 @@ const OrderMan = ({ open, setOpen }) => {
   let bdy = [
     [
       // 'No',
-      'Particular',
+      'Particulars',
       'Vch No',
       'Vendor',
       'Quantity',
@@ -317,7 +319,8 @@ const OrderMan = ({ open, setOpen }) => {
               border: 'none',
             },
             '& .MuiDataGrid-cell': {
-              borderBottom: '1 solid',
+              border: '1px solid', // Add the border style for the cell
+              borderColor: 'lightgray', // Set the color of the border
             },
             '& .name-column--cell': {
               // color: colors.greenAccent[300],
@@ -364,7 +367,7 @@ const OrderMan = ({ open, setOpen }) => {
         setDocAdded= {setDocAdded}
       />
 
-      <ModalDubplicates
+      <ModalDuplicates
         onClose={handleOnClose}
         visible={showMyModal}
         data={errorData}

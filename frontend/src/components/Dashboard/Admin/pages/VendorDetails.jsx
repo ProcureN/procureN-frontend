@@ -191,7 +191,8 @@ const VendorDetails = ({ open, setOpen }) => {
               border: 'none',
             },
             '& .MuiDataGrid-cell': {
-              borderBottom: '1 solid',
+              border: '1px solid', // Add the border style for the cell
+              borderColor: 'lightgray', // Set the color of the border
             },
             '& .name-column--cell': {
               // color: colors.greenAccent[300],

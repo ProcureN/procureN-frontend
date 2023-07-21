@@ -31,7 +31,7 @@ const ModalAddOrder = ({
   const [selectedFile, setSelectedFile] = useState(null);
   const [next, setNext] = useState(true);
   const [customerID, setCustomerID] = useState('');
-  const [err, setErr] = useState(false);
+  const [err, setErr] = useState(0);
 
   useEffect(() => {
     setCustomerID(localStorage.getItem('customerID'));
@@ -59,13 +59,22 @@ const ModalAddOrder = ({
         setSub(true);
         setDocAdded(true);
         onClose();
+        setErr(0);
       })
       .catch((error) => {
         setLoading(false);
         setSelectedFile(null);
         setSub(false);
-        setErrorData(error.response.data.data);
-        onClose();
+        // console.error(error);
+        if (
+          error.response.data.message !==
+          `Incorrect file type. Please upload a file named client.csv.`
+        ) {
+          setErrorData(error.response.data.data);
+          onClose();
+        } else {
+          setErr(2);
+        }
         // console.error(error.response.data);
         // alert('Error ~ Invalid rows or duplicate entries found');
         // onClose();
@@ -167,7 +176,7 @@ const ModalAddOrder = ({
                   onClose();
                   setLoading(false);
                   setDocAdded(true);
-                  setErr(false);
+                  setErr(0);
                   if (response.data.status === true) {
                     setLoading(false);
                   } else {
@@ -182,7 +191,7 @@ const ModalAddOrder = ({
                   setLoading(false);
                   // alert('Error');
                   // onClose();
-                  setErr(true);
+                  setErr(1);
                   console.log(error.response.data.message);
                   // alert(`${error.response.data.message}`);
                   setSubmitting(false);
@@ -383,7 +392,7 @@ const ModalAddOrder = ({
                     Cancel
                   </button>
                 </div>
-                {err && (
+                {err === 1 && (
                   <div className='mt-2 text-sm text-red-500'>
                     Voucher number already exists.
                   </div>
@@ -437,6 +446,11 @@ const ModalAddOrder = ({
                 Cancel
               </button>
             </div>
+            {err === 2 && (
+              <div className='mb-2 text-sm text-red-500'>
+                Incorrect file type. Please upload a file named "client.csv".
+              </div>
+            )}
             {/* {Object.keys(errorData).length > 0 && (
               <div className='text-sm text-red-500'>
                 Invalid rows or duplicate entries found in document <br />for more
