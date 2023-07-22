@@ -155,8 +155,8 @@ const SignupPage2 = ({ setNext, formValue }) => {
                   <option value='' className='text-sm text-gray-500' disabled>
                     Select Role
                   </option>
-                  <option value='Retailer'>Retailer</option>
-                  <option value='Manufacturer'>Manufacturer</option>
+                  <option value='Client'>Client</option>
+                  <option value='Vendor'>Vendor</option>
                 </Field>
               </div>
               <div>

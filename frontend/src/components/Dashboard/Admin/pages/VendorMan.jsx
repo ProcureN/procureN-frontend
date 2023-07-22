@@ -151,7 +151,7 @@ const VendorMan = ({ open, setOpen }) => {
         // Handle the response from the backend
         console.log(response);
         // Set the sub state to trigger a data reload
-        setSub(true);
+        // setSub(true);
       })
       .catch((error) => {
         // Handle errors
@@ -162,14 +162,15 @@ const VendorMan = ({ open, setOpen }) => {
   const statusOptions = ['Pending', 'Approved', 'Rejected'];
 
   const columns = [
-    { field: 'no', headerName: 'Sr No', width: '50' },
+    { field: 'no', headerName: 'Sr. No.', width: '60',sortable: false },
     { field: 'date', headerName: 'Date', width: '130' },
     {
       field: 'particular',
       headerName: 'Particulars',
-      width: '300',
+      // width: '300',
+      flex:1
     },
-    { field: 'vchNo', headerName: 'Vch No' },
+    { field: 'vchNo', headerName: 'Vch No.' },
     { field: 'vendor', headerName: 'Vendor', width: '300' },
     { field: 'quantity', headerName: 'Quantity' },
     { field: 'price', headerName: 'Price' },
@@ -188,7 +189,10 @@ const VendorMan = ({ open, setOpen }) => {
                 ? '#8db598'
                 : '#eb8888',
             // color: 'black',
-            fontSize: '0.6rem',
+            fontSize: '0.7rem',
+            width:"5.5rem",
+            height:"2rem",
+            marginLeft:"-.25rem"
             // marginTop: '10px',
             // marginBottom: '10px',
             // border:"0px"
@@ -217,7 +221,7 @@ const VendorMan = ({ open, setOpen }) => {
     [
       // 'No',
       'Particulars',
-      'Vch No',
+      'Vch No.',
       'Vendor',
       'Quantity',
       'Price',
@@ -249,8 +253,8 @@ const VendorMan = ({ open, setOpen }) => {
 
   return (
     <>
-      <div className='my-2 flex  h-16 justify-between overflow-hidden rounded-md bg-gray-100 shadow-lg shadow-gray-400  md:mr-4'>
-        <div className='my-auto pl-2'>
+      <div className='my-2  flex  h-16 justify-between overflow-hidden rounded-md bg-gray-100 shadow-lg shadow-gray-400  md:mr-4'>
+        <div className='my-auto pl-2 md:hidden'>
           <AiOutlineMenu
             className=' cursor-pointer text-3xl text-[#5c67f5] '
             onClick={() => setOpen(!open)}
@@ -269,7 +273,7 @@ const VendorMan = ({ open, setOpen }) => {
               />
             )}
             <BiRefresh
-              className='cursor-pointer text-4xl text-[#5c67f5]'
+              className='cursor-pointer text-4xl text-[#5c67f5] hover:rotate-180 duration-500'
               onClick={() => setSub(true)}
             />
             <button
@@ -302,7 +306,7 @@ const VendorMan = ({ open, setOpen }) => {
           </div>
           <div className='flex'>
             <BiRefresh
-              className='mx-2 cursor-pointer text-3xl'
+              className='mx-2 cursor-pointer text-3xl hover:rotate-180 duration-500'
               onClick={() => setSub(true)}
             />
             <ExcelData data={data} fileName=' Vendor Management' />
@@ -354,6 +358,8 @@ const VendorMan = ({ open, setOpen }) => {
               rows={rows}
               columns={columns}
               components={{ Toolbar: GridToolbar }}
+              options={{ exportFileName: 'Vendor Management' }}
+              // slotProps={{ toolbar: { printOptions: { disableToolbarButton: true } } }}
             />
           )}
         </Box>

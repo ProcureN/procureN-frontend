@@ -10,19 +10,19 @@ import SidePanel from '../SidePanel';
 // import ProductsManagement from './pages/ProductsManagement';
 import HomePage from './pages/HomePage';
 // import VendorManagement from './pages/VendorManagement';
-import VendorEnquiries from './pages/VendorEnquiries';
-import {  FaUsers } from 'react-icons/fa';
-// import {  FaUsers,FaHome } from 'react-icons/fa';
-// import { FaHome, FaHandsHelping, FaUsers } from 'react-icons/fa';
+// import VendorEnquiries from './pages/VendorEnquiries';
+import { FaUsers,FaHandsHelping } from 'react-icons/fa';
 import OrderMan from './pages/OrderMan';
 import VendorMan from './pages/VendorMan';
 import ClientDetails from './pages/ClientDetails';
 import VendorDetails from './pages/VendorDetails';
+import HomeEnq from './pages/HomeEnq';
+
 
 // import Test from './pages/Test';
 
 const Admin = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [selectedItem, setSelectedItem] = useState('Order Management');
   // const [selectedItem, setSelectedItem] = useState('Home Page');
 
@@ -39,15 +39,10 @@ const Admin = () => {
   }, []);
 
   const AdminLinks = [
-    
-
     {
       Head: 'ACTION',
       subLinks: [
-        // {
-        //   name: 'Home Enquiries',
-        //   logo: [<FaHandsHelping />],
-        // },
+       
         {
           name: 'Order Management',
           logo: [<AiOutlineFileSearch />],
@@ -55,6 +50,10 @@ const Admin = () => {
         {
           name: 'Vendor Management',
           logo: [<AiOutlineShoppingCart />],
+        },
+        {
+          name: 'Home Enquiries',
+          logo: [<FaHandsHelping />],
         },
       ],
     },
@@ -118,7 +117,6 @@ const Admin = () => {
   //   },
   // ];
 
-
   return (
     <div className='flex  '>
       <SidePanel
@@ -129,18 +127,20 @@ const Admin = () => {
         links={AdminLinks}
       />
 
-      <div className=' font-roboto h-screen  w-[92%] mx-auto '>
+      <div className=' font-roboto mx-auto  h-screen w-[92%] '>
         <div className='h-[80vh] lg:h-[90vh]     '>
           {selectedItem === 'Home Page' ? (
             <HomePage open={open} setOpen={setOpen} />
           ) : selectedItem === 'Home Enquiries' ? (
-            <VendorEnquiries open={open} setOpen={setOpen} />
+            <HomeEnq open={open} setOpen={setOpen} />
           ) : selectedItem === 'Order Management' ? (
             <OrderMan open={open} setOpen={setOpen} />
           ) : selectedItem === 'Vendor Management' ? (
             <VendorMan open={open} setOpen={setOpen} />
           ) : selectedItem === 'Client Details' ? (
             <ClientDetails open={open} setOpen={setOpen} />
+          // ) : selectedItem === 'Vendor Enquiries' ? (
+          //   <VendorEnquiries open={open} setOpen={setOpen} />
           ) : (
             selectedItem === 'Vendor Details' && (
               <VendorDetails open={open} setOpen={setOpen} />

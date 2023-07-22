@@ -24,10 +24,10 @@ function App() {
           <Route exact path={`/otpsign`} element={<OtpSignup />} />
           <Route exact path={`/otplogin`} element={<OtpRestPass />} />
           <Route exact path='/admin' element={<Admin />} />
-          <Route exact path='/Retailer' element={<UserDashboard />} />
+          <Route exact path='/Client' element={<UserDashboard />} />
           <Route
             exact
-            path='/manufacturer'
+            path='/Vendor'
             element={<ManufacturerDashboard />}
           />
         </Routes>

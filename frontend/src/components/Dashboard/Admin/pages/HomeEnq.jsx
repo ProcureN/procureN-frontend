@@ -2,47 +2,37 @@ import React, { useState } from 'react';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import { Box } from '@mui/material';
 import { useEffect } from 'react';
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
-
 import axios from 'axios';
 import ExcelData from '../../ExcelData';
 import PdfData from '../../PdfData';
 import { AiOutlineMenu } from 'react-icons/ai';
 // import ModalAddProduct from './Modals/ModalAddProduct';
 // import ModalUpdateProduct from './Modals/ModalUpdateProduct';
-import ModalAddOrder from './Modals/ModalAddOrder';
-import { BiCommentError, BiRefresh } from 'react-icons/bi';
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import ModalDuplicates from './Modals/ModalDuplicates';
+import { BiRefresh } from 'react-icons/bi';
+
 
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import SortIcon from '@mui/icons-material/Sort';
 
-
 export function SortedDescendingIcon() {
-  return <ExpandMoreIcon className="icon" />;
+  return <ExpandMoreIcon className='icon' />;
 }
 
 export function SortedAscendingIcon() {
-  return <ExpandLessIcon className="icon" />;
+  return <ExpandLessIcon className='icon' />;
 }
 
 export function UnsortedIcon() {
-  return <SortIcon className="icon" />;
+  return <SortIcon className='icon' />;
 }
 
-const OrderMan = ({ open, setOpen }) => {
+const HomeEnq = ({ open, setOpen }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
-  const [showMyModal2, setShowMyModal2] = useState(false);
-  const [showMyModal, setShowMyModal] = useState(false);
-  const [errorData, setErrorData] = useState({});
-  const [docAdded, setDocAdded] = useState(false);
+  // const [showMyModal, setShowMyModal] = useState(false);
 
   const [sub, setSub] = useState(false);
   // const [val, setVal] = useState({});
@@ -52,7 +42,7 @@ const OrderMan = ({ open, setOpen }) => {
       try {
         setLoading(true);
         const res = await axios.get(
-          'https://procuren-backend.onrender.com/getclient'
+          'https://procuren-backend.onrender.com/getcontactform/1/1000'
         );
         // console.log(res);
         setData(res.data.data);
@@ -65,41 +55,6 @@ const OrderMan = ({ open, setOpen }) => {
     }
     fetchData();
   }, [sub]);
-
-  const notify = () =>
-    toast.error('Invalid rows or duplicate entries (check error tab)', {
-      position: 'top-right',
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-      theme: 'light',
-    });
-
-  const notify2 = () =>
-    toast.success('Document added successfully.', {
-      position: 'top-right',
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-      theme: 'light',
-    });
-
-  useEffect(() => {
-    if (Object.keys(errorData).length > 0) notify();
-  }, [errorData]);
-
-  useEffect(() => {
-    if (docAdded) {
-      notify2();
-      setDocAdded(false);
-    }
-  }, [docAdded]);
 
   // const columns = [
   //   { field: '_id', headerName: 'ID' },
@@ -146,82 +101,22 @@ const OrderMan = ({ open, setOpen }) => {
   //   setShowMyModal(true);
   // };
 
-  const handleStatusChange = (row, newStatus) => {
-    // const updatedRow = { ...row, status: newStatus };
-    // Send the updated status to the backend using Axios call
-
-    // .put(`/your-endpoint/${updatedRow.id}`, updatedRow)
-    const token = localStorage.getItem('token');
-    setSub(true);
-    // console.log(updatedRow.id);
-    axios
-      .put(
-        `https://procuren-backend.onrender.com/updateclient/${row.id}`,
-        // `http://localhost:3001/updateclient/${row.id}`,
-        { status: newStatus },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      )
-      .then((response) => {
-        // Handle the response from the backend
-        console.log(response);
-        // Set the sub state to trigger a data reload
-        // setSub(true);
-      })
-      .catch((error) => {
-        // Handle errors
-        console.error(error);
-      });
-  };
-
-  const statusOptions = ['Pending', 'Approved', 'Rejected'];
+ 
+ 
 
   const columns = [
-    { field: 'no', headerName: 'Sr. No.', width: '60',sortable: false },
+    { field: 'no', headerName: 'Sr. No.', width: '60', sortable: false },
     { field: 'date', headerName: 'Date', width: '130' },
+    { field: 'name', headerName: 'Name', flex: 1 },
     {
-      field: 'particular',
-      headerName: 'Particulars',
+      field: 'email',
+      headerName: 'Email',
       // width: '300',
       flex: 1,
     },
-    { field: 'vchNo', headerName: 'Vch No.' },
-    { field: 'vendor', headerName: 'Vendor', width: '300' },
-    { field: 'quantity', headerName: 'Quantity' },
-    { field: 'price', headerName: 'Price' },
-    {
-      field: 'status',
-      headerName: 'Status',
-      renderCell: (params) => (
-        <Select
-          value={params.row.status}
-          onChange={(e) => handleStatusChange(params.row, e.target.value)}
-          style={{
-            backgroundColor:
-              params.row.status === 'Pending'
-                ? '#f5d889'
-                : params.row.status === 'Approved'
-                ? '#8db598'
-                : '#eb8888',
-            // color: 'black',
-            fontSize: '0.7rem',
-            width:"5.5rem",
-            height:"2rem",
-            marginLeft:"-.25rem"
-
-            // marginBottom: '10px',
-            // border:"0px"
-          }}
-        >
-          {statusOptions.map((option) => (
-            <MenuItem key={option} value={option} style={{ borderRadius: '2' }}>
-              {option}
-            </MenuItem>
-          ))}
-        </Select>
-      ),
-    },
+    { field: 'phone', headerName: 'Phone', flex: 1 },
+    { field: 'subject', headerName: 'Subject', flex: 1 },
+    { field: 'message', headerName: 'Message', flex: 1 },
 
     // {
     //   field: 'edit',
@@ -232,25 +127,24 @@ const OrderMan = ({ open, setOpen }) => {
     //   ),
     // },
   ];
-  let widths = ['30%', '15%', '23%', '14%', '12%', '14%'];
+  let widths = ['10%', '15%', '24%', '16%', '16%', '19%'];
   let bdy = [
     [
-      // 'No',
-      'Particulars',
-      'Vch No.',
-      'Vendor',
-      'Quantity',
-      'Price',
-      'Status',
+      'Date',
+      'Name',
+      'Email',
+      'Phone',
+      'Subject',
+      'Message',
     ],
     ...data.map((item, index) => [
       // index + 1,
-      item.particular,
-      item.vchNo,
-      item.vendor,
-      item.quantity,
-      item.price,
-      item.status,
+      item.date,
+      item.name,
+      item.email,
+      item.phone,
+      item.subject,
+      item.message,
     ]),
   ];
   const rows = data.map((item, index) => ({
@@ -259,13 +153,13 @@ const OrderMan = ({ open, setOpen }) => {
     ...item,
   }));
 
-  const handleOnClose = () => setShowMyModal(false);
-  const handleOnClose2 = () => setShowMyModal2(false);
+  // const handleOnClose = () => setShowMyModal(false);
+  // const handleOnClose2 = () => setShowMyModal2(false);
 
-  const handleOpen = () => {
-    setShowMyModal2(true);
-    setShowMyModal(false);
-  };
+  // const handleOpen = () => {
+  //   setShowMyModal2(true);
+  //   setShowMyModal(false);
+  // };
 
   return (
     <>
@@ -278,55 +172,43 @@ const OrderMan = ({ open, setOpen }) => {
         </div>
 
         <div className='mx-auto my-auto bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] bg-clip-text pr-1 text-center  font-sans text-xl font-semibold text-transparent  lg:text-2xl'>
-          Order Management
+          Homepage Enquiries
         </div>
         {data.length > 0 && (
           <div className='hidden items-center pr-2 md:visible md:flex'>
-            {Object.keys(errorData).length > 0 && (
-              <BiCommentError
-                className='mr-2 cursor-pointer text-3xl text-red-600'
-                onClick={() => setShowMyModal(true)}
-              />
-            )}
             <BiRefresh
-              className='cursor-pointer text-4xl text-[#5c67f5] hover:rotate-180 duration-500'
+              className='cursor-pointer mr-3 text-4xl text-[#5c67f5] hover:rotate-180 duration-500'
               onClick={() => setSub(true)}
             />
-            <button
+            {/* <button
               onClick={handleOpen}
               className='mx-2 rounded bg-gradient-to-tr  from-[#5c67f5] to-[#cb67ac] px-3 py-1  text-white'
             >
               Add Order
-            </button>
+            </button> */}
 
-            <ExcelData data={data} fileName='Order Management' />
-            <PdfData fileName='Order Management' bdy={bdy} wid={widths} />
+            <ExcelData data={data} fileName='Homepage Enquiries' />
+            <PdfData fileName='Homepage Enquiries' bdy={bdy} wid={widths} />
           </div>
         )}
       </div>
       {data.length > 0 && (
         <div className='flex justify-between md:hidden'>
           <div className='flex'>
-            <button
+            {/* <button
               onClick={handleOpen}
               className='mx-2 rounded bg-gradient-to-tr  from-[#5c67f5] to-[#cb67ac] px-3 py-1  text-white'
             >
               Add Order
-            </button>
-            {Object.keys(errorData).length > 0 && (
-              <BiCommentError
-                className='mr-2 cursor-pointer text-3xl text-red-600'
-                onClick={() => setShowMyModal(true)}
-              />
-            )}
+            </button> */}
           </div>
           <div className='flex'>
             <BiRefresh
-              className='mx-2 cursor-pointer text-3xl hover:rotate-180 duration-500'
+              className='mx-4 cursor-pointer text-3xl hover:rotate-180 duration-500'
               onClick={() => setSub(true)}
             />
-            <ExcelData data={data} fileName='Order Management' />
-            <PdfData fileName='Order Management' bdy={bdy} wid={widths} />
+            <ExcelData data={data} fileName='Homepage Enquiries' />
+            <PdfData fileName='Homepage Enquiries' bdy={bdy} wid={widths} />
           </div>
         </div>
       )}
@@ -341,6 +223,8 @@ const OrderMan = ({ open, setOpen }) => {
             '& .MuiDataGrid-cell': {
               border: '0.1px solid', // Add the border style for the cell
               borderColor: 'lightgray', // Set the color of the border
+              paddingBottom: '5px',
+              paddingTop:"5px"
             },
             '& .name-column--cell': {
               // color: colors.greenAccent[300],
@@ -383,7 +267,7 @@ const OrderMan = ({ open, setOpen }) => {
           )}
         </Box>
       </div>
-      <ModalAddOrder
+      {/* <ModalAddOrder
         onClose={handleOnClose2}
         visible={showMyModal2}
         setSub={setSub}
@@ -396,9 +280,7 @@ const OrderMan = ({ open, setOpen }) => {
         onClose={handleOnClose}
         visible={showMyModal}
         data={errorData}
-      />
-
-      <ToastContainer />
+      /> */}
 
       {/* <ModalUpdateProduct
         onClose={handleOnClose}
@@ -410,4 +292,4 @@ const OrderMan = ({ open, setOpen }) => {
   );
 };
 
-export default OrderMan;
+export default HomeEnq;

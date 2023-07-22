@@ -45,7 +45,7 @@ const VendorEnquiries = ({ open, setOpen }) => {
           return;
         }
         const res = await axios.get(
-          `https://procuren-backend.onrender.com/getcontactform/${page}/${limit}`,
+          `https://procuren-backend.onrender.com/getcontactform/1/100`,
           // `http://localhost:3001/getcontactform/${page}/${limit}`
           {
             headers: { Authorization: `Bearer ${token}` }, // Send token in Authorization header
@@ -262,7 +262,7 @@ const VendorEnquiries = ({ open, setOpen }) => {
             </div>
           </div> */}
           <div className='my-2 flex h-16 justify-between rounded-md bg-white shadow md:mr-4'>
-            <div className='my-auto pl-2'>
+            <div className='my-auto pl-2 md:hidden'>
               <AiOutlineMenu
                 className=' cursor-pointer text-3xl text-[#5c67f5] '
                 onClick={() => setOpen(!open)}

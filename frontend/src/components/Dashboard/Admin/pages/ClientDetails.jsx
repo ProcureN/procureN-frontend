@@ -68,16 +68,16 @@ const ClientDetails = ({ open, setOpen }) => {
   }, [sub]);
 
   const columns = [
-    { field: 'no', headerName: 'Sr No', width: '50' },
+    { field: 'no', headerName: 'Sr No', width: '50',sortable: false },
     { field: 'date', headerName: 'Date', width: '130' },
     {
       field: 'name',
       headerName: 'Name',
       // width: '300',
     },
-    { field: 'email', headerName: 'Email', width: '300' },
+    { field: 'email', headerName: 'Email', flex:1},
     { field: 'company', headerName: 'Company', width: '150' },
-    { field: 'jobTitle', headerName: 'Job' },
+    { field: 'jobTitle', headerName: 'Job',flex:1 },
     { field: 'phone', headerName: 'Phone', width: '120' },
     { field: 'city', headerName: 'City', width: '120' },
     { field: 'state', headerName: 'State' },
@@ -148,7 +148,7 @@ const ClientDetails = ({ open, setOpen }) => {
         {data.length > 0 && (
           <div className='hidden items-center pr-2 md:visible md:flex'>
             <BiRefresh
-              className='mr-2 cursor-pointer text-3xl text-[#5c67f5]'
+              className='mr-2 cursor-pointer text-3xl text-[#5c67f5] hover:rotate-180 duration-500'
               onClick={() => setSub(true)}
             />
             {/* <button
@@ -173,7 +173,7 @@ const ClientDetails = ({ open, setOpen }) => {
           </button> */}
           <div className='flex'>
             <BiRefresh
-              className='mx-2 cursor-pointer text-3xl'
+              className='mx-2 cursor-pointer text-3xl hover:rotate-180 duration-500'
               onClick={() => setSub(true)}
             />
             <ExcelData data={data} fileName='Client Details' />
@@ -192,6 +192,7 @@ const ClientDetails = ({ open, setOpen }) => {
             '& .MuiDataGrid-cell': {
               border: '1px solid', // Add the border style for the cell
               borderColor: 'lightgray', // Set the color of the border
+              padding: '4px',
             },
             '& .name-column--cell': {
               // color: colors.greenAccent[300],

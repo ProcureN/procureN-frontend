@@ -36,8 +36,8 @@ const PdfData = ({ fileName, bdy, wid }) => {
             margin: [0, 0, 0, 10], // add margin to separate from table
           },
           body: {
-            fontSize: 18,
-            bold: true,
+            fontSize: 10,
+            // bold: true,
             // background: 'red', // add background color
             // color: '#fff', // add text color
             // margin: [0, 0, 0, 10], // add margin to separate from table

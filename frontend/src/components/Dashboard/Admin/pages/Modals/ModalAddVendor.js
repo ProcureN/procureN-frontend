@@ -306,12 +306,14 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 
+const priceRegex = /^(\d*([.,](?=\d{3}))?\d+)+((?!\2)[.,]\d\d)?$/
+
 const productSchema = Yup.object().shape({
   particular: Yup.string().required('Information is required*'),
   vchNo: Yup.string().required('Information is required*'),
   vendor: Yup.string().required('Information is required*'),
-  quantity: Yup.number(),
-  price: Yup.number(),
+  quantity: Yup.string().matches(priceRegex, 'Invalid quantity'),
+  price: Yup.string().matches(priceRegex, 'Invalid price'),
   // sizeUnit: Yup.string().required('Information is required*'),
   // productQuantity: Yup.string().required('Information is required*'),
 });
@@ -478,7 +480,7 @@ const ModalAddVendor = ({
                       className=' w-full  rounded-md border-2 bg-slate-100 p-2 '
                       name='particular'
                       id='particular'
-                      placeholder='Order details'
+                      // placeholder='Order details'
                     />
                     <ErrorMessage
                       name='particular'
@@ -498,7 +500,7 @@ const ModalAddVendor = ({
                       type='text'
                       name='vchNo'
                       id='vchNo'
-                      placeholder='Unique voucher no '
+                      // placeholder='Unique voucher no '
                     />
                     <ErrorMessage
                       name='vchNo'
@@ -518,7 +520,7 @@ const ModalAddVendor = ({
                       type='text'
                       name='vendor'
                       id='vendor'
-                      placeholder='Vendor name'
+                      // placeholder='Vendor name'
                     />
                     <ErrorMessage
                       name='vendor'
@@ -539,7 +541,7 @@ const ModalAddVendor = ({
                       name='quantity'
                       id='quantity'
                       type='text'
-                      placeholder='Quantity of product'
+                      // placeholder='Quantity of product'
                     />
                     <ErrorMessage
                       name='quantity'
@@ -559,7 +561,7 @@ const ModalAddVendor = ({
                       type='text'
                       name='price'
                       id='price'
-                      placeholder='Price'
+                      // placeholder='Price'
                     />
                     <ErrorMessage
                       name='price'
