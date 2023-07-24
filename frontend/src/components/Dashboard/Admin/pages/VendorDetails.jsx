@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 
 import axios from 'axios';
 import ExcelData from '../../ExcelData';
-import PdfData from '../../PdfData';
+// import PdfData from '../../PdfData';
 import { AiOutlineMenu } from 'react-icons/ai';
 
 import { BiRefresh } from 'react-icons/bi';
@@ -78,7 +78,7 @@ const VendorDetails = ({ open, setOpen }) => {
     },
     { field: 'email', headerName: 'Email', flex:1},
     { field: 'company', headerName: 'Company', width: '150' },
-    { field: 'jobTitle', headerName: 'Job',flex:1 },
+    { field: 'jobTitle', headerName: 'Job',width: '150'  },
     { field: 'phone', headerName: 'Phone', width: '120' },
     { field: 'city', headerName: 'City', width: '120' },
     { field: 'state', headerName: 'State' },
@@ -111,19 +111,19 @@ const VendorDetails = ({ open, setOpen }) => {
     //   ),
     // },
   ];
-  let widths = ['4%', '10%', '15%', '40%', '15%', '15%'];
-  let bdy = [
-    ['No', 'Name', 'Phone', 'Email', 'Company', 'State'],
+  // let widths = ['4%', '10%', '15%', '40%', '15%', '15%'];
+  // let bdy = [
+  //   ['No', 'Name', 'Phone', 'Email', 'Company', 'State'],
 
-    ...data.map((item, index) => [
-      index + 1,
-      item.name,
-      item.phone,
-      item.email,
-      item.company,
-      item.state,
-    ]),
-  ];
+  //   ...data.map((item, index) => [
+  //     index + 1,
+  //     item.name,
+  //     item.phone,
+  //     item.email,
+  //     item.company,
+  //     item.state,
+  //   ]),
+  // ];
 
   const rows = data.map((item, index) => ({
     id: item._id,
@@ -136,7 +136,7 @@ const VendorDetails = ({ open, setOpen }) => {
   return (
     <>
       <div className='my-2 flex  h-16 justify-between overflow-hidden rounded-md bg-gray-100 shadow-lg shadow-gray-400  md:mr-4'>
-        <div className='my-auto pl-2'>
+        <div className='my-auto pl-2 md:hidden'>
           <AiOutlineMenu
             className=' cursor-pointer text-3xl text-[#5c67f5] '
             onClick={() => setOpen(!open)}
@@ -160,7 +160,7 @@ const VendorDetails = ({ open, setOpen }) => {
             </button> */}
 
             <ExcelData data={data} fileName='Vendor Details' />
-            <PdfData fileName='Vendor Details' bdy={bdy} wid={widths} />
+            {/* <PdfData fileName='Vendor Details' bdy={bdy} wid={widths} /> */}
           </div>
         )}
       </div>
@@ -178,7 +178,7 @@ const VendorDetails = ({ open, setOpen }) => {
               onClick={() => setSub(true)}
             />
             <ExcelData data={data} fileName='Vendor Details' />
-            <PdfData fileName='Vendor Details' bdy={bdy} wid={widths} />
+            {/* <PdfData fileName='Vendor Details' bdy={bdy} wid={widths} /> */}
           </div>
         </div>
       )}

@@ -7,7 +7,7 @@ import MenuItem from '@mui/material/MenuItem';
 
 import axios from 'axios';
 import ExcelData from '../../ExcelData';
-import PdfData from '../../PdfData';
+// import PdfData from '../../PdfData';
 import { AiOutlineMenu } from 'react-icons/ai';
 // import ModalAddProduct from './Modals/ModalAddProduct';
 // import ModalUpdateProduct from './Modals/ModalUpdateProduct';
@@ -232,27 +232,27 @@ const OrderMan = ({ open, setOpen }) => {
     //   ),
     // },
   ];
-  let widths = ['30%', '15%', '23%', '14%', '12%', '14%'];
-  let bdy = [
-    [
-      // 'No',
-      'Particulars',
-      'Vch No.',
-      'Vendor',
-      'Quantity',
-      'Price',
-      'Status',
-    ],
-    ...data.map((item, index) => [
-      // index + 1,
-      item.particular,
-      item.vchNo,
-      item.vendor,
-      item.quantity,
-      item.price,
-      item.status,
-    ]),
-  ];
+  // let widths = ['30%', '15%', '23%', '14%', '12%', '14%'];
+  // let bdy = [
+  //   [
+  //     // 'No',
+  //     'Particulars',
+  //     'Vch No.',
+  //     'Vendor',
+  //     'Quantity',
+  //     'Price',
+  //     'Status',
+  //   ],
+  //   ...data.map((item, index) => [
+  //     // index + 1,
+  //     item.particular,
+  //     item.vchNo,
+  //     item.vendor,
+  //     item.quantity,
+  //     item.price,
+  //     item.status,
+  //   ]),
+  // ];
   const rows = data.map((item, index) => ({
     id: item._id,
     no: index + 1,
@@ -300,7 +300,7 @@ const OrderMan = ({ open, setOpen }) => {
             </button>
 
             <ExcelData data={data} fileName='Order Management' />
-            <PdfData fileName='Order Management' bdy={bdy} wid={widths} />
+            {/* <PdfData fileName='Order Management' bdy={bdy} wid={widths} /> */}
           </div>
         )}
       </div>
@@ -326,7 +326,7 @@ const OrderMan = ({ open, setOpen }) => {
               onClick={() => setSub(true)}
             />
             <ExcelData data={data} fileName='Order Management' />
-            <PdfData fileName='Order Management' bdy={bdy} wid={widths} />
+            {/* <PdfData fileName='Order Management' bdy={bdy} wid={widths} /> */}
           </div>
         </div>
       )}

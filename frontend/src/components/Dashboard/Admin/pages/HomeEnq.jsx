@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 import { useEffect } from 'react';
 import axios from 'axios';
 import ExcelData from '../../ExcelData';
-import PdfData from '../../PdfData';
+// import PdfData from '../../PdfData';
 import { AiOutlineMenu } from 'react-icons/ai';
 // import ModalAddProduct from './Modals/ModalAddProduct';
 // import ModalUpdateProduct from './Modals/ModalUpdateProduct';
@@ -107,14 +107,14 @@ const HomeEnq = ({ open, setOpen }) => {
   const columns = [
     { field: 'no', headerName: 'Sr. No.', width: '60', sortable: false },
     { field: 'date', headerName: 'Date', width: '130' },
-    { field: 'name', headerName: 'Name', flex: 1 },
+    { field: 'name', headerName: 'Name', width: '150'  },
     {
       field: 'email',
       headerName: 'Email',
       // width: '300',
-      flex: 1,
+      flex: 1.5,
     },
-    { field: 'phone', headerName: 'Phone', flex: 1 },
+    { field: 'phone', headerName: 'Phone', width: '150'  },
     { field: 'subject', headerName: 'Subject', flex: 1 },
     { field: 'message', headerName: 'Message', flex: 1 },
 
@@ -127,26 +127,26 @@ const HomeEnq = ({ open, setOpen }) => {
     //   ),
     // },
   ];
-  let widths = ['10%', '15%', '24%', '16%', '16%', '19%'];
-  let bdy = [
-    [
-      'Date',
-      'Name',
-      'Email',
-      'Phone',
-      'Subject',
-      'Message',
-    ],
-    ...data.map((item, index) => [
-      // index + 1,
-      item.date,
-      item.name,
-      item.email,
-      item.phone,
-      item.subject,
-      item.message,
-    ]),
-  ];
+  // let widths = ['10%', '15%', '24%', '16%', '16%', '19%'];
+  // let bdy = [
+  //   [
+  //     'Date',
+  //     'Name',
+  //     'Email',
+  //     'Phone',
+  //     'Subject',
+  //     'Message',
+  //   ],
+  //   ...data.map((item, index) => [
+  //     // index + 1,
+  //     item.date,
+  //     item.name,
+  //     item.email,
+  //     item.phone,
+  //     item.subject,
+  //     item.message,
+  //   ]),
+  // ];
   const rows = data.map((item, index) => ({
     id: item._id,
     no: index + 1,
@@ -188,7 +188,7 @@ const HomeEnq = ({ open, setOpen }) => {
             </button> */}
 
             <ExcelData data={data} fileName='Homepage Enquiries' />
-            <PdfData fileName='Homepage Enquiries' bdy={bdy} wid={widths} />
+            {/* <PdfData fileName='Homepage Enquiries' bdy={bdy} wid={widths} /> */}
           </div>
         )}
       </div>
@@ -208,7 +208,7 @@ const HomeEnq = ({ open, setOpen }) => {
               onClick={() => setSub(true)}
             />
             <ExcelData data={data} fileName='Homepage Enquiries' />
-            <PdfData fileName='Homepage Enquiries' bdy={bdy} wid={widths} />
+            {/* <PdfData fileName='Homepage Enquiries' bdy={bdy} wid={widths} /> */}
           </div>
         </div>
       )}

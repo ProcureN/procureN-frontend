@@ -52,7 +52,7 @@ const Admin = () => {
           logo: [<AiOutlineShoppingCart />],
         },
         {
-          name: 'Home Enquiries',
+          name: 'Homepage Enquiries',
           logo: [<FaHandsHelping />],
         },
       ],
@@ -131,7 +131,7 @@ const Admin = () => {
         <div className='h-[80vh] lg:h-[90vh]     '>
           {selectedItem === 'Home Page' ? (
             <HomePage open={open} setOpen={setOpen} />
-          ) : selectedItem === 'Home Enquiries' ? (
+          ) : selectedItem === 'Homepage Enquiries' ? (
             <HomeEnq open={open} setOpen={setOpen} />
           ) : selectedItem === 'Order Management' ? (
             <OrderMan open={open} setOpen={setOpen} />

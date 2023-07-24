@@ -77,8 +77,8 @@ const ModalAddOrder = ({
         setSub(false);
         // console.error(error);
         if (
-          error.response.data.message !==
-          `Incorrect file type. Please upload a file named client.csv.`
+          error.response.data.message ===
+          `Invalid rows or duplicate entries found in document`
         ) {
           setErrorData(error.response.data.data);
           onClose();
@@ -435,7 +435,7 @@ const ModalAddOrder = ({
               type='file'
               name=''
               id=''
-              accept='.csv' // Set the accept attribute to only allow CSV files
+              accept=".csv, .xlsx" // Set the accept attribute to only allow CSV files
               className=' w-full rounded-xl border px-3 py-2 file:mr-2 file:rounded-full  file:border-0 file:bg-gray-100 file:px-6 file:py-3 file:text-sm file:font-semibold file:text-violet-500  file:shadow-md file:shadow-gray-400 hover:file:cursor-pointer focus:border-indigo-500  '
               onChange={handleFileChange}
             />
@@ -459,7 +459,7 @@ const ModalAddOrder = ({
             </div>
             {err === 2 && (
               <div className='mb-2 text-sm text-red-500'>
-                Incorrect file type. Please upload a file named "client.csv".
+                Incorrect file type. Please upload a filename contains text CLIENT
               </div>
             )}
             {/* {Object.keys(errorData).length > 0 && (
