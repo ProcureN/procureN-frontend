@@ -53,9 +53,17 @@ const Main = () => {
     }
   }, [formSub]);
 
+  const changcolor = () => {
+    if (window.scrollY >= 150) {
+      setShowMyModal(false);
+    }
+  };
+
+  window.addEventListener('scroll', changcolor);
+
   return (
     <div className='overflow-hidden'>
-      <Header2 setShowMyModal={setShowMyModal} />
+      <Header2  />
       <Hero2 setShowMyModal={setShowMyModal} />
       <About />
       <Services />
