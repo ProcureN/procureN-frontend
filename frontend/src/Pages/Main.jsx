@@ -11,8 +11,8 @@ import HowItWorks from '../components/HomepageComponents/HowItWorks';
 import Proposel from '../components/HomepageComponents/Proposel';
 import Services from '../components/HomepageComponents/Services';
 
-import ModalTrack from '../components/Dashboard/Admin/pages/Modals/ModalTrack';
-import Tracking from '../components/HomepageComponents/Tracking';
+// import ModalTrack from '../components/Dashboard/Admin/pages/Modals/ModalTrack';
+// import Tracking from '../components/HomepageComponents/Tracking';
 import Inventory from '../components/HomepageComponents/Inventory';
 
 // import Hero from '../components/HomepageComponents/Hero';
@@ -24,16 +24,16 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Main = () => {
   const [showMyModal, setShowMyModal] = useState(false);
-  const [showMyModal2, setShowMyModal2] = useState(false);
+  // const [showMyModal2, setShowMyModal2] = useState(false);
 
   const [formSub, setFormSub] = useState(false);
 
   const handleOnClose = () => setShowMyModal(false);
-  const handleOnClose2 = () => setShowMyModal2(false);
+  // const handleOnClose2 = () => setShowMyModal2(false);
 
   const notify = () =>
     toast.success(
-      'Form submitted successfully. Our team will contact you soon',
+      'Form submitted successfully.',
       {
         position: 'top-right',
         autoClose: 2000,
@@ -69,7 +69,7 @@ const Main = () => {
       <Services />
 
       {/* <Track setShowMyModal2={setShowMyModal2} /> */}
-      <Tracking setShowMyModal2={setShowMyModal2} />
+      {/* <Tracking setShowMyModal2={setShowMyModal2} /> */}
       <HowItWorks />
       <Inventory />
       <Frequently />
@@ -77,7 +77,7 @@ const Main = () => {
 
       <Footer />
       <ModalVideo onClose={handleOnClose} visible={showMyModal} />
-      <ModalTrack onClose={handleOnClose2} visible={showMyModal2} />
+      {/* <ModalTrack onClose={handleOnClose2} visible={showMyModal2} /> */}
       <ToastContainer />
     </div>
   );

@@ -20,10 +20,12 @@ const proposelSchema = Yup.object().shape({
     .matches(phoneRegExp, 'Invalid phone number')
     .required('Phone number is required*'),
   subject: Yup.string().required('Information is required*'),
+  company: Yup.string(),
   message: Yup.string(),
+  selectRole: Yup.string().required('required*'),
 });
 
-const Proposel = ({setFormSub}) => {
+const Proposel = ({ setFormSub }) => {
   useEffect(() => {
     AOS.init({ once: true });
   }, []);
@@ -31,7 +33,9 @@ const Proposel = ({setFormSub}) => {
     name: '',
     email: '',
     phone: '',
+    company: '',
     subject: '',
+    selectRole: '',
     message: '',
   };
   const [loading, setLoading] = useState(false);
@@ -60,7 +64,7 @@ const Proposel = ({setFormSub}) => {
       </div>
       <section className=' '>
         <div
-          className='container mx-auto flex flex-col justify-center  px-5 py-6 md:flex-row'
+          className='container mx-auto flex flex-col justify-center  px-5 py-6 lg:flex-row'
           data-aos='fade-right'
           data-aos-delay='0'
           data-aos-duration='1000'
@@ -69,7 +73,7 @@ const Proposel = ({setFormSub}) => {
             data-aos='fade-right'
             data-aos-delay='0'
             data-aos-duration='1000'
-            className=' flex flex-col   overflow-hidden md:w-1/2  '
+            className=' flex flex-col   overflow-hidden lg:w-1/2  '
           >
             <img src={deal} className='h-[90%]  ' alt='' srcSet='' />
           </div>
@@ -78,7 +82,7 @@ const Proposel = ({setFormSub}) => {
             data-aos='fade-left'
             data-aos-delay='0'
             data-aos-duration='1000'
-            className=' flex flex-col md:w-1/2   '
+            className=' flex flex-col lg:w-1/2   '
           >
             <Formik
               initialValues={initialValues}
@@ -94,7 +98,7 @@ const Proposel = ({setFormSub}) => {
                     if (response.data.status === true) {
                       setLoading(false);
                       // setSubmit(true);
-                      setFormSub(true)
+                      setFormSub(true);
                       resetForm({ values: initialValues });
                     } else {
                       setError(error.message);
@@ -122,7 +126,7 @@ const Proposel = ({setFormSub}) => {
                     <div className='flex '>
                       <label
                         htmlFor='name'
-                        className='text-md my-auto pr-8 text-[#5c67f5] '
+                        className='my-auto pr-10   text-sm text-[#5c67f5] md:text-lg '
                       >
                         Name:
                       </label>
@@ -147,7 +151,7 @@ const Proposel = ({setFormSub}) => {
                     <div className='flex'>
                       <label
                         htmlFor='email'
-                        className='text-md my-auto pr-9 text-[#5c67f5] '
+                        className='my-auto pr-11   text-sm text-[#5c67f5] md:text-lg '
                       >
                         Email:
                       </label>
@@ -172,7 +176,7 @@ const Proposel = ({setFormSub}) => {
                     <div className='flex'>
                       <label
                         htmlFor='phone'
-                        className='text-md my-auto pr-4  text-[#5c67f5]'
+                        className='my-auto pr-5   text-sm text-[#5c67f5]  md:text-lg'
                       >
                         Contact:
                       </label>
@@ -196,8 +200,85 @@ const Proposel = ({setFormSub}) => {
                   <div className=' mb-4'>
                     <div className='flex'>
                       <label
+                        htmlFor='company'
+                        className='my-auto pr-1   text-sm text-[#5c67f5] md:text-lg'
+                      >
+                        Company:
+                      </label>
+                      <div className='w-full'>
+                        <Field
+                          type='text'
+                          id='company'
+                          name='company'
+                          placeholder='Enter your contact number '
+                          required
+                          className='placeholder:text-md w-full rounded-md border-b border-l-4 border-b-gray-500 border-l-[#5c67f5] bg-white px-3 py-1  leading-8 placeholder-gray-300 shadow-md outline-none'
+                        />
+                        <ErrorMessage
+                          name='company'
+                          component='div'
+                          className='px-3 text-sm text-red-700 '
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className=' mb-4'>
+                    <div className='flex'>
+                      <label
+                        htmlFor='selectRole'
+                        className='my-auto pr-1   text-sm text-[#5c67f5] md:text-lg'
+                      >
+                        Role:
+                      </label>
+                      {/* <div className='w-full'>
+                        <Field
+                          type='text'
+                          id='selectRole'
+                          name='selectRole'
+                          placeholder='Enter your contact number '
+                          required
+                          className='placeholder:text-md w-full rounded-md border-b border-l-4 border-b-gray-500 border-l-[#5c67f5] bg-white px-3 py-1  leading-8 placeholder-gray-300 shadow-md outline-none'
+                        />
+                        <ErrorMessage
+                          name='selectRole'
+                          component='div'
+                          className='px-3 text-sm text-red-700 '
+                        />
+                      </div> */}
+                      <div className='flex items-center text-[#5c67f5] w-full justify-around'>
+                        <label className='mr-2 '>
+                          <Field
+                            type='radio'
+                            name='selectRole'
+                            value='Client'
+                            required
+                            className='mr-1'
+                          />
+                          Client
+                        </label>
+                        <label>
+                          <Field
+                            type='radio'
+                            name='selectRole'
+                            value='Vendor'
+                            required
+                            className='mr-1'
+                          />
+                          Vendor
+                        </label>
+                      </div>
+                      <ErrorMessage
+                          name='selectRole'
+                          component='div'
+                          className='px-3 text-sm text-red-700 '
+                        />
+                    </div>
+                  </div>
+                  <div className=' mb-4'>
+                    <div className='flex'>
+                      <label
                         htmlFor='subject'
-                        className='text-md my-auto pr-5 text-[#5c67f5] '
+                        className='my-auto pr-6   text-sm text-[#5c67f5] md:text-lg '
                       >
                         Subject:
                       </label>
@@ -221,7 +302,7 @@ const Proposel = ({setFormSub}) => {
                   <div className=' mb-4 flex '>
                     <label
                       htmlFor='message'
-                      className='text-md my-auto mr-2 text-[#5c67f5]  '
+                      className='my-auto mr-3.5   text-sm text-[#5c67f5] md:text-lg  '
                     >
                       Message:
                     </label>

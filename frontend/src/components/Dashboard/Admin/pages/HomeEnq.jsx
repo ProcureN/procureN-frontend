@@ -10,7 +10,8 @@ import { AiOutlineMenu } from 'react-icons/ai';
 // import ModalUpdateProduct from './Modals/ModalUpdateProduct';
 
 import { BiRefresh } from 'react-icons/bi';
-
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -101,22 +102,88 @@ const HomeEnq = ({ open, setOpen }) => {
   //   setShowMyModal(true);
   // };
 
- 
+  const handleStatusChange = (row, newStatus) => {
+    // const updatedRow = { ...row, status: newStatus };
+    // Send the updated status to the backend using Axios call
+
+    // .put(`/your-endpoint/${updatedRow.id}`, updatedRow)
+    const token = localStorage.getItem('token');
+    setSub(true);
+    // console.log(updatedRow.id);
+    axios
+      .put(
+        `https://procuren-backend.onrender.com/updateVendor/${row.id}`,
+        // `http://localhost:3001/updateclient/${row.id}`,
+        { status: newStatus },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+      .then((response) => {
+        // Handle the response from the backend
+        console.log(response);
+        // Set the sub state to trigger a data reload
+        // setSub(true);
+      })
+      .catch((error) => {
+        // Handle errors
+        console.error(error);
+      });
+  };
+
+  const statusOptions = ['Pending', 'Approved', 'Rejected'];
+
  
 
   const columns = [
-    { field: 'no', headerName: 'Sr. No.', width: '60', sortable: false },
-    { field: 'date', headerName: 'Date', width: '130' },
-    { field: 'name', headerName: 'Name', width: '150'  },
+    // { field: 'no', headerName: 'Sr. No.', width: '60', sortable: false },
+    { field: 'time', headerName: 'Time',  },
+    { field: 'date', headerName: 'Date',  },
+    { field: 'name', headerName: 'Name',   },
     {
       field: 'email',
       headerName: 'Email',
       // width: '300',
-      flex: 1.5,
+      // flex: 1.5,
+      flex:1
     },
-    { field: 'phone', headerName: 'Phone', width: '150'  },
-    { field: 'subject', headerName: 'Subject', flex: 1 },
-    { field: 'message', headerName: 'Message', flex: 1 },
+    { field: 'phone', headerName: 'Phone',width:'150'   },
+    { field: 'company', headerName: 'Company',flex:1 },
+    { field: 'subject', headerName: 'Subject',flex:1 },
+    { field: 'selectRole', headerName: 'Role' },
+    { field: 'message', headerName: 'Message' },
+    {
+      field: 'status',
+      headerName: 'Status',
+      renderCell: (params) => (
+        <Select
+          value={params.row.status}
+          onChange={(e) => handleStatusChange(params.row, e.target.value)}
+          style={{
+            backgroundColor:
+              params.row.status === 'Pending'
+                ? '#f5d889'
+                : params.row.status === 'Approved'
+                ? '#8db598'
+                : '#eb8888',
+            // color: 'black',
+            fontSize: '0.7rem',
+            width:"5.5rem",
+            height:"2rem",
+            marginLeft:"-.25rem"
+            // marginTop: '10px',
+            // marginBottom: '10px',
+            // border:"0px"
+          }}
+        >
+          {statusOptions.map((option) => (
+            <MenuItem key={option} value={option}>
+              {option}
+            </MenuItem>
+          ))}
+        </Select>
+      ),
+    },
 
     // {
     //   field: 'edit',

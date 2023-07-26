@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import { Box } from '@mui/material';
 import { useEffect } from 'react';
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
+// import Select from '@mui/material/Select';
+// import MenuItem from '@mui/material/MenuItem';
 
 import axios from 'axios';
 import ExcelData from '../../ExcelData';
@@ -146,36 +146,36 @@ const OrderMan = ({ open, setOpen }) => {
   //   setShowMyModal(true);
   // };
 
-  const handleStatusChange = (row, newStatus) => {
-    // const updatedRow = { ...row, status: newStatus };
-    // Send the updated status to the backend using Axios call
+  // const handleStatusChange = (row, newStatus) => {
+  //   // const updatedRow = { ...row, status: newStatus };
+  //   // Send the updated status to the backend using Axios call
 
-    // .put(`/your-endpoint/${updatedRow.id}`, updatedRow)
-    const token = localStorage.getItem('token');
-    setSub(true);
-    // console.log(updatedRow.id);
-    axios
-      .put(
-        `https://procuren-backend.onrender.com/updateclient/${row.id}`,
-        // `http://localhost:3001/updateclient/${row.id}`,
-        { status: newStatus },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      )
-      .then((response) => {
-        // Handle the response from the backend
-        console.log(response);
-        // Set the sub state to trigger a data reload
-        // setSub(true);
-      })
-      .catch((error) => {
-        // Handle errors
-        console.error(error);
-      });
-  };
+  //   // .put(`/your-endpoint/${updatedRow.id}`, updatedRow)
+  //   const token = localStorage.getItem('token');
+  //   setSub(true);
+  //   // console.log(updatedRow.id);
+  //   axios
+  //     .put(
+  //       `https://procuren-backend.onrender.com/updateclient/${row.id}`,
+  //       // `http://localhost:3001/updateclient/${row.id}`,
+  //       { status: newStatus },
+  //       {
+  //         headers: { Authorization: `Bearer ${token}` },
+  //       }
+  //     )
+  //     .then((response) => {
+  //       // Handle the response from the backend
+  //       console.log(response);
+  //       // Set the sub state to trigger a data reload
+  //       // setSub(true);
+  //     })
+  //     .catch((error) => {
+  //       // Handle errors
+  //       console.error(error);
+  //     });
+  // };
 
-  const statusOptions = ['Pending', 'Approved', 'Rejected'];
+  // const statusOptions = ['Pending', 'Approved', 'Rejected'];
 
   const columns = [
     { field: 'no', headerName: 'Sr. No.', width: '60',sortable: false },
@@ -190,38 +190,38 @@ const OrderMan = ({ open, setOpen }) => {
     { field: 'vendor', headerName: 'Vendor', width: '300' },
     { field: 'quantity', headerName: 'Quantity' },
     { field: 'price', headerName: 'Price' },
-    {
-      field: 'status',
-      headerName: 'Status',
-      renderCell: (params) => (
-        <Select
-          value={params.row.status}
-          onChange={(e) => handleStatusChange(params.row, e.target.value)}
-          style={{
-            backgroundColor:
-              params.row.status === 'Pending'
-                ? '#f5d889'
-                : params.row.status === 'Approved'
-                ? '#8db598'
-                : '#eb8888',
-            // color: 'black',
-            fontSize: '0.7rem',
-            width:"5.5rem",
-            height:"2rem",
-            marginLeft:"-.25rem"
+    // {
+    //   field: 'status',
+    //   headerName: 'Status',
+    //   renderCell: (params) => (
+    //     <Select
+    //       value={params.row.status}
+    //       onChange={(e) => handleStatusChange(params.row, e.target.value)}
+    //       style={{
+    //         backgroundColor:
+    //           params.row.status === 'Pending'
+    //             ? '#f5d889'
+    //             : params.row.status === 'Approved'
+    //             ? '#8db598'
+    //             : '#eb8888',
+    //         // color: 'black',
+    //         fontSize: '0.7rem',
+    //         width:"5.5rem",
+    //         height:"2rem",
+    //         marginLeft:"-.25rem"
 
-            // marginBottom: '10px',
-            // border:"0px"
-          }}
-        >
-          {statusOptions.map((option) => (
-            <MenuItem key={option} value={option} style={{ borderRadius: '2' }}>
-              {option}
-            </MenuItem>
-          ))}
-        </Select>
-      ),
-    },
+    //         // marginBottom: '10px',
+    //         // border:"0px"
+    //       }}
+    //     >
+    //       {statusOptions.map((option) => (
+    //         <MenuItem key={option} value={option} style={{ borderRadius: '2' }}>
+    //           {option}
+    //         </MenuItem>
+    //       ))}
+    //     </Select>
+    //   ),
+    // },
 
     // {
     //   field: 'edit',
