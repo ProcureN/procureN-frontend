@@ -136,8 +136,8 @@ const HomeEnq = ({ open, setOpen }) => {
 
   const columns = [
     // { field: 'no', headerName: 'Sr. No.', width: '60', sortable: false },
+    { field: 'date', headerName: 'Date',width: '110' },
     { field: 'time', headerName: 'Time' },
-    { field: 'date', headerName: 'Date' },
     { field: 'name', headerName: 'Name' },
     {
       field: 'email',
@@ -146,7 +146,7 @@ const HomeEnq = ({ open, setOpen }) => {
       // flex: 1.5,
       flex: 1.5,
     },
-    { field: 'phone', headerName: 'Phone', width: '150' },
+    { field: 'phone', headerName: 'Phone', width: '120' },
     { field: 'company', headerName: 'Company', flex: 1 },
     { field: 'subject', headerName: 'Subject', flex: 1 },
     { field: 'selectRole', headerName: 'Role' },
