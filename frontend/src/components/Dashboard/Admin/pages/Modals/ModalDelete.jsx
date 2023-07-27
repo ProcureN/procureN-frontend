@@ -46,6 +46,14 @@ const ModalDelete = ({ visible, onClose, Values, setSub, deletePopup }) => {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
+      } else if (deletePopup === 'hompageEnquiry') {
+        await axios.delete(
+          `https://procuren-backend.onrender.com/deleteContactForm/${Values._id}`,
+          // `http://localhost:3001/deletecostumer/${id}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
       }
       setLoading(false);
       setSub(true);
@@ -72,7 +80,7 @@ const ModalDelete = ({ visible, onClose, Values, setSub, deletePopup }) => {
           undone.
         </span> */}
 
-        <div className='flex justify-around'>
+        <div className='flex justify-around items-center'>
           <button
             onClick={handleDelete}
             className='mb-2 mt-6 rounded-full border bg-red-500  px-8    py-1  font-sans text-lg text-white shadow-lg duration-500 hover:bg-red-700     '

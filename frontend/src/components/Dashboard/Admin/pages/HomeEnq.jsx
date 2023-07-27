@@ -16,6 +16,7 @@ import MenuItem from '@mui/material/MenuItem';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import SortIcon from '@mui/icons-material/Sort';
+import ModalDelete from './Modals/ModalDelete';
 
 export function SortedDescendingIcon() {
   return <ExpandMoreIcon className='icon' />;
@@ -33,10 +34,10 @@ const HomeEnq = ({ open, setOpen }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
-  // const [showMyModal, setShowMyModal] = useState(false);
+  const [showMyModal2, setShowMyModal2] = useState(false);
 
   const [sub, setSub] = useState(false);
-  // const [val, setVal] = useState({});
+  const [val, setVal] = useState({});
 
   useEffect(() => {
     async function fetchData() {
@@ -98,32 +99,8 @@ const HomeEnq = ({ open, setOpen }) => {
   //   },
   // ];
   const handleEdit = (row) => {
-    // const updatedRow = { ...row, status: newStatus };
-    // Send the updated status to the backend using Axios call
-
-    // .put(`/your-endpoint/${updatedRow.id}`, updatedRow)
-    const token = localStorage.getItem('token');
-    setSub(true);
-    // console.log(updatedRow.id);
-    axios
-      .delete(
-        `https://procuren-backend.onrender.com/deleteContactForm/${row.id}`,
-        // `http://localhost:3001/updateclient/${row.id}`,
-        
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      )
-      .then((response) => {
-        // Handle the response from the backend
-        console.log(response);
-        // Set the sub state to trigger a data reload
-        // setSub(true);
-      })
-      .catch((error) => {
-        // Handle errors
-        console.error(error);
-      });
+    setVal(row);
+    setShowMyModal2(true);
   };
 
   const handleStatusChange = (row, newStatus) => {
@@ -157,23 +134,21 @@ const HomeEnq = ({ open, setOpen }) => {
 
   const statusOptions = ['Pending', 'Approved', 'Rejected'];
 
- 
-
   const columns = [
     // { field: 'no', headerName: 'Sr. No.', width: '60', sortable: false },
-    { field: 'time', headerName: 'Time',  },
-    { field: 'date', headerName: 'Date',  },
-    { field: 'name', headerName: 'Name',   },
+    { field: 'time', headerName: 'Time' },
+    { field: 'date', headerName: 'Date' },
+    { field: 'name', headerName: 'Name' },
     {
       field: 'email',
       headerName: 'Email',
       // width: '300',
       // flex: 1.5,
-      flex:1.5
+      flex: 1.5,
     },
-    { field: 'phone', headerName: 'Phone',width:'150'   },
-    { field: 'company', headerName: 'Company',flex:1 },
-    { field: 'subject', headerName: 'Subject',flex:1 },
+    { field: 'phone', headerName: 'Phone', width: '150' },
+    { field: 'company', headerName: 'Company', flex: 1 },
+    { field: 'subject', headerName: 'Subject', flex: 1 },
     { field: 'selectRole', headerName: 'Role' },
     { field: 'message', headerName: 'Message' },
     {
@@ -192,9 +167,9 @@ const HomeEnq = ({ open, setOpen }) => {
                 : '#eb8888',
             // color: 'black',
             fontSize: '0.7rem',
-            width:"5.5rem",
-            height:"2rem",
-            marginLeft:"-.25rem"
+            width: '5.5rem',
+            height: '2rem',
+            marginLeft: '-.25rem',
             // marginTop: '10px',
             // marginBottom: '10px',
             // border:"0px"
@@ -211,11 +186,13 @@ const HomeEnq = ({ open, setOpen }) => {
 
     {
       field: 'delete',
-      width:'10' ,
-      headerName: <AiFillDelete className='text-lg'/>,
+      width: '10',
+      headerName: <AiFillDelete className='text-lg' />,
       sortable: false,
       renderCell: (params) => (
-        <button onClick={() => handleEdit(params.row)}><AiFillDelete className='text-lg'/></button>
+        <button onClick={() => handleEdit(params.row)}>
+          <AiFillDelete className='text-lg' />
+        </button>
       ),
     },
   ];
@@ -246,7 +223,7 @@ const HomeEnq = ({ open, setOpen }) => {
   }));
 
   // const handleOnClose = () => setShowMyModal(false);
-  // const handleOnClose2 = () => setShowMyModal2(false);
+  const handleOnClose2 = () => setShowMyModal2(false);
 
   // const handleOpen = () => {
   //   setShowMyModal2(true);
@@ -269,7 +246,7 @@ const HomeEnq = ({ open, setOpen }) => {
         {data.length > 0 && (
           <div className='hidden items-center pr-2 md:visible md:flex'>
             <BiRefresh
-              className='cursor-pointer mr-3 text-4xl text-[#5c67f5] hover:rotate-180 duration-500'
+              className='mr-3 cursor-pointer text-4xl text-[#5c67f5] duration-500 hover:rotate-180'
               onClick={() => setSub(true)}
             />
             {/* <button
@@ -296,7 +273,7 @@ const HomeEnq = ({ open, setOpen }) => {
           </div>
           <div className='flex'>
             <BiRefresh
-              className='mx-4 cursor-pointer text-3xl hover:rotate-180 duration-500'
+              className='mx-4 cursor-pointer text-3xl duration-500 hover:rotate-180'
               onClick={() => setSub(true)}
             />
             <ExcelData data={data} fileName='Homepage Enquiries' />
@@ -316,7 +293,7 @@ const HomeEnq = ({ open, setOpen }) => {
               border: '0.1px solid', // Add the border style for the cell
               borderColor: 'lightgray', // Set the color of the border
               paddingBottom: '5px',
-              paddingTop:"5px"
+              paddingTop: '5px',
             },
             '& .name-column--cell': {
               // color: colors.greenAccent[300],
@@ -380,6 +357,14 @@ const HomeEnq = ({ open, setOpen }) => {
         initialValues={val}
         setSub={setSub}
       /> */}
+
+      <ModalDelete
+        onClose={handleOnClose2}
+        visible={showMyModal2}
+        Values={val}
+        setSub={setSub}
+        deletePopup='hompageEnquiry'
+      />
     </>
   );
 };
