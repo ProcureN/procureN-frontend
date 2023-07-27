@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import ExcelData from '../../ExcelData';
 // import PdfData from '../../PdfData';
-import { AiOutlineMenu } from 'react-icons/ai';
+import { AiFillDelete, AiOutlineMenu } from 'react-icons/ai';
 // import ModalAddProduct from './Modals/ModalAddProduct';
 // import ModalUpdateProduct from './Modals/ModalUpdateProduct';
 
@@ -43,7 +43,7 @@ const HomeEnq = ({ open, setOpen }) => {
       try {
         setLoading(true);
         const res = await axios.get(
-          'https://procuren-backend.onrender.com/getcontactform/1/1000'
+          'https://procuren-backend.onrender.com/getcontactform'
         );
         // console.log(res);
         setData(res.data.data);
@@ -97,10 +97,34 @@ const HomeEnq = ({ open, setOpen }) => {
   //     // flex: 1,
   //   },
   // ];
-  // const handleEdit = (x) => {
-  //   setVal(x);
-  //   setShowMyModal(true);
-  // };
+  const handleEdit = (row) => {
+    // const updatedRow = { ...row, status: newStatus };
+    // Send the updated status to the backend using Axios call
+
+    // .put(`/your-endpoint/${updatedRow.id}`, updatedRow)
+    const token = localStorage.getItem('token');
+    setSub(true);
+    // console.log(updatedRow.id);
+    axios
+      .delete(
+        `https://procuren-backend.onrender.com/deleteContactForm/${row.id}`,
+        // `http://localhost:3001/updateclient/${row.id}`,
+        
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+      .then((response) => {
+        // Handle the response from the backend
+        console.log(response);
+        // Set the sub state to trigger a data reload
+        // setSub(true);
+      })
+      .catch((error) => {
+        // Handle errors
+        console.error(error);
+      });
+  };
 
   const handleStatusChange = (row, newStatus) => {
     // const updatedRow = { ...row, status: newStatus };
@@ -112,7 +136,7 @@ const HomeEnq = ({ open, setOpen }) => {
     // console.log(updatedRow.id);
     axios
       .put(
-        `https://procuren-backend.onrender.com/updateVendor/${row.id}`,
+        `https://procuren-backend.onrender.com/updateContactUs/${row.id}`,
         // `http://localhost:3001/updateclient/${row.id}`,
         { status: newStatus },
         {
@@ -145,7 +169,7 @@ const HomeEnq = ({ open, setOpen }) => {
       headerName: 'Email',
       // width: '300',
       // flex: 1.5,
-      flex:1
+      flex:1.5
     },
     { field: 'phone', headerName: 'Phone',width:'150'   },
     { field: 'company', headerName: 'Company',flex:1 },
@@ -185,14 +209,15 @@ const HomeEnq = ({ open, setOpen }) => {
       ),
     },
 
-    // {
-    //   field: 'edit',
-    //   headerName: 'Edit',
-
-    //   renderCell: (params) => (
-    //     <button onClick={() => handleEdit(params.row)}>Edit</button>
-    //   ),
-    // },
+    {
+      field: 'delete',
+      width:'10' ,
+      headerName: <AiFillDelete className='text-lg'/>,
+      sortable: false,
+      renderCell: (params) => (
+        <button onClick={() => handleEdit(params.row)}><AiFillDelete className='text-lg'/></button>
+      ),
+    },
   ];
   // let widths = ['10%', '15%', '24%', '16%', '16%', '19%'];
   // let bdy = [
