@@ -49,10 +49,13 @@ const OrderMan = ({ open, setOpen }) => {
 
   useEffect(() => {
     async function fetchData() {
+      const token = localStorage.getItem('token');
       try {
         setLoading(true);
         const res = await axios.get(
-          'https://procuren-backend.onrender.com/getclient'
+          'https://procuren-backend.onrender.com/getclient',{
+            headers: { Authorization: `Bearer ${token}` },
+          }
         );
         // console.log(res);
         setData(res.data.data);

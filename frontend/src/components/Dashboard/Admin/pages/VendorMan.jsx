@@ -32,10 +32,14 @@ const VendorMan = ({ open, setOpen }) => {
 
   useEffect(() => {
     async function fetchData() {
+      const token = localStorage.getItem('token');
       try {
         setLoading(true);
         const res = await axios.get(
-          'https://procuren-backend.onrender.com/getVendor'
+          'https://procuren-backend.onrender.com/getVendor',
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
         );
         // console.log(res);
         setData(res.data.data);
