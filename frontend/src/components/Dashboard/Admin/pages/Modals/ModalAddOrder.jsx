@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
@@ -40,12 +40,9 @@ const ModalAddOrder = ({
   const [loading, setLoading] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [next, setNext] = useState(true);
-  const [customerID, setCustomerID] = useState('');
+
   const [err, setErr] = useState(0);
 
-  useEffect(() => {
-    setCustomerID(localStorage.getItem('customerID'));
-  }, []);
 
   // useEffect(() => {
   //   console.log(errorData);
@@ -170,12 +167,13 @@ const ModalAddOrder = ({
             validationSchema={productSchema}
             onSubmit={(values, { setSubmitting, resetForm }) => {
               const token = localStorage.getItem('token');
+              const userID = localStorage.getItem('userID')
               setLoading(true);
               axios
                 .post(
                   `https://procuren-backend.onrender.com/client`,
                   // `http://localhost:3001/client`,
-                  { ...values, userID: customerID },
+                  { ...values, userID:  userID},
                   {
                     headers: { Authorization: `Bearer ${token}` },
                   }
