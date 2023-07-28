@@ -5,9 +5,9 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import ExcelData from '../../ExcelData';
 // import PdfData from '../../PdfData';
-import { AiFillDelete, AiOutlineMenu } from 'react-icons/ai';
+import {  AiOutlineMenu } from 'react-icons/ai';
+import {  FiEdit2 } from 'react-icons/fi';
 // import ModalAddProduct from './Modals/ModalAddProduct';
-// import ModalUpdateProduct from './Modals/ModalUpdateProduct';
 
 import { BiRefresh } from 'react-icons/bi';
 import Select from '@mui/material/Select';
@@ -16,7 +16,7 @@ import MenuItem from '@mui/material/MenuItem';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import SortIcon from '@mui/icons-material/Sort';
-import ModalDelete from './Modals/ModalDelete';
+import MUHomeEnq from './Modals/MUHomeEnq';
 
 export function SortedDescendingIcon() {
   return <ExpandMoreIcon className='icon' />;
@@ -34,7 +34,7 @@ const HomeEnq = ({ open, setOpen }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
-  const [showMyModal2, setShowMyModal2] = useState(false);
+  const [showMyModal, setShowMyModal] = useState(false);
 
   const [sub, setSub] = useState(false);
   const [val, setVal] = useState({});
@@ -42,9 +42,16 @@ const HomeEnq = ({ open, setOpen }) => {
   useEffect(() => {
     async function fetchData() {
       try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          window.location.href = '/login';
+          return;
+        }
         setLoading(true);
         const res = await axios.get(
-          'https://procuren-backend.onrender.com/getcontactform'
+          'https://procuren-backend.onrender.com/getcontactform', {
+            headers: { Authorization: `Bearer ${token}` },
+          }
         );
         // console.log(res);
         setData(res.data.data);
@@ -98,10 +105,16 @@ const HomeEnq = ({ open, setOpen }) => {
   //     // flex: 1,
   //   },
   // ];
+
   const handleEdit = (row) => {
     setVal(row);
-    setShowMyModal2(true);
+    setShowMyModal(true);
   };
+
+  // const handleEdit2 = (row) => {
+  //   setVal(row);
+  //   setShowMyModal2(true);
+  // };
 
   const handleStatusChange = (row, newStatus) => {
     // const updatedRow = { ...row, status: newStatus };
@@ -109,11 +122,13 @@ const HomeEnq = ({ open, setOpen }) => {
 
     // .put(`/your-endpoint/${updatedRow.id}`, updatedRow)
     const token = localStorage.getItem('token');
+    const userID = localStorage.getItem("userID")
+
     setSub(true);
     // console.log(updatedRow.id);
     axios
       .put(
-        `https://procuren-backend.onrender.com/updateContactUs/${row.id}`,
+        `https://procuren-backend.onrender.com/updateContactUs/${row.id}/${userID}`,
         // `http://localhost:3001/updateclient/${row.id}`,
         { status: newStatus },
         {
@@ -185,13 +200,13 @@ const HomeEnq = ({ open, setOpen }) => {
     },
 
     {
-      field: 'delete',
+      field: 'edit',
       width: '10',
-      headerName: <AiFillDelete className='text-lg' />,
+      headerName: "Edit",
       sortable: false,
       renderCell: (params) => (
         <button onClick={() => handleEdit(params.row)}>
-          <AiFillDelete className='text-lg' />
+          <FiEdit2 className='text-lg' />
         </button>
       ),
     },
@@ -222,8 +237,8 @@ const HomeEnq = ({ open, setOpen }) => {
     ...item,
   }));
 
-  // const handleOnClose = () => setShowMyModal(false);
-  const handleOnClose2 = () => setShowMyModal2(false);
+  const handleOnClose = () => setShowMyModal(false);
+  // const handleOnClose2 = () => setShowMyModal2(false);
 
   // const handleOpen = () => {
   //   setShowMyModal2(true);
@@ -336,35 +351,21 @@ const HomeEnq = ({ open, setOpen }) => {
           )}
         </Box>
       </div>
-      {/* <ModalAddOrder
-        onClose={handleOnClose2}
-        visible={showMyModal2}
-        setSub={setSub}
-        setErrorData={setErrorData}
-        errorData={errorData}
-        setDocAdded={setDocAdded}
-      />
-
-      <ModalDuplicates
-        onClose={handleOnClose}
-        visible={showMyModal}
-        data={errorData}
-      /> */}
-
-      {/* <ModalUpdateProduct
+ 
+      <MUHomeEnq
         onClose={handleOnClose}
         visible={showMyModal}
         initialValues={val}
         setSub={setSub}
-      /> */}
+      />
 
-      <ModalDelete
+      {/* <ModalDelete
         onClose={handleOnClose2}
         visible={showMyModal2}
         Values={val}
         setSub={setSub}
         deletePopup='hompageEnquiry'
-      />
+      /> */}
     </>
   );
 };

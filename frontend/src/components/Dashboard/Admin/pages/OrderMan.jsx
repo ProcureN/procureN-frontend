@@ -18,42 +18,36 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ModalDuplicates from './Modals/ModalDuplicates';
 
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import SortIcon from '@mui/icons-material/Sort';
+import { FiEdit2 } from 'react-icons/fi';
+import MUOrderMan from './Modals/MUOrderMan';
 
 
-export function SortedDescendingIcon() {
-  return <ExpandMoreIcon className="icon" />;
-}
-
-export function SortedAscendingIcon() {
-  return <ExpandLessIcon className="icon" />;
-}
-
-export function UnsortedIcon() {
-  return <SortIcon className="icon" />;
-}
 
 const OrderMan = ({ open, setOpen }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
-  const [showMyModal2, setShowMyModal2] = useState(false);
   const [showMyModal, setShowMyModal] = useState(false);
+  const [showMyModal2, setShowMyModal2] = useState(false);
+  const [showMyModal3, setShowMyModal3] = useState(false);
   const [errorData, setErrorData] = useState({});
   const [docAdded, setDocAdded] = useState(false);
 
   const [sub, setSub] = useState(false);
-  // const [val, setVal] = useState({});
+  const [val, setVal] = useState({});
 
   useEffect(() => {
     async function fetchData() {
       const token = localStorage.getItem('token');
+      if (!token) {
+        window.location.href = '/login';
+        return;
+      }
       try {
         setLoading(true);
         const res = await axios.get(
-          'https://procuren-backend.onrender.com/getclient',{
+          'https://procuren-backend.onrender.com/getclient',
+          {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
@@ -180,8 +174,13 @@ const OrderMan = ({ open, setOpen }) => {
 
   // const statusOptions = ['Pending', 'Approved', 'Rejected'];
 
+  const handleEdit = (row) => {
+    setVal(row);
+    setShowMyModal3(true);
+  };
+
   const columns = [
-    { field: 'no', headerName: 'Sr. No.', width: '60',sortable: false },
+    { field: 'no', headerName: 'Sr. No.', width: '60', sortable: false },
     { field: 'date', headerName: 'Date', width: '130' },
     {
       field: 'particular',
@@ -193,6 +192,17 @@ const OrderMan = ({ open, setOpen }) => {
     { field: 'vendor', headerName: 'Vendor', width: '300' },
     { field: 'quantity', headerName: 'Quantity' },
     { field: 'price', headerName: 'Price' },
+    {
+      field: 'edit',
+      width: '10',
+      headerName: 'Edit',
+      sortable: false,
+      renderCell: (params) => (
+        <button onClick={() => handleEdit(params.row)}>
+          <FiEdit2 className='text-lg' />
+        </button>
+      ),
+    },
     // {
     //   field: 'status',
     //   headerName: 'Status',
@@ -264,6 +274,7 @@ const OrderMan = ({ open, setOpen }) => {
 
   const handleOnClose = () => setShowMyModal(false);
   const handleOnClose2 = () => setShowMyModal2(false);
+  const handleOnClose3 = () => setShowMyModal3(false);
 
   const handleOpen = () => {
     setShowMyModal2(true);
@@ -292,7 +303,7 @@ const OrderMan = ({ open, setOpen }) => {
               />
             )}
             <BiRefresh
-              className='cursor-pointer text-4xl text-[#5c67f5] hover:rotate-180 duration-500'
+              className='cursor-pointer text-4xl text-[#5c67f5] duration-500 hover:rotate-180'
               onClick={() => setSub(true)}
             />
             <button
@@ -325,7 +336,7 @@ const OrderMan = ({ open, setOpen }) => {
           </div>
           <div className='flex'>
             <BiRefresh
-              className='mx-2 cursor-pointer text-3xl hover:rotate-180 duration-500'
+              className='mx-2 cursor-pointer text-3xl duration-500 hover:rotate-180'
               onClick={() => setSub(true)}
             />
             <ExcelData data={data} fileName='Order Management' />
@@ -393,6 +404,13 @@ const OrderMan = ({ open, setOpen }) => {
         setErrorData={setErrorData}
         errorData={errorData}
         setDocAdded={setDocAdded}
+      />
+
+      <MUOrderMan
+        onClose={handleOnClose3}
+        visible={showMyModal3}
+        initialValues={val}
+        setSub={setSub}
       />
 
       <ModalDuplicates

@@ -306,7 +306,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 
-const priceRegex = /^(\d*([.,](?=\d{3}))?\d+)+((?!\2)[.,]\d\d)?$/
+const priceRegex = /^(\d*([.,](?=\d{3}))?\d+)+((?!\2)[.,]\d\d)?$/;
 
 const productSchema = Yup.object().shape({
   particular: Yup.string().required('Information is required*'),
@@ -640,6 +640,12 @@ const ModalAddVendor = ({
                 </div>
                 <div className='flex justify-around gap-4'>
                   <button
+                    onClick={onClose}
+                    className=' mt-6  flex  w-1/3   justify-center rounded-lg border px-4 py-2  font-sans  text-lg font-semibold tracking-wide hover:border-red-600'
+                  >
+                    Cancel
+                  </button>
+                  <button
                     type='submit'
                     disabled={isSubmitting}
                     className={`mt-6 flex w-full justify-center rounded-lg bg-gradient-to-tr from-blue-600  to-[#cb67ac] py-2 font-sans   text-xl tracking-wide text-white shadow-xl shadow-indigo-200 ${
@@ -648,12 +654,6 @@ const ModalAddVendor = ({
                   >
                     {' '}
                     {loading ? 'Adding' : 'Add Order'}
-                  </button>
-                  <button
-                    onClick={onClose}
-                    className=' mt-6  flex  w-1/3   justify-center rounded-lg border px-4 py-2  font-sans  text-lg font-semibold tracking-wide hover:border-red-600'
-                  >
-                    Cancel
                   </button>
                 </div>
                 {err === 1 && (
@@ -689,13 +689,19 @@ const ModalAddVendor = ({
               type='file'
               name=''
               id=''
-              accept=".csv, .xlsx"
+              accept='.csv, .xlsx'
               className=' w-full rounded-xl border px-3 py-2 file:mr-2 file:rounded-full  file:border-0 file:bg-gray-100 file:px-6 file:py-3 file:text-sm file:font-semibold file:text-violet-500  file:shadow-md file:shadow-gray-400 hover:file:cursor-pointer focus:border-indigo-500  '
               onChange={handleFileChange}
             />
 
             {/* <span className='text-red-500'>*No file selected</span> */}
             <div className='my-6 flex justify-around gap-4'>
+              <button
+                onClick={onClose}
+                className=' flex w-1/3 justify-center rounded-lg border px-4 py-2  font-sans  text-lg font-semibold tracking-wide hover:border-red-600'
+              >
+                Cancel
+              </button>{' '}
               <button
                 onClick={handleFileUpload}
                 className={`w-full  rounded-lg   bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] py-1 text-center  text-white ${
@@ -704,16 +710,11 @@ const ModalAddVendor = ({
               >
                 {loading ? 'Uploading' : 'Upload'}
               </button>
-              <button
-                onClick={onClose}
-                className=' flex w-1/3 justify-center rounded-lg border px-4 py-2  font-sans  text-lg font-semibold tracking-wide hover:border-red-600'
-              >
-                Cancel
-              </button>
             </div>
             {err === 2 && (
               <div className='mb-2 text-sm text-red-500'>
-                Incorrect file type. Please upload a filename contains text VENDOR.
+                Incorrect file type. Please upload a filename contains text
+                VENDOR.
               </div>
             )}
             {/* {Object.keys(errorData).length > 0 && (

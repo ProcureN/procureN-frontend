@@ -84,13 +84,13 @@ const Login = () => {
                 .then((response) => {
                   setLoading(false);
                   localStorage.removeItem('token');
-                  localStorage.removeItem('customerID');
+                  localStorage.removeItem('userID');
                   localStorage.removeItem('role');
                   if (response.data.message === 'Login Successful') {
                     localStorage.setItem('token', response.data.data.token);
                     localStorage.setItem(
-                      'customerID',
-                      response.data.data.customerID
+                      'userID',
+                      response.data.data.userID
                     );
                     localStorage.setItem('role', response.data.data.selectRole);
 
@@ -203,12 +203,17 @@ const Login = () => {
                     <span>Facebook</span>
                   </Link>
                 </div> */}
-                <Link to='/signup'>
+                {/* <Link to='/signup'>
                   Don't have an account? -{' '}
                   <span to='/signup' className='font-medium text-[#5c67f5]'>
                     Sign up
                   </span>
-                </Link>
+                </Link> */}
+
+
+
+
+
                 {/* <div className='mb-4  flex flex-wrap justify-between '>
                   <div className='mr-4 '>
                     <Link
@@ -235,7 +240,7 @@ const Login = () => {
                     </Link>
                   </div>
                 </div> */}
-                <div className='-mb-3 mt-4 text-[12px] '>
+                <div className='-mb-3 mt-2 text-[12px] '>
                   © 2023 ProcureN. All rights reserved{' '}
                 </div>
               </Form>

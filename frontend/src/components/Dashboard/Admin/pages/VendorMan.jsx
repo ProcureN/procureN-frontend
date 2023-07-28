@@ -3,7 +3,6 @@ import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import { Box } from '@mui/material';
 import { useEffect } from 'react';
 
-
 import axios from 'axios';
 import ExcelData from '../../ExcelData';
 // import PdfData from '../../PdfData';
@@ -18,21 +17,29 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ModalDuplicates from './Modals/ModalDuplicates';
 
+import { FiEdit2 } from 'react-icons/fi';
+import MUVendorMan from './Modals/MUVendorMan';
+
 const VendorMan = ({ open, setOpen }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
   const [showMyModal, setShowMyModal] = useState(false);
   const [showMyModal2, setShowMyModal2] = useState(false);
+  const [showMyModal3, setShowMyModal3] = useState(false);
   const [errorData, setErrorData] = useState({});
   const [docAdded, setDocAdded] = useState(false);
 
   const [sub, setSub] = useState(false);
-  // const [val, setVal] = useState({});
+  const [val, setVal] = useState({});
 
   useEffect(() => {
     async function fetchData() {
       const token = localStorage.getItem('token');
+      if (!token) {
+        window.location.href = '/login';
+        return;
+      }
       try {
         setLoading(true);
         const res = await axios.get(
@@ -133,20 +140,35 @@ const VendorMan = ({ open, setOpen }) => {
   //   setShowMyModal(true);
   // };
 
- 
+  const handleEdit = (row) => {
+    setVal(row);
+    setShowMyModal3(true);
+  };
+
   const columns = [
-    { field: 'no', headerName: 'Sr. No.', width: '60',sortable: false },
+    { field: 'no', headerName: 'Sr. No.', width: '60', sortable: false },
     { field: 'date', headerName: 'Date', width: '130' },
     {
       field: 'particular',
       headerName: 'Particulars',
       // width: '300',
-      flex:1
+      flex: 1,
     },
     { field: 'vchNo', headerName: 'Vch No.' },
     { field: 'vendor', headerName: 'Vendor', width: '300' },
     { field: 'quantity', headerName: 'Quantity' },
     { field: 'price', headerName: 'Price' },
+    {
+      field: 'edit',
+      width: '10',
+      headerName: 'Edit',
+      sortable: false,
+      renderCell: (params) => (
+        <button onClick={() => handleEdit(params.row)}>
+          <FiEdit2 className='text-lg' />
+        </button>
+      ),
+    },
     // {
     //   field: 'status',
     //   headerName: 'Status',
@@ -189,6 +211,7 @@ const VendorMan = ({ open, setOpen }) => {
     //   ),
     // },
   ];
+
   // let widths = ['30%', '15%', '23%', '14%', '12%', '14%'];
   // let bdy = [
   //   [
@@ -218,6 +241,7 @@ const VendorMan = ({ open, setOpen }) => {
 
   const handleOnClose = () => setShowMyModal(false);
   const handleOnClose2 = () => setShowMyModal2(false);
+  const handleOnClose3 = () => setShowMyModal3(false);
 
   const handleOpen = () => {
     setShowMyModal2(true);
@@ -246,7 +270,7 @@ const VendorMan = ({ open, setOpen }) => {
               />
             )}
             <BiRefresh
-              className='cursor-pointer text-4xl text-[#5c67f5] hover:rotate-180 duration-500'
+              className='cursor-pointer text-4xl text-[#5c67f5] duration-500 hover:rotate-180'
               onClick={() => setSub(true)}
             />
             <button
@@ -279,7 +303,7 @@ const VendorMan = ({ open, setOpen }) => {
           </div>
           <div className='flex'>
             <BiRefresh
-              className='mx-2 cursor-pointer text-3xl hover:rotate-180 duration-500'
+              className='mx-2 cursor-pointer text-3xl duration-500 hover:rotate-180'
               onClick={() => setSub(true)}
             />
             <ExcelData data={data} fileName=' Vendor Management' />
@@ -345,12 +369,13 @@ const VendorMan = ({ open, setOpen }) => {
         errorData={errorData}
         setDocAdded={setDocAdded}
       />
-      {/* <ModalUpdateProduct
-        onClose={handleOnClose}
-        visible={showMyModal}
+      
+      <MUVendorMan
+        onClose={handleOnClose3}
+        visible={showMyModal3}
         initialValues={val}
         setSub={setSub}
-      /> */}
+      />
 
       <ModalDuplicates
         onClose={handleOnClose}
