@@ -226,10 +226,35 @@ const Proposel = ({ setFormSub }) => {
                     <div className='flex'>
                       <label
                         htmlFor='selectRole'
-                        className='my-auto pr-1   text-sm text-[#5c67f5] md:text-lg'
+                        className='my-auto pr-14   text-sm text-[#5c67f5] md:text-lg'
                       >
-                        Role:
+                      Role:
                       </label>
+                      <div className='w-full'>
+
+                      <Field
+                        required
+                        as='select'
+                        className='placeholder:text-md w-full rounded-md border-b border-l-4 border-b-gray-500 border-l-[#5c67f5] bg-white px-3 py-1.5  leading-8 placeholder-gray-300 shadow-md outline-none'
+                        name='selectRole'
+                        id='selectRole'
+                      >
+                        <option
+                          value=''
+                          className='text-sm text-gray-500'
+                          disabled
+                        >
+                          {' '}
+                        </option>
+                        <option value='Client'>Client</option>
+                        <option value='Vendor'>Vendor</option>
+                      </Field>
+                      <ErrorMessage
+                        name='selectRole'
+                        component='div'
+                        className='px-3 text-sm text-red-700 '
+                      />
+                      </div>
                       {/* <div className='w-full'>
                         <Field
                           type='text'
@@ -238,14 +263,9 @@ const Proposel = ({ setFormSub }) => {
                           placeholder='Enter your contact number '
                           required
                           className='placeholder:text-md w-full rounded-md border-b border-l-4 border-b-gray-500 border-l-[#5c67f5] bg-white px-3 py-1  leading-8 placeholder-gray-300 shadow-md outline-none'
-                        />
-                        <ErrorMessage
-                          name='selectRole'
-                          component='div'
-                          className='px-3 text-sm text-red-700 '
-                        />
-                      </div> */}
-                      <div className='flex items-center text-[#5c67f5] w-full justify-around'>
+                        />*/}
+                      {/* </div>  */}
+                      {/* <div className='flex w-full items-center justify-around text-[#5c67f5]'>
                         <label className='mr-2 '>
                           <Field
                             type='radio'
@@ -266,19 +286,39 @@ const Proposel = ({ setFormSub }) => {
                           />
                           Vendor
                         </label>
-                      </div>
-                      <ErrorMessage
-                          name='selectRole'
-                          component='div'
-                          className='px-3 text-sm text-red-700 '
-                        />
+                      </div> */}
+                     
                     </div>
                   </div>
+                  {/* <div>
+                    <ErrorMessage
+                      name='selectRole'
+                      component='div'
+                      className=' -mt-5 text-right text-sm text-red-700'
+                    />
+                    <Field
+                      required
+                      as='select'
+                      className='mb-6 w-full rounded-lg  border border-gray-300 px-4 py-2 placeholder:text-black focus:outline-none'
+                      name='selectRole'
+                      id='selectRole'
+                    >
+                      <option
+                        value=''
+                        className='text-sm text-gray-500'
+                        disabled
+                      >
+                        Select Role
+                      </option>
+                      <option value='Client'>Client</option>
+                      <option value='Vendor'>Vendor</option>
+                    </Field>
+                  </div> */}
                   <div className=' mb-4'>
                     <div className='flex'>
                       <label
                         htmlFor='subject'
-                        className='my-auto pr-6   text-sm text-[#5c67f5] md:text-lg '
+                        className='my-auto pr-7   text-sm text-[#5c67f5] md:text-lg '
                       >
                         Subject:
                       </label>

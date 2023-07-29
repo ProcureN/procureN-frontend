@@ -6,38 +6,38 @@ import axios from 'axios';
 import ExcelData from '../../ExcelData';
 // import PdfData from '../../PdfData';
 import {  AiOutlineMenu } from 'react-icons/ai';
-import {  FiEdit2 } from 'react-icons/fi';
+// import {  FiEdit2 } from 'react-icons/fi';
 // import ModalAddProduct from './Modals/ModalAddProduct';
 
 import { BiRefresh } from 'react-icons/bi';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import SortIcon from '@mui/icons-material/Sort';
-import MUHomeEnq from './Modals/MUHomeEnq';
+// import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+// import SortIcon from '@mui/icons-material/Sort';
+// import MUHomeEnq from './Modals/MUHomeEnq';
 
-export function SortedDescendingIcon() {
-  return <ExpandMoreIcon className='icon' />;
-}
+// export function SortedDescendingIcon() {
+//   return <ExpandMoreIcon className='icon' />;
+// }
 
-export function SortedAscendingIcon() {
-  return <ExpandLessIcon className='icon' />;
-}
+// export function SortedAscendingIcon() {
+//   return <ExpandLessIcon className='icon' />;
+// }
 
-export function UnsortedIcon() {
-  return <SortIcon className='icon' />;
-}
+// export function UnsortedIcon() {
+//   return <SortIcon className='icon' />;
+// }
 
 const HomeEnq = ({ open, setOpen }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
-  const [showMyModal, setShowMyModal] = useState(false);
+  // const [showMyModal, setShowMyModal] = useState(false);
 
   const [sub, setSub] = useState(false);
-  const [val, setVal] = useState({});
+  // const [val, setVal] = useState({});
 
   useEffect(() => {
     async function fetchData() {
@@ -106,10 +106,10 @@ const HomeEnq = ({ open, setOpen }) => {
   //   },
   // ];
 
-  const handleEdit = (row) => {
-    setVal(row);
-    setShowMyModal(true);
-  };
+  // const handleEdit = (row) => {
+  //   setVal(row);
+  //   setShowMyModal(true);
+  // };
 
   // const handleEdit2 = (row) => {
   //   setVal(row);
@@ -150,7 +150,7 @@ const HomeEnq = ({ open, setOpen }) => {
   const statusOptions = ['Pending', 'Approved', 'Rejected'];
 
   const columns = [
-    // { field: 'no', headerName: 'Sr. No.', width: '60', sortable: false },
+    { field: 'no', headerName: 'Sr. No.', width: '60', sortable: false },
     { field: 'date', headerName: 'Date',width: '110' },
     { field: 'time', headerName: 'Time' },
     { field: 'name', headerName: 'Name' },
@@ -199,17 +199,17 @@ const HomeEnq = ({ open, setOpen }) => {
       ),
     },
 
-    {
-      field: 'edit',
-      width: '10',
-      headerName: "Edit",
-      sortable: false,
-      renderCell: (params) => (
-        <button onClick={() => handleEdit(params.row)}>
-          <FiEdit2 className='text-lg' />
-        </button>
-      ),
-    },
+    // {
+    //   field: 'edit',
+    //   width: '10',
+    //   headerName: "Edit",
+    //   sortable: false,
+    //   renderCell: (params) => (
+    //     <button onClick={() => handleEdit(params.row)}>
+    //       <FiEdit2 className='text-lg' />
+    //     </button>
+    //   ),
+    // },
   ];
   // let widths = ['10%', '15%', '24%', '16%', '16%', '19%'];
   // let bdy = [
@@ -237,7 +237,7 @@ const HomeEnq = ({ open, setOpen }) => {
     ...item,
   }));
 
-  const handleOnClose = () => setShowMyModal(false);
+  // const handleOnClose = () => setShowMyModal(false);
   // const handleOnClose2 = () => setShowMyModal2(false);
 
   // const handleOpen = () => {
@@ -352,12 +352,12 @@ const HomeEnq = ({ open, setOpen }) => {
         </Box>
       </div>
  
-      <MUHomeEnq
+      {/* <MUHomeEnq
         onClose={handleOnClose}
         visible={showMyModal}
         initialValues={val}
         setSub={setSub}
-      />
+      /> */}
 
       {/* <ModalDelete
         onClose={handleOnClose2}

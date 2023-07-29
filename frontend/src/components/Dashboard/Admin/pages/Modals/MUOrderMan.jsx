@@ -80,12 +80,12 @@ const MUOrderMan = ({
             </div>
           </div>
           <div
-            className='group relative my-auto cursor-pointer'
+            className='group relative my-auto cursor-pointer border p-3 bg-gray-200 shadow-lg shadow-slate-500 rounded-lg'
             onClick={handleDelete}
           >
-            <AiOutlineDelete className='text-2xl text-red-600' />
-            <div className='absolute right-2 top-6 hidden whitespace-nowrap rounded-xl bg-red-600 px-3 py-2 text-sm text-white group-hover:block'>
-              {loading?'Processing':"Delete Document"}
+            <AiOutlineDelete className='text-2xl lg:text-3xl text-red-600' />
+            <div className='absolute right-2 top-10 hidden whitespace-nowrap rounded-xl bg-red-600 px-3 py-2 text-sm text-white group-hover:block'>
+              {loading?'Processing':"Delete Entry"}
             </div>
           </div>
         </div>
@@ -330,7 +330,7 @@ const MUOrderMan = ({
                   } `}
                 >
                   {' '}
-                  {loading ? 'Updating' : 'Update Order'}
+                  {loading ? 'Updating' : 'Update'}
                 </button>
               </div>
               {err === 1 && (
