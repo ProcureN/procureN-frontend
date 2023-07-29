@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
@@ -28,12 +28,9 @@ const MUVendorMan = ({
   // };
 
   const [loading, setLoading] = useState(false);
-  const [userID, setUserID] = useState('');
   const [err, setErr] = useState(0);
 
-  useEffect(() => {
-    setUserID(localStorage.getItem('userID'));
-  }, []);
+
 
   if (!visible) return null;
 
@@ -104,6 +101,7 @@ const MUVendorMan = ({
           validationSchema={productSchema}
           onSubmit={(values, { setSubmitting, resetForm }) => {
             const token = localStorage.getItem('token');
+            const userID = localStorage.getItem('userID');
             setLoading(true);
             axios
               .put(

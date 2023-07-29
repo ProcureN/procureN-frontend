@@ -3,7 +3,7 @@ import {
   // AiOutlineMenu,
   AiOutlineFileSearch,
   AiOutlineShoppingCart,
-  AiOutlineUsergroupAdd,
+  // AiOutlineUsergroupAdd,
 } from 'react-icons/ai';
 import SidePanel from '../SidePanel';
 // import Management from './pages/Management';
@@ -11,7 +11,7 @@ import SidePanel from '../SidePanel';
 import HomePage from './pages/HomePage';
 // import VendorManagement from './pages/VendorManagement';
 // import VendorEnquiries from './pages/VendorEnquiries';
-import { FaUsers,FaHandsHelping } from 'react-icons/fa';
+import { FaHandsHelping } from 'react-icons/fa';
 import OrderMan from './pages/OrderMan';
 import VendorMan from './pages/VendorMan';
 import ClientDetails from './pages/ClientDetails';
@@ -57,23 +57,23 @@ const Admin = () => {
         },
       ],
     },
-    {
-      Head: 'USERS',
-      subLinks: [
-        // {
-        //   name: 'Order Management',
-        //   logo: [<AiOutlineUsergroupAdd />],
-        // },
-        {
-          name: 'Client Details',
-          logo: [<FaUsers />],
-        },
-        {
-          name: 'Vendor Details',
-          logo: [<AiOutlineUsergroupAdd />],
-        },
-      ],
-    },
+    // {
+    //   Head: 'USERS',
+    //   subLinks: [
+    //     // {
+    //     //   name: 'Order Management',
+    //     //   logo: [<AiOutlineUsergroupAdd />],
+    //     // },
+    //     {
+    //       name: 'Client Details',
+    //       logo: [<FaUsers />],
+    //     },
+    //     {
+    //       name: 'Vendor Details',
+    //       logo: [<AiOutlineUsergroupAdd />],
+    //     },
+    //   ],
+    // },
     // {
     //   Head: 'DASHBOARD',
     //   subLinks: [{ name: 'Home Page', logo: [<FaHome />] }],

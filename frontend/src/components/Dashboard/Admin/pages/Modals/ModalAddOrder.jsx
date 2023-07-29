@@ -52,6 +52,11 @@ const ModalAddOrder = ({
     setSelectedFile(event.target.files[0]);
   };
 
+  const handleClose = ()=>{
+    setErr(0)
+    onClose()
+  }
+
   const handleFileUpload = () => {
     if (!selectedFile) return alert('No file selected for upload');
     setLoading(true);
@@ -384,7 +389,7 @@ const ModalAddOrder = ({
                 </div>
                 <div className='flex justify-around gap-4'>
                   <button
-                    onClick={onClose}
+                    onClick={handleClose}
                     className=' mt-6  flex  w-1/3   justify-center rounded-lg border px-4 py-2  font-sans  text-lg font-semibold tracking-wide hover:border-red-600'
                   >
                     Cancel
@@ -441,7 +446,7 @@ const ModalAddOrder = ({
             {/* <span className='text-red-500 pl-2'>Note: Only CSV files are accepted</span> */}
             <div className='my-6 flex justify-around gap-4'>
               <button
-                onClick={onClose}
+                onClick={handleClose}
                 className=' flex w-1/3 justify-center rounded-lg border px-4 py-2  font-sans  text-lg font-semibold tracking-wide hover:border-red-600'
               >
                 Cancel

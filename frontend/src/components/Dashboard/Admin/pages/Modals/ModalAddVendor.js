@@ -340,6 +340,12 @@ const ModalAddVendor = ({
     setSelectedFile(event.target.files[0]);
   };
 
+
+  const handleClose = ()=>{
+    setErr(0)
+    onClose()
+  }
+
   const handleFileUpload = () => {
     if (!selectedFile) return alert('No file selected for upload');
     setLoading(true);
@@ -638,7 +644,7 @@ const ModalAddVendor = ({
                 </div>
                 <div className='flex justify-around gap-4'>
                   <button
-                    onClick={onClose}
+                    onClick={handleClose}
                     className=' mt-6  flex  w-1/3   justify-center rounded-lg border px-4 py-2  font-sans  text-lg font-semibold tracking-wide hover:border-red-600'
                   >
                     Cancel
@@ -695,11 +701,11 @@ const ModalAddVendor = ({
             {/* <span className='text-red-500'>*No file selected</span> */}
             <div className='my-6 flex justify-around gap-4'>
               <button
-                onClick={onClose}
+                onClick={handleClose}
                 className=' flex w-1/3 justify-center rounded-lg border px-4 py-2  font-sans  text-lg font-semibold tracking-wide hover:border-red-600'
               >
                 Cancel
-              </button>{' '}
+              </button>
               <button
                 onClick={handleFileUpload}
                 className={`w-full  rounded-lg   bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] py-1 text-center  text-white ${
