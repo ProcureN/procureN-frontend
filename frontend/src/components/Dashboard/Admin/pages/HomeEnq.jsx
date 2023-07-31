@@ -342,11 +342,6 @@ const HomeEnq = ({ open, setOpen }) => {
               rows={rows}
               columns={columns}
               components={{ Toolbar: GridToolbar }}
-              // slots={{
-              //   columnSortedDescendingIcon: SortedDescendingIcon,
-              //   columnSortedAscendingIcon: SortedAscendingIcon,
-              //   columnUnsortedIcon: UnsortedIcon,
-              // }}
             />
           )}
         </Box>

@@ -223,37 +223,34 @@ const Proposel = ({ setFormSub }) => {
                     </div>
                   </div>
                   <div className=' mb-4'>
-                    <div className='flex'>
+                    <div className='flex '>
                       <label
                         htmlFor='selectRole'
                         className='my-auto pr-14   text-sm text-[#5c67f5] md:text-lg'
                       >
-                      Role:
+                        Role:
                       </label>
                       <div className='w-full'>
-
-                      <Field
-                        required
-                        as='select'
-                        className='placeholder:text-md w-full rounded-md border-b border-l-4 border-b-gray-500 border-l-[#5c67f5] bg-white px-3 py-1.5  leading-8 placeholder-gray-300 shadow-md outline-none'
-                        name='selectRole'
-                        id='selectRole'
-                      >
-                        <option
-                          value=''
-                          className='text-sm text-gray-500'
-                          disabled
+                        <Field
+                          required
+                          as='select'
+                          className='placeholder:text-md w-full rounded-md border-b border-l-4 border-b-gray-500 border-l-[#5c67f5] bg-white px-3 py-2  placeholder-gray-300 shadow-md outline-none'
+                          name='selectRole'
+                          id='selectRole'
                         >
-                          {' '}
-                        </option>
-                        <option value='Client'>Client</option>
-                        <option value='Vendor'>Vendor</option>
-                      </Field>
-                      <ErrorMessage
-                        name='selectRole'
-                        component='div'
-                        className='px-3 text-sm text-red-700 '
-                      />
+                          <option value='' className='' disabled>
+                            Select Role
+                          </option>
+                          <option className='text-black' value='Client'>
+                            Client
+                          </option>
+                          <option value='Vendor'>Vendor</option>
+                        </Field>
+                        {/* <ErrorMessage
+                          name='selectRole'
+                          component='div'
+                          className='px-3 text-sm text-red-700 '
+                        /> */}
                       </div>
                       {/* <div className='w-full'>
                         <Field
@@ -287,7 +284,6 @@ const Proposel = ({ setFormSub }) => {
                           Vendor
                         </label>
                       </div> */}
-                     
                     </div>
                   </div>
                   {/* <div>
