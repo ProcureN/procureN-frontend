@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-// import howItWorks from '../../assets/Infographic.png';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -10,58 +9,12 @@ const HowItWorks = () => {
   }, []);
   return (
     <>
-      {/* <div
-        data-aos='fade-up'
-        data-aos-delay='0'
-        data-aos-duration='1000'
-        // data-aos-once='true' 
-        className='container mx-auto  overflow-hidden md:px-4 md:pb-4  lg:px-10 xl:px-16'
-      >
-        <img src={howItWorks} alt='How ProcureN works' srcSet='' className='' />
-      </div> */}
+     
       <div className='title-font container mx-auto mb-4  pb-2 text-center text-3xl font-medium uppercase text-[#5c67f5] sm:text-4xl'>
         Process
       </div>
       <div className='md:text-md mb-6 flex flex-col gap-4 text-center text-sm md:mb-14 lg:flex-row'>
-        {/* <div className='flex w-full flex-col items-center text-white md:w-1/2  '>
-          <div className='title-font mb-3 text-center text-2xl font-medium  text-[#5c67f5] sm:text-3xl'>
-            Vendor
-          </div>
-          <div
-            data-aos='fade-right'
-            data-aos-delay='0'
-            data-aos-duration='1000'
-            className='mr-28 w-min whitespace-nowrap rounded-full border-2 border-white bg-[#5c67f5]  px-6 py-7 transition-all duration-500 hover:z-10  '
-          >
-            Send your product <br />
-            or service details
-          </div>
-          <div
-            data-aos='fade-left'
-            data-aos-delay='0'
-            data-aos-duration='1000'
-            className='top-20 -mt-4 ml-28 w-min whitespace-nowrap rounded-2xl  border border-white bg-[#cb67ac] px-4 py-6 transition-all duration-500 hover:z-10  '
-          >
-            Proposal discussions <br />& verification
-          </div>
-          <div
-            data-aos='fade-right'
-            data-aos-delay='0'
-            data-aos-duration='1000'
-            className='top-40 -mt-4 mr-28 w-min whitespace-nowrap rounded-3xl  border border-white bg-[#5c67f5] px-6 py-8 transition-all duration-500 hover:z-10  '
-          >
-            Get informed <br />
-            about new deals
-          </div>
-          <div
-            data-aos='fade-left'
-            data-aos-delay='0'
-            data-aos-duration='1000'
-            className='top-60 -mt-4 ml-28 w-min whitespace-nowrap rounded-2xl  border border-white bg-[#cb67ac] px-6 py-14 transition-all duration-500 hover:z-10  '
-          >
-            Finalize the deal
-          </div>
-        </div> */}
+       
         <div
           data-aos='fade-right'
           data-aos-delay='0'

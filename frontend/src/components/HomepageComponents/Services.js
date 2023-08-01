@@ -55,21 +55,12 @@ const Services = () => {
                     Purchase / Supply Raw Materials
                   </div>
                 </div>
-                <div className='flex h-full flex-col justify-between'>
-                  <div>
-                    <h3 className='px-1  pb-2 '>
-                      Improve your procurement process, save time and money, and
-                      enhance your brand's value with ProcureN's direct
-                      materials sourcing solutions.
-                    </h3>
+                <div className='flex h-full flex-col justify-between '>
+                  <div className='px-1 pb-2  text-center tracking-[0.07rem] text-sm leading-5 '>
+                    Improve your procurement process, save time and money, and
+                    enhance your brand's value with ProcureN's direct materials
+                    sourcing solutions.
                   </div>
-                  {/* <div className='mx-auto'>
-                    <a href='#contact'>
-                      <button className='mt-6 flex rounded-full border border-y   border-gray-500  from-[#5c67f5]  to-[#cb67ac] bg-clip-text p-2 pl-3 font-sans duration-500 hover:bg-gradient-to-tl     hover:text-transparent focus:outline-none md:mx-2 lg:mx-10 xl:pr-3 '>
-                        Know More
-                      </button>
-                    </a>
-                  </div> */}
                 </div>
               </div>
             </div>
@@ -87,12 +78,12 @@ const Services = () => {
                   </div>
                 </div>
                 <div className='flex h-full flex-col justify-between'>
-                  <span className=' justify-center pb-2    '>
+                <div className='px-1 pb-2  text-center tracking-[0.07rem] text-sm leading-5 '>
                     ProcureN handles your full procure-to-pay process, from
                     requisition to invoice payment, and gives you complete
                     visibility of your purchase order's progress. Track your
                     requisitions with ease.
-                  </span>
+                  </div>
                   {/* <div className='mx-auto'>
                     <a href='#contact'>
                       <button className='mt-6 flex rounded-full border border-y   border-gray-500  from-[#5c67f5]  to-[#cb67ac] bg-clip-text p-2 pl-3 font-sans duration-500   hover:bg-gradient-to-tl    hover:text-transparent focus:outline-none md:mx-2 lg:mx-10 xl:pr-3 '>
@@ -111,18 +102,18 @@ const Services = () => {
             >
               <div className='flex h-full flex-col overflow-hidden rounded-lg border border-gray-200 p-2 shadow-lg shadow-indigo-500/50 duration-500 hover:scale-110 hover:border-indigo-200'>
                 <div className='mb-4  flex min-h-[80px] items-center justify-center rounded-md border-b  px-1 text-center text-xl  text-[#5c67f5] md:min-h-[100px] '>
-                <div>
+                  <div>
                     <BsTruck className='mx-auto whitespace-nowrap hover:scale-125 ' />
                     Tracking Mechanism
                   </div>
                 </div>
                 <div className='flex h-full flex-col justify-between'>
-                  <span className=' justify-center pb-2    '>
-                  Track the status of your requisitions from submission to
-                      invoice with ProcureN's multi-stage approval tracking
-                      mechanism. You'll know exactly where your orders are in
-                      the process at all times.
-                  </span>
+                <div className='px-1 pb-2  text-center tracking-[0.07rem] text-sm leading-5 '>
+                    Track the status of your requisitions from submission to
+                    invoice with ProcureN's multi-stage approval tracking
+                    mechanism. You'll know exactly where your orders are in the
+                    process at all times.
+                  </div>
                   {/* <div className='mx-auto'>
                     <a href='#contact'>
                       <button className='mt-6 flex rounded-full border border-y   border-gray-500  from-[#5c67f5]  to-[#cb67ac] bg-clip-text p-2 pl-3 font-sans duration-500   hover:bg-gradient-to-tl    hover:text-transparent focus:outline-none md:mx-2 lg:mx-10 xl:pr-3 '>
@@ -173,14 +164,17 @@ const Services = () => {
                   </div>
                 </div>
                 <div className='flex h-full flex-col justify-between'>
-                  <div>
-                    <h3 className='px-1 pb-2  '>
-                      Get insights, automate processes, and control your
-                      business operations with ProcureN's Sales Management/ERP
-                      Dashboard. Integrated to data from accounting,
-                      manufacturing, supply chain management and sales.
-                    </h3>
+                <div className='px-1 pb-2  text-center tracking-[0.07rem] text-sm leading-5 '>
+                    Optimize your business with ProcureN's Sales Management/ERP
+                    Dashboard, connecting accounting, manufacturing, supply
+                    chain, and sales data for insightful automation and control.
                   </div>
+                  {/* <div className='px-1 pb-2  tracking-wide text-center'>
+                    Get insights, automate processes, and control your business
+                    operations with ProcureN's Sales Management/ERP Dashboard.
+                    Integrated to data from accounting, manufacturing, supply
+                    chain management and sales.
+                  </div> */}
                   {/* <div className='mx-auto'>
                     <a href='#contact'>
                       <button className='mt-6 flex rounded-full border border-y   border-gray-500  from-[#5c67f5]  to-[#cb67ac] bg-clip-text p-2 pl-3 font-sans duration-500   hover:bg-gradient-to-tl    hover:text-transparent focus:outline-none md:mx-2 lg:mx-10 xl:pr-3 '>
@@ -192,7 +186,6 @@ const Services = () => {
               </div>
             </div>
           </div>
-          
         </div>
       </section>
     </div>
