@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
-import { DataGrid, GridToolbar } from '@mui/x-data-grid';
-import { Box } from '@mui/material';
-import { useEffect } from 'react';
+import React, { useState } from "react";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import { Box } from "@mui/material";
+import { useEffect } from "react";
 
-import axios from 'axios';
-import ExcelData from '../../ExcelData';
+import axios from "axios";
+import ExcelData from "../../ExcelData";
 // import PdfData from '../../PdfData';
-import { AiOutlineMenu } from 'react-icons/ai';
-import ModalAddVendor from './Modals/ModalAddVendor';
+import { AiOutlineMenu } from "react-icons/ai";
+import ModalAddVendor from "./Modals/ModalAddVendor";
 // import ModalAddProduct from './Modals/ModalAddProduct';
 // import ModalUpdateProduct from './Modals/ModalUpdateProduct';
 
-import { BiCommentError, BiRefresh } from 'react-icons/bi';
+import { BiCommentError, BiRefresh } from "react-icons/bi";
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import ModalDuplicates from './Modals/ModalDuplicates';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ModalDuplicates from "./Modals/ModalDuplicates";
 
-import { FiEdit2 } from 'react-icons/fi';
-import MUVendorMan from './Modals/MUVendorMan';
+import { FiEdit2 } from "react-icons/fi";
+import MUVendorMan from "./Modals/MUVendorMan";
 
 const VendorMan = ({ open, setOpen }) => {
   const [loading, setLoading] = useState(false);
@@ -35,15 +35,15 @@ const VendorMan = ({ open, setOpen }) => {
 
   useEffect(() => {
     async function fetchData() {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
       if (!token) {
-        window.location.href = '/login';
+        window.location.href = "/login";
         return;
       }
       try {
         setLoading(true);
         const res = await axios.get(
-          'https://procuren-backend.onrender.com/getVendor',
+          "https://procuren-backend.onrender.com/getVendor",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -61,27 +61,27 @@ const VendorMan = ({ open, setOpen }) => {
   }, [sub]);
 
   const notify = () =>
-    toast.error('Invalid rows or duplicate entries (check error tab)', {
-      position: 'top-right',
+    toast.error("Invalid rows or duplicate entries (check error tab)", {
+      position: "top-right",
       autoClose: 2000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: false,
       draggable: true,
       progress: undefined,
-      theme: 'light',
+      theme: "light",
     });
 
   const notify2 = () =>
-    toast.success('Document added successfully.', {
-      position: 'top-right',
+    toast.success("Document added successfully.", {
+      position: "top-right",
       autoClose: 2000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: false,
       draggable: true,
       progress: undefined,
-      theme: 'light',
+      theme: "light",
     });
 
   useEffect(() => {
@@ -146,26 +146,26 @@ const VendorMan = ({ open, setOpen }) => {
   };
 
   const columns = [
-    { field: 'no', headerName: 'Sr. No.', width: '60', sortable: false },
-    { field: 'date', headerName: 'Date', width: '130' },
+    { field: "no", headerName: "Sr. No.", width: "60", sortable: false },
+    { field: "date", headerName: "Date", width: "130" },
     {
-      field: 'particular',
-      headerName: 'Particulars',
+      field: "particular",
+      headerName: "Particulars",
       // width: '300',
       flex: 1,
     },
-    { field: 'vchNo', headerName: 'Vch No.' },
-    { field: 'vendor', headerName: 'Vendor', width: '300' },
-    { field: 'quantity', headerName: 'Quantity' },
-    { field: 'price', headerName: 'Price' },
+    { field: "vchNo", headerName: "Vch No." },
+    { field: "vendor", headerName: "Vendor", width: "300" },
+    { field: "quantity", headerName: "Quantity" },
+    { field: "price", headerName: "Price" },
     {
-      field: 'edit',
-      width: '10',
-      headerName: 'Edit',
+      field: "edit",
+      width: "10",
+      headerName: "Edit",
       sortable: false,
       renderCell: (params) => (
         <button onClick={() => handleEdit(params.row)}>
-          <FiEdit2 className='text-lg' />
+          <FiEdit2 className="text-lg" />
         </button>
       ),
     },
@@ -250,96 +250,99 @@ const VendorMan = ({ open, setOpen }) => {
 
   return (
     <>
-      <div className='my-2  flex  h-16 justify-between overflow-hidden rounded-md bg-gray-100 shadow-lg shadow-gray-400  md:mr-4'>
-        <div className='my-auto pl-2 md:hidden'>
+      <div className="my-2  flex  h-16 justify-between overflow-hidden rounded-md bg-gray-100 shadow-lg shadow-gray-400  md:mr-4">
+        <div className="my-auto pl-2 md:hidden">
           <AiOutlineMenu
-            className=' cursor-pointer text-3xl text-[#5c67f5] '
+            className=" cursor-pointer text-3xl text-[#5c67f5] "
             onClick={() => setOpen(!open)}
           />
         </div>
 
-        <div className='mx-auto my-auto bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] bg-clip-text text-center font-sans text-xl font-semibold text-transparent  lg:text-2xl'>
+        <div className="mx-auto my-auto bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] bg-clip-text text-center font-sans text-xl font-semibold text-transparent  lg:text-2xl">
           Vendor Management
         </div>
-        {data.length > 0 && (
-          <div className='hidden items-center pr-2 md:visible md:flex'>
-            {Object.keys(errorData).length > 0 && (
-              <BiCommentError
-                className='mr-2 cursor-pointer text-3xl text-red-600'
-                onClick={() => setShowMyModal(true)}
-              />
-            )}
-            <BiRefresh
-              className='cursor-pointer text-4xl text-[#5c67f5] duration-500 hover:rotate-180'
-              onClick={() => setSub(true)}
-            />
-            <button
-              onClick={handleOpen}
-              className='mx-2 rounded bg-gradient-to-tr  from-[#5c67f5] to-[#cb67ac] px-3 py-1  text-white'
-            >
-              Add Order
-            </button>
 
-            <ExcelData data={data} fileName=' Vendor Management' />
-            {/* <PdfData fileName=' Vendor Management' bdy={bdy} wid={widths} /> */}
-          </div>
-        )}
-      </div>
-      {data.length > 0 && (
-        <div className='flex justify-between md:hidden'>
-          <div className='flex'>
-            <button
-              onClick={handleOpen}
-              className='mx-2 rounded bg-gradient-to-tr  from-[#5c67f5] to-[#cb67ac] px-3 py-1  text-white'
-            >
-              Add Order
-            </button>
-            {Object.keys(errorData).length > 0 && (
-              <BiCommentError
-                className='mr-2 cursor-pointer text-3xl text-red-600'
-                onClick={() => setShowMyModal(true)}
-              />
-            )}
-          </div>
-          <div className='flex'>
-            <BiRefresh
-              className='mx-2 cursor-pointer text-3xl duration-500 hover:rotate-180'
-              onClick={() => setSub(true)}
+        <div className="hidden items-center pr-2 md:visible md:flex">
+          {Object.keys(errorData).length > 0 && (
+            <BiCommentError
+              className="mr-2 cursor-pointer text-3xl text-red-600"
+              onClick={() => setShowMyModal(true)}
             />
-            <ExcelData data={data} fileName=' Vendor Management' />
-            {/* <PdfData fileName=' Vendor Management' bdy={bdy} wid={widths} /> */}
-          </div>
+          )}
+          <BiRefresh
+            className="cursor-pointer text-4xl text-[#5c67f5] duration-500 hover:rotate-180"
+            onClick={() => setSub(true)}
+          />
+          <button
+            onClick={handleOpen}
+            className="mx-2 rounded bg-gradient-to-tr  from-[#5c67f5] to-[#cb67ac] px-3 py-1  text-white"
+          >
+            Add Order
+          </button>
+
+          {data.length > 0 && (
+            <ExcelData data={data} fileName=" Vendor Management" />
+          )}
+          {/* <PdfData fileName=' Vendor Management' bdy={bdy} wid={widths} /> */}
         </div>
-      )}
-      <div className=' overflow-hidden'>
+      </div>
+
+      <div className="flex justify-between md:hidden">
+        <div className="flex">
+          <button
+            onClick={handleOpen}
+            className="mx-2 rounded bg-gradient-to-tr  from-[#5c67f5] to-[#cb67ac] px-3 py-1  text-white"
+          >
+            Add Order
+          </button>
+          {Object.keys(errorData).length > 0 && (
+            <BiCommentError
+              className="mr-2 cursor-pointer text-3xl text-red-600"
+              onClick={() => setShowMyModal(true)}
+            />
+          )}
+        </div>
+        <div className="flex">
+          <BiRefresh
+            className="mx-2 cursor-pointer text-3xl duration-500 hover:rotate-180"
+            onClick={() => setSub(true)}
+          />
+          {data.length > 0 && (
+            <ExcelData data={data} fileName=" Vendor Management" />
+          )}
+          {/* <PdfData fileName=' Vendor Management' bdy={bdy} wid={widths} /> */}
+        </div>
+      </div>
+
+      <div className=" overflow-hidden">
         <Box
-          m='0 20px 0 0'
-          height='90vh'
+          m="0 20px 0 0"
+          height="90vh"
           sx={{
-            '& .MuiDataGrid-root': {
-              border: 'none',
+            "& .MuiDataGrid-root": {
+              border: "none",
             },
-            '& .MuiDataGrid-cell': {
-              border: '1px solid', // Add the border style for the cell
-              borderColor: 'lightgray', // Set the color of the border
+            "& .MuiDataGrid-cell": {
+              border: "1px solid", // Add the border style for the cell
+              borderColor: "lightgray", // Set the color of the border
             },
-            '& .name-column--cell': {
+            "& .name-column--cell": {
               // color: colors.greenAccent[300],
             },
-            '& .MuiDataGrid-columnHeaders': {
+            "& .MuiDataGrid-columnHeaders": {
               // backgroundColor: colors.blueAccent[700],
-              background: 'linear-gradient(to top right, #5c67f5, #cb67ac)',
-              borderBottom: 'none',
-              color: 'white',
+              background: "linear-gradient(to top right, #5c67f5, #cb67ac)",
+              borderBottom: "none",
+              color: "white",
             },
-            '& .MuiDataGrid-virtualScroller': {
+            "& .MuiDataGrid-virtualScroller": {
               // backgroundColor: colors.primary[400],
             },
-            '& .MuiDataGrid-footerContainer': {
+            "& .MuiDataGrid-footerContainer": {
               // borderTop: '1 solid',
               // backgroundColor: colors.blueAccent[700],
             },
-            '& .MuiCheckbox-root': {
+            "& .MuiCheckbox-root": {
               // color: `${colors.greenAccent[200]} !important`,
             },
           }}
@@ -347,15 +350,15 @@ const VendorMan = ({ open, setOpen }) => {
           {loading ? (
             <div>Loading</div>
           ) : error ? (
-            'Error ~ Something went wrong :)'
+            "No data found."
           ) : (
             <DataGrid
               // checkboxSelection
-              getRowHeight={() => 'auto'}
+              getRowHeight={() => "auto"}
               rows={rows}
               columns={columns}
               components={{ Toolbar: GridToolbar }}
-              options={{ exportFileName: 'Vendor Management' }}
+              options={{ exportFileName: "Vendor Management" }}
               // slotProps={{ toolbar: { printOptions: { disableToolbarButton: true } } }}
             />
           )}
@@ -369,7 +372,7 @@ const VendorMan = ({ open, setOpen }) => {
         errorData={errorData}
         setDocAdded={setDocAdded}
       />
-      
+
       <MUVendorMan
         onClose={handleOnClose3}
         visible={showMyModal3}

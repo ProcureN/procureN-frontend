@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { DataGrid, GridToolbar } from '@mui/x-data-grid';
-import { Box } from '@mui/material';
-import { useEffect } from 'react';
-import axios from 'axios';
-import ExcelData from '../../ExcelData';
+import React, { useState } from "react";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import { Box } from "@mui/material";
+import { useEffect } from "react";
+import axios from "axios";
+import ExcelData from "../../ExcelData";
 // import PdfData from '../../PdfData';
-import {  AiOutlineMenu } from 'react-icons/ai';
+import { AiOutlineMenu } from "react-icons/ai";
 // import {  FiEdit2 } from 'react-icons/fi';
 // import ModalAddProduct from './Modals/ModalAddProduct';
 
-import { BiRefresh } from 'react-icons/bi';
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
+import { BiRefresh } from "react-icons/bi";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 
 // import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 // import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -42,14 +42,15 @@ const HomeEnq = ({ open, setOpen }) => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem("token");
         if (!token) {
-          window.location.href = '/login';
+          window.location.href = "/login";
           return;
         }
         setLoading(true);
         const res = await axios.get(
-          'https://procuren-backend.onrender.com/getcontactform', {
+          "https://procuren-backend.onrender.com/getcontactform",
+          {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
@@ -121,8 +122,8 @@ const HomeEnq = ({ open, setOpen }) => {
     // Send the updated status to the backend using Axios call
 
     // .put(`/your-endpoint/${updatedRow.id}`, updatedRow)
-    const token = localStorage.getItem('token');
-    const userID = localStorage.getItem("userID")
+    const token = localStorage.getItem("token");
+    const userID = localStorage.getItem("userID");
 
     setSub(true);
     // console.log(updatedRow.id);
@@ -147,44 +148,44 @@ const HomeEnq = ({ open, setOpen }) => {
       });
   };
 
-  const statusOptions = ['Pending', 'Approved', 'Rejected'];
+  const statusOptions = ["Pending", "Approved", "Rejected"];
 
   const columns = [
-    { field: 'no', headerName: 'Sr. No.', width: '60', sortable: false },
-    { field: 'date', headerName: 'Date',width: '110' },
-    { field: 'time', headerName: 'Time' },
-    { field: 'name', headerName: 'Name' },
+    { field: "no", headerName: "Sr. No.", width: "60", sortable: false },
+    { field: "date", headerName: "Date", width: "110" },
+    { field: "time", headerName: "Time" },
+    { field: "name", headerName: "Name" },
     {
-      field: 'email',
-      headerName: 'Email',
+      field: "email",
+      headerName: "Email",
       // width: '300',
       // flex: 1.5,
       flex: 1.5,
     },
-    { field: 'phone', headerName: 'Phone', width: '120' },
-    { field: 'company', headerName: 'Company', flex: 1 },
-    { field: 'subject', headerName: 'Subject', flex: 1 },
-    { field: 'selectRole', headerName: 'Role' },
-    { field: 'message', headerName: 'Message' },
+    { field: "phone", headerName: "Phone", width: "120" },
+    { field: "company", headerName: "Company", flex: 1 },
+    { field: "subject", headerName: "Subject", flex: 1 },
+    { field: "selectRole", headerName: "Role" },
+    { field: "message", headerName: "Message" },
     {
-      field: 'status',
-      headerName: 'Status',
+      field: "status",
+      headerName: "Status",
       renderCell: (params) => (
         <Select
           value={params.row.status}
           onChange={(e) => handleStatusChange(params.row, e.target.value)}
           style={{
             backgroundColor:
-              params.row.status === 'Pending'
-                ? '#f5d889'
-                : params.row.status === 'Approved'
-                ? '#8db598'
-                : '#eb8888',
+              params.row.status === "Pending"
+                ? "#f5d889"
+                : params.row.status === "Approved"
+                ? "#8db598"
+                : "#eb8888",
             // color: 'black',
-            fontSize: '0.7rem',
-            width: '5.5rem',
-            height: '2rem',
-            marginLeft: '-.25rem',
+            fontSize: "0.7rem",
+            width: "5.5rem",
+            height: "2rem",
+            marginLeft: "-.25rem",
             // marginTop: '10px',
             // marginBottom: '10px',
             // border:"0px"
@@ -247,86 +248,89 @@ const HomeEnq = ({ open, setOpen }) => {
 
   return (
     <>
-      <div className='my-2 flex  h-16 justify-between overflow-hidden rounded-md bg-gray-100 shadow-lg shadow-gray-400  md:mr-4'>
-        <div className='my-auto pl-2 md:hidden '>
+      <div className="my-2 flex  h-16 justify-between overflow-hidden rounded-md bg-gray-100 shadow-lg shadow-gray-400  md:mr-4">
+        <div className="my-auto pl-2 md:hidden ">
           <AiOutlineMenu
-            className=' cursor-pointer text-3xl text-[#5c67f5] '
+            className=" cursor-pointer text-3xl text-[#5c67f5] "
             onClick={() => setOpen(!open)}
           />
         </div>
 
-        <div className='mx-auto my-auto bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] bg-clip-text pr-1 text-center  font-sans text-xl font-semibold text-transparent  lg:text-2xl'>
+        <div className="mx-auto my-auto bg-gradient-to-tr from-[#5c67f5] to-[#cb67ac] bg-clip-text pr-1 text-center  font-sans text-xl font-semibold text-transparent  lg:text-2xl">
           Homepage Enquiries
         </div>
-        {data.length > 0 && (
-          <div className='hidden items-center pr-2 md:visible md:flex'>
-            <BiRefresh
-              className='mr-3 cursor-pointer text-4xl text-[#5c67f5] duration-500 hover:rotate-180'
-              onClick={() => setSub(true)}
-            />
-            {/* <button
+
+        <div className="hidden items-center pr-2 md:visible md:flex">
+          <BiRefresh
+            className="mr-3 cursor-pointer text-4xl text-[#5c67f5] duration-500 hover:rotate-180"
+            onClick={() => setSub(true)}
+          />
+          {/* <button
               onClick={handleOpen}
               className='mx-2 rounded bg-gradient-to-tr  from-[#5c67f5] to-[#cb67ac] px-3 py-1  text-white'
             >
               Add Order
             </button> */}
 
-            <ExcelData data={data} fileName='Homepage Enquiries' />
-            {/* <PdfData fileName='Homepage Enquiries' bdy={bdy} wid={widths} /> */}
-          </div>
-        )}
+          {data.length > 0 && (
+            <ExcelData data={data} fileName="Homepage Enquiries" />
+          )}
+          {/* <PdfData fileName='Homepage Enquiries' bdy={bdy} wid={widths} /> */}
+        </div>
       </div>
-      {data.length > 0 && (
-        <div className='flex justify-between md:hidden'>
-          <div className='flex'>
-            {/* <button
+
+      <div className="flex justify-between md:hidden">
+        <div className="flex">
+          {/* <button
               onClick={handleOpen}
               className='mx-2 rounded bg-gradient-to-tr  from-[#5c67f5] to-[#cb67ac] px-3 py-1  text-white'
             >
               Add Order
             </button> */}
-          </div>
-          <div className='flex'>
-            <BiRefresh
-              className='mx-4 cursor-pointer text-3xl duration-500 hover:rotate-180'
-              onClick={() => setSub(true)}
-            />
-            <ExcelData data={data} fileName='Homepage Enquiries' />
-            {/* <PdfData fileName='Homepage Enquiries' bdy={bdy} wid={widths} /> */}
-          </div>
         </div>
-      )}
-      <div className=' overflow-hidden '>
+        <div className="flex">
+          <BiRefresh
+            className="mx-4 cursor-pointer text-3xl duration-500 hover:rotate-180"
+            onClick={() => setSub(true)}
+          />
+          {data.length > 0 && (
+            <ExcelData data={data} fileName="Homepage Enquiries" />
+          )}
+          {/* <PdfData fileName='Homepage Enquiries' bdy={bdy} wid={widths} /> */}
+        </div>
+      </div>
+
+      <div className=" overflow-hidden ">
         <Box
-          m='0 20px 0 0'
-          height='90vh'
+          m="0 20px 0 0"
+          height="90vh"
           sx={{
-            '& .MuiDataGrid-root': {
-              border: 'none',
+            "& .MuiDataGrid-root": {
+              border: "none",
             },
-            '& .MuiDataGrid-cell': {
-              border: '0.1px solid', // Add the border style for the cell
-              borderColor: 'lightgray', // Set the color of the border
-              paddingBottom: '5px',
-              paddingTop: '5px',
+            "& .MuiDataGrid-cell": {
+              border: "0.1px solid", // Add the border style for the cell
+              borderColor: "lightgray", // Set the color of the border
+              paddingBottom: "5px",
+              paddingTop: "5px",
             },
-            '& .name-column--cell': {
+            "& .name-column--cell": {
               // color: colors.greenAccent[300],
             },
-            '& .MuiDataGrid-columnHeaders': {
+            "& .MuiDataGrid-columnHeaders": {
               // backgroundColor: colors.blueAccent[700],
-              background: 'linear-gradient(to top right, #5c67f5, #cb67ac)',
-              borderBottom: 'none',
-              color: 'white',
+              background: "linear-gradient(to top right, #5c67f5, #cb67ac)",
+              borderBottom: "none",
+              color: "white",
             },
-            '& .MuiDataGrid-virtualScroller': {
+            "& .MuiDataGrid-virtualScroller": {
               // backgroundColor: colors.primary[400],
             },
-            '& .MuiDataGrid-footerContainer': {
+            "& .MuiDataGrid-footerContainer": {
               // borderTop: '1 solid',
               // backgroundColor: colors.blueAccent[700],
             },
-            '& .MuiCheckbox-root': {
+            "& .MuiCheckbox-root": {
               // color: `${colors.greenAccent[200]} !important`,
             },
           }}
@@ -334,11 +338,11 @@ const HomeEnq = ({ open, setOpen }) => {
           {loading ? (
             <div>Loading</div>
           ) : error ? (
-            'Error ~ Something went wrong :)'
+            "No data found."
           ) : (
             <DataGrid
               // checkboxSelection
-              getRowHeight={() => 'auto'}
+              getRowHeight={() => "auto"}
               rows={rows}
               columns={columns}
               components={{ Toolbar: GridToolbar }}
@@ -346,7 +350,7 @@ const HomeEnq = ({ open, setOpen }) => {
           )}
         </Box>
       </div>
- 
+
       {/* <MUHomeEnq
         onClose={handleOnClose}
         visible={showMyModal}
