@@ -47,7 +47,7 @@ const Management = ({ open, setOpen }) => {
           return;
         }
         const res = await axios.get(
-          `https://procuren-backend.onrender.com/getenquiries/${page}/${limit}`,
+          `https://procuren-backend-g6z9.onrender.com/getenquiries/${page}/${limit}`,
           // `http://localhost:3001/getenquiries/${page}/${limit}`,
           {
             headers: { Authorization: `Bearer ${token}` }, // Send token in Authorization header

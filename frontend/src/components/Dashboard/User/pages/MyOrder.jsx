@@ -43,7 +43,7 @@ const MyOrder = ({ open, setOpen }) => {
           return;
         }
         const res = await axios.get(
-          `https://procuren-backend.onrender.com/IndividualcustomerEnquiry/${customerID}/${page}/${limit}`,
+          `https://procuren-backend-g6z9.onrender.com/IndividualcustomerEnquiry/${customerID}/${page}/${limit}`,
           // `http://localhost:3001/IndividualcustomerEnquiry/${customerID}/${page}/${limit}`,
           {
             headers: { Authorization: `Bearer ${token}` },

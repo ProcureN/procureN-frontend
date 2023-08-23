@@ -73,7 +73,7 @@ const ModalUpdate = ({ visible, onClose, initialValues, setSub }) => {
 
   useEffect(() => {
     axios
-      .get(`https://procuren-backend.onrender.com/getproductnames`)
+      .get(`https://procuren-backend-g6z9.onrender.com/getproductnames`)
       .then((response) => {
         setProduct(response.data.data);
       })
@@ -120,7 +120,7 @@ const ModalUpdate = ({ visible, onClose, initialValues, setSub }) => {
 
             axios
               .put(
-                `https://procuren-backend.onrender.com/updateCostumersEnquiry/${initialValues._id}`,
+                `https://procuren-backend-g6z9.onrender.com/updateCostumersEnquiry/${initialValues._id}`,
                 // `http://localhost:3001/UpdateCostumer/${initialValues._id}`,
                 values,
 

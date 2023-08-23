@@ -140,15 +140,13 @@ const Hero = ({ setShowMyModal }) => {
             <img
               className='    rounded object-cover object-center lg:w-full lg:max-w-lg  '
               alt='hero'
-              src="https://test-saboo-rks.s3.ap-south-1.amazonaws.com/hero.png"
-              // src={require("../../assets/under_construction-01.png")}
-              // src='https://test-saboo-rks.s3.ap-south-1.amazonaws.com/hero.png'
+              // src={require('../../assets/construction.png')}         
             />
             {/* {player ? (
               <img
                 className='    rounded object-cover object-center lg:w-full lg:max-w-lg  '
                 alt='hero'
-                src='https://test-saboo-rks.s3.ap-south-1.amazonaws.com/heroImag.png'
+               src={require('../../assets/construction.png')}    
               />
             ) : (
               <div className='overflow-hidden    border'>

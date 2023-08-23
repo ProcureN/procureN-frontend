@@ -20,7 +20,7 @@ const ViewProfile = () => {
           return;
         }
         const res = await axios.get(
-          `https://procuren-backend.onrender.com/Individualprofiles/${customerID}`,
+          `https://procuren-backend-g6z9.onrender.com/Individualprofiles/${customerID}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }

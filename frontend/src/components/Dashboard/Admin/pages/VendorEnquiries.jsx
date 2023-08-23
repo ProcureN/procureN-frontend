@@ -45,7 +45,7 @@ const VendorEnquiries = ({ open, setOpen }) => {
           return;
         }
         const res = await axios.get(
-          `https://procuren-backend.onrender.com/getcontactform/1/100`,
+          `https://procuren-backend-g6z9.onrender.com/getcontactform/1/100`,
           // `http://localhost:3001/getcontactform/${page}/${limit}`
           {
             headers: { Authorization: `Bearer ${token}` }, // Send token in Authorization header

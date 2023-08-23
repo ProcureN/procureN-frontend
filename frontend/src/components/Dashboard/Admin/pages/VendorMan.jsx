@@ -43,7 +43,7 @@ const VendorMan = ({ open, setOpen }) => {
       try {
         setLoading(true);
         const res = await axios.get(
-          "https://procuren-backend.onrender.com/getVendor",
+          "https://procuren-backend-g6z9.onrender.com/getVendor",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -423,7 +423,7 @@ export default VendorMan;
 //       try {
 //         setLoading(true);
 //         const res = await axios.get(
-//           'https://procuren-backend.onrender.com/getVendor/1/1000'
+//           'https://procuren-backend-g6z9.onrender.com/getVendor/1/1000'
 //         );
 //         // console.log(res);
 //         setData(res.data.data);
@@ -492,7 +492,7 @@ export default VendorMan;
 //     // console.log(updatedRow.id);
 //     axios
 //       .put(
-//         `https://procuren-backend.onrender.com/updateVendor/${row.id}`,
+//         `https://procuren-backend-g6z9.onrender.com/updateVendor/${row.id}`,
 //         // `http://localhost:3001/updateclient/${row.id}`,
 //         { status: newStatus },
 //         {

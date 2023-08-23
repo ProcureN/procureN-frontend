@@ -39,7 +39,7 @@ const MUHomeEnq = ({ visible, onClose, setSub, initialValues }) => {
     setLoading(true);
     try {
       await axios.delete(
-        `https://procuren-backend.onrender.com/deleteContactForm/${initialValues._id}/${userID}`,
+        `https://procuren-backend-g6z9.onrender.com/deleteContactForm/${initialValues._id}/${userID}`,
         // `http://localhost:3001/deletecostumer/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -100,7 +100,7 @@ const MUHomeEnq = ({ visible, onClose, setSub, initialValues }) => {
             setLoading(true);
             axios
               .put(
-                `https://procuren-backend.onrender.com/updateContactUs/${initialValues._id}/${userID}`,
+                `https://procuren-backend-g6z9.onrender.com/updateContactUs/${initialValues._id}/${userID}`,
                 // `http://localhost:3001/client`,
                 { ...values, userID: userID },
                 {

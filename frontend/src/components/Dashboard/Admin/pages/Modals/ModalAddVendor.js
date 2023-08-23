@@ -45,7 +45,7 @@
 //             setLoading(true);
 //             axios
 //               .post(
-//                 `https://procuren-backend.onrender.com/vendor`,
+//                 `https://procuren-backend-g6z9.onrender.com/vendor`,
 //                 // `http://localhost:3001/client`,
 //                 { ...values, userID: `64ab86c5ec3352792ffcd39c` },
 //                 {
@@ -353,7 +353,7 @@ const ModalAddVendor = ({
     formData.append('file', selectedFile);
 
     axios
-      .post('https://procuren-backend.onrender.com/importVendor', formData)
+      .post('https://procuren-backend-g6z9.onrender.com/importVendor', formData)
       .then((response) => {
         setLoading(false);
         setSelectedFile(null);
@@ -431,7 +431,7 @@ const ModalAddVendor = ({
               setLoading(true);
               axios
                 .post(
-                  `https://procuren-backend.onrender.com/vendor`,
+                  `https://procuren-backend-g6z9.onrender.com/vendor`,
                   // `http://localhost:3001/client`,
                   { ...values, userID: userID },
                   {

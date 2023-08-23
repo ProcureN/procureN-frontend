@@ -22,7 +22,7 @@ const HomePage = ({ open, setOpen }) => {
   // useEffect(() => {
   //   axios
   //     .get(
-  //       `https://procuren-backend.onrender.com/countOfStatusByCustomerIdOfProducts/20`
+  //       `https://procuren-backend-g6z9.onrender.com/countOfStatusByCustomerIdOfProducts/20`
   //     )
   //     .then((response) => {
   //       setManufac(response.data.data); // Assuming the response data should be set to `data`
@@ -35,7 +35,7 @@ const HomePage = ({ open, setOpen }) => {
 
   // useEffect(() => {
   //   axios
-  //     .get(`https://procuren-backend.onrender.com/countOfStatusByCustomerId/20`)
+  //     .get(`https://procuren-backend-g6z9.onrender.com/countOfStatusByCustomerId/20`)
   //     .then((response) => {
   //       setRetail(response.data.data); // Assuming the response data should be set to `data`
   //       // console.log('data from manu', response);
@@ -48,7 +48,7 @@ const HomePage = ({ open, setOpen }) => {
   // useEffect(() => {
   //   axios
   //     .get(
-  //       `https://procuren-backend.onrender.com/countOfManufacturerAndRetailer`
+  //       `https://procuren-backend-g6z9.onrender.com/countOfManufacturerAndRetailer`
   //     )
   //     .then((response) => {
   //       setData(response.data.data); // Assuming the response data should be set to `data`
@@ -61,7 +61,7 @@ const HomePage = ({ open, setOpen }) => {
 
   // useEffect(() => {
   //   axios
-  //     .get(`https://procuren-backend.onrender.com/allDataOfEnquiries`)
+  //     .get(`https://procuren-backend-g6z9.onrender.com/allDataOfEnquiries`)
   //     .then((response) => {
   //       setData2(response.data); // Assuming the response data should be set to `data`
   //     })
@@ -72,7 +72,7 @@ const HomePage = ({ open, setOpen }) => {
 
   // useEffect(() => {
   //   axios
-  //     .get(`https://procuren-backend.onrender.com/getCountsOfProduct`)
+  //     .get(`https://procuren-backend-g6z9.onrender.com/getCountsOfProduct`)
   //     .then((response) => {
   //       setData3(response.data); // Assuming the response data should be set to `data`
 

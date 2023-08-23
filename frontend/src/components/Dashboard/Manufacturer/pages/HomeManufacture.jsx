@@ -22,7 +22,7 @@ const HomeManufacture = ({ open, setOpen }) => {
           return;
         }
         const res = await axios.get(
-          `https://procuren-backend.onrender.com/Individualprofiles/${customerID}`,
+          `https://procuren-backend-g6z9.onrender.com/Individualprofiles/${customerID}`,
           // `http://localhost:3001/Individualprofiles/${customerID}`,
           {
             headers: { Authorization: `Bearer ${token}` },
@@ -43,7 +43,7 @@ const HomeManufacture = ({ open, setOpen }) => {
     const customerID = localStorage.getItem('customerID');
     axios
       .get(
-        `https://procuren-backend.onrender.com/individualproductscount/${customerID}`
+        `https://procuren-backend-g6z9.onrender.com/individualproductscount/${customerID}`
       )
       .then((response) => {
         setData2(response.data); // Assuming the response data should be set to `data`

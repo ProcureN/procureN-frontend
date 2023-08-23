@@ -48,7 +48,7 @@ const VendorManagement = ({ open, setOpen }) => {
           return;
         }
         const res = await axios.get(
-          `https://procuren-backend.onrender.com/getAllDetails/${page}/${limit}`,
+          `https://procuren-backend-g6z9.onrender.com/getAllDetails/${page}/${limit}`,
           // `http://localhost:3001/getAllDetails/${page}/${limit}`,
 
           {

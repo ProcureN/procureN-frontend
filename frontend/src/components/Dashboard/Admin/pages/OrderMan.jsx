@@ -44,7 +44,7 @@ const OrderMan = ({ open, setOpen }) => {
       try {
         setLoading(true);
         const res = await axios.get(
-          "https://procuren-backend.onrender.com/getclient",
+          "https://procuren-backend-g6z9.onrender.com/getclient",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -151,7 +151,7 @@ const OrderMan = ({ open, setOpen }) => {
   //   // console.log(updatedRow.id);
   //   axios
   //     .put(
-  //       `https://procuren-backend.onrender.com/updateclient/${row.id}`,
+  //       `https://procuren-backend-g6z9.onrender.com/updateclient/${row.id}`,
   //       // `http://localhost:3001/updateclient/${row.id}`,
   //       { status: newStatus },
   //       {

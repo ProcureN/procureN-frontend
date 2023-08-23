@@ -91,7 +91,7 @@ const Proposel = ({ setFormSub }) => {
                 setLoading(true);
                 axios
                   .post(
-                    'https://procuren-backend.onrender.com/contactform',
+                    'https://procuren-backend-g6z9.onrender.com/contactform',
                     values
                   )
                   .then((response) => {

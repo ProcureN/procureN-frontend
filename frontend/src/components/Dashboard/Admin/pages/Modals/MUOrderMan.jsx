@@ -39,7 +39,7 @@ const MUOrderMan = ({
     setLoading(true);
     try {
       await axios.delete(
-        `https://procuren-backend.onrender.com/deleteClient/${initialValues._id}`,
+        `https://procuren-backend-g6z9.onrender.com/deleteClient/${initialValues._id}`,
         // `http://localhost:3001/deletecostumer/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -105,7 +105,7 @@ const MUOrderMan = ({
             setLoading(true);
             axios
               .put(
-                `https://procuren-backend.onrender.com/updateclient/${initialValues._id}`,
+                `https://procuren-backend-g6z9.onrender.com/updateclient/${initialValues._id}`,
                 // `http://localhost:3001/client`,
                 { ...values, userID: userID },
                 {

@@ -39,7 +39,7 @@ const OtpRestPass = () => {
   const emailContext = useContext(EmailContext);
   const handleResendOTP = async () => {
     try {
-      await axios.post('https://procuren-backend.onrender.com/resendOtp ', {
+      await axios.post('https://procuren-backend-g6z9.onrender.com/resendOtp ', {
         email: `${emailContext.email}`,
       });
     } catch (error) {
@@ -72,7 +72,7 @@ const OtpRestPass = () => {
                 setLoading(true);
                 await axios
                   .post(
-                    'https://procuren-backend.onrender.com/otp ',
+                    'https://procuren-backend-g6z9.onrender.com/otp ',
 
                     { ...values, email: `${emailContext.email}` }
                   )
@@ -158,7 +158,7 @@ const OtpRestPass = () => {
                 setLoading(true);
                 await axios
                   .post(
-                    'https://procuren-backend.onrender.com/resendOtp ',
+                    'https://procuren-backend-g6z9.onrender.com/resendOtp ',
                     values
                   )
                   .then((response) => {

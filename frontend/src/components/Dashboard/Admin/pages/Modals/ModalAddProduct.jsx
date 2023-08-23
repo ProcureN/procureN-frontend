@@ -70,7 +70,7 @@ const ModalAddProduct = ({ visible, onClose, setSub }) => {
             setLoading(true);
             axios
               .post(
-                `https://procuren-backend.onrender.com/addProducts`,
+                `https://procuren-backend-g6z9.onrender.com/addProducts`,
                 // `http://localhost:3001/addProducts`,
                 { ...values, costumerID: `${customerID}` },
                 {

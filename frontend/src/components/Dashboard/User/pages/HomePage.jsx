@@ -22,7 +22,7 @@ const HomePage = ({ open, setOpen }) => {
           return;
         }
         const res = await axios.get(
-          `https://procuren-backend.onrender.com/Individualprofiles/${customerID}`,
+          `https://procuren-backend-g6z9.onrender.com/Individualprofiles/${customerID}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -41,7 +41,7 @@ const HomePage = ({ open, setOpen }) => {
     const customerID = localStorage.getItem('customerID');
     axios
       .get(
-        `https://procuren-backend.onrender.com/individualcostumerenquirycounts/${customerID}`
+        `https://procuren-backend-g6z9.onrender.com/individualcostumerenquirycounts/${customerID}`
       )
       .then((response) => {
         setData2(response.data); // Assuming the response data should be set to `data`

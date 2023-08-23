@@ -43,7 +43,7 @@ const ViewAllProducts = ({ open, setOpen }) => {
         }
         const customerID = localStorage.getItem('customerID');
         const res = await axios.get(
-          `https://procuren-backend.onrender.com/getProducts/${customerID}/${page}/${limit}`,
+          `https://procuren-backend-g6z9.onrender.com/getProducts/${customerID}/${page}/${limit}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }

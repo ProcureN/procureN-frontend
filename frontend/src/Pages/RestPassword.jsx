@@ -44,7 +44,7 @@ const RestPassword = () => {
               setLoading(true);
               await axios
                 .put(
-                  'https://procuren-backend.onrender.com/updatepassword',
+                  'https://procuren-backend-g6z9.onrender.com/updatepassword',
                   // `http://localhost:3001/updatepassword`,
 
                   values

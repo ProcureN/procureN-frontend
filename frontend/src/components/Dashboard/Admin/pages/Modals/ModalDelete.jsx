@@ -16,7 +16,7 @@ const ModalDelete = ({ visible, onClose, Values, setSub, deletePopup }) => {
     try {
       if (deletePopup === 'user') {
         await axios.delete(
-          `https://procuren-backend.onrender.com/deletecostumer/${Values._id}`,
+          `https://procuren-backend-g6z9.onrender.com/deletecostumer/${Values._id}`,
           // `http://localhost:3001/deletecostumer/${id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
@@ -24,7 +24,7 @@ const ModalDelete = ({ visible, onClose, Values, setSub, deletePopup }) => {
         );
       } else if (deletePopup === 'product') {
         await axios.delete(
-          `https://procuren-backend.onrender.com/products/${Values._id}`,
+          `https://procuren-backend-g6z9.onrender.com/products/${Values._id}`,
           // `http://localhost:3001/deletecostumer/${id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
@@ -32,7 +32,7 @@ const ModalDelete = ({ visible, onClose, Values, setSub, deletePopup }) => {
         );
       } else if (deletePopup === 'contactForm') {
         await axios.delete(
-          `https://procuren-backend.onrender.com/deleteContactForm/${Values._id}`,
+          `https://procuren-backend-g6z9.onrender.com/deleteContactForm/${Values._id}`,
           // `http://localhost:3001/deletecostumer/${id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
@@ -40,7 +40,7 @@ const ModalDelete = ({ visible, onClose, Values, setSub, deletePopup }) => {
         );
       } else if (deletePopup === 'enquiry') {
         await axios.delete(
-          `https://procuren-backend.onrender.com/deleteCostumerEnquiry/${Values._id}`,
+          `https://procuren-backend-g6z9.onrender.com/deleteCostumerEnquiry/${Values._id}`,
           // `http://localhost:3001/deletecostumer/${id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
@@ -48,7 +48,7 @@ const ModalDelete = ({ visible, onClose, Values, setSub, deletePopup }) => {
         );
       } else if (deletePopup === 'hompageEnquiry') {
         await axios.delete(
-          `https://procuren-backend.onrender.com/deleteContactForm/${Values._id}`,
+          `https://procuren-backend-g6z9.onrender.com/deleteContactForm/${Values._id}`,
           // `http://localhost:3001/deletecostumer/${id}`,
           {
             headers: { Authorization: `Bearer ${token}` },

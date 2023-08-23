@@ -49,7 +49,7 @@ const HomeEnq = ({ open, setOpen }) => {
         }
         setLoading(true);
         const res = await axios.get(
-          "https://procuren-backend.onrender.com/getcontactform",
+          "https://procuren-backend-g6z9.onrender.com/getcontactform",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -129,7 +129,7 @@ const HomeEnq = ({ open, setOpen }) => {
     // console.log(updatedRow.id);
     axios
       .put(
-        `https://procuren-backend.onrender.com/updateContactUs/${row.id}/${userID}`,
+        `https://procuren-backend-g6z9.onrender.com/updateContactUs/${row.id}/${userID}`,
         // `http://localhost:3001/updateclient/${row.id}`,
         { status: newStatus },
         {

@@ -21,7 +21,7 @@ const ClientDetails = ({ open, setOpen }) => {
   //     try {
   //       setLoading(true);
   //       const res = await axios.get(
-  //         'https://procuren-backend.onrender.com/getclient/1/100'
+  //         'https://procuren-backend-g6z9.onrender.com/getclient/1/100'
   //       );
   //       // console.log(res);
   //       setData(res.data.data);
@@ -45,7 +45,7 @@ const ClientDetails = ({ open, setOpen }) => {
           return;
         }
         const res = await axios.get(
-          `https://procuren-backend.onrender.com/getroles`,
+          `https://procuren-backend-g6z9.onrender.com/getroles`,
           // `http://localhost:3001/getroles/${page}/${limit}`,
 
           {

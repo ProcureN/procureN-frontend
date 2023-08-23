@@ -77,7 +77,7 @@ const Enquiry = ({ open, setOpen }) => {
   useEffect(() => {
     setCustomerID(localStorage.getItem('customerID'));
     axios
-      .get(`https://procuren-backend.onrender.com/getproductnames`)
+      .get(`https://procuren-backend-g6z9.onrender.com/getproductnames`)
       //  .get(`http://localhost:3001/getproductnames`)
       .then((response) => {
         setProduct(response.data.data);
@@ -127,7 +127,7 @@ const Enquiry = ({ open, setOpen }) => {
           axios
 
             .post(
-              `https://procuren-backend.onrender.com/costumer/enquiryForm`,
+              `https://procuren-backend-g6z9.onrender.com/costumer/enquiryForm`,
               // `http://localhost:3001/costumer/enquiryForm`,
               values,
               {

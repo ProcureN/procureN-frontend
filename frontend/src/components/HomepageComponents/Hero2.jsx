@@ -106,7 +106,7 @@ const Hero2 = ({ setShowMyModal }) => {
               <img
                 className='    rounded object-cover object-center lg:w-full lg:max-w-lg  '
                 alt='hero'
-                src='https://test-saboo-rks.s3.ap-south-1.amazonaws.com/heroImag.png'
+               src={require('../../assets/construction.png')}    
               />
             ) : (
               <div className='overflow-hidden    border'>

@@ -64,7 +64,7 @@ const ModalAddOrder = ({
     formData.append('file', selectedFile);
 
     axios
-      .post('https://procuren-backend.onrender.com/importUser', formData)
+      .post('https://procuren-backend-g6z9.onrender.com/importUser', formData)
       .then((response) => {
         setLoading(false);
         setSelectedFile(null);
@@ -93,8 +93,8 @@ const ModalAddOrder = ({
       });
   };
 
-  // fetch('https://procuren-backend.onrender.com/importUser', {
-  //   // fetch('https://procuren-backend.onrender.com/uploads', {
+  // fetch('https://procuren-backend-g6z9.onrender.com/importUser', {
+  //   // fetch('https://procuren-backend-g6z9.onrender.com/uploads', {
   //   method: 'POST',
   //   body: formData,
   // })
@@ -176,7 +176,7 @@ const ModalAddOrder = ({
               setLoading(true);
               axios
                 .post(
-                  `https://procuren-backend.onrender.com/client`,
+                  `https://procuren-backend-g6z9.onrender.com/client`,
                   // `http://localhost:3001/client`,
                   { ...values, userID:  userID},
                   {

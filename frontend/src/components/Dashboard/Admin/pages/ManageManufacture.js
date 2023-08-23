@@ -48,7 +48,7 @@ const ManageManufacture = () => {
           return;
         }
         const res = await axios.get(
-          `https://procuren-backend.onrender.com/getroles/${page}/${limit}`,
+          `https://procuren-backend-g6z9.onrender.com/getroles/${page}/${limit}`,
           // `http://localhost:3001/getAllDetails/${page}/${limit}`,
 
           {
